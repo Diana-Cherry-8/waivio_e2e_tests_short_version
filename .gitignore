@@ -1,0 +1,6 @@
+*.iml
+.allure
+.idea
+build
+target
+/src/test/resources/TestsData.properties
