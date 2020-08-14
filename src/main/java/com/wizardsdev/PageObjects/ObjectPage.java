@@ -17,11 +17,9 @@ public class ObjectPage extends Page {
 
   @Override
   protected void init() {
-
   }
 
   @Override
   protected void parsePage() {
-
   }
 }
