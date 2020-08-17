@@ -16,14 +16,13 @@ import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.SignIn;
 import com.wizardsdev.Modals.SignUp;
-import com.wizardsdev.PageObjects.DiscoverPage;
-import com.wizardsdev.PageObjects.FeedPage;
-import com.wizardsdev.PageObjects.NotificationsPage;
-import com.wizardsdev.PageObjects.ObjectPage;
-import com.wizardsdev.PageObjects.UserPage;
+import com.wizardsdev.PageObjects.*;
+
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
+
+import com.wizardsdev.PageObjects.Rewards.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -68,6 +67,12 @@ public abstract class TestBase {
   protected static DiscoverPage discoverPage;
   protected static ObjectPage objectPage;
   protected static NotificationsPage notificationsPage;
+  protected static EligiblePage eligiblePage;
+  protected static AllPage allPage;
+  protected static ReservedPage reservedPage;
+  protected static ReceivablesPage receivablesPage;
+  protected static ReportsPage reportsPage;
+
 
   //Helpers
   protected static FileGenerator fileGen = new FileGenerator();

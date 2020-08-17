@@ -38,7 +38,7 @@ public class DiscoverPage extends Page {
 
   @Step
   public boolean isTopRatedFilterExist() {
-    return $(Selectors.withText("Filter")).shouldBe(Condition.visible).exists();
+    return $(Selectors.withText("Filters")).shouldBe(Condition.visible).exists();
   }
 
 
