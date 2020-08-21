@@ -1,5 +1,6 @@
 package com.wizardsdev.PageObjects.Rewards;
 
+import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -37,9 +38,9 @@ public class ReportsPage extends Page {
     protected void init() {
         // Page initialization
         // Checking correctness of page loading
-//        String pageUrl = getCurrentPage();
-//        $(REWARDS_TITLE_LOCATOR).shouldBe(Condition.visible);
-//        assert url().equals(pageUrl) : "Invalid page is opened";
+        //String pageUrl = getCurrentPage();
+        //$(REWARDS_TITLE_LOCATOR).shouldBe(Condition.visible);
+        //assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override

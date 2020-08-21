@@ -69,7 +69,7 @@ public class Header extends Page {
 
   @Step
   public SignIn clickOnSingIn() {
-    $$(ANT_MENU_ITEMS_LOCATOR).get(2).click();
+    $(ANT_MENU_ITEMS_LOCATOR).click();
     return new SignIn();
   }
 

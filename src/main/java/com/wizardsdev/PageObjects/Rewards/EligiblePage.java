@@ -1,5 +1,6 @@
 package com.wizardsdev.PageObjects.Rewards;
 
+import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -10,10 +11,8 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class EligiblePage extends Page {
     private static final String PAGE_URL = "/rewards/active";
-    private static final By ALL_PAGE_LOCATOR = By.cssSelector("#app > section > div > div.Rewards > div > div > div.leftContainer > div > div > ul > li:nth-child(2) > a");
-    private static final By RESERVED_PAGE_LOCATOR = By.cssSelector("#app > section > div > div.Rewards > div > div > div.leftContainer > div > div > ul > li:nth-child(4) > a");
-    private static final By RECEIVABLES_PAGE_LOCATOR = By.cssSelector("#app > section > div > div.Rewards > div > div > div.leftContainer > div > div > ul > li:nth-child(5) > a");
-    private static final By REPORTS_PAGE_LOCATOR = By.cssSelector("#app > section > div > div.Rewards > div > div > div.leftContainer > div > div > ul > li:nth-child(6) > a");
+    private static final By OBJECT_CARD_VIEW = By.cssSelector(".ObjectCardView");
+
 
 
     public EligiblePage() {
@@ -28,39 +27,13 @@ public class EligiblePage extends Page {
         return new EligiblePage();
     }
 
-    @Step
-    public AllPage clickAllPage() {
-        $(ALL_PAGE_LOCATOR).click();
-        return new AllPage();
-    }
-
-    @Step
-    public ReservedPage clickReservedPage() {
-        $(RESERVED_PAGE_LOCATOR).click();
-        return new ReservedPage();
-    }
-
-    @Step
-    public ReceivablesPage clickReceivablesPage() {
-        $(RECEIVABLES_PAGE_LOCATOR).click();
-        return new ReceivablesPage();
-    }
-
-    @Step
-    public ReportsPage clickReportsPage() {
-        $(REPORTS_PAGE_LOCATOR).click();
-        return new ReportsPage();
-    }
-
-
-
     @Override
     protected void init() {
         // Page initialization
         // Checking correctness of page loading
-//        String pageUrl = getCurrentPage();
-//        $(REWARDS_TITLE_LOCATOR).shouldBe(Condition.visible);
-//        assert url().equals(pageUrl) : "Invalid page is opened";
+        //String pageUrl = getCurrentPage();
+        //$(OBJECT_CARD_VIEW).shouldBe(Condition.visible);
+        //assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override

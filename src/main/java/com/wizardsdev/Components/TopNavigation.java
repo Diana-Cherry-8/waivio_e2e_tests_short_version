@@ -5,6 +5,8 @@ import static com.codeborne.selenide.Selenide.$$;
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.DiscoverPage;
 import com.wizardsdev.PageObjects.Page;
+import com.wizardsdev.PageObjects.Rewards.EligiblePage;
+import com.wizardsdev.PageObjects.Tools.NotificationsPageTools;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -30,6 +32,20 @@ public class TopNavigation extends Page {
     getTopNavigationItemByNumber(2).click();
     return new DiscoverPage();
   }
+
+  @Step
+  public EligiblePage clickOnRewardsItem() {
+    getTopNavigationItemByNumber(1).click();
+    return new EligiblePage();
+  }
+
+  @Step
+  public NotificationsPageTools clickOnToolsItem() {
+    getTopNavigationItemByNumber(3).click();
+    return new NotificationsPageTools();
+  }
+
+
 
   @Override
   protected void init() {

@@ -8,9 +8,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import com.wizardsdev.ApiRequests.ApiRequest;
-import com.wizardsdev.Components.FeedLeftBar;
-import com.wizardsdev.Components.Header;
-import com.wizardsdev.Components.TopNavigation;
+import com.wizardsdev.Components.*;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
@@ -23,9 +21,13 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 import com.wizardsdev.PageObjects.Rewards.*;
+import com.wizardsdev.PageObjects.Tools.*;
+import okhttp3.internal.http2.Settings;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import javax.management.Notification;
 
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
@@ -60,6 +62,8 @@ public abstract class TestBase {
   protected static Header header;
   protected static TopNavigation topNavigation;
   protected static FeedLeftBar feedLeftBar;
+  protected static RewardsLeftSidebar rewardsLeftSidebar;
+  protected static ToolsLeftSidebar toolsLeftSidebar;
 
   //Page Objects
   protected static FeedPage feedPage;
@@ -72,6 +76,15 @@ public abstract class TestBase {
   protected static ReservedPage reservedPage;
   protected static ReceivablesPage receivablesPage;
   protected static ReportsPage reportsPage;
+  protected static HistoryPage historyPage;
+
+  protected static DraftsPage draftsPage;
+  protected static BookmarksPage bookmarksPage;
+  protected static EditProfilePage editProfilePage;
+  protected static SettingsPage settingsPage;
+  protected static GuestsSettingsPage guestsSettingsPage;
+  protected static NotificationsPageTools notificationsPageTools;
+  protected static InvitePage invitePage;
 
 
   //Helpers
@@ -105,6 +118,9 @@ public abstract class TestBase {
     header = Header.initHeader();
     feedLeftBar = FeedLeftBar.initFeedLeftBar();
     topNavigation = TopNavigation.initTopNavigation();
+    rewardsLeftSidebar = RewardsLeftSidebar.initRewardsLeftSidebar();
+    toolsLeftSidebar = ToolsLeftSidebar.initToolsLeftSidebar();
+
     setUserLogin(properties.getProperty(String.format("UserLogin%s%s", qaNumber, getNumberOfUser())));
     setUserPassword(properties.getProperty(String.format("LoginPassword%s%s", qaNumber, getNumberOfUser())));
     setApiRequest(Context.getInstance().getApiRequest());

@@ -19,6 +19,7 @@ import org.openqa.selenium.By;
 
 public abstract class Page {
   public static final By REWARDS_TITLE_LOCATOR = By.cssSelector(".ant-breadcrumb-link");
+  private static final By TITLE_TOOLS_LOCATOR = By.cssSelector(".center h1");
 
   public static final By MODAL_DIMMER_LOCATOR = By.cssSelector(".modals.dimmer");
   private static final By LOADER_DIMMER_LOCATOR = By.cssSelector(".anticon-loading");
@@ -179,5 +180,11 @@ public abstract class Page {
   public String getTitleRewards() {
     return $(REWARDS_TITLE_LOCATOR).getText();
   }
+
+  @Step
+  public String getTitleTools() {
+    return $(TITLE_TOOLS_LOCATOR).getText();
+  }
+
 
 }

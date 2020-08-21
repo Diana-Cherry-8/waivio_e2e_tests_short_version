@@ -1,4 +1,4 @@
-package Junit5.Rewards;
+package Junit5.Tools;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -8,10 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.refresh;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Feature("Eligible Page, Rewards")
-public class EligibleTest extends TestBase {
+@Feature("Drafts page, Tools")
+public class DraftsTest extends TestBase {
     String facebookEmail = properties.getProperty("FacebookUserEmail00");
     String facebookPassword = properties.getProperty("FacebookUserPass00");
 
@@ -22,12 +23,15 @@ public class EligibleTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check eligible page is opened in Rewards")
+    @DisplayName("Check drafts page is opened in Tools")
     @Test
-    void openEligiblePageTest() {
-        eligiblePage = topNavigation.clickOnRewardsItem();
-        String expectedResult = "Eligible rewards";
-        String actualResult = eligiblePage.getTitleRewards();
+    void openDrafts() {
+        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = toolsLeftSidebar.clickOnDraftsItem();
+        refresh();
+        String expectedResult = "Drafts";
+        String actualResult = draftsPage.getTitleTools();
         assertEquals(expectedResult, actualResult);
     }
 }
+

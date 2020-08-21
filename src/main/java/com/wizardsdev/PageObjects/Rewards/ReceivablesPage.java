@@ -1,5 +1,6 @@
 package com.wizardsdev.PageObjects.Rewards;
 
+import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -10,6 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ReceivablesPage extends Page {
     private static final String PAGE_URL = "/rewards/receivables";
+    private static final By TITLE_TOTAL_LOCATOR = By.cssSelector(".Debts__information-row");
 
     public ReceivablesPage() {
         super(PAGE_URL);
@@ -23,6 +25,11 @@ public class ReceivablesPage extends Page {
         return new ReceivablesPage();
     }
 
+    @Step
+    public String getTitleReceivables()
+    {
+         return $(TITLE_TOTAL_LOCATOR).shouldBe(Condition.visible).getText();
+    }
 
 
 
@@ -31,9 +38,9 @@ public class ReceivablesPage extends Page {
     protected void init() {
         // Page initialization
         // Checking correctness of page loading
-//        String pageUrl = getCurrentPage();
-//        $(REWARDS_TITLE_LOCATOR).shouldBe(Condition.visible);
-//        assert url().equals(pageUrl) : "Invalid page is opened";
+        String pageUrl = getCurrentPage();
+        $(TITLE_TOTAL_LOCATOR).shouldBe(Condition.visible);
+        assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override

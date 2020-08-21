@@ -1,9 +1,11 @@
 package Junit5.Rewards;
 
 import Junit5.TestBase;
+import com.wizardsdev.Components.RewardsLeftSidebar;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.Rewards.AllPage;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
+import com.wizardsdev.PageObjects.Rewards.ReportsPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +16,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Feature("RewardsPage, eligible page")
+@Feature("Reports Page, Rewards")
 public class ReportsTest extends TestBase {
     String facebookEmail = properties.getProperty("FacebookUserEmail00");
     String facebookPassword = properties.getProperty("FacebookUserPass00");
@@ -26,14 +28,13 @@ public class ReportsTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check reserved page is opened in Rewards")
+    @DisplayName("Check report page is opened in Rewards")
     @Test
     void openReportsTest() {
-        eligiblePage = EligiblePage.openEligiblePage();
-        reportsPage = eligiblePage.clickReportsPage();
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        reportsPage = rewardsLeftSidebar.clickOnReportsItem();
         String expectedResult = "Reports :";
         String actualResult = reportsPage.getTitleReportsRewards();
-
         assertEquals(expectedResult, actualResult);
     }
 }

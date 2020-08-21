@@ -9,26 +9,26 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class DraftsPage extends Page {
-    private static final String PAGE_URL = "/drafts";
-    private static final By LINK_DELETE_SELECTED_LOCATOR = By.cssSelector(".Drafts__toolbar__delete span");
+public class NotificationsPageTools extends Page {
+    private static final String PAGE_URL = "/notification-settings";
+    private static final By BUTTON_SAVE_NOTIFICATION_SETTINGS = By.cssSelector(".Settings button");
 
-    public DraftsPage() {
+    public NotificationsPageTools() {
         super(PAGE_URL);
     }
 
     @Step
-    public DraftsPage openDraftsPage() {
+    public NotificationsPageTools openNotificationsPage() {
         if (!url().contains(PAGE_URL)) {
             open(PAGE_URL);
         }
-        return new DraftsPage();
+        return new NotificationsPageTools();
     }
 
     @Override
     protected void init() {
         String pageUrl = getCurrentPage();
-        $(LINK_DELETE_SELECTED_LOCATOR).shouldBe(Condition.visible);
+        $(BUTTON_SAVE_NOTIFICATION_SETTINGS).shouldBe(Condition.visible);
         assert url().equals(pageUrl) : "Invalid page is opened";
     }
 

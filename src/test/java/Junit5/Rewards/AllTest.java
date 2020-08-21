@@ -1,6 +1,8 @@
 package Junit5.Rewards;
 
 import Junit5.TestBase;
+import com.wizardsdev.Components.RewardsLeftSidebar;
+import com.wizardsdev.Components.ToolsLeftSidebar;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.Rewards.AllPage;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
@@ -11,11 +13,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.refresh;
-import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Feature("RewardsPage, eligible page")
+@Feature("All Page, Rewards")
 public class AllTest extends TestBase {
     String facebookEmail = properties.getProperty("FacebookUserEmail00");
     String facebookPassword = properties.getProperty("FacebookUserPass00");
@@ -30,11 +31,10 @@ public class AllTest extends TestBase {
     @DisplayName("Check all page is opened in Rewards")
     @Test
     void openAllTest() {
-        eligiblePage = EligiblePage.openEligiblePage();
-        allPage = eligiblePage.clickAllPage();
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        allPage = rewardsLeftSidebar.clickOnAllItem();
         String expectedResult = "All rewards";
         String actualResult = allPage.getTitleRewards();
-        refresh();
-       assertEquals(expectedResult, actualResult);
+        assertEquals(expectedResult, actualResult);
     }
 }

@@ -1,4 +1,4 @@
-package Junit5.Rewards;
+package Junit5.Tools;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -8,10 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.refresh;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Feature("Eligible Page, Rewards")
-public class EligibleTest extends TestBase {
+@Feature("Invite page, Tools")
+public class InviteTest extends TestBase {
     String facebookEmail = properties.getProperty("FacebookUserEmail00");
     String facebookPassword = properties.getProperty("FacebookUserPass00");
 
@@ -22,12 +23,14 @@ public class EligibleTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check eligible page is opened in Rewards")
+    @DisplayName("Check invite page is opened in Tools")
     @Test
-    void openEligiblePageTest() {
-        eligiblePage = topNavigation.clickOnRewardsItem();
-        String expectedResult = "Eligible rewards";
-        String actualResult = eligiblePage.getTitleRewards();
+    void openInvite() {
+        notificationsPageTools = topNavigation.clickOnToolsItem();
+        invitePage = toolsLeftSidebar.clickOnInviteItem();
+        refresh();
+        String expectedResult = "Copy link";
+        String actualResult = invitePage.getNameCopyLinkButton();
         assertEquals(expectedResult, actualResult);
     }
 }

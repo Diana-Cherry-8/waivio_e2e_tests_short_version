@@ -24,14 +24,13 @@ public class AllPage extends Page {
         return new AllPage();
     }
 
-
     @Override
     protected void init() {
         // Page initialization
         // Checking correctness of page loading
-//        String pageUrl = getCurrentPage();
-//        $(REWARDS_TITLE_LOCATOR).shouldBe(Condition.visible);
-//        assert url().equals(pageUrl) : "Invalid page is opened";
+        String pageUrl = getCurrentPage();
+        $(REWARDS_TITLE_LOCATOR).shouldBe(Condition.visible);
+        assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override
