@@ -45,8 +45,6 @@ public class TopNavigation extends Page {
     return new NotificationsPageTools();
   }
 
-
-
   @Override
   protected void init() {
 

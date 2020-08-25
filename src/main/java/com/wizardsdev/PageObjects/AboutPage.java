@@ -20,6 +20,7 @@ public class AboutPage extends Page{
         }
         return new AboutPage();
     }
+
     @Override
     protected void init() {
 

@@ -22,14 +22,17 @@ public class RewardsLeftSidebar extends Page {
     public void clickOnSideBarItemRewardsByName(String itemName){
         $$(LINK_SIDE_BAR_ITEMS_REWARDS_LOCATOR).findBy(Condition.text(itemName)).click();
     }
+
     public static void clickOnSideBarItemRewardsByIndex(int index){
         $$(LINK_SIDE_BAR_ITEMS_REWARDS_LOCATOR).get(index).shouldBe(Condition.visible).click();
     }
+
     @Step
     public AllPage clickOnAllItem() {
         clickOnSideBarItemRewardsByIndex(0);
         return new AllPage();
     }
+
     @Step
     public EligiblePage clickOnEligibleItem() {
         clickOnSideBarItemRewardsByIndex(1);
@@ -41,6 +44,7 @@ public class RewardsLeftSidebar extends Page {
         clickOnSideBarItemRewardsByIndex(2);
         return new ReservedPage();
     }
+
     @Step
     public ReceivablesPage clickOnReceivablesItem() {
         clickOnSideBarItemRewardsByIndex(3);

@@ -31,9 +31,6 @@ public class ReceivablesPage extends Page {
          return $(TITLE_TOTAL_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
-
-
-
     @Override
     protected void init() {
         // Page initialization
