@@ -11,9 +11,6 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class EligiblePage extends Page {
     private static final String PAGE_URL = "/rewards/active";
-    private static final By OBJECT_CARD_VIEW = By.cssSelector(".ObjectCardView");
-
-
 
     public EligiblePage() {
         super(PAGE_URL);
@@ -32,7 +29,7 @@ public class EligiblePage extends Page {
         // Page initialization
         // Checking correctness of page loading
         //String pageUrl = getCurrentPage();
-        //$(OBJECT_CARD_VIEW).shouldBe(Condition.visible);
+        //$().shouldBe(Condition.visible);
         //assert url().equals(pageUrl) : "Invalid page is opened";
     }
 

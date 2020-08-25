@@ -28,7 +28,7 @@ public class HistoryPage extends Page {
         // Page initialization
         // Checking correctness of page loading
         String pageUrl = getCurrentPage();
-        $(REWARDS_TITLE_LOCATOR).shouldBe(Condition.visible);
+        $(TITLE_REWARDS_LOCATOR).shouldBe(Condition.visible);
         assert url().equals(pageUrl) : "Invalid page is opened";
     }
 

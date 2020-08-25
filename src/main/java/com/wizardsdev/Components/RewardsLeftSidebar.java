@@ -9,7 +9,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class RewardsLeftSidebar extends Page {
-    private static final By SIDE_BAR_ITEMS_LINK_REWARDS_LOCATOR = By.cssSelector(".sidenav-discover-objects__item");
+    private static final By LINK_SIDE_BAR_ITEMS_REWARDS_LOCATOR = By.cssSelector(".sidenav-discover-objects__item");
 
     public RewardsLeftSidebar() {
         super();
@@ -20,10 +20,10 @@ public class RewardsLeftSidebar extends Page {
     }
 
     public void clickOnSideBarItemRewardsByName(String itemName){
-        $$(SIDE_BAR_ITEMS_LINK_REWARDS_LOCATOR).findBy(Condition.text(itemName)).click();
+        $$(LINK_SIDE_BAR_ITEMS_REWARDS_LOCATOR).findBy(Condition.text(itemName)).click();
     }
     public static void clickOnSideBarItemRewardsByIndex(int index){
-        $$(SIDE_BAR_ITEMS_LINK_REWARDS_LOCATOR).get(index).shouldBe(Condition.visible).click();
+        $$(LINK_SIDE_BAR_ITEMS_REWARDS_LOCATOR).get(index).shouldBe(Condition.visible).click();
     }
     @Step
     public AllPage clickOnAllItem() {
@@ -57,11 +57,6 @@ public class RewardsLeftSidebar extends Page {
     public ReportsPage clickOnReportsItem() {
         clickOnSideBarItemRewardsByIndex(5);
         return new ReportsPage();
-    }
-
-    @Step
-    public void clickOnReservedItem() {
-        clickOnSideBarItemRewardsByIndex(2);
     }
 
     @Override

@@ -23,10 +23,6 @@ public class ReservedPage extends Page {
         return new ReservedPage();
     }
 
-
-
-
-
     @Override
     protected void init() {
         // Page initialization

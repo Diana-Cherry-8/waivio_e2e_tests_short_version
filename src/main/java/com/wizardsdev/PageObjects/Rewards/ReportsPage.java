@@ -30,10 +30,6 @@ public class ReportsPage extends Page {
     return $(TITLE_REPORTS_TITLE).getText();
     }
 
-
-
-
-
     @Override
     protected void init() {
         // Page initialization

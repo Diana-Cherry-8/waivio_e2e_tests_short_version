@@ -8,26 +8,33 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import com.wizardsdev.ApiRequests.ApiRequest;
-import com.wizardsdev.Components.*;
+import com.wizardsdev.Components.Header;
+import com.wizardsdev.Components.TopNavigation;
+import com.wizardsdev.Components.FeedLeftBar;
+import com.wizardsdev.Components.RewardsLeftSidebar;
+import com.wizardsdev.Components.ToolsLeftSidebar;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.SignIn;
 import com.wizardsdev.Modals.SignUp;
-import com.wizardsdev.PageObjects.*;
+
 
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import com.wizardsdev.PageObjects.FeedPage;
+import com.wizardsdev.PageObjects.UserPage;
+import com.wizardsdev.PageObjects.DiscoverPage;
+import com.wizardsdev.PageObjects.ObjectPage;
+import com.wizardsdev.PageObjects.NotificationsPage;
 import com.wizardsdev.PageObjects.Rewards.*;
 import com.wizardsdev.PageObjects.Tools.*;
-import okhttp3.internal.http2.Settings;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import javax.management.Notification;
 
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {

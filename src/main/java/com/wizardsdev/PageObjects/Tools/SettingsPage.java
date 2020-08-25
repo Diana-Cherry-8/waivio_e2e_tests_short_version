@@ -11,7 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class SettingsPage extends Page {
     private static final String PAGE_URL = "/settings";
-    private static final By BUTTON_SAVE_NOTIFICATION_SETTINGS = By.cssSelector(".Settings button");
+    private static final By BUTTON_SAVE_NOTIFICATION_SETTINGS = By.cssSelector(".Action--primary");
 
 
     public SettingsPage() {

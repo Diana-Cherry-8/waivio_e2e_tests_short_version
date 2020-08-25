@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.refresh;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -32,6 +33,7 @@ public class ReceivablesTest extends TestBase {
     void openReceivablesTest() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        refresh();
         String expectedResult = "Total: 0.00 HIVE";
         String actualResult = receivablesPage.getTitleReceivables();
         assertEquals(expectedResult, actualResult);

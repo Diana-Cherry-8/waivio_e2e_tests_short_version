@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.refresh;
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -33,6 +34,7 @@ public class ReportsTest extends TestBase {
     void openReportsTest() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         reportsPage = rewardsLeftSidebar.clickOnReportsItem();
+        refresh();
         String expectedResult = "Reports :";
         String actualResult = reportsPage.getTitleReportsRewards();
         assertEquals(expectedResult, actualResult);

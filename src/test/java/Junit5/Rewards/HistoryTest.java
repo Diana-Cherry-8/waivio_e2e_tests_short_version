@@ -33,6 +33,7 @@ public class HistoryTest extends TestBase {
     void openHistory() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         historyPage = rewardsLeftSidebar.clickOnHistoryItem();
+        refresh();
         String expectedResult = "History and sponsor communications";
         String actualResult = historyPage.getTitleRewards();
         assertEquals(expectedResult, actualResult);

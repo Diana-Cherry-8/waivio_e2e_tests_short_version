@@ -18,7 +18,7 @@ import java.util.Locale;
 import org.openqa.selenium.By;
 
 public abstract class Page {
-  public static final By REWARDS_TITLE_LOCATOR = By.cssSelector(".ant-breadcrumb-link");
+  public static final By TITLE_REWARDS_LOCATOR = By.cssSelector(".ant-breadcrumb-link");
   private static final By TITLE_TOOLS_LOCATOR = By.cssSelector(".center h1");
 
   public static final By MODAL_DIMMER_LOCATOR = By.cssSelector(".modals.dimmer");
@@ -178,7 +178,7 @@ public abstract class Page {
 
   @Step
   public String getTitleRewards() {
-    return $(REWARDS_TITLE_LOCATOR).getText();
+    return $(TITLE_REWARDS_LOCATOR).getText();
   }
 
   @Step
