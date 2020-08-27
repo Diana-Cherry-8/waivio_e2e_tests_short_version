@@ -8,22 +8,30 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import com.wizardsdev.ApiRequests.ApiRequest;
-import com.wizardsdev.Components.FeedLeftBar;
 import com.wizardsdev.Components.Header;
 import com.wizardsdev.Components.TopNavigation;
+import com.wizardsdev.Components.FeedLeftBar;
+import com.wizardsdev.Components.RewardsLeftSidebar;
+import com.wizardsdev.Components.ToolsLeftSidebar;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.SignIn;
 import com.wizardsdev.Modals.SignUp;
-import com.wizardsdev.PageObjects.DiscoverPage;
-import com.wizardsdev.PageObjects.FeedPage;
-import com.wizardsdev.PageObjects.NotificationsPage;
-import com.wizardsdev.PageObjects.ObjectPage;
-import com.wizardsdev.PageObjects.UserPage;
+
+
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
+
+import com.wizardsdev.PageObjects.FeedPage;
+import com.wizardsdev.PageObjects.UserPage;
+import com.wizardsdev.PageObjects.DiscoverPage;
+import com.wizardsdev.PageObjects.ObjectPage;
+import com.wizardsdev.PageObjects.NotificationsPage;
+import com.wizardsdev.PageObjects.Rewards.*;
+import com.wizardsdev.PageObjects.Tools.*;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -61,6 +69,8 @@ public abstract class TestBase {
   protected static Header header;
   protected static TopNavigation topNavigation;
   protected static FeedLeftBar feedLeftBar;
+  protected static RewardsLeftSidebar rewardsLeftSidebar;
+  protected static ToolsLeftSidebar toolsLeftSidebar;
 
   //Page Objects
   protected static FeedPage feedPage;
@@ -68,6 +78,21 @@ public abstract class TestBase {
   protected static DiscoverPage discoverPage;
   protected static ObjectPage objectPage;
   protected static NotificationsPage notificationsPage;
+  protected static EligiblePage eligiblePage;
+  protected static AllPage allPage;
+  protected static ReservedPage reservedPage;
+  protected static ReceivablesPage receivablesPage;
+  protected static ReportsPage reportsPage;
+  protected static HistoryPage historyPage;
+
+  protected static DraftsPage draftsPage;
+  protected static BookmarksPage bookmarksPage;
+  protected static EditProfilePage editProfilePage;
+  protected static SettingsPage settingsPage;
+  protected static GuestsSettingsPage guestsSettingsPage;
+  protected static NotificationsPageTools notificationsPageTools;
+  protected static InvitePage invitePage;
+
 
   //Helpers
   protected static FileGenerator fileGen = new FileGenerator();
@@ -100,6 +125,9 @@ public abstract class TestBase {
     header = Header.initHeader();
     feedLeftBar = FeedLeftBar.initFeedLeftBar();
     topNavigation = TopNavigation.initTopNavigation();
+    rewardsLeftSidebar = RewardsLeftSidebar.initRewardsLeftSidebar();
+    toolsLeftSidebar = ToolsLeftSidebar.initToolsLeftSidebar();
+
     setUserLogin(properties.getProperty(String.format("UserLogin%s%s", qaNumber, getNumberOfUser())));
     setUserPassword(properties.getProperty(String.format("LoginPassword%s%s", qaNumber, getNumberOfUser())));
     setApiRequest(Context.getInstance().getApiRequest());

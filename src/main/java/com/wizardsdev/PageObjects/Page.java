@@ -1,10 +1,6 @@
 package com.wizardsdev.PageObjects;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.actions;
-import static com.codeborne.selenide.Selenide.closeWindow;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 import com.codeborne.selenide.Condition;
@@ -22,6 +18,8 @@ import java.util.Locale;
 import org.openqa.selenium.By;
 
 public abstract class Page {
+  public static final By TITLE_REWARDS_LOCATOR = By.cssSelector(".ant-breadcrumb-link");
+  private static final By TITLE_TOOLS_LOCATOR = By.cssSelector(".center h1");
 
   public static final By MODAL_DIMMER_LOCATOR = By.cssSelector(".modals.dimmer");
   private static final By LOADER_DIMMER_LOCATOR = By.cssSelector(".anticon-loading");
@@ -177,5 +175,16 @@ public abstract class Page {
   public boolean isTwoListsHaveSameItem(List<String> firstList, List<String> secondList) {
     return secondList.stream().anyMatch(firstList::contains);
   }
+
+  @Step
+  public String getTitleRewards() {
+    return $(TITLE_REWARDS_LOCATOR).getText();
+  }
+
+  @Step
+  public String getTitleTools() {
+    return $(TITLE_TOOLS_LOCATOR).getText();
+  }
+
 
 }
