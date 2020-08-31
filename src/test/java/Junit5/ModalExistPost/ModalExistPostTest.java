@@ -18,8 +18,8 @@ public class ModalExistPostTest extends TestBase {
     feedPage = FeedPage.openFeedPage();
     post = feedPage.openPost(postIndex);
     String authorName = post.getPostAuthorName();
-    userPage = post.clickOnPostAuthorName();
-    assert (userPage.getUserNameValue().equals(authorName));
+    profilePage = post.clickOnPostAuthorName();
+    assert (profilePage.getUserNameValue().equals(authorName));
   }
 
   @Story("Exist Post")

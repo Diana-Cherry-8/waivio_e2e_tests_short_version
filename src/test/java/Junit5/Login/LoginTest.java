@@ -23,8 +23,8 @@ public class LoginTest extends TestBase {
   public void loginWithHiveSigner() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithHiveSigner(getUserLogin(), getUserPassword());
-    userPage = header.clickOnAccountIcon();
-    assertEquals(getUserLogin(), userPage.getUserNameValue());
+    profilePage = header.clickOnAccountIcon();
+    assertEquals(getUserLogin(), profilePage.getUserNameValue());
   }
 
   @Feature("Login")
@@ -34,8 +34,8 @@ public class LoginTest extends TestBase {
   public void logInWithFacebook() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithFacebook(facebookEmail, facebookPassword);
-    userPage = header.clickOnAccountIcon();
-    assertEquals(testFBGuestUserUsername, userPage.getUserNameValue());
+    profilePage = header.clickOnAccountIcon();
+    assertEquals(testFBGuestUserUsername, profilePage.getUserNameValue());
   }
 
   @AfterEach

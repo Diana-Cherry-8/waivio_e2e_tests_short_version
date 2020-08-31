@@ -24,11 +24,8 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import com.wizardsdev.PageObjects.FeedPage;
-import com.wizardsdev.PageObjects.UserPage;
-import com.wizardsdev.PageObjects.DiscoverPage;
-import com.wizardsdev.PageObjects.ObjectPage;
-import com.wizardsdev.PageObjects.NotificationsPage;
+import com.wizardsdev.PageObjects.*;
+import com.wizardsdev.PageObjects.Profile.*;
 import com.wizardsdev.PageObjects.Rewards.*;
 import com.wizardsdev.PageObjects.Tools.*;
 
@@ -74,7 +71,6 @@ public abstract class TestBase {
 
   //Page Objects
   protected static FeedPage feedPage;
-  protected static UserPage userPage;
   protected static DiscoverPage discoverPage;
   protected static ObjectPage objectPage;
   protected static NotificationsPage notificationsPage;
@@ -92,6 +88,16 @@ public abstract class TestBase {
   protected static GuestsSettingsPage guestsSettingsPage;
   protected static NotificationsPageTools notificationsPageTools;
   protected static InvitePage invitePage;
+  protected static AboutPage aboutPage;
+
+
+  protected static CommentsPage commentsPage;
+  protected static ExpertisePage expertisePage;
+  protected static FollowersPage followersPage;
+  protected static FollowingPage followingPage;
+  protected static PostsPage postsPage;
+  protected static WalletPage walletPage;
+  protected static ProfilePage profilePage;
 
 
   //Helpers

@@ -3,6 +3,7 @@ package Junit5.Feed;
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.ObjectPage;
+import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import com.wizardsdev.PageObjects.UserPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -18,7 +19,7 @@ public class ExistPostTest extends TestBase {
   void clickOnPostAuthorTest() {
     feedPage = FeedPage.openFeedPage();
     String postAuthorName = feedPage.getPostAuthorName(postIndex);
-    UserPage authorPage = feedPage.clickOnPostAuthorName(postIndex);
+    ProfilePage authorPage = feedPage.clickOnPostAuthorName(postIndex);
     assert(postAuthorName.equals(authorPage.getUserNameValue()));
   }
 
