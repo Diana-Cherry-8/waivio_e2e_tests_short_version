@@ -32,7 +32,7 @@ public class FacebookSignPage extends Page {
   public void clickOnLogIn() {
     $(LOGIN_BUTTON_LOCATOR).click();
     switchTo().window(0);
-    sleep(5000);
+//    sleep(6000);
   }
 
   @Override

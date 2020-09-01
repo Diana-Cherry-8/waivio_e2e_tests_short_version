@@ -12,7 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class TopNavigation extends Page {
-  private static final By TOP_NAVIGATION_ITEMS_LOCATOR = By.className("TopNavigation__item");
+  private static final By TOP_NAVIGATION_ITEMS_LOCATOR = By.cssSelector(".TopNavigation__item");
 
   protected TopNavigation() {
     super();
@@ -41,6 +41,7 @@ public class TopNavigation extends Page {
 
   @Step
   public NotificationsPageTools clickOnToolsItem() {
+    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.appear);
     getTopNavigationItemByNumber(3).click();
     return new NotificationsPageTools();
   }

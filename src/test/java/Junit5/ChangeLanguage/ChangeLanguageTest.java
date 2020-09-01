@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ChangeLanguageTest extends TestBase {
-  private static final String EXPECTED_TOP_NAVIGATION_ITEM_TEXT = "ЛЕНТА";
+  private static final String EXPECTED_TOP_NAVIGATION_ITEM_TEXT = "МОЯ ЛЕНТА";
 
   @Story("Change site language")
   @DisplayName("Check change site language by not login user")

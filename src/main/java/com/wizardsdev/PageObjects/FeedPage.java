@@ -3,6 +3,7 @@ package com.wizardsdev.PageObjects;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 import com.codeborne.selenide.Condition;
@@ -199,6 +200,7 @@ public class FeedPage extends Page {
   public void clickOnPostLikeButton(int postIndex) {
     $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_BUTTON_LOCATOR).click();
     $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_LOADING_LOCATOR).shouldBe(Condition.disappear);
+    sleep(3000);
   }
 
   @Step
@@ -212,7 +214,7 @@ public class FeedPage extends Page {
 
   @Override
   protected void init() {
-
+    $(POST_LOCATOR).shouldBe(Condition.visible);
   }
 
   @Override

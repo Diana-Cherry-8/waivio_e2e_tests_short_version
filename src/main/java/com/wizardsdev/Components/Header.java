@@ -2,12 +2,12 @@ package com.wizardsdev.Components;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Modals.SignIn;
-import com.wizardsdev.Modals.SignUp;
 import com.wizardsdev.PageObjects.FacebookSignPage;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.NotificationsPage;
@@ -92,14 +92,8 @@ public class Header extends Page {
   }
 
   @Step
-  public SignUp clickOnSingUp() {
-    $$(ANT_MENU_ITEMS_LOCATOR).get(0).click();
-    return new SignUp();
-  }
-
-  @Step
   public void clickOnChangeLanguageIcon() {
-    $$(ANT_MENU_ITEMS_LOCATOR).get(3).click();
+    $$(ANT_MENU_ITEMS_LOCATOR).get(1).click();
   }
 
   @Step
@@ -112,11 +106,7 @@ public class Header extends Page {
   }
 
   public boolean isSearchResultAllObjectsUsersHasText(String searchText) {
-    try {
-      Thread.sleep(1500);
-    } catch (Exception e) {
-      System.out.println(e.fillInStackTrace());
-    }
+    sleep(1500);
     ElementsCollection searchResultObjectsUsers = $$(SEARCH_ITEMS_OBJECT_USER_LOCATOR);
     boolean result = true;
     for (WebElement webElement:searchResultObjectsUsers) {

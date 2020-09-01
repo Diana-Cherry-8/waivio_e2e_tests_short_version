@@ -17,7 +17,6 @@ import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.SignIn;
-import com.wizardsdev.Modals.SignUp;
 
 
 import java.util.HashMap;
@@ -39,7 +38,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
 
-  private static final int WAIT_TIME = 10000;
+  private static final int WAIT_TIME = 60000;
   public static final String PATH_TO_TEST_FILE = "src/test/resources/";
   protected static HashMap<Integer, String> usersInThreads = new HashMap<>() {
     {
@@ -55,7 +54,6 @@ public abstract class TestBase {
 
   //Modals
   protected static SignIn signIn;
-  protected static SignUp signUp;
   protected static Post post;
 
   //Tools

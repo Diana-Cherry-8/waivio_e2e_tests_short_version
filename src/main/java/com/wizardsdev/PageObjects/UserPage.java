@@ -22,7 +22,7 @@ public class UserPage extends Page {
   private static final By FOLLOWING_OBJECTS_NAMES_LOCATOR = By.cssSelector(".ObjectDynamicList .ObjectCard__name-short");
   private static final By FOLLOWING_FOLLOWERS_USERS_NAMES_LOCATOR = By.cssSelector(".UserDynamicList .username");
   private static final By FOLLOW_UNFOLLOW_BUTTON_LOCATOR = By.cssSelector(".UserHeader__user__button button");
-  private static final By USER_MENU_FOLLOWING_LOCATOR = Selectors.byAttribute(DATA_KEY_ATTRIBUTE_NAME, "followed");
+  private static final By USER_MENU_FOLLOWING_LOCATOR = Selectors.byAttribute(DATA_KEY_ATTRIBUTE_NAME, "following");
   private static final By USER_MENU_FOLLOWERS_LOCATOR = Selectors.byAttribute(DATA_KEY_ATTRIBUTE_NAME, "followers");
   private static final By USER_MENU_COUNTER_LOCATOR = By.className("UserMenu__badge");
   private static final By POST_LOCATOR = By.className("Story");
@@ -44,7 +44,7 @@ public class UserPage extends Page {
 
   @Step
   public void clickOnFollowingSubMenuItemByIndex(int subMenuItemIndex) {
-    $$(FOLLOWING_SUB_TAB_LOCATOR).get(subMenuItemIndex).click();
+    $$(FOLLOWING_SUB_TAB_LOCATOR).get(subMenuItemIndex).shouldBe(Condition.visible).click();
   }
 
   @Step
@@ -56,7 +56,8 @@ public class UserPage extends Page {
   public List<String> getFollowingObjectsNamesList() {
     List<String> followingObjectsNameList = new ArrayList<>();
     $(USER_MENU_FOLLOWING_LOCATOR).click();
-    clickOnFollowingSubMenuItemByIndex(0);
+    clickOnFollowingSubMenuItemByIndex(1);
+    $(FOLLOWING_OBJECTS_NAMES_LOCATOR).shouldBe(Condition.visible);
     ElementsCollection followingObjectsList = $$(FOLLOWING_OBJECTS_NAMES_LOCATOR);
     for(WebElement element: followingObjectsList){
       followingObjectsNameList.add(element.getText());
@@ -68,7 +69,7 @@ public class UserPage extends Page {
   public List<String> getFollowingUsersNamesList() {
     List<String> followingUsersNamesList = new ArrayList<>();
     $(USER_MENU_FOLLOWING_LOCATOR).click();
-    clickOnFollowingSubMenuItemByIndex(1);
+    clickOnFollowingSubMenuItemByIndex(0);
     $(FOLLOWING_FOLLOWERS_USERS_NAMES_LOCATOR).shouldBe(Condition.visible);
     ElementsCollection followingUsersList = $$(FOLLOWING_FOLLOWERS_USERS_NAMES_LOCATOR);
     for(WebElement element: followingUsersList){
