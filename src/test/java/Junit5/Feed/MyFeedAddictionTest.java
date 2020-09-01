@@ -19,8 +19,8 @@ public class MyFeedAddictionTest extends TestBase {
   void getData() {
     keywords.loginAs(0);
     profilePage = header.clickOnAccountIcon();
-    followingObjectsNameList = profilePage.getFollowingObjectsNamesList(); // не правильно исправить
-    followingUsersNameList = profilePage.getFollowingUsersNamesList(); //не правильно исправить вместо юзер профайл
+    followingObjectsNameList = followingPage.getFollowingObjectsNamesList();
+    followingUsersNameList = followingPage.getFollowingUsersNamesList();
     feedPage = header.clickOnLogo();
   }
 

@@ -1,7 +1,11 @@
 package Junit5.Profile;
 
 import Junit5.TestBase;
+import com.wizardsdev.Modals.Post;
 import com.wizardsdev.PageObjects.FeedPage;
+import com.wizardsdev.PageObjects.Profile.CommentsPage;
+import com.wizardsdev.PageObjects.Profile.FollowingPage;
+import com.wizardsdev.PageObjects.Profile.PostsPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import com.wizardsdev.PageObjects.UserPage;
 import io.qameta.allure.Story;
@@ -33,40 +37,21 @@ public class FollowingTest extends TestBase {
     @DisplayName("Check guest user following counter") //CheckFollowingFollowersCounterGuestUserTest
     @Test
     void checkFollowingCounterTest(){
-        profilePage = ProfilePage.openProfilePage(properties.getProperty("FacebookUserName00"));
-        int followingCounter = profilePage.getFollowingNumberFromMenuCounter();
-        int sumFollowings = profilePage.getFollowingUsersNamesList().size()
-                + profilePage.getFollowingObjectsNamesList().size();
+        followingPage = FollowingPage.openFollowingPage(properties.getProperty("FacebookUserName00"));
+        int followingCounter = followingPage.getFollowingNumberFromMenuCounter();
+        int sumFollowings = followingPage.getFollowingUsersNamesList().size()
+                + followingPage.getFollowingObjectsNamesList().size();
         assert( followingCounter == sumFollowings);
-    }
-
-    @DisplayName("Check guest user followers counter") //CheckFollowingFollowersCounterGuestUserTest
-    @Test
-    void checkFollowersCounterTest() {
-        profilePage = ProfilePage.openProfilePage(properties.getProperty("FacebookUserName00"));
-        int followersCounter = profilePage.getFollowersNumberFromMenuCounter();
-        int followersListSize = profilePage.getFollowerNamesList().size();
-        assert(followersCounter == followersListSize);
     }
 
     @DisplayName("Check user following counter") //CheckFollowingFollowersCounterTest
     @Test
     void checkFollowingCounterTestNotGuest(){
-        profilePage = ProfilePage.openProfilePage(properties.getProperty("UserLogin00"));
-        int followingCounter = profilePage.getFollowingNumberFromMenuCounter();
-        int sumFollowings = profilePage.getFollowingUsersNamesList().size()
-                + profilePage.getFollowingObjectsNamesList().size();
+        followingPage = FollowingPage.openFollowingPage(properties.getProperty("UserLogin00"));
+        int followingCounter = followingPage.getFollowingNumberFromMenuCounter();
+        int sumFollowings = followingPage.getFollowingUsersNamesList().size()
+                + followingPage.getFollowingObjectsNamesList().size();
         assert( followingCounter == sumFollowings);
     }
-
-    @DisplayName("Check user following counter") //CheckFollowingFollowersCounterTest
-    @Test
-    void checkFollowersCounterTestNotGuest() {
-        profilePage = ProfilePage.openProfilePage(properties.getProperty("UserLogin00"));
-        int followersCounter = profilePage.getFollowersNumberFromMenuCounter();
-        int followersListSize = profilePage.getFollowerNamesList().size();
-        assert(followersCounter == followersListSize);
-    }
-
 
 }

@@ -28,7 +28,7 @@ public class Context {
   private static int qaNumber;
   private static String siteUrl;
   private static final ThreadLocal<Context> context = new ThreadLocal<>();
-  private static Properties properties;
+  public static Properties properties;
   private static ResourceBundle messages;
   private static Keywords keywords;
   private static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();

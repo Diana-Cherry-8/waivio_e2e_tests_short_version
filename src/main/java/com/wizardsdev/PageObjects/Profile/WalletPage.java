@@ -1,27 +1,27 @@
 package com.wizardsdev.PageObjects.Profile;
 
 import com.codeborne.selenide.Condition;
-import com.wizardsdev.PageObjects.Page;
+import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class WalletPage extends Page {
-    private static final String PAGE_URL = "/@waivio_diana-cherednik/transfers";
+public class WalletPage extends ProfilePage {
+
     private static final By BUTTONS_TRANSFER_LOCATOR = By.cssSelector(".Action--primary");
 
-    public WalletPage() {
-        super(PAGE_URL);
+    public WalletPage(String userName) {
+        super(Context.getSiteUrl()  + "/@" + userName + "/transfers");
     }
 
     @Step
-    public static WalletPage openWalletPage() {
-        if (!url().contains(PAGE_URL)) {
-            open(PAGE_URL);
+    public static WalletPage openWalletPage(String userName) {
+        if (!url().contains(Context.getSiteUrl()  + "/@" + userName + "/transfers")) {
+            open(Context.getSiteUrl()  + "/@" + userName + "/transfers");
         }
-        return new WalletPage();
+        return new WalletPage(userName);
     }
 
     @Step
@@ -36,13 +36,13 @@ public class WalletPage extends Page {
     @Step
     public WalletPage clickOnTransferButton() {
         clickOnTransferOrWithdrawButtonsByIndex(0);
-        return new WalletPage();
+        return new WalletPage(getUserNameValue());
     }
 
     @Step
     public WalletPage clickOnWithdrawButton() {
         clickOnTransferOrWithdrawButtonsByIndex(1);
-        return new WalletPage();
+        return new WalletPage(getUserNameValue());
     }
 
     @Override

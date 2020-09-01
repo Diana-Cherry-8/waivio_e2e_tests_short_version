@@ -1,30 +1,28 @@
 package com.wizardsdev.PageObjects.Profile;
 
 import com.codeborne.selenide.Condition;
-import com.wizardsdev.PageObjects.Page;
-import com.wizardsdev.PageObjects.Tools.DraftsPage;
+import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class ExpertisePage extends Page {
-    private static final String PAGE_URL = "/@waivio_diana-ch/expertise";
+public class ExpertisePage extends ProfilePage {
     private static final By BUTTON_FOLLOW_FOLLOWERS_USER_LOCATOR = By.cssSelector(".Follow--secondary");
     private static final By TEXT_NO_DATA_HASHTAGS_LOCATOR = By.cssSelector(".ObjectDynamicList__empty");
     private static final By LINKS_USER_EXPERTISE_ITEM_LOCATOR = By.cssSelector(".UserExpertise__item");
 
-    public ExpertisePage() {
-        super(PAGE_URL);
+    public ExpertisePage(String userName) {
+        super(Context.getSiteUrl()  + "/@" + userName + "/expertise");
     }
 
     @Step
-    public static ExpertisePage openExpertisePage() {
-        if (!url().contains(PAGE_URL)) {
-            open(PAGE_URL);
+    public static ExpertisePage openExpertisePage(String userName) {
+        if (!url().contains(Context.getSiteUrl()  + "/@" + userName + "/expertise")) {
+            open(Context.getSiteUrl()  + "/@" + userName + "/expertise");
         }
-        return new ExpertisePage();
+        return new ExpertisePage(userName);
     }
 
     @Step
@@ -37,14 +35,14 @@ public class ExpertisePage extends Page {
         return $(TEXT_NO_DATA_HASHTAGS_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
-    public static void clickOnHashtagsOrObjectsExpertiseLinkByIndex(int index){
+    public static void clickOnExpertiseItemsLinkByIndex(int index){
         $$(LINKS_USER_EXPERTISE_ITEM_LOCATOR).get(index).click();
     }
 
     @Step
     public ExpertisePage clickOnObjectsExpertiseItem() {
-        clickOnHashtagsOrObjectsExpertiseLinkByIndex(1);
-        return new ExpertisePage();
+        clickOnExpertiseItemsLinkByIndex(1);
+        return new ExpertisePage(getUserNameValue());
     }
 
     @Override

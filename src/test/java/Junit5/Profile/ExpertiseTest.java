@@ -24,7 +24,7 @@ public class ExpertiseTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check expertise page is opened")
+    @DisplayName("Check expertise page hashtags tab is opened")
     @Test
     void openExpertiseHashtagsTab() {
         postsPage = header.clickOnAccountIcon();
@@ -36,12 +36,11 @@ public class ExpertiseTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check expertise page is opened")
+    @DisplayName("Check expertise page object tab is opened")
     @Test
     void openExpertiseObjectsTab() {
         postsPage = header.clickOnAccountIcon();
         expertisePage = postsPage.clickOnExpertiseProfileItem();
-        //refresh(); - без обновления страницы, так как перебрасывает на хештег вкладку
         expertisePage.clickOnObjectsExpertiseItem();
         boolean actualResult = expertisePage.isButtonFollowObjectExist();
         assertTrue(actualResult);

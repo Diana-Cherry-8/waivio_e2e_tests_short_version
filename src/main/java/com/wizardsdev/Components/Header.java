@@ -90,7 +90,7 @@ public class Header extends Page {
   @Step
   public PostsPage clickOnAccountIcon() {
     $(ACCOUNT_ICON_LOCATOR).shouldBe(Condition.visible).click();
-    return new PostsPage();
+    return new PostsPage(getUserNameValue());
   }
 
   @Step

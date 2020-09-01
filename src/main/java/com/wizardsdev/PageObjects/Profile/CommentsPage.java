@@ -1,7 +1,7 @@
 package com.wizardsdev.PageObjects.Profile;
 
 import com.codeborne.selenide.Condition;
-import com.wizardsdev.PageObjects.Page;
+import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -9,20 +9,20 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class CommentsPage extends Page {
-    private static final String PAGE_URL = "/@waivio_diana-cherednik/comments";
+public class CommentsPage extends ProfilePage {
+
     private static final By USERNAME_IN_POST_LOCATOR = By.cssSelector(".username");
 
-    public CommentsPage() {
-        super(PAGE_URL);
+    public CommentsPage(String userName) {
+        super(Context.getSiteUrl()  + "/@" + userName + "/comments");
     }
 
     @Step
-    public static CommentsPage openCommentsPage() {
-        if (!url().contains(PAGE_URL)) {
-            open(PAGE_URL);
+    public static CommentsPage openCommentsPage(String userName) {
+        if (!url().contains(Context.getSiteUrl()  + "/@" + userName + "/comments")) {
+            open(Context.getSiteUrl()  + "/@" + userName + "/comments");
         }
-        return new CommentsPage();
+        return new CommentsPage(userName);
     }
 
     @Step
@@ -33,16 +33,9 @@ public class CommentsPage extends Page {
 
     @Override
     protected void init() {
-        // Page initialization
-        // Checking correctness of page loading
-        //String pageUrl = getCurrentPage();
-        //$().shouldBe(Condition.visible);
-        //assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override
     protected void parsePage() {
-        // Parsing Page Elements
-        // Filling the necessary variables with data from the page
     }
 }
