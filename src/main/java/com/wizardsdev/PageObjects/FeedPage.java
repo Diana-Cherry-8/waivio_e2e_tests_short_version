@@ -10,6 +10,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Components.Header;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
+import com.wizardsdev.Modals.SignUp;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Step;
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class FeedPage extends Page {
   private static final By POST_LIKE_BUTTON_LOCATOR = By.className("icon-praise_fill");
   private static final By POST_LIKE_LOADING_LOCATOR = By.className("anticon-loading");
   private static final Pattern PATTERN = Pattern.compile("$", Pattern.LITERAL);
+  private static final By MODAL_WINDOW_SIGN_IN = By.cssSelector(".ModalSignUp__button");
 
   public FeedPage() {
     super(PAGE_URL);
@@ -207,6 +209,12 @@ public class FeedPage extends Page {
         .$(POST_LIKES_COUNTER_LOCATOR)
         .shouldBe(Condition.visible)
         .getText());
+  }
+
+  @Step
+  public SignUp clickOnSignInNotHeader() {
+    $(MODAL_WINDOW_SIGN_IN).click();
+    return new SignUp();
   }
 
   @Override

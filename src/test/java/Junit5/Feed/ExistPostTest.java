@@ -4,7 +4,6 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.ObjectPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
-import com.wizardsdev.PageObjects.UserPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
