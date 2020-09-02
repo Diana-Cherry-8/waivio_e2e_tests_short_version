@@ -81,13 +81,14 @@ public class Context {
       //set Selenoid RemoteWebDriver url
       Configuration.remote = "http://localhost:4444/wd/hub";
       Configuration.browserCapabilities = capabilities;
+      open();
       RemoteWebDriver remote = (RemoteWebDriver) WebDriverRunner.getWebDriver();
       //used for fix that remote driver can't see local files from docker container
       remote.setFileDetector(new LocalFileDetector());
     } else {
       Configuration.browser = browserName;
+      open();
     }
-    open();
   }
 
   public static int getQaNumber() {

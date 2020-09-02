@@ -1,6 +1,7 @@
 package Junit5.Tools;
 
 import Junit5.TestBase;
+import com.wizardsdev.Components.TopNavigation;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -20,6 +21,7 @@ public class GuestsSettingsTest extends TestBase {
     void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
+        topNavigation = TopNavigation.initTopNavigation();
     }
 
     @Story("Open page")
