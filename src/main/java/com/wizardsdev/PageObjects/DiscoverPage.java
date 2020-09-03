@@ -41,7 +41,6 @@ public class DiscoverPage extends Page {
     return $(Selectors.withText("Filters")).shouldBe(Condition.visible).exists();
   }
 
-
   @Override
   protected void init() {
 

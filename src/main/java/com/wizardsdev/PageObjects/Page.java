@@ -1,5 +1,6 @@
 package com.wizardsdev.PageObjects;
 
+
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -23,6 +24,7 @@ public abstract class Page {
 
   public static final By MODAL_DIMMER_LOCATOR = By.cssSelector(".modals.dimmer");
   private static final By LOADER_DIMMER_LOCATOR = By.cssSelector(".anticon-loading");
+  private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__row.UserHeader__handle");
 
   protected static final By INPUT_VALIDATION_MESSAGE_LOCATOR = By.className("is-field__validation");
 
@@ -184,6 +186,15 @@ public abstract class Page {
   @Step
   public String getTitleTools() {
     return $(TITLE_TOOLS_LOCATOR).getText();
+  }
+
+  @Step
+  public String getUserNameValue() {
+    return $(USERNAME_LOCATOR)
+            .shouldBe(Condition.visible)
+            .getText()
+            .replace("@","")
+            .replace(" (guest)", "");
   }
 
 

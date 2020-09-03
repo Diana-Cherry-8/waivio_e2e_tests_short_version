@@ -3,6 +3,7 @@ package com.wizardsdev.Components;
 import static com.codeborne.selenide.Selenide.$$;
 
 import com.codeborne.selenide.Condition;
+import com.wizardsdev.PageObjects.AboutPage;
 import com.wizardsdev.PageObjects.DiscoverPage;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
@@ -44,6 +45,12 @@ public class TopNavigation extends Page {
     $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.appear);
     getTopNavigationItemByNumber(3).click();
     return new NotificationsPageTools();
+  }
+
+  @Step
+  public AboutPage clickOnAboutItem() {
+    getTopNavigationItemByNumber(4).click();
+    return new AboutPage();
   }
 
 

@@ -1,9 +1,7 @@
 package Junit5.Feed;
 
 import Junit5.TestBase;
-import com.wizardsdev.Keywords;
-import com.wizardsdev.PageObjects.FeedPage;
-import com.wizardsdev.PageObjects.UserPage;
+import com.wizardsdev.PageObjects.Profile.FollowingPage;
 import io.qameta.allure.Feature;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,9 +16,9 @@ public class MyFeedAddictionTest extends TestBase {
   @BeforeEach
   void getData() {
     keywords.loginAs(0);
-    userPage = header.clickOnAccountIcon();
-    followingObjectsNameList = userPage.getFollowingObjectsNamesList();
-    followingUsersNameList = userPage.getFollowingUsersNamesList();
+    followingPage = FollowingPage.openFollowingPage(properties.getProperty("UserName"));
+    followingObjectsNameList = followingPage.getFollowingObjectsNamesList();
+    followingUsersNameList = followingPage.getFollowingUsersNamesList();
     feedPage = header.clickOnLogo();
   }
 

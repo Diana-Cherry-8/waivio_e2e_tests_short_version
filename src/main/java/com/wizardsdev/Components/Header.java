@@ -12,6 +12,8 @@ import com.wizardsdev.PageObjects.FacebookSignPage;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.NotificationsPage;
 import com.wizardsdev.PageObjects.Page;
+import com.wizardsdev.PageObjects.Profile.PostsPage;
+import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import com.wizardsdev.PageObjects.UserPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -86,9 +88,9 @@ public class Header extends Page {
 //  }
 
   @Step
-  public UserPage clickOnAccountIcon() {
+  public PostsPage clickOnAccountIcon() {
     $(ACCOUNT_ICON_LOCATOR).shouldBe(Condition.visible).click();
-    return new UserPage();
+    return new PostsPage(getUserNameValue());
   }
 
   @Step

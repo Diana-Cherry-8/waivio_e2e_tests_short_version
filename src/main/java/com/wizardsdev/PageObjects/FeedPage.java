@@ -11,6 +11,8 @@ import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Components.Header;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
+import com.wizardsdev.Modals.SignUp;
+import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Step;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,6 +40,7 @@ public class FeedPage extends Page {
   private static final By POST_LIKE_BUTTON_LOCATOR = By.className("icon-praise_fill");
   private static final By POST_LIKE_LOADING_LOCATOR = By.className("anticon-loading");
   private static final Pattern PATTERN = Pattern.compile("$", Pattern.LITERAL);
+  private static final By MODAL_WINDOW_SIGN_IN = By.cssSelector(".ModalSignUp__button");
 
   public FeedPage() {
     super(PAGE_URL);
@@ -89,24 +92,12 @@ public class FeedPage extends Page {
   @Step
   private static int getTimeAfterPostingInSeconds(String timeAfterPosting) {
     String[] splitTimeAfterPosting = timeAfterPosting.split(" ");
-    int  result;
-    switch (splitTimeAfterPosting[1]){
-      case "minute":
-      case "minutes":
-        result = Integer.parseInt(splitTimeAfterPosting[0]) * 60;
-        break;
-      case "hour":
-      case "hours":
-        result = Integer.parseInt(splitTimeAfterPosting[0]) * 3600;
-        break;
-      case "day":
-      case "days":
-        result = Integer.parseInt(splitTimeAfterPosting[0]) * 86400;
-        break;
-      default:
-        result = Integer.parseInt(splitTimeAfterPosting[0]);
-    }
-    return result;
+    return switch (splitTimeAfterPosting[1]) {
+      case "minute", "minutes" -> Integer.parseInt(splitTimeAfterPosting[0]) * 60;
+      case "hour", "hours" -> Integer.parseInt(splitTimeAfterPosting[0]) * 3600;
+      case "day", "days" -> Integer.parseInt(splitTimeAfterPosting[0]) * 86400;
+      default -> Integer.parseInt(splitTimeAfterPosting[0]);
+    };
   }
 
   @Step
@@ -191,9 +182,19 @@ public class FeedPage extends Page {
   }
 
   @Step
-  public UserPage clickOnPostAuthorName(int postIndex) {
+  public ProfilePage clickOnPostAuthorName(int postIndex) {
     $$(POST_LOCATOR).get(postIndex).$(POST_AUTHOR_LOCATOR).shouldBe(Condition.visible).click();
-    return new UserPage();
+    return new ProfilePage() {
+      @Override
+      protected void init() {
+
+      }
+
+      @Override
+      protected void parsePage() {
+
+      }
+    };
   }
 
   @Step
@@ -210,6 +211,12 @@ public class FeedPage extends Page {
         .$(POST_LIKES_COUNTER_LOCATOR)
         .shouldBe(Condition.visible)
         .getText());
+  }
+
+  @Step
+  public SignUp clickOnSignInNotHeader() {
+    $(MODAL_WINDOW_SIGN_IN).click();
+    return new SignUp();
   }
 
   @Override
