@@ -12,6 +12,7 @@ public class ExpertisePage extends ProfilePage {
     private static final By BUTTON_FOLLOW_FOLLOWERS_USER_LOCATOR = By.cssSelector(".Follow--secondary");
     private static final By TEXT_NO_DATA_HASHTAGS_LOCATOR = By.cssSelector(".ObjectDynamicList__empty");
     private static final By LINKS_USER_EXPERTISE_ITEM_LOCATOR = By.cssSelector(".UserExpertise__item");
+    private static final By FEED_HASHTAGS_EXPERTISE_LOCATOR = By.cssSelector(".UserExpertise");
 
     public ExpertisePage(String userName) {
         super(Context.getSiteUrl()  + "/@" + userName + "/expertise");
@@ -27,7 +28,7 @@ public class ExpertisePage extends ProfilePage {
 
     @Step
     public boolean isButtonFollowObjectExist() {
-        return $(BUTTON_FOLLOW_FOLLOWERS_USER_LOCATOR).shouldBe(Condition.visible).exists();
+        return $(BUTTON_FOLLOW_FOLLOWERS_USER_LOCATOR).exists();
     }
 
     @Step
@@ -35,7 +36,13 @@ public class ExpertisePage extends ProfilePage {
         return $(TEXT_NO_DATA_HASHTAGS_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
-    public static void clickOnExpertiseItemsLinkByIndex(int index){
+    @Step
+    public boolean getUserExpertiseFeed() {
+        return $(FEED_HASHTAGS_EXPERTISE_LOCATOR).exists();
+    }
+
+
+    public void clickOnExpertiseItemsLinkByIndex(int index){
         $$(LINKS_USER_EXPERTISE_ITEM_LOCATOR).get(index).click();
     }
 

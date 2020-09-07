@@ -11,7 +11,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Components.Header;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
-import com.wizardsdev.Modals.SignUp;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Step;
 import java.util.ArrayList;
@@ -214,9 +213,8 @@ public class FeedPage extends Page {
   }
 
   @Step
-  public SignUp clickOnSignInNotHeader() {
+  public void clickOnSignInNotHeader() {
     $(MODAL_WINDOW_SIGN_IN).click();
-    return new SignUp();
   }
 
   @Override

@@ -1,7 +1,5 @@
 package com.wizardsdev.Components;
 
-import static com.codeborne.selenide.Selenide.$$;
-
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.AboutPage;
 import com.wizardsdev.PageObjects.DiscoverPage;
@@ -12,8 +10,11 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static com.codeborne.selenide.Selenide.*;
+
 public class TopNavigation extends Page {
   private static final By TOP_NAVIGATION_ITEMS_LOCATOR = By.cssSelector(".TopNavigation__item");
+  private static final By CENTER_LOCATOR = By.cssSelector(".center");
 
   protected TopNavigation() {
     super();
@@ -24,32 +25,34 @@ public class TopNavigation extends Page {
   }
 
   @Step
-  public WebElement getTopNavigationItemByNumber(int itemNumber) {
-    return  $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(itemNumber).shouldBe(Condition.visible);
+  public WebElement getTopNavigationItemByIndex(int index) {
+    return  $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(index).shouldBe(Condition.visible);
   }
 
   @Step
   public DiscoverPage clickOnDiscoverItem() {
-    getTopNavigationItemByNumber(2).click();
+    getTopNavigationItemByIndex(2).click();
     return new DiscoverPage();
   }
 
   @Step
   public EligiblePage clickOnRewardsItem() {
-    getTopNavigationItemByNumber(1).click();
+    getTopNavigationItemByIndex(1).click();
+    sleep(6000);
     return new EligiblePage();
   }
 
   @Step
   public NotificationsPageTools clickOnToolsItem() {
-    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.appear);
-    getTopNavigationItemByNumber(3).click();
+    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(3).shouldBe(Condition.appear);
+    getTopNavigationItemByIndex(3).click();
     return new NotificationsPageTools();
   }
 
   @Step
   public AboutPage clickOnAboutItem() {
-    getTopNavigationItemByNumber(4).click();
+    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.visible);
+    getTopNavigationItemByIndex(4).click();
     return new AboutPage();
   }
 

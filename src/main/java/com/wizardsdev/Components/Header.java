@@ -67,17 +67,18 @@ public class Header extends Page {
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
+    sleep(5000);
   }
 
   @Step
   public SignIn clickOnSingIn() {
-    $(ANT_MENU_ITEMS_LOCATOR).click();
+    $(ANT_MENU_ITEMS_LOCATOR).shouldBe(Condition.visible).click();
     return new SignIn();
   }
 
   @Step
   public void logOut() {
-    $(USER_MENU_TRIANGLE_LOCATOR).click();
+    $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible).click();
     $$(USER_MENU_ITEMS_LOCATOR).get($$(USER_MENU_ITEMS_LOCATOR).size()-1).click();
   }
 

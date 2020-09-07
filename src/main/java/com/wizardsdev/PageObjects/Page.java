@@ -180,12 +180,12 @@ public abstract class Page {
 
   @Step
   public String getTitleRewards() {
-    return $(TITLE_REWARDS_LOCATOR).getText();
+    return $(TITLE_REWARDS_LOCATOR).shouldBe(Condition.visible).getText();
   }
 
   @Step
   public String getTitleTools() {
-    return $(TITLE_TOOLS_LOCATOR).getText();
+    return $(TITLE_TOOLS_LOCATOR).shouldBe(Condition.visible).getText();
   }
 
   @Step

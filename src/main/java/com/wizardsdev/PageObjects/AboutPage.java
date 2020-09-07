@@ -14,6 +14,7 @@ public class AboutPage extends Page{
     private static final By BUTTON_WRITE_A_NEW_REVIEW = By.cssSelector(".icon-button");
     private static final By SORTING_FOLLOWERS_LOCATOR = By.cssSelector(".SortSelector");
     private static final By BUTTON_FOLLOW_SECONDARY_LOCATOR = By.cssSelector(".Follow--secondary");
+    private static final By FEED_REVIEWS_ABOUT_PAGE_LOCATOR = By.cssSelector(".object-feed");
 
     public AboutPage() {
         super(PAGE_URL);
@@ -21,6 +22,7 @@ public class AboutPage extends Page{
 
     @Step
     public boolean isFollowButtonExist() {
+        sleep(10000);
         return $(BUTTON_FOLLOW_LOCATOR).shouldBe(Condition.visible).exists();
     }
 
@@ -37,36 +39,41 @@ public class AboutPage extends Page{
 
     @Step
     public AboutPage clickOnGalleryItem() {
+        $$(TOP_NAVIGATION_ABOUT_PAGE_LOCATOR).get(2).shouldBe(Condition.visible);
         getTopNavigationAboutPageItemByIndex(2).click();
         return new AboutPage();
     }
 
     @Step
     public AboutPage clickOnUpdatesItem() {
+        $$(TOP_NAVIGATION_ABOUT_PAGE_LOCATOR).get(3).shouldBe(Condition.visible);
         getTopNavigationAboutPageItemByIndex(3).click();
         return new AboutPage();
     }
 
     @Step
     public AboutPage clickOnFollowersItem() {
+        $$(TOP_NAVIGATION_ABOUT_PAGE_LOCATOR).get(4).shouldBe(Condition.visible);
         getTopNavigationAboutPageItemByIndex(4).click();
         return new AboutPage();
     }
 
     @Step
     public AboutPage clickOnExpertiseItem() {
+        $$(TOP_NAVIGATION_ABOUT_PAGE_LOCATOR).get(5).shouldBe(Condition.visible);
         getTopNavigationAboutPageItemByIndex(5).click();
         return new AboutPage();
     }
 
     @Step
     public boolean isButtonWriteReviewExist() {
+        $$(TOP_NAVIGATION_ABOUT_PAGE_LOCATOR).get(4).shouldBe(Condition.visible);
         return $(BUTTON_WRITE_A_NEW_REVIEW).shouldBe(Condition.visible).exists();
     }
 
     @Step
     public String getTextButton() {
-            return $(BUTTON_WRITE_A_NEW_REVIEW).shouldBe(Condition.visible).getText();
+        return $(BUTTON_WRITE_A_NEW_REVIEW).shouldBe(Condition.visible).getText();
         }
 
     @Step
@@ -76,6 +83,7 @@ public class AboutPage extends Page{
 
     @Step
     public boolean isButtonFollowSecondaryExist() {
+        $$(TOP_NAVIGATION_ABOUT_PAGE_LOCATOR).get(5).shouldBe(Condition.visible);
         return $(BUTTON_FOLLOW_SECONDARY_LOCATOR).shouldBe(Condition.visible).exists();
     }
 

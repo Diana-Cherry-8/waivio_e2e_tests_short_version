@@ -4,23 +4,22 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("About page")
 public class AboutTest extends TestBase {
-    String facebookEmail = properties.getProperty("FacebookUserEmail00");
-    String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static String facebookEmail = properties.getProperty("FacebookUserEmail00");
+    static String facebookPassword = properties.getProperty("FacebookUserPass00");
 
-    @BeforeEach
-    void login() {
+    @BeforeAll
+    static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
+
     }
 
     @Story("Open page")
@@ -28,7 +27,7 @@ public class AboutTest extends TestBase {
     @Test
     void openAbout() {
         aboutPage = topNavigation.clickOnAboutItem();
-        refresh();
+        refreshPage();
         boolean actualResult = aboutPage.isFollowButtonExist();
         assertTrue(actualResult);
     }
@@ -38,7 +37,7 @@ public class AboutTest extends TestBase {
     @Test
     void openReviewsInAbout() {
         aboutPage = topNavigation.clickOnAboutItem();
-        refresh();
+        refreshPage();
         String expectedResult = "Write a new review";
         String actualResult = aboutPage.getTextButton();
         assertEquals(expectedResult, actualResult);
@@ -60,7 +59,7 @@ public class AboutTest extends TestBase {
     @Test
     void openUpdatesInAbout() {
         aboutPage = topNavigation.clickOnAboutItem().clickOnUpdatesItem();
-        refresh();
+        refreshPage();
         String expectedResult = "Add";
         String actualResult = aboutPage.getTextButton();
         assertEquals(expectedResult, actualResult);
@@ -71,7 +70,7 @@ public class AboutTest extends TestBase {
     @Test
     void openFollowersInAbout() {
         aboutPage = topNavigation.clickOnAboutItem().clickOnFollowersItem();
-        refresh();
+        refreshPage();
         boolean actualResult = aboutPage.isSortingInFollowersExist();
         assertTrue(actualResult);
     }
@@ -81,8 +80,13 @@ public class AboutTest extends TestBase {
     @Test
     void openExpertsInAbout() {
         aboutPage = topNavigation.clickOnAboutItem().clickOnExpertiseItem();
-        refresh();
+        refreshPage();
         boolean actualResult = aboutPage.isButtonFollowSecondaryExist();
         assertTrue(actualResult);
+    }
+
+    @AfterAll
+    static void logout() {
+        header.logOut();
     }
 }

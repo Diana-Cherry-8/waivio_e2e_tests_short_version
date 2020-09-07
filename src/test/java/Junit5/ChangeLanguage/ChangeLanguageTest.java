@@ -18,6 +18,6 @@ public class ChangeLanguageTest extends TestBase {
     FeedPage.openFeedPage();
     header.clickOnChangeLanguageIcon();
     header.clickOnRussianLanguage();
-    assertEquals(EXPECTED_TOP_NAVIGATION_ITEM_TEXT, topNavigation.getTopNavigationItemByNumber(0).getText());
+    assertEquals(EXPECTED_TOP_NAVIGATION_ITEM_TEXT, topNavigation.getTopNavigationItemByIndex(0).getText());
   }
 }

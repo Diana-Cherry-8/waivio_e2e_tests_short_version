@@ -5,6 +5,7 @@ import com.wizardsdev.Components.TopNavigation;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,10 +29,15 @@ public class NotificationsTest extends TestBase {
     @Test
     void openNotificationsTools() {
         notificationsPageTools = topNavigation.clickOnToolsItem();
-        refresh();
+        refreshPage();
         String expectedResult = "Notification Settings";
         String actualResult = notificationsPageTools.getTitleTools();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }
 

@@ -5,6 +5,7 @@ import com.wizardsdev.Components.TopNavigation;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,14 +25,19 @@ public class BookmarksTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check bookmarks page is opened in Tools")
+    @DisplayName("Check bookmarks page is opened in Tools, if user doesn't have bookmarks")
     @Test
     void openBookmarks() {
         notificationsPageTools = topNavigation.clickOnToolsItem();
         bookmarksPage = toolsLeftSidebar.clickOnBookmarksItem();
-        refresh();
+        refreshPage();
         String expectedResult = "You don't have any story saved.";
         String actualResult = bookmarksPage.getMessageAnyBookmarks();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }

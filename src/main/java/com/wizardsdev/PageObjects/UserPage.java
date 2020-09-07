@@ -90,18 +90,18 @@ public class UserPage extends Page {
     return followersNamesList;
   }
 
-  @Step
-  public int getFollowingNumberFromMenuCounter() {
-    return Integer.parseInt($(USER_MENU_FOLLOWING_LOCATOR).
-        shouldBe(Condition.visible).find(USER_MENU_COUNTER_LOCATOR).getText());
-  }
-
-  @Step
-  public int getFollowersNumberFromMenuCounter() {
-    $(USER_MENU_FOLLOWERS_LOCATOR).click();
-    return Integer.parseInt($(USER_MENU_FOLLOWERS_LOCATOR).
-        shouldBe(Condition.visible).find(USER_MENU_COUNTER_LOCATOR).getText());
-  }
+//  @Step
+//  public int getFollowingNumberFromMenuCounter() {
+//    return Integer.parseInt($(USER_MENU_FOLLOWING_LOCATOR).
+//        shouldBe(Condition.visible).find(USER_MENU_COUNTER_LOCATOR).getText());
+//  }
+//
+//  @Step
+//  public int getFollowersNumberFromMenuCounter() {
+//    $(USER_MENU_FOLLOWERS_LOCATOR).click();
+//    return Integer.parseInt($(USER_MENU_FOLLOWERS_LOCATOR).
+//        shouldBe(Condition.visible).find(USER_MENU_COUNTER_LOCATOR).getText());
+//  }
 
   @Override
   protected void init() {

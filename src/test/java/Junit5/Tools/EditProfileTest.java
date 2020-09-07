@@ -4,6 +4,7 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,10 +29,15 @@ public class EditProfileTest extends TestBase {
     void openEditProfile() {
         notificationsPageTools = topNavigation.clickOnToolsItem();
         editProfilePage = toolsLeftSidebar.clickOnEditProfileItems();
-        refresh();
+        refreshPage();
         String expectedResult = "Edit profile";
         String actualResult = editProfilePage.getTitleTools();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }
 

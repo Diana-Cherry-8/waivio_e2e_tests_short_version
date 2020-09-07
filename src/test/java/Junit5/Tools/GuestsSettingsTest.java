@@ -5,6 +5,7 @@ import com.wizardsdev.Components.TopNavigation;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,10 +31,15 @@ public class GuestsSettingsTest extends TestBase {
     void openGuestsSettingsTools() {
         notificationsPageTools = topNavigation.clickOnToolsItem();
         guestsSettingsPage = toolsLeftSidebar.clickOnGuestsSettingsItem();
-        refresh();
+        refreshPage();
         String expectedResult = "Guests Account Settings";
         String actualResult = guestsSettingsPage.getTitleTools();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }
 

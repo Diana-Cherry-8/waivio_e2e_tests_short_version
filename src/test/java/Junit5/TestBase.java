@@ -1,5 +1,7 @@
 package Junit5;
 
+import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.wizardsdev.Context.THREADS_COUNT;
 
 import Extensions.MyAfterTestExecutionCallback;
@@ -35,7 +37,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
 
-  private static final int WAIT_TIME = 60000;
+  private static final int WAIT_TIME = 1000;
   public static final String PATH_TO_TEST_FILE = "src/test/resources/";
   protected static HashMap<Integer, String> usersInThreads = new HashMap<>() {
     {
@@ -171,5 +173,11 @@ public abstract class TestBase {
 
   private static void setUserPassword(String password) {
     userPassword.set(password);
+  }
+
+  //Refresh method
+  public static void refreshPage() {
+    refresh();
+    sleep(2000);
   }
 }
