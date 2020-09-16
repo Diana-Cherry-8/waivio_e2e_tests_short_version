@@ -28,7 +28,7 @@ public class BookmarksTest extends TestBase {
     @DisplayName("Check bookmarks page is opened in Tools, if user doesn't have bookmarks")
     @Test
     void openBookmarks() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
         bookmarksPage = toolsLeftSidebar.clickOnBookmarksItem();
         refreshPage();
         String expectedResult = "You don't have any story saved.";

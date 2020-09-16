@@ -28,8 +28,7 @@ public class DraftsTest extends TestBase {
     @DisplayName("Check drafts page is opened in Tools")
     @Test
     void openDrafts() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
-        draftsPage = toolsLeftSidebar.clickOnDraftsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
         refreshPage();
         String expectedResult = "Drafts";
         String actualResult = draftsPage.getTitleTools();

@@ -27,7 +27,7 @@ public class EditProfileTest extends TestBase {
     @DisplayName("Check edit profile page is opened in Tools")
     @Test
     void openEditProfile() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
         editProfilePage = toolsLeftSidebar.clickOnEditProfileItems();
         refreshPage();
         String expectedResult = "Edit profile";

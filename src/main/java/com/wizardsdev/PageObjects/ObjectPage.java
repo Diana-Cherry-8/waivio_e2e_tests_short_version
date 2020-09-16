@@ -8,11 +8,11 @@ import org.openqa.selenium.By;
 
 public class ObjectPage extends Page {
 
-  private static final By OBJECT_NAME_LOCATOR = By.className("ObjectHeader__text");
+  private static final By OBJECT_NAME_LOCATOR = By.cssSelector(".ObjectHeader__text");
 
   @Step
   public String getObjectName() {
-    return $(OBJECT_NAME_LOCATOR).shouldBe(Condition.visible).getText();
+    return $(OBJECT_NAME_LOCATOR).getText();
   }
 
   @Override

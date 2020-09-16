@@ -29,7 +29,7 @@ public class GuestsSettingsTest extends TestBase {
     @DisplayName("Check guests settings page is opened in Tools")
     @Test
     void openGuestsSettingsTools() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
         guestsSettingsPage = toolsLeftSidebar.clickOnGuestsSettingsItem();
         refreshPage();
         String expectedResult = "Guests Account Settings";

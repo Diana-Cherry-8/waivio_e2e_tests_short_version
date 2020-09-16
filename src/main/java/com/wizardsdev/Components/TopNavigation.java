@@ -5,6 +5,7 @@ import com.wizardsdev.PageObjects.AboutPage;
 import com.wizardsdev.PageObjects.DiscoverPage;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
+import com.wizardsdev.PageObjects.Tools.DraftsPage;
 import com.wizardsdev.PageObjects.Tools.NotificationsPageTools;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -43,10 +44,10 @@ public class TopNavigation extends Page {
   }
 
   @Step
-  public NotificationsPageTools clickOnToolsItem() {
-    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(3).shouldBe(Condition.appear);
+  public DraftsPage clickOnToolsItem() {
+    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.appear);
     getTopNavigationItemByIndex(3).click();
-    return new NotificationsPageTools();
+    return new DraftsPage();
   }
 
   @Step

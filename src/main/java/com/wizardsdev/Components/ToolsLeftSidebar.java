@@ -60,9 +60,9 @@ public class ToolsLeftSidebar extends Page {
     }
 
     @Step
-    public NotificationsPage clickOnNotificationsItem() {
+    public NotificationsPageTools clickOnNotificationsItem() {
         clickOnSideBarItemRewardsByIndex(5);
-        return new NotificationsPage();
+        return new NotificationsPageTools();
     }
 
     @Step

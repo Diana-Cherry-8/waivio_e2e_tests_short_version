@@ -27,9 +27,9 @@ public class NotificationsPageTools extends Page {
 
     @Override
     protected void init() {
-        String pageUrl = getCurrentPage();
-        $(BUTTON_SAVE_NOTIFICATION_SETTINGS).shouldBe(Condition.visible);
-        assert url().equals(pageUrl) : "Invalid page is opened";
+//        String pageUrl = getCurrentPage();
+//        $(BUTTON_SAVE_NOTIFICATION_SETTINGS).shouldBe(Condition.visible);
+//        assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override

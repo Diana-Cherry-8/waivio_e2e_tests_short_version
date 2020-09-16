@@ -27,6 +27,7 @@ public abstract class Page {
   private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__row.UserHeader__handle");
 
   protected static final By INPUT_VALIDATION_MESSAGE_LOCATOR = By.className("is-field__validation");
+  protected static final By TOP_NAVIGATION_OBJECT_PAGE_LOCATOR = By.cssSelector(".ObjectMenu__item");
 
   public static final long ONE_DAY_IN_MILLISECONDS = 86400000;
 
@@ -180,6 +181,7 @@ public abstract class Page {
 
   @Step
   public String getTitleRewards() {
+    sleep(2000);
     return $(TITLE_REWARDS_LOCATOR).shouldBe(Condition.visible).getText();
   }
 

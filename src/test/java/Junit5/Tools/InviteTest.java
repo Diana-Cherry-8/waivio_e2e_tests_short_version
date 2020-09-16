@@ -28,7 +28,7 @@ public class InviteTest extends TestBase {
     @DisplayName("Check invite page is opened in Tools")
     @Test
     void openInvite() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
         invitePage = toolsLeftSidebar.clickOnInviteItem();
         refreshPage();
         String expectedResult = "Copy link";

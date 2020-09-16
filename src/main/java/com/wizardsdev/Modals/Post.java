@@ -17,7 +17,7 @@ import org.openqa.selenium.WebElement;
 public class Post extends Modal {
 
   private static final By OBJECT_RELATED_BY_TAGS_LOCATOR = By.className("ant-collapse-header");
-  private static final By OBJECT_RELATED_BY_TAGS_NAMES_LOCATOR = By.className("ObjectCardView__name-truncated");
+  private static final By OBJECT_RELATED_BY_TAGS_NAMES_LOCATOR = By.cssSelector(".ObjectCardView__name-truncated");
   private static final By BUTTON_CLOSE_LOCATOR = By.className("PostModal__action");
   private static final By POST_AUTHOR_LOCATOR = By.cssSelector(".StoryFull .username");
 

@@ -10,11 +10,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import com.wizardsdev.ApiRequests.ApiRequest;
-import com.wizardsdev.Components.Header;
-import com.wizardsdev.Components.TopNavigation;
-import com.wizardsdev.Components.FeedLeftBar;
-import com.wizardsdev.Components.RewardsLeftSidebar;
-import com.wizardsdev.Components.ToolsLeftSidebar;
+import com.wizardsdev.Components.*;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
@@ -68,6 +64,7 @@ public abstract class TestBase {
   protected static FeedLeftBar feedLeftBar;
   protected static RewardsLeftSidebar rewardsLeftSidebar;
   protected static ToolsLeftSidebar toolsLeftSidebar;
+  protected static DiscoverLeftSidebar discoverLeftSidebar;
 
   //Page Objects
   protected static FeedPage feedPage;
@@ -133,6 +130,7 @@ public abstract class TestBase {
     topNavigation = TopNavigation.initTopNavigation();
     rewardsLeftSidebar = RewardsLeftSidebar.initRewardsLeftSidebar();
     toolsLeftSidebar = ToolsLeftSidebar.initToolsLeftSidebar();
+    discoverLeftSidebar = DiscoverLeftSidebar.initDiscoverLeftSidebar();
 
     setUserLogin(properties.getProperty(String.format("UserLogin%s%s", qaNumber, getNumberOfUser())));
     setUserPassword(properties.getProperty(String.format("LoginPassword%s%s", qaNumber, getNumberOfUser())));
@@ -178,6 +176,6 @@ public abstract class TestBase {
   //Refresh method
   public static void refreshPage() {
     refresh();
-    sleep(2000);
+    sleep(4000);
   }
 }

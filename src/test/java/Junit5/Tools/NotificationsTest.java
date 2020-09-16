@@ -28,7 +28,8 @@ public class NotificationsTest extends TestBase {
     @DisplayName("Check notifications page is opened in Tools")
     @Test
     void openNotificationsTools() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
+        notificationsPageTools = toolsLeftSidebar.clickOnNotificationsItem();
         refreshPage();
         String expectedResult = "Notification Settings";
         String actualResult = notificationsPageTools.getTitleTools();

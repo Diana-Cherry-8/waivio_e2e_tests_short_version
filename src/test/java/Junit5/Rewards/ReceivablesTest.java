@@ -14,8 +14,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.refresh;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("Receivables Page, Rewards")
 public class ReceivablesTest extends TestBase {
@@ -35,9 +34,9 @@ public class ReceivablesTest extends TestBase {
         eligiblePage = topNavigation.clickOnRewardsItem();
         receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
         refreshPage();
-        String expectedResult = "Total: 0.00 HIVE";
+        String expectedResult = "Total: ";
         String actualResult = receivablesPage.getTitleReceivables();
-        assertEquals(expectedResult, actualResult);
+        assertTrue(actualResult.contains(expectedResult));
     }
 
     @AfterEach

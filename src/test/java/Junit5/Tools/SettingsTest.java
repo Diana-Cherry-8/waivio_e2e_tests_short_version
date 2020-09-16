@@ -28,7 +28,7 @@ public class SettingsTest extends TestBase {
     @DisplayName("Check all page is opened in Tools")
     @Test
     void openSettingsTools() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
         settingsPage = toolsLeftSidebar.clickOnSettingsItem();
         refreshPage();
         String expectedResult = "Settings";
