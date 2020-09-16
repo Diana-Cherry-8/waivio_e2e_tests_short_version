@@ -2,10 +2,7 @@ package com.wizardsdev.Components;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.DiscoverPage;
-import com.wizardsdev.PageObjects.NotificationsPage;
 import com.wizardsdev.PageObjects.Page;
-import com.wizardsdev.PageObjects.Rewards.*;
-import com.wizardsdev.PageObjects.Tools.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -13,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class DiscoverLeftSidebar extends Page {
-    private static final By SIDE_BAR_ITEMS_LINK_DISCOVER_LOCATOR = By.cssSelector(".sidenav-discover-objects__item");
+    private static final By LINK_SIDE_BAR_ITEMS_DISCOVER_LOCATOR = By.cssSelector(".sidenav-discover-objects__item");
     private static final By BUTTON_SHOW_MORE_LOCATOR = By.cssSelector(".sidenav-discover-objects__show-more");
 
     public DiscoverLeftSidebar() {
@@ -24,12 +21,9 @@ public class DiscoverLeftSidebar extends Page {
         return new DiscoverLeftSidebar();
     }
 
-//    public void clickOnSideBarItemDiscoverByName(String itemName){
-//        $$(SIDE_BAR_ITEMS_LINK_DISCOVER_LOCATOR).findBy(Condition.text(itemName)).click();
-//    }
     public static void clickOnSideBarItemDiscoverByIndex(int index){
-        $(SIDE_BAR_ITEMS_LINK_DISCOVER_LOCATOR).shouldBe(Condition.visible);
-        $$(SIDE_BAR_ITEMS_LINK_DISCOVER_LOCATOR).get(index).click();
+        $(LINK_SIDE_BAR_ITEMS_DISCOVER_LOCATOR).shouldBe(Condition.visible);
+        $$(LINK_SIDE_BAR_ITEMS_DISCOVER_LOCATOR).get(index).click();
     }
 
     @Step
@@ -198,14 +192,8 @@ public class DiscoverLeftSidebar extends Page {
     @Step
     public void clickOnShowMoreButton() {
         $(BUTTON_SHOW_MORE_LOCATOR).shouldBe(Condition.visible).click();
-        //return new DiscoverPage();
     }
 
-//    @Step
-//    public InvitePage clickOnInviteItem() {
-//        clickOnSideBarItemDiscoverByIndex(6);
-//        return new InvitePage();
-//    }
 
     @Override
     protected void init() {

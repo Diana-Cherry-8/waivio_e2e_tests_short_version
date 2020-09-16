@@ -14,6 +14,7 @@ import com.wizardsdev.PageObjects.NotificationsPage;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Profile.PostsPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
+import com.wizardsdev.PageObjects.Tools.SettingsPage;
 import com.wizardsdev.PageObjects.UserPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -81,12 +82,12 @@ public class Header extends Page {
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible).click();
     $$(USER_MENU_ITEMS_LOCATOR).get($$(USER_MENU_ITEMS_LOCATOR).size()-1).click();
   }
-
-//  public UserSettingPage goToUserSettingPage() {
-//    $(USER_MENU_TRIANGLE_LOCATOR).click();
-//    $$(USER_MENU_ITEMS_LOCATOR).get($$(USER_MENU_ITEMS_LOCATOR).size()-2).click();
-//    return new UserSettingPage();
-//  }
+  @Step
+  public SettingsPage goToUserSettingPage() {
+    $(USER_MENU_TRIANGLE_LOCATOR).click();
+    $$(USER_MENU_ITEMS_LOCATOR).get($$(USER_MENU_ITEMS_LOCATOR).size()-2).click();
+    return new SettingsPage();
+  }
 
   @Step
   public PostsPage clickOnAccountIcon() {

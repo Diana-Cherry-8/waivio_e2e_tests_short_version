@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.refresh;
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,7 +43,7 @@ public class ExpertiseTest extends TestBase {
         postsPage = header.clickOnAccountIcon();
         expertisePage = postsPage.clickOnExpertiseProfileItem();
         refreshPage();
-        boolean actualResult = expertisePage.getUserExpertiseFeed();
+        boolean actualResult = expertisePage.isUserExpertiseFeedExist();
         sleep(5000);
         assertTrue(actualResult);
     }

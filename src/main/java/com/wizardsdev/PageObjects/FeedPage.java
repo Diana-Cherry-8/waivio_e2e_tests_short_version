@@ -123,7 +123,6 @@ public class FeedPage extends Page {
   @Step
   public boolean isMyFeedFoundedOnFollowList(List<String> followingObjectsNameList,
                                              List<String>  followingUsersNameList) {
-//    $(POSTS_LOADING_LOCATOR).shouldBe(Condition.disappear);
     ElementsCollection postsTitleList = $$(POST_TITLE_LOCATOR);
     Post postModal;
     boolean result = false;
@@ -151,12 +150,6 @@ public class FeedPage extends Page {
     $$(POST_LOCATOR).get(postIndex).$(POST_TITLE_LOCATOR).click();
     return new Post();
   }
-
-//  @Step
-//  public WritePostPage clickOnWriteQuickPostField() {
-//    $(WRITE_QUICK_POST_LOCATOR).click();
-//    return new WritePostPage();
-//  }
 
   @Step
   public String getPostRelatedObjectTitle(int postIndex) {

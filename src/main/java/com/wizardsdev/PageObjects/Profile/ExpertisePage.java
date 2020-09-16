@@ -37,7 +37,7 @@ public class ExpertisePage extends ProfilePage {
     }
 
     @Step
-    public boolean getUserExpertiseFeed() {
+    public boolean isUserExpertiseFeedExist() {
         return $(FEED_HASHTAGS_EXPERTISE_LOCATOR).exists();
     }
 

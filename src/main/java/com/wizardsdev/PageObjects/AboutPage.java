@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class AboutPage extends Page{
     private static final String PAGE_URL = "/object/ylr-waivio";
     private static final By BUTTON_FOLLOW_LOCATOR = By.cssSelector(".Follow");
-    //private static final By TOP_NAVIGATION_OBJECT_PAGE_LOCATOR = By.cssSelector(".ObjectMenu__item");
     private static final By BUTTON_WRITE_A_NEW_REVIEW = By.cssSelector(".icon-button");
     private static final By SORTING_FOLLOWERS_LOCATOR = By.cssSelector(".SortSelector");
     private static final By BUTTON_FOLLOW_SECONDARY_LOCATOR = By.cssSelector(".Follow--secondary");

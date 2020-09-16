@@ -6,7 +6,6 @@ import com.wizardsdev.PageObjects.DiscoverPage;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
 import com.wizardsdev.PageObjects.Tools.DraftsPage;
-import com.wizardsdev.PageObjects.Tools.NotificationsPageTools;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

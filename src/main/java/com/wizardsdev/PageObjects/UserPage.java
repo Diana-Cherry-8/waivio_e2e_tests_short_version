@@ -24,22 +24,11 @@ public class UserPage extends Page {
   private static final By FOLLOW_UNFOLLOW_BUTTON_LOCATOR = By.cssSelector(".UserHeader__user__button button");
   private static final By USER_MENU_FOLLOWING_LOCATOR = Selectors.byAttribute(DATA_KEY_ATTRIBUTE_NAME, "following");
   private static final By USER_MENU_FOLLOWERS_LOCATOR = Selectors.byAttribute(DATA_KEY_ATTRIBUTE_NAME, "followers");
-  private static final By USER_MENU_COUNTER_LOCATOR = By.className("UserMenu__badge");
-  private static final By POST_LOCATOR = By.className("Story");
 
   @Step
   public static UserPage openUserPage(String userName) {
     open(Context.getSiteUrl()  + "/@" + userName);
     return new UserPage();
-  }
-
-  @Step
-  public String getUserNameValue() {
-    return $(USERNAME_LOCATOR)
-        .shouldBe(Condition.visible)
-        .getText()
-        .replace("@","")
-        .replace(" (guest)", "");
   }
 
   @Step
@@ -89,19 +78,6 @@ public class UserPage extends Page {
     }
     return followersNamesList;
   }
-
-//  @Step
-//  public int getFollowingNumberFromMenuCounter() {
-//    return Integer.parseInt($(USER_MENU_FOLLOWING_LOCATOR).
-//        shouldBe(Condition.visible).find(USER_MENU_COUNTER_LOCATOR).getText());
-//  }
-//
-//  @Step
-//  public int getFollowersNumberFromMenuCounter() {
-//    $(USER_MENU_FOLLOWERS_LOCATOR).click();
-//    return Integer.parseInt($(USER_MENU_FOLLOWERS_LOCATOR).
-//        shouldBe(Condition.visible).find(USER_MENU_COUNTER_LOCATOR).getText());
-//  }
 
   @Override
   protected void init() {

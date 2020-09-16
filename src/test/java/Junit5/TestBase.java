@@ -83,7 +83,7 @@ public abstract class TestBase {
   protected static EditProfilePage editProfilePage;
   protected static SettingsPage settingsPage;
   protected static GuestsSettingsPage guestsSettingsPage;
-  protected static NotificationsPageTools notificationsPageTools;
+  protected static ToolsNotificationsPage toolsNotificationsPage;
   protected static InvitePage invitePage;
   protected static AboutPage aboutPage;
 
