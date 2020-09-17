@@ -5,6 +5,7 @@ import com.wizardsdev.Components.TopNavigation;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,11 +28,16 @@ public class InviteTest extends TestBase {
     @DisplayName("Check invite page is opened in Tools")
     @Test
     void openInvite() {
-        notificationsPageTools = topNavigation.clickOnToolsItem();
+        draftsPage = topNavigation.clickOnToolsItem();
         invitePage = toolsLeftSidebar.clickOnInviteItem();
-        refresh();
+        refreshPage();
         String expectedResult = "Copy link";
         String actualResult = invitePage.getNameCopyLinkButton();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }

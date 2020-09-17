@@ -6,9 +6,7 @@ import com.wizardsdev.PageObjects.Profile.CommentsPage;
 import com.wizardsdev.PageObjects.Profile.FollowersPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.refresh;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +25,7 @@ public class FollowersTest extends TestBase {
         header.logInWithFacebook(facebookEmail, facebookPassword);
         postsPage = header.clickOnAccountIcon();
         followersPage = postsPage.clickOnFollowersProfileItem();
-        refresh();
+        refreshPage();
         boolean actualResult = followersPage.isButtonFollowFollowersUserExist();
         assertTrue(actualResult);
     }
@@ -48,5 +46,10 @@ public class FollowersTest extends TestBase {
         int followersCounter = followersPage.getFollowersNumberFromMenuCounter();
         int followersListSize = followersPage.getFollowerNamesList().size();
         assert(followersCounter == followersListSize);
+    }
+
+    @AfterAll
+    static void logout() {
+        header.logOut();
     }
 }

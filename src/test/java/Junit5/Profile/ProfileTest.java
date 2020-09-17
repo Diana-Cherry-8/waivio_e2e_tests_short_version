@@ -4,6 +4,7 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,8 +29,13 @@ public class ProfileTest extends TestBase {
     @Test
     void openProfile() {
         profilePage = header.clickOnAccountIcon();
-        refresh();
+        refreshPage();
         boolean actualResult = profilePage.isButtonEditProfileExist();
         assertTrue(actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }

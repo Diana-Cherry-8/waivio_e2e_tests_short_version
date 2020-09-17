@@ -5,8 +5,7 @@ import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class BookmarksPage extends Page {
@@ -27,7 +26,7 @@ public class BookmarksPage extends Page {
 
     @Step
     public String getMessageAnyBookmarks() {
-        return $(MESSAGE_ANY_BOOKMARKS).getText();
+        return $(MESSAGE_ANY_BOOKMARKS).shouldBe(Condition.visible).getText();
     }
 
     @Override

@@ -8,6 +8,7 @@ import com.wizardsdev.PageObjects.Rewards.EligiblePage;
 import com.wizardsdev.PageObjects.Rewards.ReportsPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,5 +39,10 @@ public class ReportsTest extends TestBase {
         String expectedResult = "Reports :";
         String actualResult = reportsPage.getTitleReportsRewards();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }

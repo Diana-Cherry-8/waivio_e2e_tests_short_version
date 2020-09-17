@@ -8,13 +8,13 @@ import com.wizardsdev.PageObjects.Rewards.EligiblePage;
 import com.wizardsdev.PageObjects.Rewards.ReceivablesPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.refresh;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("Receivables Page, Rewards")
 public class ReceivablesTest extends TestBase {
@@ -33,10 +33,15 @@ public class ReceivablesTest extends TestBase {
     void openReceivablesTest() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
-        refresh();
-        String expectedResult = "Total: 0.00 HIVE";
+        refreshPage();
+        String expectedResult = "Total: ";
         String actualResult = receivablesPage.getTitleReceivables();
-        assertEquals(expectedResult, actualResult);
+        assertTrue(actualResult.contains(expectedResult));
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }
 

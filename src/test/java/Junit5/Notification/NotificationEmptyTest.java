@@ -2,6 +2,7 @@ package Junit5.Notification;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -30,5 +31,10 @@ public class NotificationEmptyTest extends TestBase {
   void clickOnLeftSideBarMenuTest() {
     notificationsPage = feedLeftBar.clickOnNotificationItem();
     assert(notificationsPage.isNotificationsPageContentEmpty());
+  }
+
+  @AfterAll
+  static void logout() {
+    header.logOut();
   }
 }

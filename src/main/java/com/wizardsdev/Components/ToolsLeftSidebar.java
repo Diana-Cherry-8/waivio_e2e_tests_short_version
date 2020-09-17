@@ -1,9 +1,7 @@
 package com.wizardsdev.Components;
 
 import com.codeborne.selenide.Condition;
-import com.wizardsdev.PageObjects.NotificationsPage;
 import com.wizardsdev.PageObjects.Page;
-import com.wizardsdev.PageObjects.Rewards.*;
 import com.wizardsdev.PageObjects.Tools.*;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -60,9 +58,9 @@ public class ToolsLeftSidebar extends Page {
     }
 
     @Step
-    public NotificationsPage clickOnNotificationsItem() {
+    public ToolsNotificationsPage clickOnNotificationsItem() {
         clickOnSideBarItemRewardsByIndex(5);
-        return new NotificationsPage();
+        return new ToolsNotificationsPage();
     }
 
     @Step

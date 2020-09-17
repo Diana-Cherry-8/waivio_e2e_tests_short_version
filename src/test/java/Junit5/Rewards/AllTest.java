@@ -8,6 +8,7 @@ import com.wizardsdev.PageObjects.Rewards.AllPage;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,5 +37,10 @@ public class AllTest extends TestBase {
         String expectedResult = "All rewards";
         String actualResult = allPage.getTitleRewards();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @AfterEach
+    void logout() {
+        header.logOut();
     }
 }

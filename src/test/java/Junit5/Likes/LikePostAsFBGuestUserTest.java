@@ -5,9 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 @Feature("Guest user")
 public class LikePostAsFBGuestUserTest extends TestBase {
@@ -27,8 +25,13 @@ public class LikePostAsFBGuestUserTest extends TestBase {
   void likePostAsFBGuestUserTest()  {
     int postLikeCountBeforeLike = feedPage.getPostLikeCount(postIndex);
     feedPage.clickOnPostLikeButton(postIndex);
-    Selenide.refresh(); // нужно так как подставляется фек-данные об количесвах лайков
+    refreshPage();// нужно так как подставляется фек-данные об количесвах лайков
     int postLikeCountAfterLike = feedPage.getPostLikeCount(postIndex);
     assert(postLikeCountBeforeLike < postLikeCountAfterLike);
+  }
+
+  @AfterEach
+  void logout() {
+    header.logOut();
   }
 }

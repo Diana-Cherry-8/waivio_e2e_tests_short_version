@@ -1,5 +1,7 @@
 package Junit5;
 
+import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.wizardsdev.Context.THREADS_COUNT;
 
 import Extensions.MyAfterTestExecutionCallback;
@@ -8,11 +10,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import com.wizardsdev.ApiRequests.ApiRequest;
-import com.wizardsdev.Components.Header;
-import com.wizardsdev.Components.TopNavigation;
-import com.wizardsdev.Components.FeedLeftBar;
-import com.wizardsdev.Components.RewardsLeftSidebar;
-import com.wizardsdev.Components.ToolsLeftSidebar;
+import com.wizardsdev.Components.*;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
@@ -35,7 +33,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
 
-  private static final int WAIT_TIME = 60000;
+  private static final int WAIT_TIME = 1000;
   public static final String PATH_TO_TEST_FILE = "src/test/resources/";
   protected static HashMap<Integer, String> usersInThreads = new HashMap<>() {
     {
@@ -66,6 +64,7 @@ public abstract class TestBase {
   protected static FeedLeftBar feedLeftBar;
   protected static RewardsLeftSidebar rewardsLeftSidebar;
   protected static ToolsLeftSidebar toolsLeftSidebar;
+  protected static DiscoverLeftSidebar discoverLeftSidebar;
 
   //Page Objects
   protected static FeedPage feedPage;
@@ -84,7 +83,7 @@ public abstract class TestBase {
   protected static EditProfilePage editProfilePage;
   protected static SettingsPage settingsPage;
   protected static GuestsSettingsPage guestsSettingsPage;
-  protected static NotificationsPageTools notificationsPageTools;
+  protected static ToolsNotificationsPage toolsNotificationsPage;
   protected static InvitePage invitePage;
   protected static AboutPage aboutPage;
 
@@ -131,6 +130,7 @@ public abstract class TestBase {
     topNavigation = TopNavigation.initTopNavigation();
     rewardsLeftSidebar = RewardsLeftSidebar.initRewardsLeftSidebar();
     toolsLeftSidebar = ToolsLeftSidebar.initToolsLeftSidebar();
+    discoverLeftSidebar = DiscoverLeftSidebar.initDiscoverLeftSidebar();
 
     setUserLogin(properties.getProperty(String.format("UserLogin%s%s", qaNumber, getNumberOfUser())));
     setUserPassword(properties.getProperty(String.format("LoginPassword%s%s", qaNumber, getNumberOfUser())));
@@ -171,5 +171,11 @@ public abstract class TestBase {
 
   private static void setUserPassword(String password) {
     userPassword.set(password);
+  }
+
+  //Refresh method
+  public static void refreshPage() {
+    refresh();
+    sleep(4000);
   }
 }
