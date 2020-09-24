@@ -5,9 +5,8 @@ import static com.codeborne.selenide.Selenide.$$;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.wizardsdev.PageObjects.ObjectPage;
+import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
-import com.wizardsdev.PageObjects.UserPage;
 import io.qameta.allure.Step;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ public class Post extends Modal {
 
   @Step
   public ProfilePage clickOnPostAuthorName() {
-    $(POST_AUTHOR_LOCATOR).click();
+    $(POST_AUTHOR_LOCATOR).shouldBe(Condition.visible).click();
     return new ProfilePage() {
       @Override
       protected void init() {
@@ -71,8 +70,18 @@ public class Post extends Modal {
 
   @Step
   public ObjectPage clickOnRelatedObjectName(int objectIndex) {
-    $$(OBJECT_RELATED_BY_TAGS_NAMES_LOCATOR).get(objectIndex).click();
-    return new ObjectPage();
+    $$(OBJECT_RELATED_BY_TAGS_NAMES_LOCATOR).get(objectIndex).shouldBe(Condition.visible).click();
+    return new ObjectPage() {
+      @Override
+      protected void init() {
+
+      }
+
+      @Override
+      protected void parsePage() {
+
+      }
+    };
   }
 
   @Override

@@ -1,8 +1,8 @@
 package com.wizardsdev.Components;
 
 import com.codeborne.selenide.Condition;
-import com.wizardsdev.PageObjects.AboutPage;
 import com.wizardsdev.PageObjects.DiscoverPage;
+import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
 import com.wizardsdev.PageObjects.Tools.DraftsPage;
@@ -50,10 +50,10 @@ public class TopNavigation extends Page {
   }
 
   @Step
-  public AboutPage clickOnAboutItem() {
+  public ReviewsObjectPage clickOnAboutItem() {
     $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.visible);
     getTopNavigationItemByIndex(4).click();
-    return new AboutPage();
+    return new ReviewsObjectPage();
   }
 
 

@@ -82,6 +82,7 @@ public class Header extends Page {
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible).click();
     $$(USER_MENU_ITEMS_LOCATOR).get($$(USER_MENU_ITEMS_LOCATOR).size()-1).click();
   }
+
   @Step
   public SettingsPage goToUserSettingPage() {
     $(USER_MENU_TRIANGLE_LOCATOR).click();
@@ -135,15 +136,17 @@ public class Header extends Page {
     return result;
   }
 
-  public void clickOnNotificationIcon() {$$(ANT_MENU_ITEMS_LOCATOR).get(1).click();}
+  public void clickOnNotificationIcon() {
+    $(ANT_MENU_ITEMS_LOCATOR).shouldBe(Condition.visible);
+    $$(ANT_MENU_ITEMS_LOCATOR).get(1).click();}
 
   public boolean isNotificationEmpty() {
-    $(NOTIFICATIN_CONTENT_LOCATOR).shouldBe(Condition.visible);
+    $(INPUT_SEARCH_LOCATOR).shouldBe(Condition.visible);
     return $(NOTIFICATIN_CONTENT_LOCATOR).getText().contains("You currently have no notifications.");
   }
 
   public NotificationsPage clickSeeAllNotifications() {
-    $(SEE_ALL_NOTIFICATIONS_LOCATOR).click();
+    $(SEE_ALL_NOTIFICATIONS_LOCATOR).shouldBe(Condition.visible).click();
     return new NotificationsPage();
   }
 

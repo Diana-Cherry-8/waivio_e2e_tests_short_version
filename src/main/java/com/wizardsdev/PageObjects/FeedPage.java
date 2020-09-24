@@ -8,9 +8,9 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.wizardsdev.Components.Header;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
+import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Step;
 import java.util.ArrayList;
@@ -170,7 +170,17 @@ public class FeedPage extends Page {
   @Step
   public ObjectPage clickOnPostRelatedObject(int postIndex) {
     $$(POST_LOCATOR).get(postIndex).$(POST_RELATED_OBJECT_LOCATOR).shouldBe(Condition.visible).click();
-    return new ObjectPage();
+    return new ObjectPage() {
+      @Override
+      protected void init() {
+
+      }
+
+      @Override
+      protected void parsePage() {
+
+      }
+    };
   }
 
   @Step
@@ -191,8 +201,8 @@ public class FeedPage extends Page {
 
   @Step
   public void clickOnPostLikeButton(int postIndex) {
-    $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_BUTTON_LOCATOR).click();
-    $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_LOADING_LOCATOR).shouldBe(Condition.disappear);
+    $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_BUTTON_LOCATOR).shouldBe(Condition.visible).click();
+    //$$(POST_LOCATOR).get(postIndex).$(POST_LIKE_LOADING_LOCATOR).shouldBe(Condition.disappear);
     sleep(3000);
   }
 

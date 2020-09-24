@@ -15,7 +15,8 @@ public class MyFeedAddictionTest extends TestBase {
   @BeforeEach
   void getData() {
     keywords.loginAs(0);
-    followingPage = FollowingPage.openFollowingPage(properties.getProperty("UserName"));
+    postsPage = header.clickOnAccountIcon();
+    followingPage = postsPage.clickOnFollowingProfileItem();
     followingObjectsNameList = followingPage.getFollowingObjectsNamesList();
     followingUsersNameList = followingPage.getFollowingUsersNamesList();
     feedPage = header.clickOnLogo();
@@ -23,12 +24,8 @@ public class MyFeedAddictionTest extends TestBase {
 
   @DisplayName("Check is all post on 'My Feed' contains following object or user")
   @Test
-  void myFeedAddictionTest(){
-    assert(feedPage.isMyFeedFoundedOnFollowList(followingObjectsNameList, followingUsersNameList));
-  }
-
-  @AfterEach
-  void logout() {
-    header.logOut();
+  void myFeedAddictionTest() {
+    assert (feedPage.isMyFeedFoundedOnFollowList(followingObjectsNameList, followingUsersNameList));
   }
 }
+

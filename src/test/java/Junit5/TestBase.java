@@ -22,6 +22,7 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 import com.wizardsdev.PageObjects.*;
+import com.wizardsdev.PageObjects.Objects.*;
 import com.wizardsdev.PageObjects.Profile.*;
 import com.wizardsdev.PageObjects.Rewards.*;
 import com.wizardsdev.PageObjects.Tools.*;
@@ -33,7 +34,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
 
-  private static final int WAIT_TIME = 1000;
+  private static final int WAIT_TIME = 20000;
   public static final String PATH_TO_TEST_FILE = "src/test/resources/";
   protected static HashMap<Integer, String> usersInThreads = new HashMap<>() {
     {
@@ -69,7 +70,6 @@ public abstract class TestBase {
   //Page Objects
   protected static FeedPage feedPage;
   protected static DiscoverPage discoverPage;
-  protected static ObjectPage objectPage;
   protected static NotificationsPage notificationsPage;
   protected static EligiblePage eligiblePage;
   protected static AllPage allPage;
@@ -95,6 +95,20 @@ public abstract class TestBase {
   protected static PostsPage postsPage;
   protected static WalletPage walletPage;
   protected static ProfilePage profilePage;
+
+  protected static RestaurantObjectPage restaurantObjectPage;
+  protected static ObjectPage objectPage;
+
+  protected static ReviewsObjectPage reviewsObjectPage;
+  protected static GalleryObjectPage galleryObjectPage;
+  protected static UpdatesObjectPage updatesObjectPage;
+  protected static FollowersObjectPage followersObjectPage;
+  protected static ExpertsObjectPage expertsObjectPage;
+  protected static ListObjectPage listObjectPage;
+  protected static ReviewsObjectPage drinkObjectPage;
+  protected static ReviewsObjectPage dishObjectPage;
+
+
 
 
   //Helpers

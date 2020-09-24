@@ -4,9 +4,9 @@ import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CommentsPage extends ProfilePage {
@@ -26,9 +26,14 @@ public class CommentsPage extends ProfilePage {
     }
 
     @Step
+    public WebElement getUserNameByIndex(int index) {
+        return  $$(USERNAME_IN_POST_LOCATOR).get(index).shouldBe(Condition.visible);
+    }
+
+    @Step
     public String getUsernameInPost()
     {
-        return $(USERNAME_IN_POST_LOCATOR).shouldBe(Condition.visible).getText();
+        return getUserNameByIndex(5).getText();
     }
 
     @Override
