@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.wizardsdev.Context.properties;
 
-public class DrinkObjectPage extends Page {
+public class DrinkObjectPage extends ObjectPage {
 
     static String drinkObject = properties.getProperty("DrinkObject");
     private static final String PAGE_URL = "/object/" + drinkObject;

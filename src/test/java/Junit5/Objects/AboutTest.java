@@ -6,7 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -47,7 +46,7 @@ public class AboutTest extends TestBase {
         reviewsObjectPage = reviewsObjectPage.clickOnReviewsItem();
         refreshPage();
         String expectedResult = "Write a new review";
-        String actualResult = reviewsObjectPage.getTextButton();
+        String actualResult = reviewsObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -58,7 +57,7 @@ public class AboutTest extends TestBase {
         galleryObjectPage = reviewsObjectPage.clickOnGalleryItem();
         //refresh(); - проблемы с перезагрузой
         String expectedResult = "Add new album";
-        String actualResult = galleryObjectPage.getTextButton();
+        String actualResult = galleryObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -69,7 +68,7 @@ public class AboutTest extends TestBase {
         updatesObjectPage = reviewsObjectPage.clickOnUpdatesItem();
         refreshPage();
         String expectedResult = "Add";
-        String actualResult = updatesObjectPage.getTextButton();
+        String actualResult = updatesObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 

@@ -2,8 +2,6 @@ package Junit5.Objects;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
-import com.wizardsdev.PageObjects.Objects.ObjectPage;
-import com.wizardsdev.PageObjects.Objects.RestaurantObjectPage;
 import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -30,7 +28,7 @@ public class RestaurantTest extends TestBase {
     void openRestaurant() {
         refreshPage();
         String expectedResult = restaurantName;
-        String actualResult = reviewsObjectPage.getNameObject();
+        String actualResult = reviewsObjectPage.getObjectName();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -50,7 +48,7 @@ public class RestaurantTest extends TestBase {
         galleryObjectPage = reviewsObjectPage.clickOnGalleryItem();
         //refreshPage();   проблемы с перезагрузой
         String expectedResult = "Add new album";
-        String actualResult = galleryObjectPage.getTextButton();
+        String actualResult = galleryObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -61,7 +59,7 @@ public class RestaurantTest extends TestBase {
         updatesObjectPage = reviewsObjectPage.clickOnUpdatesItem();
         refreshPage();
         String expectedResult = "Add";
-        String actualResult = updatesObjectPage.getTextButton();
+        String actualResult = updatesObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 

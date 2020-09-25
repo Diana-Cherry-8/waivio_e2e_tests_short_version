@@ -28,7 +28,7 @@ public class DishTest extends TestBase {
     void openDishObjectPage() {
         refreshPage();
         String expectedResult = dishName;
-        String actualResult = dishObjectPage.getNameObject();
+        String actualResult = dishObjectPage.getObjectName();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -48,7 +48,7 @@ public class DishTest extends TestBase {
         reviewsObjectPage = dishObjectPage.clickOnReviewsItem();
         refreshPage();   //проблемы с перезагрузой
         String expectedResult = "Write a new review";
-        String actualResult = reviewsObjectPage.getTextButton();
+        String actualResult = reviewsObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -59,7 +59,7 @@ public class DishTest extends TestBase {
         galleryObjectPage = dishObjectPage.clickOnGalleryItem();
         //refreshPage();   проблемы с перезагрузой
         String expectedResult = "Add new album";
-        String actualResult = galleryObjectPage.getTextButton();
+        String actualResult = galleryObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -70,7 +70,7 @@ public class DishTest extends TestBase {
         updatesObjectPage = dishObjectPage.clickOnUpdatesItem();
         refreshPage();
         String expectedResult = "Add";
-        String actualResult = updatesObjectPage.getTextButton();
+        String actualResult = updatesObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 

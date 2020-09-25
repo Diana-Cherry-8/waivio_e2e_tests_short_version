@@ -192,7 +192,7 @@ public abstract class Page {
   }
 
   @Step
-  public String getNameObject() {
+  public String getObjectName() {
     return $(NAME_OBJECT_LOCATOR).shouldBe(Condition.visible).getText();
   }
 

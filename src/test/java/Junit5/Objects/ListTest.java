@@ -3,9 +3,6 @@ package Junit5.Objects;
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.Objects.ListObjectPage;
-import com.wizardsdev.PageObjects.Objects.ObjectPage;
-import com.wizardsdev.PageObjects.Objects.RestaurantObjectPage;
-import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
@@ -31,7 +28,7 @@ public class ListTest extends TestBase {
     void openList() {
         refreshPage();
         String expectedResult = listName;
-        String actualResult = listObjectPage.getNameObject();
+        String actualResult = listObjectPage.getObjectName();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -51,7 +48,7 @@ public class ListTest extends TestBase {
         reviewsObjectPage = listObjectPage.clickOnReviewsItemList();
         refreshPage();   //проблемы с перезагрузой
         String expectedResult = "Write a new review";
-        String actualResult = reviewsObjectPage.getTextButton();
+        String actualResult = reviewsObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -62,7 +59,7 @@ public class ListTest extends TestBase {
         galleryObjectPage = listObjectPage.clickOnGalleryItemList();
         //refreshPage();   проблемы с перезагрузой
         String expectedResult = "Add new album";
-        String actualResult = galleryObjectPage.getTextButton();
+        String actualResult = galleryObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -73,7 +70,7 @@ public class ListTest extends TestBase {
         updatesObjectPage = listObjectPage.clickOnUpdatesItemList();
         refreshPage();
         String expectedResult = "Add";
-        String actualResult = updatesObjectPage.getTextButton();
+        String actualResult = updatesObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 

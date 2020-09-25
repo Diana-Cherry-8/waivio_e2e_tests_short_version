@@ -27,6 +27,6 @@ public class ExistPostTest extends TestBase {
     feedPage = FeedPage.openFeedPage();
     String postRelatedObjectTitle = feedPage.getPostRelatedObjectTitle(postIndex);
     ObjectPage objectPage = feedPage.clickOnPostRelatedObject(postIndex);
-    assert(postRelatedObjectTitle.contains(objectPage.getNameObject()));
+    assert(postRelatedObjectTitle.contains(objectPage.getObjectName()));
   }
 }

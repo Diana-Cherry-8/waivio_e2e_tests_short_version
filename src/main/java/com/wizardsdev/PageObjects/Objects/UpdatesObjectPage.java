@@ -28,7 +28,7 @@ public class UpdatesObjectPage extends ObjectPage{
     }
 
     @Step
-    public String getTextButton() {
+    public String getButtonText() {
         return $(BUTTON_WRITE_A_NEW_REVIEW).shouldBe(Condition.visible).getText();
     }
 

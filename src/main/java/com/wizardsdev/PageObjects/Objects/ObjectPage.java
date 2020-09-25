@@ -16,7 +16,6 @@ public abstract class ObjectPage extends Page {
     private static final By BUTTON_WRITE_A_NEW_REVIEW = By.cssSelector(".icon-button");
     private static final By SORTING_FOLLOWERS_LOCATOR = By.cssSelector(".SortSelector");
     private static final By BUTTON_FOLLOW_SECONDARY_LOCATOR = By.cssSelector(".Follow--secondary");
-    private static final By OBJECT_NAME_LOCATOR = By.cssSelector(".ObjectHeader__text");
     private static final By OBJECT_TYPE_LOCATOR = By.cssSelector(".ObjectType");
 
     static String restaurantObject = properties.getProperty("RestaurantObject");
@@ -24,12 +23,6 @@ public abstract class ObjectPage extends Page {
     protected ObjectPage() {
         init();
     }
-
-    @Step
-    public String getObjectName() {
-        return $(OBJECT_NAME_LOCATOR).getText();
-    }
-
 
     @Step
     public WebElement getTopNavigationObjectItemByIndex(int index) {
@@ -99,7 +92,7 @@ public abstract class ObjectPage extends Page {
     }
 
     @Step
-    public String getTextButton() {
+    public String getButtonText() {
         return $(BUTTON_WRITE_A_NEW_REVIEW).shouldBe(Condition.visible).getText();
     }
 
