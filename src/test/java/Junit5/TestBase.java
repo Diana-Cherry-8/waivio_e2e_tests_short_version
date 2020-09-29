@@ -107,6 +107,7 @@ public abstract class TestBase {
   protected static ListObjectPage listObjectPage;
   protected static ReviewsObjectPage drinkObjectPage;
   protected static ReviewsObjectPage dishObjectPage;
+  protected static PageObjectPage pageObjectPage;
 
 
 
