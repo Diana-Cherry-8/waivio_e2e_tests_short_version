@@ -27,9 +27,9 @@ public class DraftsPage extends Page {
 
     @Override
     protected void init() {
-        String pageUrl = getCurrentPage();
-        $(LINK_DELETE_SELECTED_LOCATOR).shouldBe(Condition.visible);
-        assert url().equals(pageUrl) : "Invalid page is opened";
+//        String pageUrl = getCurrentPage();
+//        $(LINK_DELETE_SELECTED_LOCATOR).shouldBe(Condition.visible);
+//        assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override

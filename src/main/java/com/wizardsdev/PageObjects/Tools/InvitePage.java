@@ -32,9 +32,9 @@ public class InvitePage extends Page {
 
     @Override
     protected void init() {
-        String pageUrl = getCurrentPage();
-        $(BUTTON_COPY_LINK_LOCATOR).shouldBe(Condition.visible);
-        assert url().equals(pageUrl) : "Invalid page is opened";
+//        String pageUrl = getCurrentPage();
+//        $(BUTTON_COPY_LINK_LOCATOR).shouldBe(Condition.visible);
+//        assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override

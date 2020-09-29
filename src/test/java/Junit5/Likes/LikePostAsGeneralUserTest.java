@@ -22,6 +22,7 @@ public class LikePostAsGeneralUserTest extends TestBase {
   void likePostAsGeneralUserTest()  {
     int postLikeCountBeforeLike = feedPage.getPostLikeCount(postIndex);
     feedPage.clickOnPostLikeButton(postIndex);
+    refreshPage();
     int postLikeCountAfterLike = feedPage.getPostLikeCount(postIndex);
     assert(postLikeCountBeforeLike < postLikeCountAfterLike);
   }

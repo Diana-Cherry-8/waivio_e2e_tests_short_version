@@ -1,4 +1,4 @@
-package Junit5.About;
+package Junit5.Objects;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -6,7 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,27 +18,35 @@ public class AboutTest extends TestBase {
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
-
+        reviewsObjectPage = topNavigation.clickOnAboutItem();
     }
 
     @Story("Open page")
     @DisplayName("Check waivio page is opened in About")
     @Test
     void openAbout() {
-        aboutPage = topNavigation.clickOnAboutItem();
         refreshPage();
-        boolean actualResult = aboutPage.isFollowButtonExist();
+        boolean actualResult = reviewsObjectPage.isFollowButtonExist();
         assertTrue(actualResult);
+    }
+
+    @Story("Check page")
+    @DisplayName("Check about page is opened with correct object type - business")
+    @Test
+    void checkAboutObjectType() {
+        String expectedResult = "business";
+        String actualResult = reviewsObjectPage.getObjectTypeName();
+        assertEquals(expectedResult, actualResult);
     }
 
     @Story("Open page")
     @DisplayName("Check About page is opened with Reviews tab")
     @Test
     void openReviewsInAbout() {
-        aboutPage = topNavigation.clickOnAboutItem();
+        reviewsObjectPage = reviewsObjectPage.clickOnReviewsItem();
         refreshPage();
         String expectedResult = "Write a new review";
-        String actualResult = aboutPage.getTextButton();
+        String actualResult = reviewsObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -47,10 +54,10 @@ public class AboutTest extends TestBase {
     @DisplayName("Check Gallery is opened")
     @Test
     void openGalleryInAbout() {
-        aboutPage = topNavigation.clickOnAboutItem().clickOnGalleryItem();
+        galleryObjectPage = reviewsObjectPage.clickOnGalleryItem();
         //refresh(); - проблемы с перезагрузой
         String expectedResult = "Add new album";
-        String actualResult = aboutPage.getTextButton();
+        String actualResult = galleryObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -58,10 +65,10 @@ public class AboutTest extends TestBase {
     @DisplayName("Check Updates is opened")
     @Test
     void openUpdatesInAbout() {
-        aboutPage = topNavigation.clickOnAboutItem().clickOnUpdatesItem();
+        updatesObjectPage = reviewsObjectPage.clickOnUpdatesItem();
         refreshPage();
         String expectedResult = "Add";
-        String actualResult = aboutPage.getTextButton();
+        String actualResult = updatesObjectPage.getButtonText();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -69,9 +76,9 @@ public class AboutTest extends TestBase {
     @DisplayName("Check Followers is opened")
     @Test
     void openFollowersInAbout() {
-        aboutPage = topNavigation.clickOnAboutItem().clickOnFollowersItem();
+        followersObjectPage = reviewsObjectPage.clickOnFollowersItem();
         refreshPage();
-        boolean actualResult = aboutPage.isSortingInFollowersExist();
+        boolean actualResult = followersObjectPage.isSortingInFollowersExist();
         assertTrue(actualResult);
     }
 
@@ -79,9 +86,9 @@ public class AboutTest extends TestBase {
     @DisplayName("Check Experts is opened")
     @Test
     void openExpertsInAbout() {
-        aboutPage = topNavigation.clickOnAboutItem().clickOnExpertiseItem();
+        expertsObjectPage = reviewsObjectPage.clickOnExpertiseItem();
         refreshPage();
-        boolean actualResult = aboutPage.isButtonFollowSecondaryExist();
+        boolean actualResult = expertsObjectPage.isButtonFollowSecondaryExist();
         assertTrue(actualResult);
     }
 

@@ -27,9 +27,9 @@ public class GuestsSettingsPage extends Page {
 
     @Override
     protected void init() {
-        String pageUrl = getCurrentPage();
-        $(SECTION_SETTINGS_LOCATOR).shouldBe(Condition.visible);
-        assert url().equals(pageUrl) : "Invalid page is opened";
+//        String pageUrl = getCurrentPage();
+//        $(SECTION_SETTINGS_LOCATOR).shouldBe(Condition.visible);
+//        assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override
