@@ -31,9 +31,9 @@ public class BookmarksPage extends Page {
 
     @Override
     protected void init() {
-        String pageUrl = getCurrentPage();
-        $(MESSAGE_ANY_BOOKMARKS).shouldBe(Condition.visible);
-        assert url().equals(pageUrl) : "Invalid page is opened";
+//        String pageUrl = getCurrentPage();
+//        $(MESSAGE_ANY_BOOKMARKS).shouldBe(Condition.visible);
+//        assert url().equals(pageUrl) : "Invalid page is opened";
     }
 
     @Override

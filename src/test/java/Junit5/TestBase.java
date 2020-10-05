@@ -77,6 +77,13 @@ public abstract class TestBase {
   protected static ReceivablesPage receivablesPage;
   protected static ReportsPage reportsPage;
   protected static HistoryPage historyPage;
+  protected static CreatePage createPage;
+  protected static ManagePage managePage;
+  protected static PayablesPage payablesPage;
+  protected static ReservationsPage reservationsPage;
+  protected static MessagesPage messagesPage;
+  protected static MatchBotPage matchBotPage;
+  protected static BlacklistPage blacklistPage;
 
   protected static DraftsPage draftsPage;
   protected static BookmarksPage bookmarksPage;
@@ -86,7 +93,6 @@ public abstract class TestBase {
   protected static ToolsNotificationsPage toolsNotificationsPage;
   protected static InvitePage invitePage;
   protected static AboutPage aboutPage;
-
 
   protected static CommentsPage commentsPage;
   protected static ExpertisePage expertisePage;

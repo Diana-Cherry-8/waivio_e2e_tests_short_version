@@ -63,6 +63,54 @@ public class RewardsLeftSidebar extends Page {
         return new ReportsPage();
     }
 
+    @Step
+    public CreatePage clickOnCreateItem() {
+        clickOnSideBarItemRewardsByIndex(5);
+        return new CreatePage();
+    }
+
+    @Step
+    public ManagePage clickOnManageItem() {
+        clickOnSideBarItemRewardsByIndex(6);
+        return new ManagePage();
+    }
+
+    @Step
+    public PayablesPage clickOnPayablesItem() {
+        clickOnSideBarItemRewardsByIndex(7);
+        return new PayablesPage();
+    }
+
+    @Step
+    public ReportsPage clickOnReportsItemLikeSponsor() {
+        clickOnSideBarItemRewardsByIndex(8);
+        return new ReportsPage();
+    }
+
+    @Step
+    public ReservationsPage clickOnReservationsItem() {
+        clickOnSideBarItemRewardsByIndex(9);
+        return new ReservationsPage();
+    }
+
+    @Step
+    public MessagesPage clickOnMessagesItem() {
+        clickOnSideBarItemRewardsByIndex(10);
+        return new MessagesPage();
+    }
+
+    @Step
+    public MatchBotPage clickOnMatchBotItem() {
+        clickOnSideBarItemRewardsByIndex(11);
+        return new MatchBotPage();
+    }
+
+    @Step
+    public BlacklistPage clickBlacklistItem() {
+        clickOnSideBarItemRewardsByIndex(12);
+        return new BlacklistPage();
+    }
+
     @Override
     protected void init() {
 
