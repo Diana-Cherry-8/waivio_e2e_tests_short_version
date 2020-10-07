@@ -82,7 +82,7 @@ public class RewardsLeftSidebar extends Page {
     }
 
     @Step
-    public ReportsPage clickOnReportsItemLikeSponsor() {
+    public ReportsPage clickOnReportsItemAsHiveUser() {
         clickOnSideBarItemRewardsByIndex(8);
         return new ReportsPage();
     }
