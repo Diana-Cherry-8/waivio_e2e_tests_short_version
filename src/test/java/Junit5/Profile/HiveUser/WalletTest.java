@@ -1,4 +1,4 @@
-package Junit5.Profile.GuestUser;
+package Junit5.Profile.HiveUser;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Profile page")
 public class WalletTest extends TestBase {
-    static String facebookEmail = properties.getProperty("FacebookUserEmail00");
-    static String facebookPassword = properties.getProperty("FacebookUserPass00");
+    String amountForTransfer = "0.001";
+    String hiveUserName = "x6oc5";
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     }
 
     @Story("Open page")
@@ -33,15 +33,15 @@ public class WalletTest extends TestBase {
     }
 
     @Story("Check transfer")
-    @DisplayName("Check transfer from guest to hive-user")
+    @DisplayName("Check transfer from hive-user to hive-user")
     @Test
     void checkTransfer() {
-        String amountForTransfer = "0.001";
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
         String expectedString = walletPage.getHiveAmount();
         double expectedDouble = Double.parseDouble(expectedString) - 0.001;
         walletPage.clickOnTransferButton();
+        walletPage.setHiveUserName(hiveUserName);
         walletPage.setAmount(amountForTransfer);
         walletPage.clickContinue();
         refreshPage();
@@ -57,4 +57,3 @@ public class WalletTest extends TestBase {
         header.logOut();
     }
 }
-

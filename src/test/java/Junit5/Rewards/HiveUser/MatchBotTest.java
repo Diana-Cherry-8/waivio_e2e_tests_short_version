@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Feature("Receivables Page, Rewards")
-public class ReceivablesTest extends TestBase {
+@Feature("Match Bot Page, Rewards")
+public class MatchBotTest extends TestBase {
 
     @BeforeEach
     void login() {
@@ -23,12 +23,12 @@ public class ReceivablesTest extends TestBase {
     @Story("Open page")
     @DisplayName("Check receivables page is opened in Rewards")
     @Test
-    void openReceivablesTest() {
+    void openMatchBot() {
         eligiblePage = topNavigation.clickOnRewardsItem();
-        receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        matchBotPage = rewardsLeftSidebar.clickOnMatchBotItem();
         refreshPage();
-        String expectedResult = "Total: ";
-        String actualResult = receivablesPage.getTitleReceivables();
+        String expectedResult = "Manage match bot";
+        String actualResult = matchBotPage.getTitleMatchBot();
         assertTrue(actualResult.contains(expectedResult));
     }
 
@@ -37,4 +37,3 @@ public class ReceivablesTest extends TestBase {
         header.logOut();
     }
 }
-
