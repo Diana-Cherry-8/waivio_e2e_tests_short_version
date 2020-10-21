@@ -30,9 +30,4 @@ public class ManageTest extends TestBase {
         String actualResult = managePage.getTitleAccountBalance();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

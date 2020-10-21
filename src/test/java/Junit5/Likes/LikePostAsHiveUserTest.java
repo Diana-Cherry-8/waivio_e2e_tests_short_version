@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class LikePostAsGeneralUserTest extends TestBase {
+public class LikePostAsHiveUserTest extends TestBase {
   private final int postIndex = (int) (Math.random() * 9);
 
   @BeforeEach

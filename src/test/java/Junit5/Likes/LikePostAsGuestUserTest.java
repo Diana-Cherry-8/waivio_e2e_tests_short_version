@@ -8,7 +8,7 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
 @Feature("Guest user")
-public class LikePostAsFBGuestUserTest extends TestBase {
+public class LikePostAsGuestUserTest extends TestBase {
   String facebookEmail = properties.getProperty("FacebookUserEmail00");
   String facebookPassword = properties.getProperty("FacebookUserPass00");
   private final int postIndex = (int) (Math.random() * 9);

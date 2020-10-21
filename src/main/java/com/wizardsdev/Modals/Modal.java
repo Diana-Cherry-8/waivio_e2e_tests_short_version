@@ -46,4 +46,6 @@ public abstract class Modal extends Page {
     return $(TEXT_DESCRIPTION_LOCATOR).getText();
   }
 
+
+
 }

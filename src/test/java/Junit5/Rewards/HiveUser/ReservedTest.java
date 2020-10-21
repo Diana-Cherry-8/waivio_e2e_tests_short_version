@@ -30,9 +30,4 @@ public class ReservedTest extends TestBase {
         String actualResult = reservedPage.getTitleRewards();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

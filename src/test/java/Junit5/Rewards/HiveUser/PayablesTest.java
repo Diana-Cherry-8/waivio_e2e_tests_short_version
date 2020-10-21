@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Feature("Receivables Page, Rewards")
-public class ReceivablesTest extends TestBase {
+@Feature("Payables Page, Rewards")
+public class PayablesTest extends TestBase {
 
     @BeforeEach
     void login() {
@@ -21,15 +21,15 @@ public class ReceivablesTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check receivables page is opened in Rewards")
+    @DisplayName("Check Payables page is opened in Rewards")
     @Test
-    void openReceivablesTest() {
+    void openPayablesTest() {
         eligiblePage = topNavigation.clickOnRewardsItem();
-        receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        payablesPage = rewardsLeftSidebar.clickOnPayablesItem();
         refreshPage();
         String expectedResult = "Total: ";
-        String actualResult = receivablesPage.getTitleReceivables();
+        String actualResult = payablesPage.getTitlePayables();
         assertTrue(actualResult.contains(expectedResult));
     }
-}
 
+}

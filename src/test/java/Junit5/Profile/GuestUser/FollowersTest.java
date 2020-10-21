@@ -45,9 +45,4 @@ public class FollowersTest extends TestBase {
         int followersListSize = followersPage.getFollowerNamesList().size();
         assert(followersCounter == followersListSize);
     }
-
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }

@@ -202,7 +202,7 @@ public class FeedPage extends Page {
   @Step
   public void clickOnPostLikeButton(int postIndex) {
     $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_BUTTON_LOCATOR).shouldBe(Condition.visible).click();
-    //$$(POST_LOCATOR).get(postIndex).$(POST_LIKE_LOADING_LOCATOR).shouldBe(Condition.disappear);
+    $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_LOADING_LOCATOR).shouldBe(Condition.disappear);
     sleep(3000);
   }
 

@@ -2,7 +2,6 @@ package Junit5.Rewards.HiveUser;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,9 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Feature("Receivables Page, Rewards")
-public class ReceivablesTest extends TestBase {
-
+public class ReportsTest extends TestBase{
     @BeforeEach
     void login() {
         feedPage = FeedPage.openFeedPage();
@@ -21,15 +18,14 @@ public class ReceivablesTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check receivables page is opened in Rewards")
+    @DisplayName("Check Payables page is opened in Rewards")
     @Test
-    void openReceivablesTest() {
+    void openReports() {
         eligiblePage = topNavigation.clickOnRewardsItem();
-        receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        reportsPage = rewardsLeftSidebar.clickOnReportsItemAsHiveUser();
         refreshPage();
-        String expectedResult = "Total: ";
-        String actualResult = receivablesPage.getTitleReceivables();
+        String expectedResult = "Reports";
+        String actualResult = reportsPage.getTitleReportsRewards();
         assertTrue(actualResult.contains(expectedResult));
     }
 }
-

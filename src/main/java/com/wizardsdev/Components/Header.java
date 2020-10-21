@@ -68,7 +68,7 @@ public class Header extends Page {
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
-    sleep(5000);
+    sleep(8000);
   }
 
   @Step

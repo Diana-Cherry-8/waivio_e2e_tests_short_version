@@ -32,9 +32,4 @@ public class ProfileTest extends TestBase {
         boolean actualResult = profilePage.isButtonEditProfileExist();
         assertTrue(actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
