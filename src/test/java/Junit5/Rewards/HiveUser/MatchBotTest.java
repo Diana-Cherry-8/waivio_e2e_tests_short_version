@@ -31,9 +31,4 @@ public class MatchBotTest extends TestBase {
         String actualResult = matchBotPage.getTitleMatchBot();
         assertTrue(actualResult.contains(expectedResult));
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

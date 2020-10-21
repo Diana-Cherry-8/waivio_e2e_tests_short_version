@@ -29,9 +29,4 @@ public class EligibleTest extends TestBase {
         String actualResult = eligiblePage.getTitleRewards();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

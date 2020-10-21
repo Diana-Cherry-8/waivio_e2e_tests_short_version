@@ -32,9 +32,4 @@ public class PostsTest extends TestBase {
         boolean actualResult = postsPage.isButtonSendMessageExist();
         assertTrue(actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

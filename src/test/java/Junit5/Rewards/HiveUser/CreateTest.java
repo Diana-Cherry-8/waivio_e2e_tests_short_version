@@ -30,9 +30,4 @@ public class CreateTest extends TestBase {
         String actualResult = createPage.getTitleCampaignName();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

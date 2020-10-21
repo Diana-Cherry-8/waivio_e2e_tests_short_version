@@ -39,21 +39,20 @@ public class WalletTest extends TestBase {
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
         String expectedString = walletPage.getHiveAmount();
-        double expectedDouble = Double.parseDouble(expectedString) - 0.001;
+        String deleteText = " HIVE";
+        String replace = "";
+        String deleteHive = expectedString.replaceAll(deleteText, replace);
+        double expectedDouble = Double.parseDouble(deleteHive) - 0.001;
         walletPage.clickOnTransferButton();
         walletPage.setHiveUserName(hiveUserName);
         walletPage.setAmount(amountForTransfer);
-        walletPage.clickContinue();
+        walletPage.clickContinueAsHiveUser();
         refreshPage();
         sleep(10000);
         refreshPage();
-        String actualResult = walletPage.getHiveAmount();
-        double actualDouble = Double.parseDouble(actualResult);
+        String actualString = walletPage.getHiveAmount();
+        String deleteHiveForActual = actualString.replaceAll(deleteText, replace);
+        double actualDouble = Double.parseDouble(deleteHiveForActual);
         assertEquals(expectedDouble, actualDouble);
-    }
-
-    @AfterAll
-    static void logout() {
-        header.logOut();
     }
 }

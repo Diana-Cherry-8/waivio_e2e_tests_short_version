@@ -28,9 +28,4 @@ public class MessagesTest extends TestBase {
         String actualResult = messagesPage.getTitleRewards();
         assertTrue(actualResult.contains(expectedResult));
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

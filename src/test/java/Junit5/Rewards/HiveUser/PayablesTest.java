@@ -32,8 +32,4 @@ public class PayablesTest extends TestBase {
         assertTrue(actualResult.contains(expectedResult));
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

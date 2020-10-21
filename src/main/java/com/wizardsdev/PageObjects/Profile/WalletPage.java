@@ -2,8 +2,6 @@ package com.wizardsdev.PageObjects.Profile;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
-import com.wizardsdev.PageObjects.Objects.GalleryObjectPage;
-import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,12 +12,10 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class WalletPage extends ProfilePage {
 
     private static final By BUTTONS_TRANSFER_LOCATOR = By.cssSelector(".Action--primary");
-    private static final By HIVE_AMOUNT_LOCATOR = By.xpath("//*[@id=\"app\"]/section/div/div[1]/div[2]" +
-            "/div/div[3]/div/div[1]/div[1]/div[2]/span/span");
-    public static final By INPUT_FOR_SEARCH = By.xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/" +
-            "form/div[1]/div[2]/div/span/div/div/div/ul/li/div/input");
-    public static final By INPUT_FOR_AMOUNT = By.cssSelector(".Transfer__amount__input");
-    public static final By BUTTON_CONTINUE = By.cssSelector(".ant-btn-primary");
+    private static final By HIVE_AMOUNT_LOCATOR = By.cssSelector(".UserWalletSummary__value");
+    public static final By INPUT_FOR_SEARCH_LOCATOR = By.cssSelector(".ant-select-search__field");
+    public static final By INPUT_FOR_AMOUNT_LOCATOR = By.cssSelector(".Transfer__amount__input");
+    public static final By BUTTON_CONTINUE_LOCATOR = By.cssSelector(".ant-btn-primary");
 
     public WalletPage(String userName) {
         super(Context.getSiteUrl()  + "/@" + userName + "/transfers");
@@ -60,35 +56,34 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public WebElement getSearchFieldByIndex(int index) {
-        return  $$(INPUT_FOR_SEARCH).get(index).shouldBe(Condition.visible);
-    }
-
-    @Step
-    public WalletPage clickOnSearchItemInTransferFunds() {
-        getSearchFieldByIndex(1).click();
-        return new WalletPage(getUserNameValue());
-    }
-
-    @Step
     public void setHiveUserName(String hiveUserName) {
-        $(INPUT_FOR_SEARCH).setValue(hiveUserName);
+        $$(INPUT_FOR_SEARCH_LOCATOR).get(1).shouldBe(Condition.visible).setValue(hiveUserName).pressEnter();
     }
 
     @Step
     public void setAmount(String amountFotTransfer) {
-        $(INPUT_FOR_AMOUNT).setValue(amountFotTransfer).pressEnter();
+        $(INPUT_FOR_AMOUNT_LOCATOR).setValue(amountFotTransfer);
     }
 
     @Step
-    public void clickContinue(){
-        $(BUTTON_CONTINUE).click();
+    public void clickContinueAsGuest(){
+        $(BUTTON_CONTINUE_LOCATOR).click();
+    }
+
+    @Step
+    public void clickContinueAsHiveUser(){
+        final By BUTTONS_CONTINUE_TRANSFER_LOCATOR = By.cssSelector(".btn-blue");
+        final By BUTTONS_APPROVE_TRANSFER_LOCATOR = By.cssSelector(".btn-success");
+
+        $(BUTTON_CONTINUE_LOCATOR).click();
         switchTo().window(1);
-        $(".btn-blue").shouldBe(Condition.visible).click();
-        $(".btn-blue").shouldBe(Condition.visible).click();
-        $(".btn-success").shouldBe(Condition.visible).click();
+        $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+        $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+        $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
         switchTo().window(0);
     }
+
+
 
 
     @Override

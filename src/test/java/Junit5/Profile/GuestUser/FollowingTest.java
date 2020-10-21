@@ -46,9 +46,4 @@ public class FollowingTest extends TestBase {
         assert( followingCounter == sumFollowings);
     }
 
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
-
 }

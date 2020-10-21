@@ -28,9 +28,4 @@ public class ReportsTest extends TestBase{
         String actualResult = reportsPage.getTitleReportsRewards();
         assertTrue(actualResult.contains(expectedResult));
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
