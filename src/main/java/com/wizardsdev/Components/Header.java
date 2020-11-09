@@ -8,14 +8,10 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Modals.SignIn;
-import com.wizardsdev.PageObjects.FacebookSignPage;
-import com.wizardsdev.PageObjects.FeedPage;
-import com.wizardsdev.PageObjects.NotificationsPage;
-import com.wizardsdev.PageObjects.Page;
+import com.wizardsdev.PageObjects.*;
 import com.wizardsdev.PageObjects.Profile.PostsPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import com.wizardsdev.PageObjects.Tools.SettingsPage;
-import com.wizardsdev.PageObjects.UserPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -64,6 +60,7 @@ public class Header extends Page {
   @Step
   public void logInWithFacebook(String email, String password) {
     SignIn signIn = clickOnSingIn();
+    sleep(4000);
     FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook();
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
@@ -76,6 +73,12 @@ public class Header extends Page {
     $(ANT_MENU_ITEMS_LOCATOR).shouldBe(Condition.visible).click();
     return new SignIn();
   }
+
+//  @Step
+//  public SignIn clickOnSingIn() {
+//    $(ANT_MENU_ITEMS_LOCATOR).shouldBe(Condition.visible).click();
+//    return new SignIn();
+//  }
 
   @Step
   public void logOut() {
@@ -94,6 +97,12 @@ public class Header extends Page {
   public PostsPage clickOnAccountIcon() {
     $(ACCOUNT_ICON_LOCATOR).shouldBe(Condition.visible).click();
     return new PostsPage(getUserNameValue());
+  }
+
+  @Step
+  public EditorPage clickOnWritePostIcon() {
+    $$(ANT_MENU_ITEMS_LOCATOR).get(0).shouldBe(Condition.visible).click();
+    return new EditorPage();
   }
 
   @Step

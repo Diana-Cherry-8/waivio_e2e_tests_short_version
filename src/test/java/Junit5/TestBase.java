@@ -84,6 +84,11 @@ public abstract class TestBase {
   protected static MessagesPage messagesPage;
   protected static MatchBotPage matchBotPage;
   protected static BlacklistPage blacklistPage;
+  protected static DetailsPage detailsPage;
+  protected static InstructionsPage instructionsPage;
+  protected static StatusPage statusPage;
+  protected static FraudDetectionPage fraudDetectionPage;
+  protected static EditorPage editorPage;
 
   protected static DraftsPage draftsPage;
   protected static BookmarksPage bookmarksPage;

@@ -1,15 +1,20 @@
 package com.wizardsdev.PageObjects.Rewards;
 
+import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ReservedPage extends Page {
     private static final String PAGE_URL = "/rewards/reserved";
+    private static final By TITLE_OBJECT_CARD_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
+    private static final By BUTTON_MORE_LOCATOR = By.cssSelector(".icon-more");
+    private static final By MENU_LOCATOR = By.cssSelector(".PopoverMenu a");
+    public static final By BUTTON_OK_LOCATOR = By.cssSelector(".ant-modal-footer .ant-btn-primary");
+    public static final By TEXT_NO_REWARD_LOCATOR = By.cssSelector(".FilteredRewardsList");
 
     public ReservedPage() {
         super(PAGE_URL);
@@ -21,6 +26,31 @@ public class ReservedPage extends Page {
             open(PAGE_URL);
         }
         return new ReservedPage();
+    }
+
+    @Step
+    public String getTitleObjectCardName() {
+        return $(TITLE_OBJECT_CARD_NAME_LOCATOR).shouldBe(Condition.visible).getText();
+    }
+
+    @Step
+    public void clickButtonMore() {
+        $$(BUTTON_MORE_LOCATOR).get(0).shouldBe(Condition.visible).click();
+    }
+
+    @Step
+    public void clickOnItemRelease() {
+        $$(MENU_LOCATOR).get(2).click();
+    }
+
+    @Step
+    public void clickOnOkButton() {
+        $(BUTTON_OK_LOCATOR).shouldBe(Condition.visible).click();
+    }
+
+    @Step
+    public String getTextNoReward() {
+        return $(TEXT_NO_REWARD_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
     @Override

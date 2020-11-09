@@ -28,16 +28,41 @@ public class ReceivablesTest extends TestBase {
     void openReceivablesTest() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
-        refreshPage(); /*После обновления вкладки Receivables происходит переход на вкладку Eligible
-         (или на Reserved если есть резервации) баг*/
+        refreshPage();
         String expectedResult = "Total: ";
         String actualResult = receivablesPage.getTitleReceivables();
         assertTrue(actualResult.contains(expectedResult));
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
+    @Story("Open page")
+    @DisplayName("Check payment history page is opened in Receivables")
+    @Test
+    void openPaymentHistoryPage() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        String expectedSponsorNameFull = receivablesPage.getSponsorName();
+        String deleteText = "@";
+        String replace = "";
+        String expectedSponsorName = expectedSponsorNameFull.replaceAll(deleteText, replace);
+        receivablesPage.clickButtonPaymentHistory();
+        refreshPage();
+        String actualSponsorName = receivablesPage.getSponsorNameInPaymentHistory();
+        assertEquals(expectedSponsorName, actualSponsorName);
     }
+
+    @Story("Open page")
+    @DisplayName("Check report modal window is opened in Receivables")
+    @Test
+    void openReportModalWindow() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        receivablesPage.clickButtonPaymentHistory();
+        receivablesPage.clickOnReportLink();
+        String expectedResult = "Report";
+        String actualResult = receivablesPage.getTitleReport();
+        assertEquals(expectedResult, actualResult);
+    }
+
+
 }
 
