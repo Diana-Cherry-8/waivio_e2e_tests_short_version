@@ -10,7 +10,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.wizardsdev.Context.properties;
 
 public class FraudDetectionPage extends Page {
-    private static final String PAGE_URL = "/rewards/referral-details/" + properties.getProperty("FacebookUserEmail00");
+    private static final String PAGE_URL = "/rewards/referral-details/";
     private static final By TITLE_FRAUD_DETECTION_LOCATOR = By.cssSelector(".FraudDetection__title");
 
     public FraudDetectionPage() {

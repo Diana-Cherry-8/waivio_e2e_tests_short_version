@@ -29,6 +29,4 @@ public class ReservationsTest extends TestBase {
         String actualResult = reservationsPage.getTitleRewards();
         assertTrue(actualResult.contains(expectedResult));
     }
-
-
 }

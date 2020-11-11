@@ -1,9 +1,11 @@
 package com.wizardsdev.PageObjects;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
 import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -15,7 +17,7 @@ public class EditorPage extends Page{
     private static final By BUTTON_READY_TO_PUBLISH_LOCATOR = By.cssSelector(".ant-btn-lg");
     private static final By INPUT_TITLE_EDITOR_LOCATOR = By.cssSelector(".md-RichEditor-title");
     private static final By INPUT_CONTENT_EDITOR_LOCATOR = By.cssSelector(".waiv-editor");
-    private static final By CHECKBOX_LEGAL_NOTICE_iN_PREVIEW_LOCATOR = By.cssSelector(".ant-checkbox-input");
+    private static final By CHECKBOX_LEGAL_NOTICE_IN_PREVIEW_LOCATOR = By.cssSelector(".ant-checkbox-input");
     private static final By BUTTON_PUBLISH_IN_PREVIEW_LOCATOR = By.cssSelector(".edit-post__submit-btn");
 
     public EditorPage() {
@@ -37,23 +39,22 @@ public class EditorPage extends Page{
 
 
     @Step
-    public void setContentPost(String contentPost){
-
-
+    public void setContentPost(String contentPost) {
+        //#TODO
     }
 
     @Step
-    public void clickReadyToPublish() {
+    public void clickButtonReadyToPublish() {
         $(BUTTON_READY_TO_PUBLISH_LOCATOR).shouldBe(Condition.visible).click();
     }
 
     @Step
     public void clickCheckboxLegalNotice() {
-        $(CHECKBOX_LEGAL_NOTICE_iN_PREVIEW_LOCATOR).shouldBe(Condition.visible).click();
+        $(CHECKBOX_LEGAL_NOTICE_IN_PREVIEW_LOCATOR).shouldBe(Condition.visible).click();
     }
 
     @Step
-    public void clickPublish() {
+    public void clickButtonPublish() {
         $(BUTTON_PUBLISH_IN_PREVIEW_LOCATOR).shouldBe(Condition.visible).click();
     }
 

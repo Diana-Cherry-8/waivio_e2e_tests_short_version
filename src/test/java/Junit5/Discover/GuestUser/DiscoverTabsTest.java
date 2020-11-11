@@ -367,9 +367,4 @@ public class DiscoverTabsTest extends TestBase {
         String actualResult = discoverPage.getTagName();
         assertTrue(actualResult.contains(expectedResult));
     }
-
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }

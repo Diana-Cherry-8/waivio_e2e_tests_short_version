@@ -31,19 +31,6 @@ public class PostCreationTests extends TestBase {
     @DisplayName("Post creation only with text")
     @Test
     void createPost() {
-        editorPage = header.clickOnWritePostIcon();
-        String postTitle = "Porsche's most powerful Panamera breaks cover with a 680hp powertrain";
-        String contentPost = "German automaker Porsche has unveiled the Turbo S E-Hybrid variant of its Panamera model in the US. It is the most powerful Panamera in the company's line-up with a power output of 680hp and a claimed top-speed of 315 km/h. The four-door premium sedan is offered in Executive and Sport Turismo trims and in two color options.";
-        editorPage.setPostTitle(postTitle);
-        editorPage.setContentPost(contentPost);
-        editorPage.clickReadyToPublish();
-        editorPage.clickCheckboxLegalNotice();
-        editorPage.clickPublish();
-        refreshPage();
-        sleep(10000);
-        refreshPage();
-        String actualResult = PostsPage.getPostTitle();
-
-        assertTrue(actualResult.contains(postTitle));
+        //#TODO
     }
 }

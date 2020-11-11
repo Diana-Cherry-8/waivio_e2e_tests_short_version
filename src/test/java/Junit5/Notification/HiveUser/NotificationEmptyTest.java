@@ -32,9 +32,4 @@ public class NotificationEmptyTest extends TestBase {
     notificationsPage = feedLeftBar.clickOnNotificationItem();
     assert(notificationsPage.isNotificationsPageContentEmpty());
   }
-
-  @AfterAll
-  static void logout() {
-    header.logOut();
-  }
 }

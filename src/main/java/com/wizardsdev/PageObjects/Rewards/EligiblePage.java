@@ -11,9 +11,9 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class EligiblePage extends Page {
     private static final String PAGE_URL = "/rewards/active";
     private static final By BUTTON_CAMPAIGN_EARN_REFACTOR_LOCATOR = By.cssSelector(".Campaign__button");
-    private static final By BUTTON_RESERVE_LOCATOR = By.cssSelector(".ant-btn-primary");
-    private static final By BUTTON_RESERVE_IN_MODAL_WINDOW_LOCATOR = By.cssSelector(".Details__footer-reserve-btn " +
-            ".ant-btn-primary");
+    private static final By BUTTONS_RESERVE_LOCATORS = By.cssSelector(".ant-btn-primary");
+    private static final By BUTTON_RESERVE_IN_MODAL_WINDOW_LOCATOR =
+            By.cssSelector(".Details__footer-reserve-btn .ant-btn-primary");
     private static final By TITLE_SECONDARY_OBJECT_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
 
     public EligiblePage() {
@@ -35,7 +35,7 @@ public class EligiblePage extends Page {
 
     @Step
     public ReservationsPage clickReserveButtonInCard() {
-        $$(BUTTON_RESERVE_LOCATOR).get(0).shouldBe(Condition.visible).click();
+        $$(BUTTONS_RESERVE_LOCATORS).get(0).shouldBe(Condition.visible).click();
         return new ReservationsPage();
     }
 

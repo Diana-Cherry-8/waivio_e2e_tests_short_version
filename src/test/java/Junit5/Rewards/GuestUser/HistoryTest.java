@@ -34,10 +34,5 @@ public class HistoryTest extends TestBase {
         String actualResult = historyPage.getTitleRewards();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
 

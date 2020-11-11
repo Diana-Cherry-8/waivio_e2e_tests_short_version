@@ -10,7 +10,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.wizardsdev.Context.properties;
 
 public class StatusPage extends Page {
-    private static final String PAGE_URL = "/rewards/referral-status/" + properties.getProperty("FacebookUserEmail00");
+    private static final String PAGE_URL = "/rewards/referral-status/";
     private static final By TITLE_STATUS_LOCATOR = By.cssSelector(".ReferralStatus__title");
 
     public StatusPage() {

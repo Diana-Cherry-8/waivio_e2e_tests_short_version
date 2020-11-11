@@ -11,10 +11,10 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 public class ReservedPage extends Page {
     private static final String PAGE_URL = "/rewards/reserved";
     private static final By TITLE_OBJECT_CARD_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
-    private static final By BUTTON_MORE_LOCATOR = By.cssSelector(".icon-more");
-    private static final By MENU_LOCATOR = By.cssSelector(".PopoverMenu a");
-    public static final By BUTTON_OK_LOCATOR = By.cssSelector(".ant-modal-footer .ant-btn-primary");
-    public static final By TEXT_NO_REWARD_LOCATOR = By.cssSelector(".FilteredRewardsList");
+    private static final By BUTTONS_MORE_LOCATOR = By.cssSelector(".icon-more");
+    private static final By BUTTON_THREE_POINT_LOCATOR = By.cssSelector(".PopoverMenu a");
+    private static final By BUTTON_OK_LOCATOR = By.cssSelector(".ant-modal-footer .ant-btn-primary");
+    private static final By TEXT_NO_REWARD_LOCATOR = By.cssSelector(".FilteredRewardsList");
 
     public ReservedPage() {
         super(PAGE_URL);
@@ -35,12 +35,12 @@ public class ReservedPage extends Page {
 
     @Step
     public void clickButtonMore() {
-        $$(BUTTON_MORE_LOCATOR).get(0).shouldBe(Condition.visible).click();
+        $$(BUTTONS_MORE_LOCATOR).get(0).shouldBe(Condition.visible).click();
     }
 
     @Step
     public void clickOnItemRelease() {
-        $$(MENU_LOCATOR).get(2).click();
+        $$(BUTTON_THREE_POINT_LOCATOR).get(2).click();
     }
 
     @Step

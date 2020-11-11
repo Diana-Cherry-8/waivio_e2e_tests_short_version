@@ -33,9 +33,4 @@ public class BookmarksTest extends TestBase {
         String actualResult = bookmarksPage.getMessageAnyBookmarks();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

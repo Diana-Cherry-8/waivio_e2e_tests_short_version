@@ -10,7 +10,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.wizardsdev.Context.properties;
 
 public class DetailsPage extends Page {
-    private static final String PAGE_URL = "/rewards/referral-details/" + properties.getProperty("FacebookUserEmail00");
+    private static final String PAGE_URL = "/rewards/referral-details/";
     private static final By TITLE_DETAILS_TITLE_LOCATOR = By.cssSelector(".ReferralDetail__title");
 
     public DetailsPage() {

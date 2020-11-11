@@ -62,9 +62,4 @@ public class ReservedTest extends TestBase {
         String actualResult = reservedPage.getTextNoReward();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }

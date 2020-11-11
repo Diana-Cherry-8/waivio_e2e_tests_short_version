@@ -38,9 +38,4 @@ public class LoginTest extends TestBase {
     assertEquals(testFBGuestUserUsername, profilePage.getUserNameValue());
   }
 
-  @AfterEach
-  public void logOut() {
-    header.logOut();
-  }
-
 }

@@ -26,5 +26,4 @@ public class LikePostAsHiveUserTest extends TestBase {
     int postLikeCountAfterLike = feedPage.getPostLikeCount(postIndex);
     assert(postLikeCountBeforeLike < postLikeCountAfterLike);
   }
-
 }

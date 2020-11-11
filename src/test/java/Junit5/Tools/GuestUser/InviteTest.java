@@ -33,9 +33,4 @@ public class InviteTest extends TestBase {
         String actualResult = invitePage.getNameCopyLinkButton();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

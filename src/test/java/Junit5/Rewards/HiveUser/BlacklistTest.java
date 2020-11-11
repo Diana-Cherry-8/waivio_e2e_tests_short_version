@@ -31,6 +31,5 @@ public class BlacklistTest extends TestBase {
         String actualResult = blacklistPage.getTitleBlacklist();
         assertTrue(actualResult.contains(expectedResult));
     }
-
 }
 

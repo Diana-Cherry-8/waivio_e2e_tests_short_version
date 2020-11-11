@@ -36,13 +36,10 @@ public class ReceivablesTest extends TestBase {
     void openPaymentHistoryPage() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
-        String expectedSponsorNameFull = receivablesPage.getSponsorName();
-        String deleteText = "@";
-        String replace = "";
-        String expectedSponsorName = expectedSponsorNameFull.replaceAll(deleteText, replace);
+        String expectedSponsorName = receivablesPage.getSponsorNameInReceivables();
         receivablesPage.clickButtonPaymentHistory();
         refreshPage();
-        String actualSponsorName= receivablesPage.getSponsorNameInPaymentHistory();
+        String actualSponsorName = receivablesPage.getSponsorNameInPaymentHistory();
         assertEquals(expectedSponsorName, actualSponsorName);
     }
 
