@@ -36,7 +36,7 @@ public class ReceivablesTest extends TestBase {
     void openPaymentHistoryPage() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
-        String expectedSponsorName = receivablesPage.getSponsorNameInReceivables();
+        String expectedSponsorName = receivablesPage.getSponsorNameInTheFirstCardInReceivables();
         receivablesPage.clickButtonPaymentHistory();
         refreshPage();
         String actualSponsorName = receivablesPage.getSponsorNameInPaymentHistory();
@@ -50,7 +50,7 @@ public class ReceivablesTest extends TestBase {
         eligiblePage = topNavigation.clickOnRewardsItem();
         receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
         receivablesPage.clickButtonPaymentHistory();
-        receivablesPage.clickOnReportLink();
+        receivablesPage.clickOnTheFirstReportLink();
         String expectedResult = "Report";
         String actualResult = receivablesPage.getTitleReport();
         assertEquals(expectedResult, actualResult);

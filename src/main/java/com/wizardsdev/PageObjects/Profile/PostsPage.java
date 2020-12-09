@@ -29,12 +29,6 @@ public class PostsPage extends ProfilePage {
         return $(BUTTON_SEND_MESSAGE_LOCATOR).shouldBe(Condition.visible).exists();
     }
 
-
-    @Step
-    public static String getPostTitle() {
-        return $(FEED_POST_LOCATOR).shouldBe(Condition.visible).getText();
-    }
-
     @Override
     protected void init() {
 

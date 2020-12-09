@@ -53,7 +53,7 @@ public class ReservedTest extends TestBase {
     void releasedAReservation() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         reservedPage = rewardsLeftSidebar.clickOnReservedItems();
-        reservedPage.clickButtonMore();
+        reservedPage.clickOnTheFirstButtonMore();
         reservedPage.clickOnItemRelease();
         reservedPage.clickOnOkButton();
         sleep(10000);

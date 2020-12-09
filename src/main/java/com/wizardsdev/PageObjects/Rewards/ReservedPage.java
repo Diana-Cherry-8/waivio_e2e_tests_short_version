@@ -34,7 +34,7 @@ public class ReservedPage extends Page {
     }
 
     @Step
-    public void clickButtonMore() {
+    public void clickOnTheFirstButtonMore() {
         $$(BUTTONS_MORE_LOCATOR).get(0).shouldBe(Condition.visible).click();
     }
 

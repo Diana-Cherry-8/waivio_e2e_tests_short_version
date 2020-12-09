@@ -12,9 +12,9 @@ public class ReceivablesPage extends Page {
     private static final String PAGE_URL = "/rewards/receivables";
     private static final By TITLE_TOTAL_LOCATOR = By.cssSelector(".Debts__information-row");
     private static final By BUTTON_PAYMENT_HISTORY_LOCATOR = By.cssSelector(".PaymentCard__end-wrap-icon");
-    private static final By TITLES_SPONSOR_NAME_LOCATORS = By.cssSelector(".PaymentCard__content-name-wrap-row-name");
+    private static final By TITLES_SPONSOR_NAME_LOCATOR = By.cssSelector(".PaymentCard__content-name-wrap-row-name");
     private static final By TITLE_WITH_USER_AND_SPONSOR_NAMES_LOCATOR = By.cssSelector(".Payment__title-link");
-    private static final By LINKS_REPORT_LOCATORS = By.cssSelector(".PaymentTable__report");
+    private static final By LINKS_REPORT_LOCATOR = By.cssSelector(".PaymentTable__report");
     private static final By TITLE_REPORT_LOCATOR = By.cssSelector(".ant-modal-title");
 
     public ReceivablesPage() {
@@ -40,8 +40,8 @@ public class ReceivablesPage extends Page {
     }
 
     @Step
-    public String getSponsorNameInReceivables() {
-        String fullNameOfSponsor = $$(TITLES_SPONSOR_NAME_LOCATORS).get(0).shouldBe(Condition.visible).getText();
+    public String getSponsorNameInTheFirstCardInReceivables() {
+        String fullNameOfSponsor = $$(TITLES_SPONSOR_NAME_LOCATOR).get(0).shouldBe(Condition.visible).getText();
         String deleteText = "@";
         String replace = "";
         String nameOfSponsor = fullNameOfSponsor.replaceAll(deleteText, replace);
@@ -54,8 +54,8 @@ public class ReceivablesPage extends Page {
     }
 
     @Step
-    public void clickOnReportLink() {
-        $$(LINKS_REPORT_LOCATORS).get(0).shouldBe(Condition.visible).click();
+    public void clickOnTheFirstReportLink() {
+        $$(LINKS_REPORT_LOCATOR).get(0).shouldBe(Condition.visible).click();
     }
 
     @Step
