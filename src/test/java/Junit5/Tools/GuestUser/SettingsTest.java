@@ -33,11 +33,6 @@ public class SettingsTest extends TestBase {
         String actualResult = settingsPage.getTitleTools();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
 
 

@@ -4,15 +4,14 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Feature("Blacklist Page, Rewards")
-public class BlacklistTest extends TestBase {
+@Feature("Instructions Page, Rewards")
+public class InstructionsTest extends TestBase {
 
     @BeforeEach
     void login() {
@@ -21,15 +20,14 @@ public class BlacklistTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check blacklist page is opened in Rewards")
+    @DisplayName("Check instructions page is opened in Rewards")
     @Test
-    void openBlacklist() {
+    void openInstructions() {
         eligiblePage = topNavigation.clickOnRewardsItem();
-        blacklistPage = rewardsLeftSidebar.clickBlacklistItem();
+        instructionsPage = rewardsLeftSidebar.clickOnInstructionsItemAsHiveUser();
         refreshPage();
-        String expectedResult = "Blacklist";
-        String actualResult = blacklistPage.getTitleBlacklist();
-        assertTrue(actualResult.contains(expectedResult));
+        String expectedResult = "Referral instructions:";
+        String actualResult = instructionsPage.getTitleInstructionsRewards();
+        assertEquals(expectedResult, actualResult);
     }
 }
-

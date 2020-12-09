@@ -6,6 +6,7 @@ import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.FacebookSignPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignIn extends Modal{
   //steemconnect page ellements

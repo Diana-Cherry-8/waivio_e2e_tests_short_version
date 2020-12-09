@@ -6,6 +6,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.ex.ElementNotFound;
 import com.wizardsdev.Context;
 import io.qameta.allure.Step;
@@ -17,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
   public static final By TITLE_REWARDS_LOCATOR = By.cssSelector(".ant-breadcrumb-link");
@@ -51,6 +53,9 @@ public abstract class Page {
   public static String getCurrentPage() {
     return Context.getSiteUrl() + currentPage.get();
   }
+
+  protected static WebDriverWait waiter;
+
 
   //  Click methods
   @Step
@@ -205,5 +210,8 @@ public abstract class Page {
             .replace(" (guest)", "");
   }
 
-
+  @Step
+  public void waiter() {
+    waiter = new WebDriverWait(WebDriverRunner.getWebDriver(), 20);
+  }
 }

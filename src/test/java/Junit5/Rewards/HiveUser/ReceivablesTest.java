@@ -4,18 +4,16 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Receivables Page, Rewards")
 public class ReceivablesTest extends TestBase {
 
-    @BeforeEach
-    void login() {
+    @BeforeAll
+    static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     }
@@ -30,6 +28,32 @@ public class ReceivablesTest extends TestBase {
         String expectedResult = "Total: ";
         String actualResult = receivablesPage.getTitleReceivables();
         assertTrue(actualResult.contains(expectedResult));
+    }
+
+    @Story("Open page")
+    @DisplayName("Check payment history page is opened in Receivables")
+    @Test
+    void openPaymentHistoryPage() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        String expectedSponsorName = receivablesPage.getSponsorNameInTheFirstCardInReceivables();
+        receivablesPage.clickButtonPaymentHistory();
+        refreshPage();
+        String actualSponsorName = receivablesPage.getSponsorNameInPaymentHistory();
+        assertEquals(expectedSponsorName, actualSponsorName);
+    }
+
+    @Story("Open page")
+    @DisplayName("Check report modal window is opened in Receivables")
+    @Test
+    void openReportModalWindow() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        receivablesPage = rewardsLeftSidebar.clickOnReceivablesItem();
+        receivablesPage.clickButtonPaymentHistory();
+        receivablesPage.clickOnTheFirstReportLink();
+        String expectedResult = "Report";
+        String actualResult = receivablesPage.getTitleReport();
+        assertEquals(expectedResult, actualResult);
     }
 }
 

@@ -1,7 +1,6 @@
 package Junit5;
 
-import static com.codeborne.selenide.Selenide.refresh;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static com.wizardsdev.Context.THREADS_COUNT;
 
 import Extensions.MyAfterTestExecutionCallback;
@@ -30,6 +29,9 @@ import com.wizardsdev.PageObjects.Tools.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
@@ -84,6 +86,11 @@ public abstract class TestBase {
   protected static MessagesPage messagesPage;
   protected static MatchBotPage matchBotPage;
   protected static BlacklistPage blacklistPage;
+  protected static DetailsPage detailsPage;
+  protected static InstructionsPage instructionsPage;
+  protected static StatusPage statusPage;
+  protected static FraudDetectionPage fraudDetectionPage;
+  protected static EditorPage editorPage;
 
   protected static DraftsPage draftsPage;
   protected static BookmarksPage bookmarksPage;
@@ -115,6 +122,9 @@ public abstract class TestBase {
   protected static ReviewsObjectPage dishObjectPage;
   protected static PageObjectPage pageObjectPage;
 
+  protected static FullScreenOfTheReservationPost fullScreenOfTheReservationPost;
+
+  protected static WebDriverWait waiter;
 
 
 
@@ -141,6 +151,7 @@ public abstract class TestBase {
         : System.getProperty("Browser");
     setNumberOfUser();
     Context.initInstance(browser, WAIT_TIME, getNumberOfUser());
+    waiter = new WebDriverWait(WebDriverRunner.getWebDriver(), 20);//как вариант чтобы избавиться от sleep
     qaNumber = Context.getQaNumber();
     properties = Context.getInstance().getProperties();
     messages = Context.getInstance().getMessages();

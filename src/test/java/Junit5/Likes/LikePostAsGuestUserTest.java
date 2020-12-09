@@ -30,8 +30,4 @@ public class LikePostAsGuestUserTest extends TestBase {
     assert(postLikeCountBeforeLike < postLikeCountAfterLike);
   }
 
-  @AfterEach
-  void logout() {
-    header.logOut();
-  }
 }

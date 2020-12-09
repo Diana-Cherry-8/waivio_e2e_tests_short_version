@@ -1,25 +1,28 @@
-package Junit5.Objects.GuestUser;
+package Junit5.Objects.HiveUser;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Restaurant Page, Object")
 public class RestaurantTest extends TestBase {
-    static String facebookEmail = properties.getProperty("FacebookUserEmail00");
-    static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String restaurantName = properties.getProperty("RestaurantName");
+    String restaurantNameToSearch = "Tasty Indian Bistro Delta";
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithHiveSigner(getUserLogin(), getUserPassword());
         reviewsObjectPage = ReviewsObjectPage.openReviewsObjectPage();
     }
 
@@ -28,7 +31,7 @@ public class RestaurantTest extends TestBase {
     @Test
     void openRestaurant() {
         refreshPage();
-        String expectedResult = restaurantName;
+        String expectedResult = restaurantNameToSearch;
         String actualResult = reviewsObjectPage.getObjectName();
         assertEquals(expectedResult, actualResult);
     }
@@ -88,12 +91,9 @@ public class RestaurantTest extends TestBase {
     @DisplayName("Check restaurant Tasty Indian Bistro Delta is opened, this object has 1st tab news")
     @Test
     void openRestaurantTastyIndianBistroDelta() {
-        String restaurantNameToSearch = "Tasty Indian Bistro Delta";
         header.inputTextToSearch(restaurantNameToSearch);
         pageObjectPage = header.clickOnTheFirstItemFromSearch();
         String actualResult = pageObjectPage.getObjectName();
         assertEquals(restaurantNameToSearch, actualResult);
     }
-
-
 }

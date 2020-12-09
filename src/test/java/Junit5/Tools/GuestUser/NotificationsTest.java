@@ -33,11 +33,6 @@ public class NotificationsTest extends TestBase {
         String actualResult = toolsNotificationsPage.getTitleTools();
         assertEquals(expectedResult, actualResult);
     }
-
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
 
 

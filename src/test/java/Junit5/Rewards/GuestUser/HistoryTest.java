@@ -4,21 +4,17 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("History Page, Rewards")
 public class HistoryTest extends TestBase {
-    String facebookEmail = properties.getProperty("FacebookUserEmail00");
-    String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static String facebookEmail = properties.getProperty("FacebookUserEmail00");
+    static String facebookPassword = properties.getProperty("FacebookUserPass00");
 
-    @BeforeEach
-    void login() {
+    @BeforeAll
+    static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
     }
@@ -35,9 +31,32 @@ public class HistoryTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
+    @Story("Open page")
+    @DisplayName("Check post about rewards reservations is opened")
+    @Test
+    void openViewReservation() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        historyPage = rewardsLeftSidebar.clickOnHistoryItem();
+        historyPage.clickButtonMore();
+        fullScreenOfTheReservationPost = historyPage.clickOnItemViewReservation();
+        refreshPage();
+        String expectedResult = "Rewards reservations";
+        String actualResult = fullScreenOfTheReservationPost.getTitleRewardsReservations();
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Story("Open page")
+    @DisplayName("Check post about rewards reservations is opened")
+    @Test
+    void checkPostRewardsReservationsDoesNotContainUndefined() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        historyPage = rewardsLeftSidebar.clickOnHistoryItem();
+        historyPage.clickButtonMore();
+        fullScreenOfTheReservationPost = historyPage.clickOnItemViewReservation();
+        refreshPage();
+        String expectedResult = "undefined";
+        String actualResult = fullScreenOfTheReservationPost.getContentPage();
+        assertFalse(actualResult.contains(expectedResult));
     }
 }
 

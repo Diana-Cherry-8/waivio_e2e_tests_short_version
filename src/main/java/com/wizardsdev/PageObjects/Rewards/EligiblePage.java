@@ -5,12 +5,16 @@ import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class EligiblePage extends Page {
     private static final String PAGE_URL = "/rewards/active";
+    private static final By BUTTON_CAMPAIGN_EARN_REFACTOR_LOCATOR = By.cssSelector(".Campaign__button");
+    private static final By BUTTONS_RESERVE_LOCATOR = By.cssSelector(".ant-btn-primary");
+    private static final By BUTTON_RESERVE_IN_MODAL_WINDOW_LOCATOR =
+            By.cssSelector(".Details__footer-reserve-btn .ant-btn-primary");
+    private static final By TITLE_SECONDARY_OBJECT_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
 
     public EligiblePage() {
         super(PAGE_URL);
@@ -22,6 +26,29 @@ public class EligiblePage extends Page {
             open(PAGE_URL);
         }
         return new EligiblePage();
+    }
+
+    @Step
+    public void clickEarnButton() {
+        $(BUTTON_CAMPAIGN_EARN_REFACTOR_LOCATOR).click();
+    }
+
+    @Step
+    public ReservationsPage clickReserveButtonInCard() {
+        $$(BUTTONS_RESERVE_LOCATOR).get(0).shouldBe(Condition.visible).click();
+        return new ReservationsPage();
+    }
+
+    @Step
+    public ReservedPage clickReserveButtonInModalWindow() {
+        $(BUTTON_RESERVE_IN_MODAL_WINDOW_LOCATOR).shouldBe(Condition.visible).click();
+        return new ReservedPage();
+    }
+
+
+    @Step
+    public String getTitleSecondaryObject() {
+        return $(TITLE_SECONDARY_OBJECT_NAME_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
     @Override

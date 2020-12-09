@@ -106,9 +106,33 @@ public class RewardsLeftSidebar extends Page {
     }
 
     @Step
-    public BlacklistPage clickBlacklistItem() {
+    public FraudDetectionPage clickOnFraudDetectionItem() {
         clickOnSideBarItemRewardsByIndex(12);
+        return new FraudDetectionPage();
+    }
+
+    @Step
+    public BlacklistPage clickBlacklistItem() {
+        clickOnSideBarItemRewardsByIndex(13);
         return new BlacklistPage();
+    }
+
+    @Step
+    public DetailsPage clickOnDetailsItemAsHiveUser() {
+        clickOnSideBarItemRewardsByIndex(14);
+        return new DetailsPage();
+    }
+
+    @Step
+    public InstructionsPage clickOnInstructionsItemAsHiveUser() {
+        clickOnSideBarItemRewardsByIndex(15);
+        return new InstructionsPage();
+    }
+
+    @Step
+    public StatusPage clickOnStatusItemAsHiveUser() {
+        clickOnSideBarItemRewardsByIndex(16);
+        return new StatusPage();
     }
 
     @Override

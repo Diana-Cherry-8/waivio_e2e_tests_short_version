@@ -13,6 +13,7 @@ import static com.wizardsdev.Context.properties;
 public class PageObjectPage extends ObjectPage{
     static String pageObject = properties.getProperty("PageObject");
     private static final String PAGE_URL = "/object/" + pageObject;
+    private static final By CENTRAL_FEED_IN_PAGE_LOCATOR = By.cssSelector(".Body--full");
 
 
     public PageObjectPage() {
@@ -52,6 +53,11 @@ public class PageObjectPage extends ObjectPage{
             open(PAGE_URL);
         }
         return new PageObjectPage();
+    }
+
+    @Step
+    public String getContentPage() {
+        return $(CENTRAL_FEED_IN_PAGE_LOCATOR).shouldHave(Condition.visible).getText();
     }
 
     @Override

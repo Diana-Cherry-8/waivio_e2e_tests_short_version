@@ -91,9 +91,4 @@ public class AboutTest extends TestBase {
         boolean actualResult = expertsObjectPage.isButtonFollowSecondaryExist();
         assertTrue(actualResult);
     }
-
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }

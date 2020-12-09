@@ -1,4 +1,4 @@
-package Junit5.Discover.GuestUser;
+package Junit5.Discover.HiveUser;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -8,13 +8,11 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DiscoverTabsTest extends TestBase {
-    static String facebookEmail = properties.getProperty("FacebookUserEmail00");
-    static String facebookPassword = properties.getProperty("FacebookUserPass00");
 
     @BeforeAll
     static void goToDiscoverRestaurantPage() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithHiveSigner(getUserLogin(), getUserPassword());
         discoverPage = topNavigation.clickOnDiscoverItem();
     }
 
@@ -368,3 +366,4 @@ public class DiscoverTabsTest extends TestBase {
         assertTrue(actualResult.contains(expectedResult));
     }
 }
+

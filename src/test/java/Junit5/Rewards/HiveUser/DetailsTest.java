@@ -2,15 +2,17 @@ package Junit5.Rewards.HiveUser;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReportsTest extends TestBase{
+@Feature("Details Page, Rewards")
+public class DetailsTest extends TestBase {
+
     @BeforeEach
     void login() {
         feedPage = FeedPage.openFeedPage();
@@ -18,14 +20,14 @@ public class ReportsTest extends TestBase{
     }
 
     @Story("Open page")
-    @DisplayName("Check Reports page is opened in Rewards")
+    @DisplayName("Check details page is opened in Rewards")
     @Test
-    void openReports() {
+    void openDetails() {
         eligiblePage = topNavigation.clickOnRewardsItem();
-        reportsPage = rewardsLeftSidebar.clickOnReportsItemAsHiveUser();
+        detailsPage = rewardsLeftSidebar.clickOnDetailsItemAsHiveUser();
         refreshPage();
-        String expectedResult = "Reports";
-        String actualResult = reportsPage.getTitleReportsRewards();
-        assertTrue(actualResult.contains(expectedResult));
+        String expectedResult = "Referral program details:";
+        String actualResult = detailsPage.getTitleDetailsRewards();
+        assertEquals(expectedResult, actualResult);
     }
 }
