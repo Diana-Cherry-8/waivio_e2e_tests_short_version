@@ -64,24 +64,6 @@ public class RewardsLeftSidebar extends Page {
     }
 
     @Step
-    public DetailsPage clickOnDetailsItem() {
-        clickOnSideBarItemRewardsByIndex(6);
-        return new DetailsPage();
-    }
-
-    @Step
-    public InstructionsPage clickOnInstructionsItem() {
-        clickOnSideBarItemRewardsByIndex(7);
-        return new InstructionsPage();
-    }
-
-    @Step
-    public StatusPage clickOnStatusItem() {
-        clickOnSideBarItemRewardsByIndex(8);
-        return new StatusPage();
-    }
-
-    @Step
     public CreatePage clickOnCreateItem() {
         clickOnSideBarItemRewardsByIndex(5);
         return new CreatePage();
