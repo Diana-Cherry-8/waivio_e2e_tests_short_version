@@ -6,6 +6,7 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,6 +37,11 @@ public class LoginTest extends TestBase {
     header.logInWithFacebook(facebookEmail, facebookPassword);
     profilePage = header.clickOnAccountIcon();
     assertEquals(testFBGuestUserUsername, profilePage.getUserNameValue());
+  }
+
+  @AfterEach
+  void logout() {
+    header.logOut();
   }
 
 }

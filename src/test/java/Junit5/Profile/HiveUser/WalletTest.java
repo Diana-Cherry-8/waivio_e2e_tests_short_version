@@ -43,6 +43,7 @@ public class WalletTest extends TestBase {
         String replace = "";
         String deleteHive = expectedString.replaceAll(deleteText, replace);
         double expectedDouble = Double.parseDouble(deleteHive) - 0.001;
+        sleep(5000);
         walletPage.clickOnTransferButton();
         walletPage.setHiveUserName(hiveUserName);
         walletPage.setAmount(amountForTransfer);

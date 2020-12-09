@@ -9,8 +9,8 @@ import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Modals.SignIn;
 import com.wizardsdev.PageObjects.*;
+import com.wizardsdev.PageObjects.Objects.PageObjectPage;
 import com.wizardsdev.PageObjects.Profile.PostsPage;
-import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import com.wizardsdev.PageObjects.Tools.SettingsPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -21,7 +21,7 @@ public class Header extends Page {
   private static final By ANT_MENU_ITEMS_LOCATOR =
       By.cssSelector(".ant-menu-item");
   private static final By ACCOUNT_ICON_LOCATOR =
-      By.className("Topnav__user");
+      By.cssSelector(".Topnav__user");
   private static final By DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR =
       By.className("PopoverMenuItem");
   private static final By INPUT_SEARCH_LOCATOR =
@@ -55,16 +55,18 @@ public class Header extends Page {
   public void logInWithHiveSigner(String login, String password) {
     SignIn signIn = clickOnSingIn();
     signIn.signInWithHiveSigner(login, password);
+    sleep(3000);
   }
 
   @Step
   public void logInWithFacebook(String email, String password) {
     SignIn signIn = clickOnSingIn();
-    sleep(4000);
+    sleep(3000);
     FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook();
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
+    //facebookSignPage.clickOnOk();
     sleep(8000);
   }
 
@@ -113,6 +115,21 @@ public class Header extends Page {
   @Step
   public void clickOnRussianLanguage() {
     $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(26).click();
+  }
+
+  @Step
+  public void clickOnGermanLanguage() {
+    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(6).click();
+  }
+
+  @Step
+  public void clickOnFrenchLanguage() {
+    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(10).click();
+  }
+
+  @Step
+  public void clickOnEnglishLanguage() {
+    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(0).click();
   }
 
   public void inputTextToSearch(String textToSearch) {
@@ -165,6 +182,16 @@ public class Header extends Page {
 
   public boolean isUserLogOuted() {
     return $$(ANT_MENU_ITEMS_LOCATOR).get(2).getText().equals("Log in");
+  }
+
+  public PageObjectPage clickOnTheFirstItemFromSearch () {
+    $$(SEARCH_ITEMS_OBJECT_USER_LOCATOR).get(0).shouldBe(Condition.visible).click();
+    return new PageObjectPage();
+  }
+
+  public PageObjectPage clickOnTheSecondItemFromSearch () {
+    $$(SEARCH_ITEMS_OBJECT_USER_LOCATOR).get(1).shouldBe(Condition.visible).click();
+    return new PageObjectPage();
   }
 
   @Override

@@ -26,7 +26,7 @@ public class FollowingTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @DisplayName("Check guest user following counter") //CheckFollowingFollowersCounterGuestUserTest
+    @DisplayName("Check guest user following counter") //early - CheckFollowingFollowersCounterGuestUserTest
     @Test
     void checkFollowingCounterTest(){
         followingPage = FollowingPage.openFollowingPage(properties.getProperty("FacebookUserName00"));

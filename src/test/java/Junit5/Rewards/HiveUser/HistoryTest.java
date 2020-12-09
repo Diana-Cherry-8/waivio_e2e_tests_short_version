@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("History Page, Rewards")
 public class HistoryTest extends TestBase {
@@ -30,6 +30,39 @@ public class HistoryTest extends TestBase {
         String expectedResult = "History and sponsor communications";
         String actualResult = historyPage.getTitleRewards();
         assertEquals(expectedResult, actualResult);
+    }
+
+    @Story("Open page")
+    @DisplayName("Check post about rewards reservations is opened")
+    @Test
+    void openViewReservation() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        historyPage = rewardsLeftSidebar.clickOnHistoryItem();
+        historyPage.clickButtonMore();
+        fullScreenOfTheReservationPost = historyPage.clickOnItemViewReservation();
+        refreshPage();
+        String expectedResult = "Rewards reservations";
+        String actualResult = fullScreenOfTheReservationPost.getTitleRewardsReservations();
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Story("Open page")
+    @DisplayName("Check post about rewards reservations is opened")
+    @Test
+    void checkPostRewardsReservationsDoesNotContainUndefined() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        historyPage = rewardsLeftSidebar.clickOnHistoryItem();
+        historyPage.clickButtonMore();
+        fullScreenOfTheReservationPost = historyPage.clickOnItemViewReservation();
+        refreshPage();
+        String expectedResult = "undefined";
+        String actualResult = fullScreenOfTheReservationPost.getContentPage();
+        assertFalse(actualResult.contains(expectedResult));
+    }
+
+    @AfterEach
+    void logout() {
+       header.logOut();
     }
 }
 

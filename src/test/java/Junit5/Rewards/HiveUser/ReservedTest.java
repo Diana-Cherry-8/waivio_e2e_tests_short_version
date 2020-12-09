@@ -1,17 +1,20 @@
 package Junit5.Rewards.HiveUser;
 
 import Junit5.TestBase;
-import com.wizardsdev.Modals.Modal;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Feature("Reserved Page, Rewards")
 public class ReservedTest extends TestBase {
+    private static final By TITLE_OBJECT_CARD_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
 
     @BeforeAll
     static void login() {
@@ -40,7 +43,8 @@ public class ReservedTest extends TestBase {
         String expectedResult = eligiblePage.getTitleSecondaryObject();
         eligiblePage.clickReserveButtonInCard();
         reservedPage = eligiblePage.clickReserveButtonInModalWindow();
-        sleep(10000);
+        waiter.until(ExpectedConditions.visibilityOf($(TITLE_OBJECT_CARD_NAME_LOCATOR)));
+        //sleep(10000);
         refreshPage();
         String actualResult = reservedPage.getTitleObjectCardName();
         assertEquals(expectedResult, actualResult);
