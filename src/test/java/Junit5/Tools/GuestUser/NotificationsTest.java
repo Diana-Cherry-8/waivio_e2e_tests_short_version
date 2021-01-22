@@ -34,10 +34,7 @@ public class NotificationsTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
+
 }
 
 

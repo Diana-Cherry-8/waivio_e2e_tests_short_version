@@ -49,7 +49,7 @@ public class FollowersPage extends ProfilePage {
         $(FOLLOWING_FOLLOWERS_USERS_NAMES_LOCATOR).shouldBe(Condition.visible);
         ElementsCollection followerUsersList = $$(FOLLOWING_FOLLOWERS_USERS_NAMES_LOCATOR);
         for(WebElement element: followerUsersList){
-            followersNamesList.add(element.getText());
+            System.out.println(element.getText());
         }
         return followersNamesList;
     }

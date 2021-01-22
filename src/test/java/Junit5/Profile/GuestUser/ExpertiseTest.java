@@ -60,9 +60,4 @@ public class ExpertiseTest extends TestBase {
         sleep(5000);
         assertTrue(actualResult);
     }
-
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }

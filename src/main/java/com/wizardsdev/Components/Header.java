@@ -3,6 +3,7 @@ package com.wizardsdev.Components;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
@@ -46,6 +47,7 @@ public class Header extends Page {
       By.cssSelector(".Topnav__menu--icon a");
   private static final By USER_MENU_ITEMS_LOCATOR =
       By.cssSelector(".PopoverMenuItem:not(.PopOverMenuItem__full-screen-hidden) a");
+  private static final By LOADER_SIGN_IN_MODAL_LOCATOR = By.className("ModalSignIn__loading");
 
   public Header() {
     super();
@@ -68,7 +70,7 @@ public class Header extends Page {
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
-    sleep(5000);
+    $(LOADER_SIGN_IN_MODAL_LOCATOR).shouldBe(Condition.visible).shouldBe(Condition.disappear);
   }
 
   @Step

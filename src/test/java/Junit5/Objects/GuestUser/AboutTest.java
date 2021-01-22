@@ -92,8 +92,4 @@ public class AboutTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }

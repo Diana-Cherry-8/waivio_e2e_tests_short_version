@@ -33,9 +33,5 @@ public class DraftsTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
 

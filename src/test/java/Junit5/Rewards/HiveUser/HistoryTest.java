@@ -32,9 +32,5 @@ public class HistoryTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
 

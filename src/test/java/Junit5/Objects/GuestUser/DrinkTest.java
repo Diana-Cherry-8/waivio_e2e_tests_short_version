@@ -94,10 +94,6 @@ public class DrinkTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }
 
 

@@ -34,9 +34,5 @@ public class WalletTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
 

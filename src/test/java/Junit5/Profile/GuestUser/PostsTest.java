@@ -33,8 +33,4 @@ public class PostsTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }

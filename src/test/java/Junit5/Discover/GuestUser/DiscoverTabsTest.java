@@ -368,8 +368,4 @@ public class DiscoverTabsTest extends TestBase {
         assertTrue(actualResult.contains(expectedResult));
     }
 
-    @AfterAll
-    static void logout() {
-        header.logOut();
-    }
 }

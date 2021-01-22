@@ -31,8 +31,4 @@ public class CreateTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 
-    @AfterEach
-    void logout() {
-        header.logOut();
-    }
 }
