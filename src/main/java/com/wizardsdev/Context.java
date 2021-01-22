@@ -33,7 +33,7 @@ public class Context {
   private static Keywords keywords;
   private static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();
   private static Faker faker;
-  public static final int THREADS_COUNT = 4;
+  public static final int THREADS_COUNT = 1;
   public static final String SITE_URL_STAGING = "https://waiviodev.com";
   public static final String SITE_URL_PRODUCTION = "https://waivio.com";
   public static final String PROPERTIES_FILE_NAME = "TestsData";
