@@ -11,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
+import static com.wizardsdev.Context.properties;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -18,12 +19,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class RestaurantTest extends TestBase {
     String restaurantName = properties.getProperty("RestaurantName");
     String restaurantNameToSearch = "Tasty Indian Bistro Delta";
+    static String restaurantObject = properties.getProperty("RestaurantObject");
+
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
-        reviewsObjectPage = ReviewsObjectPage.openReviewsObjectPage();
+        reviewsObjectPage = ReviewsObjectPage.openReviewsObjectPage(restaurantObject);
     }
 
     @Story("Open page")

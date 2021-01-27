@@ -72,7 +72,7 @@ public class AboutTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 
-    @Story("Open page") //странный баг, мануально не воспроизводится
+    @Story("Open page")
     @DisplayName("Check Followers is opened")
     @Test
     void openFollowersInAbout() {
@@ -82,7 +82,7 @@ public class AboutTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @Story("Open page") //странный баг, мануально не воспроизводится
+    @Story("Open page")
     @DisplayName("Check Experts is opened")
     @Test
     void openExpertsInAbout() {

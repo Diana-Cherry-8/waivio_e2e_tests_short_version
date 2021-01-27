@@ -7,10 +7,12 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
+import static com.wizardsdev.Context.properties;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("Dish type, Object")
 public class DishTest extends TestBase {
+    static String dishObject = properties.getProperty("DishObject");
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String dishName = properties.getProperty("DishObjectName");
@@ -19,7 +21,7 @@ public class DishTest extends TestBase {
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
-        dishObjectPage = DishObjectPage.openDishObjectPage();
+        dishObjectPage = DishObjectPage.openObjectPage(dishObject);
     }
 
     @Story("Open page")

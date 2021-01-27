@@ -7,19 +7,21 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
+import static com.wizardsdev.Context.properties;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("List type, Object")
 public class ListTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static String listObject = properties.getProperty("ListObject");
     String listName = properties.getProperty("ListObjectName");
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
-        listObjectPage = ListObjectPage.openListObjectPage();
+        listObjectPage = ListObjectPage.openListObjectPage(listObject);
     }
 
     @Story("Open page")

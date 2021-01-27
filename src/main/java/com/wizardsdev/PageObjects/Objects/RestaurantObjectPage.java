@@ -9,20 +9,6 @@ import static com.wizardsdev.Context.properties;
 
 public class RestaurantObjectPage extends ObjectPage {
 
-    static String restaurantObject = properties.getProperty("RestaurantObject");
-    private static final String PAGE_URL = "/object/" + restaurantObject;
-    public RestaurantObjectPage() {
-        super(PAGE_URL);
-    }
-
-    @Step
-    public static RestaurantObjectPage openRestaurantPage() {
-        if (!url().contains(PAGE_URL)) {
-            open(PAGE_URL);
-        }
-        return new RestaurantObjectPage();
-    }
-
     @Override
     protected void init() {
     }

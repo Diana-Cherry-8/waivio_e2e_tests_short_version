@@ -11,12 +11,14 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.wizardsdev.Context.properties;
 
 public class ListObjectPage extends ObjectPage{
-    static String listObject = properties.getProperty("ListObject");
-    private static final String PAGE_URL = "/object/" + listObject + "/list";
+    private static final String PAGE_URL = "/object/";
 
-
-    public ListObjectPage() {
-        super(PAGE_URL);
+    @Step
+    public static ListObjectPage openListObjectPage(String listName) {
+        if (!url().contains(PAGE_URL + listName)) {
+            open(PAGE_URL + listName);
+        }
+        return new ListObjectPage();
     }
 
     @Step
@@ -51,14 +53,6 @@ public class ListObjectPage extends ObjectPage{
         $$(TOP_NAVIGATION_OBJECT_PAGE_LOCATOR).get(6).shouldBe(Condition.visible);
         getTopNavigationObjectItemByIndex(6).click();
         return new ExpertsObjectPage();
-    }
-
-    @Step
-    public static ListObjectPage openListObjectPage() {
-        if (!url().contains(PAGE_URL)) {
-            open(PAGE_URL);
-        }
-        return new ListObjectPage();
     }
 
     @Override
