@@ -1,5 +1,7 @@
 package Junit5.Likes;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import Junit5.TestBase;
 import com.codeborne.selenide.Selenide;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -27,7 +29,7 @@ public class LikePostAsGuestUserTest extends TestBase {
     feedPage.clickOnPostLikeButton(postIndex);
     refreshPage();// нужно так как подставляется фек-данные об количесвах лайков
     int postLikeCountAfterLike = feedPage.getPostLikeCount(postIndex);
-    assert(postLikeCountBeforeLike < postLikeCountAfterLike);
+    assertTrue(postLikeCountBeforeLike < postLikeCountAfterLike);
   }
 
 }

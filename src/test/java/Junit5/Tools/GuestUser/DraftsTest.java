@@ -32,5 +32,6 @@ public class DraftsTest extends TestBase {
         String actualResult = draftsPage.getTitleTools();
         assertEquals(expectedResult, actualResult);
     }
+
 }
 

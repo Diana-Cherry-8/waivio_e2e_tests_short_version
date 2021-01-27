@@ -34,4 +34,5 @@ public class CommentsTest extends TestBase {
         String actualResult = commentsPage.getUsernameInPost();
         assertEquals(expectedResult, actualResult);
     }
+
 }
