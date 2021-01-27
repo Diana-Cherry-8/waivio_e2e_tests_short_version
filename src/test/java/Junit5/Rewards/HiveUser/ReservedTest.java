@@ -44,7 +44,6 @@ public class ReservedTest extends TestBase {
         eligiblePage.clickReserveButtonInCard();
         reservedPage = eligiblePage.clickReserveButtonInModalWindow();
         waiter.until(ExpectedConditions.visibilityOf($(TITLE_OBJECT_CARD_NAME_LOCATOR)));
-        //sleep(10000);
         refreshPage();
         String actualResult = reservedPage.getTitleObjectCardName();
         assertEquals(expectedResult, actualResult);

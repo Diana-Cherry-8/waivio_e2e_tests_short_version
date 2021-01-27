@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.wizardsdev.Context.properties;
 
 public abstract class ObjectPage extends Page {
@@ -17,8 +18,19 @@ public abstract class ObjectPage extends Page {
     private static final By SORTING_FOLLOWERS_LOCATOR = By.cssSelector(".SortSelector");
     private static final By BUTTON_FOLLOW_SECONDARY_LOCATOR = By.cssSelector(".Follow--secondary");
     private static final By OBJECT_TYPE_LOCATOR = By.cssSelector(".ObjectType");
+    private static final String PAGE_URL = "/object/";
 
-    static String restaurantObject = properties.getProperty("RestaurantObject");
+    protected ObjectPage(String objectName) {
+        super(Context.getSiteUrl()  + "/object/" + objectName);
+    }
+
+    @Step
+    public static ReviewsObjectPage openObjectPage(String objectName) {
+        if (!url().contains(PAGE_URL + objectName)) {
+            open(PAGE_URL + objectName);
+        }
+        return new ReviewsObjectPage();
+    }
 
     protected ObjectPage() {
         init();
@@ -72,12 +84,6 @@ public abstract class ObjectPage extends Page {
     public boolean isButtonFollowSecondaryExist() {
         $$(TOP_NAVIGATION_OBJECT_PAGE_LOCATOR).get(5).shouldBe(Condition.visible);
         return $(BUTTON_FOLLOW_SECONDARY_LOCATOR).shouldBe(Condition.visible).exists();
-    }
-
-    protected ObjectPage(String pageUrl) {
-        currentPage.set(pageUrl);
-        init();
-        parsePage();
     }
 
     @Step

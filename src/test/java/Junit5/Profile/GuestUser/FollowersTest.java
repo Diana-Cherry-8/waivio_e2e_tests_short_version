@@ -34,7 +34,7 @@ public class FollowersTest extends TestBase {
         followersPage = FollowersPage.openFollowersPage(properties.getProperty("FacebookUserName00"));
         int followersCounter = followersPage.getFollowersNumberFromMenuCounter();
         int followersListSize = followersPage.getFollowerNamesList().size();
-        assert(followersCounter == followersListSize);
+        assertEquals(followersCounter, followersListSize);
     }
 
     @DisplayName("Check user follower counter") //CheckFollowingFollowersCounterTest
@@ -45,4 +45,5 @@ public class FollowersTest extends TestBase {
         int followersListSize = followersPage.getFollowerNamesList().size();
         assert(followersCounter == followersListSize);
     }
+
 }

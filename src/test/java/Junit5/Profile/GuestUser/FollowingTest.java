@@ -33,7 +33,7 @@ public class FollowingTest extends TestBase {
         int followingCounter = followingPage.getFollowingNumberFromMenuCounter();
         int sumFollowings = followingPage.getFollowingUsersNamesList().size()
                 + followingPage.getFollowingObjectsNamesList().size();
-        assert( followingCounter == sumFollowings);
+        assertEquals( followingCounter, sumFollowings);
     }
 
     @DisplayName("Check user following counter") //CheckFollowingFollowersCounterTest

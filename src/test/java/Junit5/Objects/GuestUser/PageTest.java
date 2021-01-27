@@ -7,25 +7,29 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
+import static com.wizardsdev.Context.properties;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("Page type, Object")
 public class PageTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static String pageObject = properties.getProperty("PageObject");
     String pageName = properties.getProperty("PageObjectName");
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
-        pageObjectPage = PageObjectPage.openPageObjectPage();
+        pageObjectPage = PageObjectPage.openPageObjectPage(pageObject);
     }
 
     @Story("Open page")
     @DisplayName("Check Page object page is opened")
     @Test
     void openPage() {
+        header.inputTextToSearch(pageName);
+        pageObjectPage = header.clickOnTheFirstItemFromSearch();
         refreshPage();
         String expectedResult = pageName;
         String actualResult = pageObjectPage.getObjectName();
@@ -88,6 +92,8 @@ public class PageTest extends TestBase {
     @DisplayName("Check check availability content in Page")
     @Test
     void checkContent() {
+        header.inputTextToSearch(pageName);
+        pageObjectPage = header.clickOnTheFirstItemFromSearch();
         String expectedResult = "8 REASONS WHY MUSIC IS IMPORTANT TO US:";
         String actualResult = pageObjectPage.getContentPage();
         assertTrue(actualResult.contains(expectedResult));

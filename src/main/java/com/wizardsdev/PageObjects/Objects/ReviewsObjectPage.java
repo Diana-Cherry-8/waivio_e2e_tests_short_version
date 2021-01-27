@@ -7,16 +7,12 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ReviewsObjectPage extends ObjectPage{
 
-    private static final String PAGE_URL = "/object/" + restaurantObject;
-
-    public ReviewsObjectPage() {
-        super(PAGE_URL);
-    }
+    private static final String PAGE_URL = "/object/";
 
     @Step
-    public static ReviewsObjectPage openReviewsObjectPage() {
-        if (!url().contains(PAGE_URL)) {
-            open(PAGE_URL);
+    public static ReviewsObjectPage openReviewsObjectPage(String object) {
+        if (!url().contains(PAGE_URL + object)) {
+            open(PAGE_URL + object);
         }
         return new ReviewsObjectPage();
     }

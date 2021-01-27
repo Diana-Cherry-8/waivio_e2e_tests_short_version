@@ -49,7 +49,7 @@ public class WalletTest extends TestBase {
         walletPage.setAmount(amountForTransfer);
         walletPage.clickContinueAsHiveUser();
         refreshPage();
-        sleep(10000);
+        sleep(5000);
         refreshPage();
         String actualString = walletPage.getHiveAmount();
         String deleteHiveForActual = actualString.replaceAll(deleteText, replace);

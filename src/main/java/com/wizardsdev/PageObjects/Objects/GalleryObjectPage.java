@@ -11,21 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 import static com.wizardsdev.Context.properties;
 
 public class GalleryObjectPage extends ObjectPage{
-    static String RestaurantAddress = properties.getProperty("RestaurantObject");
-    private static final String PAGE_URL = "/object/" + RestaurantAddress;
     private static final By BUTTON_WRITE_A_NEW_REVIEW = By.cssSelector(".icon-button");
-
-    public GalleryObjectPage() {
-        super(PAGE_URL);
-    }
-
-    @Step
-    public static GalleryObjectPage openGalleryObjectPage() {
-        if (!url().contains(PAGE_URL)) {
-            open(PAGE_URL);
-        }
-        return new GalleryObjectPage();
-    }
 
     @Step
     public String getButtonText() {
@@ -34,7 +20,7 @@ public class GalleryObjectPage extends ObjectPage{
 
     @Override
     protected void init() {
-
+        $(BUTTON_WRITE_A_NEW_REVIEW).shouldBe(Condition.visible);
     }
 
     @Override

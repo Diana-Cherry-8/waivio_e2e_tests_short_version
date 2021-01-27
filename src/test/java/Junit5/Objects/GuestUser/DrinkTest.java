@@ -14,12 +14,13 @@ public class DrinkTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String drinkName = properties.getProperty("DrinkObjectName");
+    static String drinkObject = properties.getProperty("DrinkObject");
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
-        drinkObjectPage = DrinkObjectPage.openDrinkObjectPage();
+        drinkObjectPage = DrinkObjectPage.openObjectPage(drinkObject);
     }
 
     @Story("Open page")

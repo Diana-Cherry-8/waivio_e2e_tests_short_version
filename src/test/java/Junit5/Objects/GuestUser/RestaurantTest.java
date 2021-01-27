@@ -8,10 +8,12 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.sleep;
+import static com.wizardsdev.Context.properties;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("Restaurant Page, Object")
 public class RestaurantTest extends TestBase {
+    static String restaurantObject = properties.getProperty("RestaurantObject");
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String restaurantName = properties.getProperty("RestaurantName");
@@ -20,7 +22,7 @@ public class RestaurantTest extends TestBase {
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithFacebook(facebookEmail, facebookPassword);
-        reviewsObjectPage = ReviewsObjectPage.openReviewsObjectPage();
+        reviewsObjectPage = ReviewsObjectPage.openObjectPage(restaurantObject);
     }
 
     @Story("Open page")
@@ -79,21 +81,7 @@ public class RestaurantTest extends TestBase {
     @Test
     void openRestaurantExpertsTab() {
         expertsObjectPage = reviewsObjectPage.clickOnExpertiseItem();
-        //refreshPage();
         boolean actualResult = expertsObjectPage.isButtonFollowSecondaryExist();
         assertTrue(actualResult);
     }
-
-    @Story("Open page")
-    @DisplayName("Check restaurant Tasty Indian Bistro Delta is opened, this object has 1st tab news")
-    @Test
-    void openRestaurantTastyIndianBistroDelta() {
-        String restaurantNameToSearch = "Tasty Indian Bistro Delta";
-        header.inputTextToSearch(restaurantNameToSearch);
-        pageObjectPage = header.clickOnTheFirstItemFromSearch();
-        String actualResult = pageObjectPage.getObjectName();
-        assertEquals(restaurantNameToSearch, actualResult);
-    }
-
-
 }
