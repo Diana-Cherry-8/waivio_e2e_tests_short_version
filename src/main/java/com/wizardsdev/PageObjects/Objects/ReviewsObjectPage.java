@@ -9,6 +9,8 @@ public class ReviewsObjectPage extends ObjectPage{
 
     private static final String PAGE_URL = "/object/";
 
+
+
     @Step
     public static ReviewsObjectPage openReviewsObjectPage(String object) {
         if (!url().contains(PAGE_URL + object)) {

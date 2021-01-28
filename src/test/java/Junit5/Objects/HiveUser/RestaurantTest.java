@@ -36,6 +36,8 @@ public class RestaurantTest extends TestBase {
         refreshPage();
         String expectedResult = restaurantNameToSearch;
         String actualResult = reviewsObjectPage.getObjectName();
+        System.out.println(expectedResult);
+        System.out.println(actualResult);
         assertEquals(expectedResult, actualResult);
     }
 
