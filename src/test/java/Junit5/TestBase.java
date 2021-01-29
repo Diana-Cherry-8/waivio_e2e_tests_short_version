@@ -29,14 +29,12 @@ import com.wizardsdev.PageObjects.Tools.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
 
-  private static final int WAIT_TIME = 60000;
+  private static final int WAIT_TIME = 20000;
   public static final String PATH_TO_TEST_FILE = "src/test/resources/";
   protected static HashMap<Integer, String> usersInThreads = new HashMap<>() {
     {
