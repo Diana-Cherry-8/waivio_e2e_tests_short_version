@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Feature("Profile page")
 public class WalletTest extends TestBase {
     String amountForTransfer = "0.001";
+    Float amount = Float.parseFloat(amountForTransfer);
     String hiveUserName = "x6oc5";
 
     @BeforeAll
@@ -38,22 +39,14 @@ public class WalletTest extends TestBase {
     void checkTransfer() {
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
-        String expectedString = walletPage.getHiveAmount();
-        String deleteText = " HIVE";
-        String replace = "";
-        String deleteHive = expectedString.replaceAll(deleteText, replace);
-        double expectedDouble = Double.parseDouble(deleteHive) - 0.001;
-        sleep(5000);
+        Float expectedFloat = walletPage.getHiveAmount() - amount;
+        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
         walletPage.setHiveUserName(hiveUserName);
         walletPage.setAmount(amountForTransfer);
         walletPage.clickContinueAsHiveUser();
         refreshPage();
-        sleep(5000);
-        refreshPage();
-        String actualString = walletPage.getHiveAmount();
-        String deleteHiveForActual = actualString.replaceAll(deleteText, replace);
-        double actualDouble = Double.parseDouble(deleteHiveForActual);
-        assertEquals(expectedDouble, actualDouble);
+        Float actualFloat = walletPage.getHiveAmount();
+        assertEquals(expectedFloat, actualFloat);
     }
 }
