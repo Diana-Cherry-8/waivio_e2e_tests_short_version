@@ -8,11 +8,11 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.wizardsdev.Context.properties;
 
 public class PageObjectPage extends ObjectPage{
     private static final String PAGE_URL = "/object/";
     private static final By CENTRAL_FEED_IN_PAGE_LOCATOR = By.cssSelector(".Body--full");
+    private static final String urlFirstTab = "/page";
 
 
     public PageObjectPage() {
@@ -21,8 +21,8 @@ public class PageObjectPage extends ObjectPage{
 
     @Step
     public static PageObjectPage openPageObjectPage(String pageObject) {
-        if (!url().contains(PAGE_URL + pageObject)) {
-            open(PAGE_URL + pageObject);
+        if (!url().contains(PAGE_URL + pageObject + urlFirstTab)) {
+            open(PAGE_URL + pageObject + urlFirstTab);
         }
         return new PageObjectPage();
     }

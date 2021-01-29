@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class WalletTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
+    String amountForTransfer = "0.001";
+    Float amount = Float.parseFloat(amountForTransfer);
 
     @BeforeAll
     static void login() {
@@ -36,24 +38,17 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer from guest to hive-user")
     @Test
     void checkTransfer() {
-        String amountForTransfer = "0.001";
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
-        String expectedString = walletPage.getHiveAmount();
-        String deleteText = " HIVE";
-        String replace = "";
-        String deleteHive = expectedString.replaceAll(deleteText, replace);
-        double expectedDouble = Double.parseDouble(deleteHive) - 0.001;
+        Float expectedFloat = walletPage.getHiveAmount() - amount;
+        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
         walletPage.setAmount(amountForTransfer);
         walletPage.clickContinueAsGuest();
+        sleep(4000);
         refreshPage();
-        sleep(10000);
-        refreshPage();
-        String actualString = walletPage.getHiveAmount();
-        String deleteHiveForActual = actualString.replaceAll(deleteText, replace);
-        double actualDouble = Double.parseDouble(deleteHiveForActual);
-        assertEquals(expectedDouble, actualDouble);
+        Float actualFloat = walletPage.getHiveAmount();
+        assertEquals(expectedFloat, actualFloat);
     }
 }
 

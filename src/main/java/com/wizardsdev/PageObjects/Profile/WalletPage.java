@@ -4,7 +4,6 @@ import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -51,8 +50,13 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public String getHiveAmount() {
-         return $(HIVE_AMOUNT_LOCATOR).shouldBe(Condition.visible).getText();
+    public Float getHiveAmount() {
+        String expectedString = $(HIVE_AMOUNT_LOCATOR).shouldBe(Condition.visible).getText();
+        String deleteText = " HIVE";
+        String replace = "";
+        String deleteHive = expectedString.replaceAll(deleteText, replace);
+        float expectedFloat = Float.parseFloat(deleteHive);
+         return expectedFloat;
     }
 
     @Step

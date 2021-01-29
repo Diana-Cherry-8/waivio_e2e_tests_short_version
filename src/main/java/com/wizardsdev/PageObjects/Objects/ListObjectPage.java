@@ -3,20 +3,19 @@ package com.wizardsdev.PageObjects.Objects;
 import com.codeborne.selenide.Condition;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.wizardsdev.Context.properties;
 
 public class ListObjectPage extends ObjectPage{
     private static final String PAGE_URL = "/object/";
+    private static final String urlFirstTab = "/list";
 
     @Step
     public static ListObjectPage openListObjectPage(String listName) {
-        if (!url().contains(PAGE_URL + listName)) {
-            open(PAGE_URL + listName);
+        if (!url().contains(PAGE_URL + listName + urlFirstTab)) {
+            open(PAGE_URL + listName + urlFirstTab);
         }
         return new ListObjectPage();
     }
