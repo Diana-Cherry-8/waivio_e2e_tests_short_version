@@ -20,6 +20,7 @@ public class DiscoverTabsTest extends TestBase {
     @DisplayName("Check Hashtag page is opened in Discover, default")
     @Test
     void openHashtagDiscover() {
+        discoverPage = discoverLeftSidebar.clickOnHashtagObjectItem();
         refreshPage();
         String expectedResult = "Hashtag";
         String actualResult = discoverPage.getTagName();
