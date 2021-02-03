@@ -2,6 +2,7 @@ package com.wizardsdev.Modals;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
@@ -42,7 +43,9 @@ public class SignIn extends Modal{
 
   @Step
   public FacebookSignPage clickOnSignInFacebook() {
-    $(FACEBOOK_SING_IN_ENABLED_LOCATOR).shouldBe(Condition.visible).click();
+    $(FACEBOOK_SING_IN_ENABLED_LOCATOR).shouldBe(Condition.visible);
+    sleep(1000);
+    $(FACEBOOK_SING_IN_ENABLED_LOCATOR).click();
     return new FacebookSignPage();
   }
 

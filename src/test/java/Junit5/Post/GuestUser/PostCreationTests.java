@@ -6,10 +6,7 @@ import com.wizardsdev.PageObjects.Profile.PostsPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,6 +24,7 @@ public class PostCreationTests extends TestBase {
         header.logInWithFacebook(facebookEmail, facebookPassword);
     }
 
+    @Disabled
     @Story("Post creation")
     @DisplayName("Post creation only with text")
     @Test

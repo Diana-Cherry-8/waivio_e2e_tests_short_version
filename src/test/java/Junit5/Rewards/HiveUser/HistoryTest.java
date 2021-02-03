@@ -60,9 +60,5 @@ public class HistoryTest extends TestBase {
         assertFalse(actualResult.contains(expectedResult));
     }
 
-    @AfterEach
-    void logout() {
-       header.logOut();
-    }
 }
 
