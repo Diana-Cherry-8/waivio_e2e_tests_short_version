@@ -1,5 +1,8 @@
 package Junit5.Notification.HiveUser;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import org.junit.jupiter.api.AfterAll;
@@ -8,10 +11,13 @@ import org.junit.jupiter.api.Test;
 
 public class NotificationEmptyTest extends TestBase {
 
+  static String hiveUserEmail = properties.getProperty("UserLogin04");
+  static String hivePasswordPassword = properties.getProperty("LoginPassword04");
+
   @BeforeAll
   static void logInAsTestUser() {
     feedPage = FeedPage.openFeedPage();
-    header.logInWithHiveSigner(getUserLogin(), getUserPassword());
+    header.logInWithHiveSigner(hiveUserEmail, hivePasswordPassword);
   }
 
   @Test

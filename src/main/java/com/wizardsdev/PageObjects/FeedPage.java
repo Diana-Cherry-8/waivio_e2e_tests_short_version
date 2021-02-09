@@ -201,6 +201,7 @@ public class FeedPage extends Page {
 
   @Step
   public void clickOnPostLikeButton(int postIndex) {
+    scrollToElement($$(POST_LOCATOR).get(postIndex));
     $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_BUTTON_LOCATOR).shouldBe(Condition.visible).click();
     $$(POST_LOCATOR).get(postIndex).$(POST_LIKE_LOADING_LOCATOR).shouldBe(Condition.disappear);
     sleep(3000);
@@ -211,13 +212,9 @@ public class FeedPage extends Page {
     return  Integer.parseInt($$(POST_LOCATOR)
         .get(postIndex)
         .$(POST_LIKES_COUNTER_LOCATOR)
+        .scrollTo()
         .shouldBe(Condition.visible)
         .getText());
-  }
-
-  @Step
-  public void clickOnSignInNotHeader() {
-    $(MODAL_WINDOW_SIGN_IN).click();
   }
 
   @Override
