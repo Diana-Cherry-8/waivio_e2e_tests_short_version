@@ -5,6 +5,7 @@ import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @Feature("History Page, Rewards")
 public class HistoryTest extends TestBase {
 
-    @BeforeEach
-    void login() {
+    @BeforeAll
+    static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     }
@@ -24,6 +25,7 @@ public class HistoryTest extends TestBase {
     @DisplayName("Check history page is opened in Rewards")
     @Test
     void openHistory() {
+        feedPage = header.clickOnLogo();
         eligiblePage = topNavigation.clickOnRewardsItem();
         historyPage = rewardsLeftSidebar.clickOnHistoryItem();
         refreshPage();
@@ -36,6 +38,7 @@ public class HistoryTest extends TestBase {
     @DisplayName("Check post about rewards reservations is opened")
     @Test
     void openViewReservation() {
+        feedPage = header.clickOnLogo();
         eligiblePage = topNavigation.clickOnRewardsItem();
         historyPage = rewardsLeftSidebar.clickOnHistoryItem();
         historyPage.clickButtonMore();
@@ -50,6 +53,7 @@ public class HistoryTest extends TestBase {
     @DisplayName("Check post about rewards reservations is opened")
     @Test
     void checkPostRewardsReservationsDoesNotContainUndefined() {
+        feedPage = header.clickOnLogo();
         eligiblePage = topNavigation.clickOnRewardsItem();
         historyPage = rewardsLeftSidebar.clickOnHistoryItem();
         historyPage.clickButtonMore();
@@ -59,6 +63,5 @@ public class HistoryTest extends TestBase {
         String actualResult = fullScreenOfTheReservationPost.getContentPage();
         assertFalse(actualResult.contains(expectedResult));
     }
-
 }
 

@@ -23,6 +23,7 @@ public class HistoryTest extends TestBase {
     @DisplayName("Check history page is opened in Rewards")
     @Test
     void openHistory() {
+        feedPage = header.clickOnLogo();
         eligiblePage = topNavigation.clickOnRewardsItem();
         historyPage = rewardsLeftSidebar.clickOnHistoryItem();
         refreshPage();
@@ -35,6 +36,7 @@ public class HistoryTest extends TestBase {
     @DisplayName("Check post about rewards reservations is opened")
     @Test
     void openViewReservation() {
+        feedPage = header.clickOnLogo();
         eligiblePage = topNavigation.clickOnRewardsItem();
         historyPage = rewardsLeftSidebar.clickOnHistoryItem();
         historyPage.clickButtonMore();
@@ -49,6 +51,7 @@ public class HistoryTest extends TestBase {
     @DisplayName("Check post about rewards reservations is opened")
     @Test
     void checkPostRewardsReservationsDoesNotContainUndefined() {
+        feedPage = header.clickOnLogo();
         eligiblePage = topNavigation.clickOnRewardsItem();
         historyPage = rewardsLeftSidebar.clickOnHistoryItem();
         historyPage.clickButtonMore();

@@ -1,6 +1,8 @@
 package com.wizardsdev.PageObjects;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
+
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
@@ -12,6 +14,7 @@ public class NotificationsPage extends Page{
 
   @Step
   public boolean isNotificationsPageContentEmpty() {
+    sleep(1000);
     $(NOTIFICATIONS_PAGE_CONTENT_LOCATOR).shouldBe(Condition.visible);
     return $(NOTIFICATIONS_PAGE_CONTENT_LOCATOR)
         .getText().contains("You currently have no notifications.");
@@ -19,7 +22,7 @@ public class NotificationsPage extends Page{
 
   @Override
   protected void init() {
-
+    $(NOTIFICATIONS_PAGE_CONTENT_LOCATOR).shouldBe(Condition.visible);
   }
 
   @Override
