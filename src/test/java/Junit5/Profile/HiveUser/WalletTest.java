@@ -43,7 +43,7 @@ public class WalletTest extends TestBase {
         expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
         walletPage.setHiveUserName(hiveUserName);
-        walletPage.setAmount(amountForTransfer);
+        walletPage.setAmountAsHive(amountForTransfer);
         walletPage.clickContinueAsHiveUser();
         refreshPage();
         Float actualFloat = walletPage.getHiveAmount();

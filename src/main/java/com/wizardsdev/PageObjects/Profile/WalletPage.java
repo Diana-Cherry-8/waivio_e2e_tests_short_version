@@ -15,6 +15,9 @@ public class WalletPage extends ProfilePage {
     public static final By INPUT_FOR_SEARCH_LOCATOR = By.cssSelector(".ant-select-search__field");
     public static final By INPUT_FOR_AMOUNT_LOCATOR = By.cssSelector(".Transfer__amount__input");
     public static final By BUTTON_CONTINUE_LOCATOR = By.cssSelector(".ant-btn-primary");
+    public static final By CHECKBOX_IN_MODAL_LINK_HIVE_ACCOUNT =
+        By.cssSelector(".ant-checkbox-input");
+    public static final By BUTTON_OK_IN_MODAL_LINK_HIVE_ACCOUNT = By.cssSelector(".ant-btn-primary");
 
     public WalletPage(String userName) {
         super(Context.getSiteUrl()  + "/@" + userName + "/transfers");
@@ -65,8 +68,23 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public void setAmount(String amountFotTransfer) {
+    public void setAmountAsHive(String amountFotTransfer) {
         $(INPUT_FOR_AMOUNT_LOCATOR).setValue(amountFotTransfer);
+    }
+
+    @Step
+    public void setAmountAsGuest(String amountFotTransfer, String hiveName) {
+        if($(INPUT_FOR_AMOUNT_LOCATOR).exists()) {
+            $(INPUT_FOR_AMOUNT_LOCATOR).shouldBe(Condition.visible).setValue(amountFotTransfer);
+        }
+        else {
+            $$(INPUT_FOR_SEARCH_LOCATOR).get(1).shouldBe(Condition.visible)
+                .setValue(hiveName)
+                .pressEnter();
+            $(CHECKBOX_IN_MODAL_LINK_HIVE_ACCOUNT).click();
+            $(BUTTON_OK_IN_MODAL_LINK_HIVE_ACCOUNT).click();
+            $(INPUT_FOR_AMOUNT_LOCATOR).shouldBe(Condition.visible).setValue(amountFotTransfer);
+        }
     }
 
     @Step
