@@ -157,7 +157,8 @@ public class Header extends Page {
 
   public void clickOnNotificationIcon() {
     $$(ANT_MENU_ITEMS_LOCATOR).get(2).shouldBe(Condition.visible);
-    $$(ANT_MENU_ITEMS_LOCATOR).get(1).shouldBe(Condition.visible).click();}
+    $$(ANT_MENU_ITEMS_LOCATOR).get(1).shouldBe(Condition.visible).click();
+  }
 
   public boolean isNotificationEmpty() {
     sleep(1000);
