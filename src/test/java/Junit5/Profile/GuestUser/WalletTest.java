@@ -16,7 +16,7 @@ public class WalletTest extends TestBase {
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String amountForTransfer = "0.001";
     Float amount = Float.parseFloat(amountForTransfer);
-    String sponsorName = "x6oc5";
+    String sponsorName = properties.getProperty("HiveAccountName");
 
     @BeforeAll
     static void login() {

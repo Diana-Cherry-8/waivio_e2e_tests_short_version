@@ -78,9 +78,10 @@ public class WalletPage extends ProfilePage {
             $(INPUT_FOR_AMOUNT_LOCATOR).shouldBe(Condition.visible).setValue(amountFotTransfer);
         }
         else {
-            $$(INPUT_FOR_SEARCH_LOCATOR).get(1).shouldBe(Condition.visible)
-                .setValue(hiveName)
-                .pressEnter();
+            $$(INPUT_FOR_SEARCH_LOCATOR).get(1).shouldBe(Condition.visible).setValue(hiveName);
+            $(".SearchUser").shouldBe(Condition.visible);
+            $$(INPUT_FOR_SEARCH_LOCATOR).get(1).pressEnter();
+
             $(CHECKBOX_IN_MODAL_LINK_HIVE_ACCOUNT).click();
             $(BUTTON_OK_IN_MODAL_LINK_HIVE_ACCOUNT).click();
             $(INPUT_FOR_AMOUNT_LOCATOR).shouldBe(Condition.visible).setValue(amountFotTransfer);
