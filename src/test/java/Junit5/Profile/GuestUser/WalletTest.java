@@ -16,6 +16,7 @@ public class WalletTest extends TestBase {
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String amountForTransfer = "0.001";
     Float amount = Float.parseFloat(amountForTransfer);
+    String sponsorName = properties.getProperty("HiveAccountName");
 
     @BeforeAll
     static void login() {
@@ -43,7 +44,7 @@ public class WalletTest extends TestBase {
         Float expectedFloat = walletPage.getHiveAmount() - amount;
         expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
-        walletPage.setAmount(amountForTransfer);
+        walletPage.setAmountAsGuest(amountForTransfer, sponsorName);
         walletPage.clickContinueAsGuest();
         sleep(4000);
         refreshPage();
