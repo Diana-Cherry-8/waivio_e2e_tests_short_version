@@ -108,21 +108,25 @@ public class Header extends Page {
   @Step
   public void clickOnRussianLanguage() {
     $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(26).click();
+    sleep(1000);
   }
 
   @Step
   public void clickOnGermanLanguage() {
     $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(6).click();
+    sleep(1000);
   }
 
   @Step
   public void clickOnFrenchLanguage() {
     $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(10).click();
+    sleep(1000);
   }
 
   @Step
   public void clickOnEnglishLanguage() {
     $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(0).click();
+    sleep(1000);
   }
 
   public void inputTextToSearch(String textToSearch) {
