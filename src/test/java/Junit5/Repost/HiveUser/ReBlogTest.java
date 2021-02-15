@@ -1,6 +1,8 @@
 package Junit5.Repost.HiveUser;
 
 import Junit5.TestBase;
+import com.wizardsdev.Modals.Modal;
+import com.wizardsdev.Modals.ReBlog;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -12,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Feature("Profile page")
-public class RepostTest extends TestBase {
+public class ReBlogTest extends TestBase {
   int postIndexInMyFeed = (int) (Math.random() * 9);
   int postIndexInPosts = 0;
 
@@ -25,12 +27,13 @@ public class RepostTest extends TestBase {
   @Story("Repost")
   @DisplayName("Check comments page is opened")
   @Test
-  void checkRepost() {
+  void checkReBlog() {
     String expectedPostTitle = feedPage.getPostTitle(postIndexInMyFeed);
     feedPage.clickOnReBlog(postIndexInMyFeed);
+    ReBlog.submitReBlog();
     postsPage = header.clickOnAccountIcon();
-    String actualPostTitle = postsPage.getPostTitle(postIndexInPosts);
     refreshPage();
+    String actualPostTitle = postsPage.getPostTitle(postIndexInPosts);
     assertEquals(expectedPostTitle, actualPostTitle);
   }
 

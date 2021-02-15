@@ -43,9 +43,6 @@ public class FeedPage extends Page {
   private static final Pattern PATTERN = Pattern.compile("$", Pattern.LITERAL);
   private static final By MODAL_WINDOW_SIGN_IN = By.cssSelector(".ModalSignUp__button");
   private static final By BUTTON_RE_BLOG_LOCATOR = By.cssSelector(".Buttons__share");
-  private static final By BUTTON_RE_BLOG_IN_RE_BLOG_MODAL_WINDOW_LOCATOR =
-      By.cssSelector(".ant-btn-primary");
-  private static final By MODAL_WINDOW_RE_BLOG_LOCATOR = By.cssSelector(".ant-modal-content");
   private static final By BUTTON_EXPAND_COMMENT_LOCATOR = By.cssSelector(".icon-message_fill");
   private static final By COMMENT_LOCATOR = By.cssSelector(".Comment__text");
   private static final By LOADING_LOCATOR = By.cssSelector(".Loading");
@@ -217,14 +214,6 @@ public class FeedPage extends Page {
   }
 
   @Step
-  public void clickOnReBlog(int postIndex) {
-    scrollToElement($$(POST_LOCATOR).get(postIndex));
-    $$(BUTTON_RE_BLOG_LOCATOR).get(postIndex).shouldBe(Condition.visible).click();
-    $(BUTTON_RE_BLOG_IN_RE_BLOG_MODAL_WINDOW_LOCATOR).shouldBe(Condition.visible).click();
-    $(MODAL_WINDOW_RE_BLOG_LOCATOR).shouldBe(Condition.disappear);
-  }
-
-  @Step
   public String getPostTitle(int postIndex) {
     return $$(POST_TITLE_LOCATOR).get(postIndex).getText();
   }
@@ -245,6 +234,12 @@ public class FeedPage extends Page {
     scrollToElement($$(POST_LOCATOR).get(postIndex));
       $$(BUTTON_EXPAND_COMMENT_LOCATOR).get(postIndex).shouldBe(Condition.visible).click();
       $(LOADING_LOCATOR).shouldBe(Condition.disappear);
+  }
+
+  @Step
+  public void clickOnReBlog(int postIndex) {
+    scrollToElement($$(POST_LOCATOR).get(postIndex));
+    $$(BUTTON_RE_BLOG_LOCATOR).get(postIndex).shouldBe(Condition.visible).click();
   }
 
   @Step

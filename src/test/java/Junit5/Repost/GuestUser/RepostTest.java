@@ -1,6 +1,7 @@
 package Junit5.Repost.GuestUser;
 
 import Junit5.TestBase;
+import com.wizardsdev.Modals.ReBlog;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -30,9 +31,10 @@ public class RepostTest extends TestBase {
   void checkRepost() {
     String expectedPostTitle = feedPage.getPostTitle(postIndexInMyFeed);
     feedPage.clickOnReBlog(postIndexInMyFeed);
+    ReBlog.submitReBlog();
     postsPage = header.clickOnAccountIcon();
-    String actualPostTitle = postsPage.getPostTitle(postIndexInPosts);
     refreshPage();
+    String actualPostTitle = postsPage.getPostTitle(postIndexInPosts);
     assertEquals(expectedPostTitle, actualPostTitle);
   }
 
