@@ -5,6 +5,8 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import static java.lang.Integer.parseInt;
+
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
@@ -40,6 +42,13 @@ public class FeedPage extends Page {
   private static final By POST_LIKE_LOADING_LOCATOR = By.className("anticon-loading");
   private static final Pattern PATTERN = Pattern.compile("$", Pattern.LITERAL);
   private static final By MODAL_WINDOW_SIGN_IN = By.cssSelector(".ModalSignUp__button");
+  private static final By BUTTON_RE_BLOG_LOCATOR = By.cssSelector(".Buttons__share");
+  private static final By BUTTON_RE_BLOG_IN_RE_BLOG_MODAL_WINDOW_LOCATOR =
+      By.cssSelector(".ant-btn-primary");
+  private static final By MODAL_WINDOW_RE_BLOG_LOCATOR = By.cssSelector(".ant-modal-content");
+  private static final By BUTTON_EXPAND_COMMENT_LOCATOR = By.cssSelector(".icon-message_fill");
+  private static final By COMMENT_LOCATOR = By.cssSelector(".Comment__text");
+  private static final By LOADING_LOCATOR = By.cssSelector(".Loading");
 
   public FeedPage() {
     super(PAGE_URL);
@@ -92,10 +101,10 @@ public class FeedPage extends Page {
   private static int getTimeAfterPostingInSeconds(String timeAfterPosting) {
     String[] splitTimeAfterPosting = timeAfterPosting.split(" ");
     return switch (splitTimeAfterPosting[1]) {
-      case "minute", "minutes" -> Integer.parseInt(splitTimeAfterPosting[0]) * 60;
-      case "hour", "hours" -> Integer.parseInt(splitTimeAfterPosting[0]) * 3600;
-      case "day", "days" -> Integer.parseInt(splitTimeAfterPosting[0]) * 86400;
-      default -> Integer.parseInt(splitTimeAfterPosting[0]);
+      case "minute", "minutes" -> parseInt(splitTimeAfterPosting[0]) * 60;
+      case "hour", "hours" -> parseInt(splitTimeAfterPosting[0]) * 3600;
+      case "day", "days" -> parseInt(splitTimeAfterPosting[0]) * 86400;
+      default -> parseInt(splitTimeAfterPosting[0]);
     };
   }
 
@@ -208,13 +217,39 @@ public class FeedPage extends Page {
   }
 
   @Step
+  public void clickOnReBlog(int postIndex) {
+    scrollToElement($$(POST_LOCATOR).get(postIndex));
+    $$(BUTTON_RE_BLOG_LOCATOR).get(postIndex).shouldBe(Condition.visible).click();
+    $(BUTTON_RE_BLOG_IN_RE_BLOG_MODAL_WINDOW_LOCATOR).shouldBe(Condition.visible).click();
+    $(MODAL_WINDOW_RE_BLOG_LOCATOR).shouldBe(Condition.disappear);
+  }
+
+  @Step
+  public String getPostTitle(int postIndex) {
+    return $$(POST_TITLE_LOCATOR).get(postIndex).getText();
+  }
+
+  @Step
   public int getPostLikeCount(int postIndex) {
-    return  Integer.parseInt($$(POST_LOCATOR)
+    return  parseInt($$(POST_LOCATOR)
         .get(postIndex)
         .$(POST_LIKES_COUNTER_LOCATOR)
         .scrollTo()
         .shouldBe(Condition.visible)
         .getText());
+  }
+
+  @Step
+  public void clickOnCommentButton(int postIndex) {
+    $(POST_COMMENTS_COUNTER_LOCATOR).shouldBe(Condition.visible);
+    scrollToElement($$(POST_LOCATOR).get(postIndex));
+      $$(BUTTON_EXPAND_COMMENT_LOCATOR).get(postIndex).shouldBe(Condition.visible).click();
+      $(LOADING_LOCATOR).shouldBe(Condition.disappear);
+  }
+
+  @Step
+  public boolean isCommentExist() {
+    return $(COMMENT_LOCATOR).shouldBe(Condition.visible).exists();
   }
 
   @Override
