@@ -12,7 +12,7 @@ public class ReBlog extends Modal{
   private static final By MODAL_WINDOW_RE_BLOG_LOCATOR = By.cssSelector(".ant-modal-content");
 
   @Step
-  public static void submitReBlog() {
+  public void submitReBlog() {
     $(BUTTON_RE_BLOG_IN_RE_BLOG_MODAL_WINDOW_LOCATOR).shouldBe(Condition.visible).click();
     $(MODAL_WINDOW_RE_BLOG_LOCATOR).shouldBe(Condition.disappear);
   }

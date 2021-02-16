@@ -13,6 +13,7 @@ import com.wizardsdev.Components.*;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.Post;
+import com.wizardsdev.Modals.ReBlog;
 import com.wizardsdev.Modals.SignIn;
 
 
@@ -51,6 +52,7 @@ public abstract class TestBase {
   //Modals
   protected static SignIn signIn;
   protected static Post post;
+  protected static ReBlog reBlog;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();

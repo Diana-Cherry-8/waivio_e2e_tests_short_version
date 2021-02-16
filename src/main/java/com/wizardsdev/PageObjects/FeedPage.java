@@ -12,6 +12,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
+import com.wizardsdev.Modals.ReBlog;
 import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Step;
@@ -237,9 +238,10 @@ public class FeedPage extends Page {
   }
 
   @Step
-  public void clickOnReBlog(int postIndex) {
+  public ReBlog clickOnReBlog(int postIndex) {
     scrollToElement($$(POST_LOCATOR).get(postIndex));
     $$(BUTTON_RE_BLOG_LOCATOR).get(postIndex).shouldBe(Condition.visible).click();
+    return new ReBlog();
   }
 
   @Step
