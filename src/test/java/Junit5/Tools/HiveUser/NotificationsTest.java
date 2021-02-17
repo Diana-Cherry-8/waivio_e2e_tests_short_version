@@ -1,4 +1,7 @@
-package Junit5.Tools.GuestUser;
+package Junit5.Tools.HiveUser;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -8,17 +11,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @Feature("Notifications page, Tools")
 public class NotificationsTest extends TestBase {
-    String facebookEmail = properties.getProperty("FacebookUserEmail00");
-    String facebookPassword = properties.getProperty("FacebookUserPass00");
 
     @BeforeEach
     void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     }
 
     @Story("Open page")
@@ -26,7 +25,7 @@ public class NotificationsTest extends TestBase {
     @Test
     void openNotificationsTools() {
         draftsPage = topNavigation.clickOnToolsItem();
-        toolsNotificationsPage = toolsLeftSidebar.clickOnNotificationsItemAsGuest();
+        toolsNotificationsPage = toolsLeftSidebar.clickOnNotificationsItemAsHiveUser();
         refreshPage();
         String expectedResult = "Notification Settings";
         String actualResult = toolsNotificationsPage.getTitleTools();

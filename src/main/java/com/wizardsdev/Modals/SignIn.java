@@ -20,7 +20,7 @@ public class SignIn extends Modal{
   private static final By HIVESIGNER_ENCRYPT_YOUR_KEYS = By.cssSelector("input[type='checkbox']");
 
   private static final By MODAL_SING_IN_TITLE_LOCATOR = By.className("ModalSignIn__title");
-  private static final By HIVESIGNER_SING_IN_LOCATOR = By.className("ModalSignIn__signin");
+  private static final By HIVESIGNER_SING_IN_LOCATOR = By.cssSelector(".ModalSignIn__signin");
   private static final By GOOGLE_SING_IN_LOCATOR = By.className("ModalSignUp__social-btn");
   private static final By FACEBOOK_SING_IN_ENABLED_LOCATOR
       = Selectors.byAttribute ("style", "transition: opacity 0.5s ease 0s;");
