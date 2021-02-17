@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 public class FacebookSignPage extends Page {
   private static final By LOGIN_INPUT_LOCATOR = By.cssSelector("#email");
   private static final By PASSWORD_INPUT_LOCATOR = By.cssSelector("#pass");
-  private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector("#u_0_0");
+  private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector(".uiButton");
 
   public FacebookSignPage() {
     switchTo().window(1);

@@ -58,14 +58,27 @@ public class ToolsLeftSidebar extends Page {
     }
 
     @Step
-    public ToolsNotificationsPage clickOnNotificationsItem() {
+    public ToolsNotificationsPage clickOnNotificationsItemAsHiveUser() {
+        clickOnSideBarItemRewardsByIndex(4);
+        return new ToolsNotificationsPage();
+    }
+
+
+    @Step
+    public ToolsNotificationsPage clickOnNotificationsItemAsGuest() {
         clickOnSideBarItemRewardsByIndex(5);
         return new ToolsNotificationsPage();
     }
 
     @Step
-    public InvitePage clickOnInviteItem() {
+    public InvitePage clickOnInviteItemAsGuest() {
         clickOnSideBarItemRewardsByIndex(6);
+        return new InvitePage();
+    }
+
+    @Step
+    public InvitePage clickOnInviteItemAsHiveUser() {
+        clickOnSideBarItemRewardsByIndex(5);
         return new InvitePage();
     }
 
