@@ -14,7 +14,7 @@ public class CreateWebsitePage extends Page {
   private static final By INPUTS_LOCATOR = By.cssSelector(".ant-input");
   private static final By OPTIONS_IN_SELECT_WEBSITE_DROP_DOWN_LOCATOR =
       By.cssSelector(".ant-select-dropdown-menu-item");
-  private static final By SIGN_AVAILABLE_WEBSITE_LOCATOR = By.cssSelector(".CreateWebsite__available");
+  private static final By AVAILABLE_WEBSITE_NAME_LOCATOR = By.cssSelector(".CreateWebsite__available");
   private static final By CHECKBOX_HOSTING_AGREEMENT_LOCATOR = By.cssSelector(".ant-checkbox");
   private static final By BUTTON_CREATE_NEW_WEBSITE_LOCATOR = By.cssSelector(".ant-btn-primary");
 
@@ -43,7 +43,7 @@ public class CreateWebsitePage extends Page {
   @Step
   public void setWebsiteName(String websiteName) {
     $$(INPUTS_LOCATOR).get(2).shouldBe(Condition.visible).setValue(websiteName);
-    $(SIGN_AVAILABLE_WEBSITE_LOCATOR).shouldBe(Condition.visible);
+    $(AVAILABLE_WEBSITE_NAME_LOCATOR).shouldBe(Condition.visible);
   }
 
   @Step
