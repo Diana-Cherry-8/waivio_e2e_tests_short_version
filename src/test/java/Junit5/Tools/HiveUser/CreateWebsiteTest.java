@@ -43,10 +43,10 @@ public class CreateWebsiteTest extends TestBase {
   void createWebsite() {
     createWebsitePage = toolsLeftSidebar.clickOnCreateWebsite();
     createWebsitePage.clickOnSelectWebsiteInput();
-    createWebsitePage.clickOnOptionInDropDownMenu(templateIndex);
+    createWebsitePage.clickOnOptionInSelectWebsiteDropDownMenu(templateIndex);
     createWebsitePage.setWebsiteName(websiteName);
-    createWebsitePage.clickOnCheckbox();
-    configurationWebsitePage = createWebsitePage.clickOnSubmitButton(websiteName, templateName);
+    createWebsitePage.clickOnAgreementCheckbox();
+    configurationWebsitePage = createWebsitePage.clickOnCreateNewWebsiteButton(websiteName, templateName);
     String expectedTitle = "Website configuration";
     String actualTitle = configurationWebsitePage.getTitleTools();
     assertEquals(expectedTitle, actualTitle);
@@ -56,6 +56,6 @@ public class CreateWebsiteTest extends TestBase {
   static void delete() {
     manageWebsitePage = toolsLeftSidebar.clickOnManageWebsite();
     deleteWebsite = manageWebsitePage.clickDelete();
-    deleteWebsite.submitDeleteWeb();
+    deleteWebsite.submitDeleteWebsite();
   }
 }

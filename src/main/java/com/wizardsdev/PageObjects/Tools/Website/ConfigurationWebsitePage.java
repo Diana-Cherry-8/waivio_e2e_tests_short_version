@@ -22,14 +22,6 @@ public class ConfigurationWebsitePage extends Page {
     return new ConfigurationWebsitePage(websiteName, template);
   }
 
-  @Step
-  public boolean isConfigurationOpened(String websiteName) {
-    String pageUrl = getCurrentPage();
-    return pageUrl.contains(websiteName);
-  }
-
-
-
   @Override
   protected void init() {
 //        String pageUrl = getCurrentPage();

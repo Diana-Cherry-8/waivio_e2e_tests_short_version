@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ReportsWebsitePage extends Page {
-  private static final String PAGE_URL = "/manage";
+  private static final String PAGE_URL = "/payments";
 
   public ReportsWebsitePage() {
     super(PAGE_URL);
