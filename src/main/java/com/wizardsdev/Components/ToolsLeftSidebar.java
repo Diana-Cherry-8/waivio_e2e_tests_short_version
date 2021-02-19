@@ -82,6 +82,24 @@ public class ToolsLeftSidebar extends Page {
         return new InvitePage();
     }
 
+    @Step
+    public CreateWebsitePage clickOnCreateWebsite() {
+        clickOnSideBarItemRewardsByIndex(6);
+        return new CreateWebsitePage();
+    }
+
+    @Step
+    public ManageWebsitePage clickOnManageWebsite() {
+        clickOnSideBarItemRewardsByIndex(7);
+        return new ManageWebsitePage();
+    }
+
+    @Step
+    public ReportsWebsitePage clickOnReportsWebsite() {
+        clickOnSideBarItemRewardsByIndex(8);
+        return new ReportsWebsitePage();
+    }
+
     @Override
     protected void init() {
 

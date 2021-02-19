@@ -21,6 +21,7 @@ public class ReBlogTest extends TestBase {
   void login() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithFacebook(facebookEmail, facebookPassword);
+    feedLeftBar.clickOnNewItem();
   }
 
   @Story("Re-blog")
@@ -29,7 +30,7 @@ public class ReBlogTest extends TestBase {
   void checkReBlog() {
     String expectedPostTitle = feedPage.getPostTitle(postIndexInMyFeed);
     reBlog = feedPage.clickOnReBlog(postIndexInMyFeed);
-    reBlog.submitReBlog();
+    reBlog.submitAction();
     postsPage = header.clickOnAccountIcon();
     refreshPage();
     String actualPostTitle = postsPage.getPostTitle(postIndexInPosts);

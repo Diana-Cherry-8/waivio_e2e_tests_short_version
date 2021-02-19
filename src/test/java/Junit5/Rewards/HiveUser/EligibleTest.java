@@ -24,6 +24,7 @@ public class EligibleTest extends TestBase {
     @DisplayName("Check eligible page is opened in Rewards")
     @Test
     void openEligiblePageTest() {
+        feedPage = header.clickOnLogo();
         eligiblePage = topNavigation.clickOnRewardsItem();
         String expectedResult = "Eligible rewards";
         String actualResult = eligiblePage.getTitleRewards();

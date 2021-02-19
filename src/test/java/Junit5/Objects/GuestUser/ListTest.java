@@ -7,7 +7,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-import static com.wizardsdev.Context.properties;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Feature("List type, Object")

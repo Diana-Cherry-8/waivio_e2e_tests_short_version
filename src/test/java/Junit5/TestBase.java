@@ -12,11 +12,13 @@ import com.wizardsdev.ApiRequests.ApiRequest;
 import com.wizardsdev.Components.*;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
+import com.wizardsdev.Modals.DeleteWebsite;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.ReBlog;
 import com.wizardsdev.Modals.SignIn;
 
 
+import com.wizardsdev.PageObjects.Tools.Website.ConfigurationWebsitePage;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -53,6 +55,7 @@ public abstract class TestBase {
   protected static SignIn signIn;
   protected static Post post;
   protected static ReBlog reBlog;
+  protected static DeleteWebsite deleteWebsite;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();
@@ -100,6 +103,9 @@ public abstract class TestBase {
   protected static ToolsNotificationsPage toolsNotificationsPage;
   protected static InvitePage invitePage;
   protected static AboutPage aboutPage;
+  protected static CreateWebsitePage createWebsitePage;
+  protected static ManageWebsitePage manageWebsitePage;
+  protected static ReportsWebsitePage reportsWebsitePage;
 
   protected static CommentsPage commentsPage;
   protected static ExpertisePage expertisePage;
@@ -121,6 +127,8 @@ public abstract class TestBase {
   protected static ReviewsObjectPage drinkObjectPage;
   protected static ReviewsObjectPage dishObjectPage;
   protected static PageObjectPage pageObjectPage;
+
+  protected static ConfigurationWebsitePage configurationWebsitePage;
 
   protected static FullScreenOfTheReservationPost fullScreenOfTheReservationPost;
 
