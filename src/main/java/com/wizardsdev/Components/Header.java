@@ -57,6 +57,7 @@ public class Header extends Page {
   public void logInWithHiveSigner(String login, String password) {
     SignIn signIn = clickOnSingIn();
     signIn.signInWithHiveSigner(login, password);
+    $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }
 
   @Step
@@ -67,6 +68,7 @@ public class Header extends Page {
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
     $(LOADER_SIGN_IN_MODAL_LOCATOR).shouldBe(Condition.visible).shouldBe(Condition.disappear);
+    $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }
 
   @Step
