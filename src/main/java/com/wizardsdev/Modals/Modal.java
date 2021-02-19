@@ -1,12 +1,18 @@
 package com.wizardsdev.Modals;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
+
+import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public abstract class Modal extends Page {
+  private static final By BUTTON_SUBMIT_MODAL_WINDOW_LOCATOR =
+      By.cssSelector(".ant-btn-primary");
+  private static final By MODAL_WINDOW_LOCATOR = By.cssSelector(".ant-modal-content");
 
   //Selectors
   public static final By IMG_EXIT_LOCATOR = By.cssSelector("[title = 'Close']");
@@ -39,6 +45,12 @@ public abstract class Modal extends Page {
     if (waitForCloseModal) {
       waitForDisappearModalDimmer();
     }
+  }
+
+  @Step
+  public void submitDeleteWeb() {
+    $$(BUTTON_SUBMIT_MODAL_WINDOW_LOCATOR).get(1).shouldBe(Condition.visible).click();
+    $(MODAL_WINDOW_LOCATOR).shouldBe(Condition.disappear);
   }
   
   @Step

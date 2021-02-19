@@ -21,6 +21,7 @@ public class ReBlogTest extends TestBase {
   void login() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithFacebook(facebookEmail, facebookPassword);
+    feedLeftBar.clickOnNewItem();
   }
 
   @Story("Re-blog")
