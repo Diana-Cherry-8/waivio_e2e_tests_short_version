@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 public class CreateWebsiteTest extends TestBase {
   int templateIndex = 1;
   String websiteName = "test1";
-  String templateName = properties.getProperty("templateNameProd");
+  String templateName = properties.getProperty("TemplateNameProd");
 
   @BeforeAll
   static void login() {
