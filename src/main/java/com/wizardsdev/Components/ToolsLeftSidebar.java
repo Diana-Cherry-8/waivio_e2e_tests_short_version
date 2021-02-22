@@ -3,6 +3,11 @@ package com.wizardsdev.Components;
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Tools.*;
+import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
+import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
+import com.wizardsdev.PageObjects.Tools.Website.ConfigurationWebsitePage;
+import com.wizardsdev.PageObjects.Tools.Website.ModeratorsPage;
+import com.wizardsdev.PageObjects.Tools.Website.MutedUsersPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -98,6 +103,42 @@ public class ToolsLeftSidebar extends Page {
     public ReportsWebsitePage clickOnReportsWebsite() {
         clickOnSideBarItemRewardsByIndex(8);
         return new ReportsWebsitePage();
+    }
+
+    @Step
+    public ConfigurationWebsitePage clickOnConfigurationWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(9);
+        return new ConfigurationWebsitePage(websiteName, template);
+    }
+
+    @Step
+    public ConfigurationWebsitePage clickOnSettingsWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(10);
+        return new ConfigurationWebsitePage(websiteName, template);
+    }
+
+    @Step
+    public AdministratorsPage clickOnAdministratorsWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(11);
+        return new AdministratorsPage(websiteName, template);
+    }
+
+    @Step
+    public ModeratorsPage clickOnModeratorsWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(12);
+        return new ModeratorsPage(websiteName, template);
+    }
+
+    @Step
+    public AuthoritiesPage clickOnAuthoritiesWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(13);
+        return new AuthoritiesPage(websiteName, template);
+    }
+
+    @Step
+    public MutedUsersPage clickOnMutedUsersWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(16);
+        return new MutedUsersPage(websiteName, template);
     }
 
     @Override
