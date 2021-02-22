@@ -18,7 +18,11 @@ import com.wizardsdev.Modals.ReBlog;
 import com.wizardsdev.Modals.SignIn;
 
 
+import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
+import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
 import com.wizardsdev.PageObjects.Tools.Website.ConfigurationWebsitePage;
+import com.wizardsdev.PageObjects.Tools.Website.ModeratorsPage;
+import com.wizardsdev.PageObjects.Tools.Website.MutedUsersPage;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -107,6 +111,14 @@ public abstract class TestBase {
   protected static ManageWebsitePage manageWebsitePage;
   protected static ReportsWebsitePage reportsWebsitePage;
 
+//website
+  protected static ConfigurationWebsitePage configurationWebsitePage;
+  protected static AdministratorsPage administratorsPage;
+  protected static ModeratorsPage moderatorsPage;
+  protected static AuthoritiesPage authoritiesPage;
+  protected static MutedUsersPage mutedUsersPage;
+
+
   protected static CommentsPage commentsPage;
   protected static ExpertisePage expertisePage;
   protected static FollowersPage followersPage;
@@ -128,7 +140,6 @@ public abstract class TestBase {
   protected static ReviewsObjectPage dishObjectPage;
   protected static PageObjectPage pageObjectPage;
 
-  protected static ConfigurationWebsitePage configurationWebsitePage;
 
   protected static FullScreenOfTheReservationPost fullScreenOfTheReservationPost;
 
