@@ -13,7 +13,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class MutedUsersPage extends Page {
-  public static final By INPUT_FOR_SEARCH_LOCATOR = By.cssSelector(".ant-select-search__field");
+  public static final By INPUT_MUTE_SEARCH_LOCATOR =
+      By.cssSelector(".WebsiteRestrictions__autocomplete input");
   public static final By BUTTON_MUTE_LOCATOR =
       By.cssSelector(".WebsiteRestrictions__button");
   public static final By MUTED_USER_INFO_LOCATOR =
@@ -35,9 +36,7 @@ public class MutedUsersPage extends Page {
 
   @Step
   public void setUserNameForMute(String userName) {
-    $$(INPUT_FOR_SEARCH_LOCATOR).get(1)
-        .shouldBe(Condition.visible)
-        .setValue(userName);
+    $(INPUT_MUTE_SEARCH_LOCATOR).shouldBe(Condition.visible).setValue(userName);
     $(USER_IN_DROP_DOWN_LOCATOR).shouldBe(Condition.visible).click();
     $(BUTTON_DELETE_LOCATOR).shouldBe(Condition.visible);
   }

@@ -13,7 +13,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class AdministratorsPage extends Page {
-  public static final By INPUT_FOR_SEARCH_LOCATOR = By.cssSelector(".ant-select-search__field");
+  public static final By INPUT_ADMINISTRATORS_SEARCH_LOCATOR =
+      By.cssSelector(".WebsitesAdministrators__search-user input");
   public static final By BUTTON_ADD_ADMINISTRATORS_LOCATOR =
       By.cssSelector(".WebsitesAdministrators__add-button");
   public static final By ADMINISTRATORS_USER_INFO_LOCATOR =
@@ -35,9 +36,7 @@ public class AdministratorsPage extends Page {
 
   @Step
   public void setUserNameAdministrators(String userName) {
-    $$(INPUT_FOR_SEARCH_LOCATOR).get(1)
-        .shouldBe(Condition.visible)
-        .setValue(userName);
+    $(INPUT_ADMINISTRATORS_SEARCH_LOCATOR).shouldBe(Condition.visible).setValue(userName);
     $(USER_IN_DROP_DOWN_LOCATOR).shouldBe(Condition.visible).click();
     $(BUTTON_DELETE_LOCATOR).shouldBe(Condition.visible);
   }
