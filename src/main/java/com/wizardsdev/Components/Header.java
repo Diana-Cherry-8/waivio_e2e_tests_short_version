@@ -3,6 +3,7 @@ package com.wizardsdev.Components;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
+import static org.slf4j.MDC.clear;
 
 
 import com.codeborne.selenide.Condition;
@@ -128,6 +129,7 @@ public class Header extends Page {
   }
 
   public void inputTextToSearch(String textToSearch) {
+    clear();
     $(INPUT_SEARCH_LOCATOR).setValue(textToSearch);
   }
 

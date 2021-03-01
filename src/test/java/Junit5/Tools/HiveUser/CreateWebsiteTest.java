@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 @Feature("Create page, Tools")
 public class CreateWebsiteTest extends TestBase {
-  int templateIndex = 1;
-  String websiteName = "test1";
+  int templateIndex = 0;
+  String websiteName = "test1234unique";
   String templateName = properties.getProperty("TemplateNameProd");
 
   @BeforeAll

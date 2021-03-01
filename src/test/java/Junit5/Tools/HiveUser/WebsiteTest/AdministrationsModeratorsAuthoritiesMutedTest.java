@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 @Feature("Website, Tools")
 public class AdministrationsModeratorsAuthoritiesMutedTest extends TestBase {
-  static int templateIndex = 1;
+  static int templateIndex = 0;
   static String websiteName = "testing1234560000";
   static String templateName = properties.getProperty("TemplateNameProd");
   String userName = "x6oc5";

@@ -14,6 +14,8 @@ public class EligiblePage extends Page {
     private static final By BUTTONS_RESERVE_LOCATOR = By.cssSelector(".ant-btn-primary");
     private static final By BUTTON_RESERVE_IN_MODAL_WINDOW_LOCATOR =
             By.cssSelector(".Details__footer-reserve-btn .ant-btn-primary");
+    private static final By BUTTON_RESERVE_WITH_LOADING_IN_MODAL_WINDOW_LOCATOR =
+        By.cssSelector(".Details__footer-reserve-btn .ant-btn-loading");
     private static final By TITLE_SECONDARY_OBJECT_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
 
     public EligiblePage() {
@@ -42,6 +44,8 @@ public class EligiblePage extends Page {
     @Step
     public ReservedPage clickReserveButtonInModalWindow() {
         $(BUTTON_RESERVE_IN_MODAL_WINDOW_LOCATOR).shouldBe(Condition.visible).click();
+        $(BUTTON_RESERVE_WITH_LOADING_IN_MODAL_WINDOW_LOCATOR).shouldBe(Condition.disappear);
+        $(TITLE_REWARDS_LOCATOR).shouldBe(Condition.visible);
         return new ReservedPage();
     }
 
