@@ -26,7 +26,7 @@ public class CreateTest extends TestBase {
     void openCreateTest() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         createPage = rewardsLeftSidebar.clickOnCreateItem();
-        String expectedResult = "Campaign name (create a duplicate)";
+        String expectedResult = "Campaign name";
         String actualResult = createPage.getTitleCampaignName();
         assertEquals(expectedResult, actualResult);
     }

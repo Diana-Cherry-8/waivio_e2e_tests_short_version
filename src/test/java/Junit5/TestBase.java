@@ -15,6 +15,7 @@ import com.wizardsdev.Keywords;
 import com.wizardsdev.Modals.DeleteWebsite;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.ReBlog;
+import com.wizardsdev.Modals.Reservation;
 import com.wizardsdev.Modals.SignIn;
 
 
@@ -60,6 +61,7 @@ public abstract class TestBase {
   protected static Post post;
   protected static ReBlog reBlog;
   protected static DeleteWebsite deleteWebsite;
+  protected static Reservation reservation;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();
