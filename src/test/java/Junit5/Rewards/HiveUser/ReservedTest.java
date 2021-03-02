@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Feature("Reserved Page, Rewards")
 public class ReservedTest extends TestBase {
-    private static final By TITLE_OBJECT_CARD_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
 
     @BeforeAll
     static void login() {
@@ -41,9 +40,9 @@ public class ReservedTest extends TestBase {
         rewardsLeftSidebar.clickOnEligibleItem();
         eligiblePage.clickEarnButton();
         String expectedResult = eligiblePage.getTitleSecondaryObject();
-        eligiblePage.clickReserveButtonInCard();
-        reservedPage = eligiblePage.clickReserveButtonInModalWindow();
-        waiter.until(ExpectedConditions.visibilityOf($(TITLE_OBJECT_CARD_NAME_LOCATOR)));
+        reservation = eligiblePage.clickReserveButtonInCard();
+        reservedPage = reservation.clickReserveButtonInModalWindow();
+        sleep(10000);
         refreshPage();
         String actualResult = reservedPage.getTitleObjectCardName();
         assertEquals(expectedResult, actualResult);

@@ -39,8 +39,8 @@ public class ReservedTest extends TestBase {
         rewardsLeftSidebar.clickOnEligibleItem();
         eligiblePage.clickEarnButton();
         String expectedResult = eligiblePage.getTitleSecondaryObject();
-        eligiblePage.clickReserveButtonInCard();
-        reservedPage = eligiblePage.clickReserveButtonInModalWindow();
+        reservation = eligiblePage.clickReserveButtonInCard();
+        reservedPage = reservation.clickReserveButtonInModalWindow();
         sleep(10000);
         refreshPage();
         String actualResult = reservedPage.getTitleObjectCardName();

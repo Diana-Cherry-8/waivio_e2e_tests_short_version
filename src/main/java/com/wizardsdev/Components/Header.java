@@ -132,6 +132,7 @@ public class Header extends Page {
   }
 
   public void inputTextToSearch(String textToSearch) {
+    $(INPUT_SEARCH_LOCATOR).clear();
     $(INPUT_SEARCH_LOCATOR).setValue(textToSearch);
   }
 
