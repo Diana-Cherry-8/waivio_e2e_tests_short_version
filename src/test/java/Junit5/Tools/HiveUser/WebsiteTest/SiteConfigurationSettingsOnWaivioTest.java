@@ -1,5 +1,6 @@
 package Junit5.Tools.HiveUser.WebsiteTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -13,11 +14,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Feature("Website, Tools")
-public class AdministrationsModeratorsAuthoritiesMutedTest extends TestBase {
+public class SiteConfigurationSettingsOnWaivioTest extends TestBase {
   static int templateIndex = 0;
   static String websiteName = "testing1234560000";
   static String templateName = properties.getProperty("TemplateNameProd");
-  String userName = "x6oc5";
+  String userName = "daine-cherry2";
+  String  userNameForMute = "daine-cherry";
 
   @BeforeAll
   static void login() {
@@ -77,12 +79,45 @@ public class AdministrationsModeratorsAuthoritiesMutedTest extends TestBase {
   @Test
   void addUserInMutedListForWebsite() {
     mutedUsersPage = toolsLeftSidebar.clickOnMutedUsersWebsite(templateName, websiteName);
-    mutedUsersPage.setUserNameForMute(userName);
+    mutedUsersPage.setUserNameForMute(userNameForMute);
     mutedUsersPage.clickButtonMute();
     refreshPage();
-    String expectedResult = userName;
+    String expectedResult = userNameForMute;
     String actualResult = mutedUsersPage.getUserNameInMuteTable();
     assertTrue((actualResult).contains(expectedResult));
+  }
+
+  @Story("Open page")
+  @DisplayName("Check settings page is opened in Website configuration, in Tools tab")
+  @Test
+  void openSettingsWebsite() {
+    settingsWebsitePage = toolsLeftSidebar.clickOnSettingsWebsite(templateName, websiteName);
+    refreshPage();
+    String expectedResult = "Settings";
+    String actualResult = settingsWebsitePage.getTitleTools();
+    assertEquals(expectedResult, actualResult);
+  }
+
+  @Story("Open page")
+  @DisplayName("Check areas page is opened in Website configuration, in Tools tab")
+  @Test
+  void openAreasWebsite() {
+    areasPage = toolsLeftSidebar.clickOnAreasWebsite(templateName, websiteName);
+    refreshPage();
+    String expectedResult = "Specify areas";
+    String actualResult = areasPage.getTitleTools();
+    assertEquals(expectedResult, actualResult);
+  }
+
+  @Story("Open page")
+  @DisplayName("Check objects filters page is opened in Website configuration, in Tools tab")
+  @Test
+  void openObjectFiltersWebsite() {
+    objectsFiltersPage = toolsLeftSidebar.clickOnObjectsFiltersWebsite(templateName, websiteName);
+    refreshPage();
+    String expectedResult = "Object filters";
+    String actualResult = objectsFiltersPage.getTitleTools();
+    assertEquals(expectedResult, actualResult);
   }
 
   @AfterAll

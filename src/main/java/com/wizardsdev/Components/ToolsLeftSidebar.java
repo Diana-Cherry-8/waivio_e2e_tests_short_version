@@ -4,10 +4,13 @@ import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Tools.*;
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
+import com.wizardsdev.PageObjects.Tools.Website.AreasPage;
 import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
 import com.wizardsdev.PageObjects.Tools.Website.ConfigurationWebsitePage;
 import com.wizardsdev.PageObjects.Tools.Website.ModeratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.MutedUsersPage;
+import com.wizardsdev.PageObjects.Tools.Website.ObjectsFiltersPage;
+import com.wizardsdev.PageObjects.Tools.Website.SettingsWebsitePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -112,9 +115,9 @@ public class ToolsLeftSidebar extends Page {
     }
 
     @Step
-    public ConfigurationWebsitePage clickOnSettingsWebsite(String websiteName, String template) {
+    public SettingsWebsitePage clickOnSettingsWebsite(String websiteName, String template) {
         clickOnSideBarItemRewardsByIndex(10);
-        return new ConfigurationWebsitePage(websiteName, template);
+        return new SettingsWebsitePage(websiteName, template);
     }
 
     @Step
@@ -133,6 +136,18 @@ public class ToolsLeftSidebar extends Page {
     public AuthoritiesPage clickOnAuthoritiesWebsite(String websiteName, String template) {
         clickOnSideBarItemRewardsByIndex(13);
         return new AuthoritiesPage(websiteName, template);
+    }
+
+    @Step
+    public AreasPage clickOnAreasWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(14);
+        return new AreasPage(websiteName, template);
+    }
+
+    @Step
+    public ObjectsFiltersPage clickOnObjectsFiltersWebsite(String websiteName, String template) {
+        clickOnSideBarItemRewardsByIndex(15);
+        return new ObjectsFiltersPage(websiteName, template);
     }
 
     @Step

@@ -20,10 +20,13 @@ import com.wizardsdev.Modals.SignIn;
 
 
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
+import com.wizardsdev.PageObjects.Tools.Website.AreasPage;
 import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
 import com.wizardsdev.PageObjects.Tools.Website.ConfigurationWebsitePage;
 import com.wizardsdev.PageObjects.Tools.Website.ModeratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.MutedUsersPage;
+import com.wizardsdev.PageObjects.Tools.Website.ObjectsFiltersPage;
+import com.wizardsdev.PageObjects.Tools.Website.SettingsWebsitePage;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -115,9 +118,12 @@ public abstract class TestBase {
 
 //website
   protected static ConfigurationWebsitePage configurationWebsitePage;
+  protected static SettingsWebsitePage settingsWebsitePage;
   protected static AdministratorsPage administratorsPage;
   protected static ModeratorsPage moderatorsPage;
   protected static AuthoritiesPage authoritiesPage;
+  protected static AreasPage areasPage;
+  protected static ObjectsFiltersPage objectsFiltersPage;
   protected static MutedUsersPage mutedUsersPage;
 
 
