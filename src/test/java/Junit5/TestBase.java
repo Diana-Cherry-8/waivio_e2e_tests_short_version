@@ -126,6 +126,8 @@ public abstract class TestBase {
   protected static ObjectsFiltersPage objectsFiltersPage;
   protected static MutedUsersPage mutedUsersPage;
 
+  protected static DiningGiftsPage diningGiftsPage;
+
 
   protected static CommentsPage commentsPage;
   protected static ExpertisePage expertisePage;
