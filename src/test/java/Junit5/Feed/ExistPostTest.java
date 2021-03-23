@@ -1,5 +1,8 @@
 package Junit5.Feed;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.Objects.ObjectPage;
@@ -16,9 +19,10 @@ public class ExistPostTest extends TestBase {
   @Test
   void clickOnPostAuthorTest() {
     feedPage = FeedPage.openFeedPage();
-    String postAuthorName = feedPage.getPostAuthorName(postIndex);
-    ProfilePage authorPage = feedPage.clickOnPostAuthorName(postIndex);
-    assert(postAuthorName.equals(authorPage.getUserNameValue()));
+    String expectedAuthorName = feedPage.getPostAuthorName(postIndex);
+    ProfilePage profilePage = feedPage.clickOnPostAuthorName(postIndex);
+    String actualAuthorName = profilePage.getUserNameValue();
+    assertEquals(expectedAuthorName, actualAuthorName);
   }
 
   @DisplayName("Check is object page is available after click on name of related object on main feed")

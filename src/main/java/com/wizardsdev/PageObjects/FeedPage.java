@@ -10,6 +10,7 @@ import static java.lang.Integer.parseInt;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.WebDriverRunner;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.ReBlog;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class FeedPage extends Page {
