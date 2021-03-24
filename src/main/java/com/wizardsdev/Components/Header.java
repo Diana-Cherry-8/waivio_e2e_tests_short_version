@@ -24,7 +24,7 @@ public class Header extends Page {
   private static final By ACCOUNT_ICON_LOCATOR =
       By.cssSelector(".Topnav__user");
   private static final By DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR =
-      By.className("PopoverMenuItem");
+      By.cssSelector(".PopoverMenuItem");
   private static final By INPUT_SEARCH_LOCATOR =
       By.cssSelector(".ant-select-search__field");
   private static final By SEARCH_ITEMS_OBJECT_USER_LOCATOR =
@@ -104,6 +104,7 @@ public class Header extends Page {
 
   @Step
   public void clickOnChangeLanguageIcon() {
+    $$(ANT_MENU_ITEMS_LOCATOR).get(1).shouldBe(Condition.visible);
     $$(ANT_MENU_ITEMS_LOCATOR).get(1).click();
   }
 
@@ -127,8 +128,7 @@ public class Header extends Page {
 
   @Step
   public void clickOnEnglishLanguage() {
-    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(0).click();
-    sleep(1000);
+    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).findBy(Condition.exactText("English")).click();
   }
 
   public void inputTextToSearch(String textToSearch) {

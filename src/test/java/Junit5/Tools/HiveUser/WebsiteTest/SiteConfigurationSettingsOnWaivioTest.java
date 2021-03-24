@@ -22,7 +22,7 @@ public class SiteConfigurationSettingsOnWaivioTest extends TestBase {
   String  userNameForMute = "daine-cherry";
 
   @BeforeAll
-  static void login() {
+  static void loginAndCreateSite() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     draftsPage = topNavigation.clickOnToolsItem();

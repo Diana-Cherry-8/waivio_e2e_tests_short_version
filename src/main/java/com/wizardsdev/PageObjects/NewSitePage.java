@@ -12,8 +12,8 @@ import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-public class DiningGiftsPage extends Page{
-  private static final String PAGE_URL = "https://dining.gifts";
+public class NewSitePage extends Page{
+  private static final String PAGE_URL = "https://";
   private static final By OBJECTS_MARKS_ON_MAP_LOCATOR = By.cssSelector(".pigeon-click-block");
   private static final By WEBSITE_DESKTOP_LOGO_LOCATOR = By.cssSelector(".WebsiteBody__logo");
   private static final By BUTTON_MY_LOCATION_LOCATOR = By.cssSelector(".MapOS__locateGPS-button");
@@ -24,16 +24,25 @@ public class DiningGiftsPage extends Page{
   private static final By CARD_TAG_LOCATOR = By.cssSelector(".ObjectCardView__tag-text");
   private static final By USERS_CARDS_LOCATOR = By.cssSelector(".UserCard");
 
-  public DiningGiftsPage() {
-    super(PAGE_URL);
+
+  public NewSitePage(String siteName, String template) {
+    super(PAGE_URL + siteName + template);
   }
 
   @Step
-  public static DiningGiftsPage openDiningGiftsPage() {
-    if (!url().equals(Context.getSiteUrl())) {
-      open(PAGE_URL);
+  public static NewSitePage openNewSitePage(String siteName, String template) {
+    if (!url().equals(Context.getSiteUrl() + siteName + '.' + template)) {
+      open(PAGE_URL + siteName + '.' + template);
     }
-    return new DiningGiftsPage();
+    return new NewSitePage(siteName, template);
+  }
+
+  @Step
+  public static NewSitePage openDiningGifts(String siteName, String template) {
+    if (!url().equals(Context.getSiteUrl() + siteName  + template)) {
+      open(PAGE_URL + siteName + template);
+    }
+    return new NewSitePage(siteName, template);
   }
 
   @Step
@@ -59,7 +68,7 @@ public class DiningGiftsPage extends Page{
   @Step
   public void clickSearchPanel() {
     if($(OBJECT_CARD_NAME_LOCATOR).exists()) {
-    $(OBJECT_CARD_NAME_LOCATOR).shouldBe(Condition.visible);
+      $(OBJECT_CARD_NAME_LOCATOR).shouldBe(Condition.visible);
     }
     else if ($(USERS_CARDS_LOCATOR).exists()){
       $(USERS_CARDS_LOCATOR).shouldBe(Condition.visible);
