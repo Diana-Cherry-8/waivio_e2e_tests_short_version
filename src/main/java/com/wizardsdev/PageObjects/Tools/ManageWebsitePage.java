@@ -13,7 +13,7 @@ public class ManageWebsitePage extends Page {
   private static final String PAGE_URL = "/manage";
   private static final By BUTTON_DELETE_LOCATOR = By.cssSelector(".DynamicTable__delete");
   private static final By CHECKBOX_SITE_ACTIVATION_LOCATOR = By.cssSelector(".ant-checkbox");
-  private static final By CHECKBOX_ACTIVATED_LOCATOR = By.cssSelector(".ant-checkbox-checked");
+  private static final By CHECKBOX_SITE_ACTIVATION_CHECKED_LOCATOR = By.cssSelector(".ant-checkbox-checked");
 
   public ManageWebsitePage() {
     super(PAGE_URL);
@@ -36,12 +36,12 @@ public class ManageWebsitePage extends Page {
   @Step
   public void clickCheckboxSiteActivation() {
     $(CHECKBOX_SITE_ACTIVATION_LOCATOR).shouldBe(Condition.visible).click();
-    $(CHECKBOX_ACTIVATED_LOCATOR).shouldBe(Condition.visible);
+    $(CHECKBOX_SITE_ACTIVATION_CHECKED_LOCATOR).shouldBe(Condition.visible);
   }
 
   @Step
   public void clickCheckboxSiteForDeactivation() {
-    $(CHECKBOX_ACTIVATED_LOCATOR).shouldBe(Condition.visible).click();
+    $(CHECKBOX_SITE_ACTIVATION_CHECKED_LOCATOR).shouldBe(Condition.visible).click();
     $(CHECKBOX_SITE_ACTIVATION_LOCATOR).shouldBe(Condition.visible);
   }
 
