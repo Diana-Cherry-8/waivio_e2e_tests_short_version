@@ -18,7 +18,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ToolsLeftSidebar extends Page {
-    private static final By SIDE_BAR_ITEMS_LINK_TOOLS_LOCATOR = By.cssSelector(".sidenav-discover-objects__item");
+    private static final By SIDE_BAR_ITEMS_LINK_TOOLS_LOCATOR =
+        By.cssSelector(".sidenav-discover-objects__item");
 
     public ToolsLeftSidebar() {
         super();

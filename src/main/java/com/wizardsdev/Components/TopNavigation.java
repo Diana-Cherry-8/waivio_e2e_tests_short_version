@@ -56,6 +56,13 @@ public class TopNavigation extends Page {
     return new ReviewsObjectPage();
   }
 
+  @Step
+  public String getFeedTabName() {
+    sleep(2000);
+    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(0).shouldBe(Condition.visible);
+    return getTopNavigationItemByIndex(0).getText();
+  }
+
 
 
   @Override

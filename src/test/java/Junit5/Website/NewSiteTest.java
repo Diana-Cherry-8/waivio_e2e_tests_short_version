@@ -2,52 +2,56 @@ package Junit5.Website;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 import Junit5.TestBase;
+import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.NewSitePage;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class SiteDiningGiftsTest extends TestBase {
-
-  static String websiteName = "";
+@Feature("Website")
+public class NewSiteTest extends TestBase {
+  static int templateIndex = 0;
+  static String websiteName = "data20543656createnewsite";
   static String templateName = properties.getProperty("TemplateNameProd");
+
   @BeforeAll
-  static void openSite() {
-    newSitePage = NewSitePage.openDiningGifts(websiteName, templateName);
+  static void loginAndCreateSite() {
+    feedPage = FeedPage.openFeedPage();
+    header.logInWithHiveSigner(getUserLogin(), getUserPassword());
+    draftsPage = topNavigation.clickOnToolsItem();
+    createWebsitePage = toolsLeftSidebar.clickOnCreateWebsite();
+    createWebsitePage.clickOnSelectWebsiteInput();
+    createWebsitePage.clickOnOptionInSelectWebsiteDropDownMenu(templateIndex);
+    createWebsitePage.setWebsiteName(websiteName);
+    createWebsitePage.clickOnAgreementCheckbox();
+    configurationWebsitePage =
+        createWebsitePage.clickOnCreateNewWebsiteButton(websiteName, templateName);
+    manageWebsitePage = toolsLeftSidebar.clickOnManageWebsite();
+    manageWebsitePage.clickCheckboxSiteActivation();
+    areasPage = toolsLeftSidebar.clickOnAreasWebsite(templateName, websiteName);
+    areasPage.clickClickChoseAreaButton();
+    newSitePage = NewSitePage.openNewSitePage(websiteName, templateName);
   }
 
-  @Story("Website dining.gifts")
-  @DisplayName("Check objects mark are exist on the map")
-  @Test
-  void checkObjectsMarksAreExist() {
-    assert(newSitePage.areObjectsMarksExist());
-  }
-
-  @Story("Website dining.gifts")
-  @DisplayName("Check website logo is exist on the map")
-  @Test
-  void checkDesktopLogoIsExist() {
-    assert(newSitePage.isWebsiteDesktopLogoExist());
-  }
-
-  @Story("Website dining.gifts")
+  @Story("New website")
   @DisplayName("Check button my location is exist on the map")
   @Test
   void checkButtonMyLocationIsExist() {
     assert(newSitePage.isButtonMyLocationExist());
   }
 
-  @Story("Website dining.gifts")
+  @Story("New website")
   @DisplayName("Check buttons for zoom are exist on the map")
   @Test
   void checkButtonsForZoomAreExist() {
     assert(newSitePage.areButtonsForZoomExist());
   }
 
-  @Story("Website dining.gifts")
+  @Story("New website")
   @DisplayName("Check search panel is opened")
   @Test
   void checkSearchPanelIsOpened() {
@@ -55,7 +59,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assert(newSitePage.isSearchPanelOpen());
   }
 
-  @Story("Website dining.gifts")
+  @Story("New website")
   @DisplayName("Check dish tab is opened")
   @Test
   void checkDishTab() {
@@ -66,7 +70,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
-  @Story("Website dining.gifts")
+  @Story("New website")
   @DisplayName("Check restaurant tab is opened")
   @Test
   void checkRestaurantTab() {
@@ -77,7 +81,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
-  @Story("Website dining.gifts")
+  @Story("New website")
   @DisplayName("Check drink tab is opened")
   @Test
   void checkDrinkTab() {
@@ -88,7 +92,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
-  @Story("Website dining.gifts")
+  @Story("New website")
   @DisplayName("Check users tab is opened")
   @Test
   void checkUsersTab() {
@@ -97,4 +101,13 @@ public class SiteDiningGiftsTest extends TestBase {
     assert(newSitePage.areUsersListOpen());
   }
 
+  @AfterAll
+  static void delete() {
+    feedPage = FeedPage.openFeedPage();
+    draftsPage = topNavigation.clickOnToolsItem();
+    manageWebsitePage = toolsLeftSidebar.clickOnManageWebsite();
+    manageWebsitePage.clickCheckboxSiteForDeactivation();
+    deleteWebsite = manageWebsitePage.clickDelete();
+    deleteWebsite.submitDeleteWebsite();
+  }
 }

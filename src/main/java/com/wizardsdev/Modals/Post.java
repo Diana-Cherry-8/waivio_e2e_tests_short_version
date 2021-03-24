@@ -32,7 +32,7 @@ public class Post extends Modal {
 
   @Step
   public String getPostAuthorName() {
-    $(POST_AUTHOR_LOCATOR).shouldBe(Condition.visible);
+    $(POST_AUTHOR_LOCATOR).scrollTo().shouldBe(Condition.visible);
     return  $(POST_AUTHOR_LOCATOR).getText();
   }
 
@@ -55,7 +55,7 @@ public class Post extends Modal {
   @Step
   public List<String> getObjectsRelatedNameList() {
     List<String> objectsRelatedNameList = new ArrayList<>();
-    $(OBJECT_RELATED_BY_TAGS_NAMES_LOCATOR).shouldBe(Condition.visible);
+    $(OBJECT_RELATED_BY_TAGS_NAMES_LOCATOR).scrollTo().shouldBe(Condition.visible);
     ElementsCollection objectsRelatedList = $$(OBJECT_RELATED_BY_TAGS_NAMES_LOCATOR);
     for(WebElement element: objectsRelatedList){
       objectsRelatedNameList.add(element.getText());

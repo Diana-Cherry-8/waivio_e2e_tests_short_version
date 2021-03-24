@@ -19,6 +19,7 @@ public abstract class ProfilePage {
     @Step
     public String getUserNameValue() {
         return $(USERNAME_LOCATOR)
+                .scrollTo()
                 .shouldBe(Condition.visible)
                 .getText()
                 .replace("@","")
