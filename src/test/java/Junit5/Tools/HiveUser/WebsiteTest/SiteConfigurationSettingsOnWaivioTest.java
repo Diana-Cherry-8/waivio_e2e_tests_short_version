@@ -21,10 +21,13 @@ public class SiteConfigurationSettingsOnWaivioTest extends TestBase {
   String userName = "daine-cherry2";
   String  userNameForMute = "daine-cherry";
 
+  static String hiveUserEmail = properties.getProperty("UserLogin04");
+  static String hivePasswordPassword = properties.getProperty("LoginPassword04");
+
   @BeforeAll
   static void loginAndCreateSite() {
     feedPage = FeedPage.openFeedPage();
-    header.logInWithHiveSigner(getUserLogin(), getUserPassword());
+    header.logInWithHiveSigner(hiveUserEmail, hivePasswordPassword);
     draftsPage = topNavigation.clickOnToolsItem();
     createWebsitePage = toolsLeftSidebar.clickOnCreateWebsite();
     createWebsitePage.clickOnSelectWebsiteInput();
