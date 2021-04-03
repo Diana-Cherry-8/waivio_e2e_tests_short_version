@@ -11,9 +11,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class SiteDiningGiftsTest extends TestBase {
-
   static String websiteName = "";
   static String templateName = properties.getProperty("TemplateNameProd");
+
   @BeforeAll
   static void openSite() {
     newSitePage = NewSitePage.openDiningGifts(websiteName, templateName);
@@ -96,5 +96,4 @@ public class SiteDiningGiftsTest extends TestBase {
     newSitePage.clickUsersTab();
     assert(newSitePage.areUsersListOpen());
   }
-
 }

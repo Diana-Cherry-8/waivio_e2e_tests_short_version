@@ -19,7 +19,7 @@ public class NewSiteTest extends TestBase {
   static String templateName = properties.getProperty("TemplateNameProd");
 
   @BeforeAll
-  static void loginAndCreateSite() {
+  static void createAndOpenSite() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     draftsPage = topNavigation.clickOnToolsItem();

@@ -44,6 +44,7 @@ public class Header extends Page {
   private static final By USER_MENU_ITEMS_LOCATOR =
       By.cssSelector(".PopoverMenuItem:not(.PopOverMenuItem__full-screen-hidden) a");
   private static final By LOADER_SIGN_IN_MODAL_LOCATOR = By.className("ModalSignIn__loading");
+  private static final By LOADER_SIGN_IN_PAGE_MODAL_LOCATOR = By.className("RedirectedSignIn__loading");
 
   public Header() {
     super();
@@ -61,6 +62,13 @@ public class Header extends Page {
   }
 
   @Step
+  public void logInWithHiveSignerForNewSite(String login, String password) {
+    SignInPage signIn = clickOnSingInNewSite();
+    signIn.signInWithHiveSignerForNewSite();
+    $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
+  }
+
+  @Step
   public void logInWithFacebook(String email, String password) {
     SignIn signIn = clickOnSingIn();
     FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook();
@@ -72,10 +80,35 @@ public class Header extends Page {
   }
 
   @Step
+  public void logInWithFacebookNewSite(String email, String password) {
+    SignInPage signIn = clickOnSignInPage();
+    FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook();
+    facebookSignPage.setLogin(email);
+    facebookSignPage.setPassword(password);
+    facebookSignPage.clickOnLogIn();
+    $(LOADER_SIGN_IN_PAGE_MODAL_LOCATOR).shouldBe(Condition.visible).shouldBe(Condition.disappear);
+    $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
+  }
+
+  @Step
+  public SignInPage clickOnSignInPage() {
+    $(ANT_MENU_ITEMS_LOCATOR).shouldBe(Condition.visible).click();
+    return new SignInPage();
+  }
+
+  @Step
   public SignIn clickOnSingIn() {
     $(ANT_MENU_ITEMS_LOCATOR).shouldBe(Condition.visible).click();
     return new SignIn();
   }
+
+  @Step
+  public SignInPage clickOnSingInNewSite() {
+    $(ANT_MENU_ITEMS_LOCATOR).shouldBe(Condition.visible).click();
+    return new SignInPage();
+  }
+
+
 
   @Step
   public void logOut() {

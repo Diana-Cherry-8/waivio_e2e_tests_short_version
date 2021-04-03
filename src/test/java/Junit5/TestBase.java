@@ -46,7 +46,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @ExtendWith(MyAfterTestExecutionCallback.class)
 public abstract class TestBase {
 
-  private static final int WAIT_TIME = 20000;
+  //private static final int WAIT_TIME = 20000;
+  private static final int WAIT_TIME = 10000;
+
   public static final String PATH_TO_TEST_FILE = "src/test/resources/";
   protected static HashMap<Integer, String> usersInThreads = new HashMap<>() {
     {
@@ -67,6 +69,7 @@ public abstract class TestBase {
   protected static DeleteWebsite deleteWebsite;
   protected static Reservation reservation;
   protected static ChooseLogo chooseLogo;
+  protected static SignInPage signInPage;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();
@@ -152,6 +155,9 @@ public abstract class TestBase {
   protected static ReviewsObjectPage dishObjectPage;
   protected static PageObjectPage pageObjectPage;
 
+  protected static TwitterPage twitterPage;
+  protected static FacebookSignPage facebookSignPage;
+  protected static FacebookSignPageInTheSameWindow facebookSignPageInTheSameWindow;
 
   protected static FullScreenOfTheReservationPost fullScreenOfTheReservationPost;
 

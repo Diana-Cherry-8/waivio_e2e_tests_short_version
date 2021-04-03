@@ -2,6 +2,7 @@ package com.wizardsdev.Modals;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 
 import com.codeborne.selenide.Condition;
@@ -56,6 +57,7 @@ public abstract class Modal extends Page {
   public void submitDeleteWebsite() {
     $$(BUTTON_SUBMIT_LOCATOR).get(1).shouldBe(Condition.visible).click();
     $(MODAL_WINDOW_LOCATOR).shouldBe(Condition.disappear);
+    sleep(1000);
   }
   
   @Step

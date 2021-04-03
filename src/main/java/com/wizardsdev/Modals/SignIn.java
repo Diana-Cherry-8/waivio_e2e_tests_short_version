@@ -24,6 +24,8 @@ public class SignIn extends Modal{
   private static final By GOOGLE_SING_IN_LOCATOR = By.className("ModalSignUp__social-btn");
   private static final By FACEBOOK_SING_IN_ENABLED_LOCATOR
       = Selectors.byAttribute ("style", "transition: opacity 0.5s ease 0s;");
+  private static final By HIVESIGNER_SING_IN_FOR_NEW_SITE_LOCATOR =
+      By.cssSelector(".RedirectedSignIn__signin");
 
 
   public SignIn() {

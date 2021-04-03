@@ -29,6 +29,7 @@ public class AreasPage extends Page {
 
   @Step
   public void clickClickChoseAreaButton() {
+    sleep(2000);
     $(BUTTON_CHOSE_AREA_LOCATOR).shouldBe(Condition.visible).click();
     sleep(2000);
 

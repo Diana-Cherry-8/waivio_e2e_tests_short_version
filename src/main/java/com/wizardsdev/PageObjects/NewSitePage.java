@@ -4,6 +4,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 
@@ -33,6 +34,7 @@ public class NewSitePage extends Page{
   public static NewSitePage openNewSitePage(String siteName, String template) {
     if (!url().equals(Context.getSiteUrl() + siteName + '.' + template)) {
       open(PAGE_URL + siteName + '.' + template);
+      sleep(2000);
     }
     return new NewSitePage(siteName, template);
   }
@@ -41,6 +43,7 @@ public class NewSitePage extends Page{
   public static NewSitePage openDiningGifts(String siteName, String template) {
     if (!url().equals(Context.getSiteUrl() + siteName  + template)) {
       open(PAGE_URL + siteName + template);
+      sleep(2000);
     }
     return new NewSitePage(siteName, template);
   }

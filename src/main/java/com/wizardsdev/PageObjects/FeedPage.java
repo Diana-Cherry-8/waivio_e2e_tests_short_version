@@ -10,7 +10,6 @@ import static java.lang.Integer.parseInt;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.WebDriverRunner;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.ReBlog;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 public class FeedPage extends Page {
@@ -49,6 +47,8 @@ public class FeedPage extends Page {
   private static final By BUTTON_EXPAND_COMMENT_LOCATOR = By.cssSelector(".icon-message_fill");
   private static final By COMMENT_LOCATOR = By.cssSelector(".Comment__text");
   private static final By LOADING_LOCATOR = By.cssSelector(".Loading");
+  private static final By TREE_DOTS_BUTTON_LOCATOR = By.cssSelector(".Buttons__post-menu");
+  private static final By SOCIAL_ITEMS_LOCATOR = By.cssSelector(".Popover__shared-link");
 
   public FeedPage() {
     super(PAGE_URL);
@@ -249,6 +249,25 @@ public class FeedPage extends Page {
   @Step
   public boolean isCommentExist() {
     return $(COMMENT_LOCATOR).shouldBe(Condition.visible).exists();
+  }
+
+  @Step
+  public void clickOnTreeDotsButton(int index) {
+    $$(TREE_DOTS_BUTTON_LOCATOR).get(index).shouldBe(Condition.visible).click();
+  }
+
+  @Step
+  public TwitterPage clickOnTwitterInPostMenu(int index) {
+    clickOnTreeDotsButton(index);
+    $$(SOCIAL_ITEMS_LOCATOR).get(1).shouldBe(Condition.visible).click();
+    return new TwitterPage();
+  }
+
+  @Step
+  public FacebookSignPageInTheSameWindow clickOnFacebookInPostMenu(int index) {
+    clickOnTreeDotsButton(index);
+    $$(SOCIAL_ITEMS_LOCATOR).get(0).shouldBe(Condition.visible).click();
+    return new FacebookSignPageInTheSameWindow();
   }
 
   @Override
