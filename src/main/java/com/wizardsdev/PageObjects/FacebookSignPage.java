@@ -33,11 +33,6 @@ public class FacebookSignPage extends Page {
     switchTo().window(0);
   }
 
-  @Step
-  public boolean isLoginFieldExist() {
-    return $(LOGIN_INPUT_LOCATOR).shouldBe(Condition.visible).exists();
-  }
-
   @Override
   protected void init() {
 
