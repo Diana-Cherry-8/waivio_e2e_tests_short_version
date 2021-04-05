@@ -17,11 +17,12 @@ public class WalletTest extends TestBase {
     String amountForTransfer = "0.001";
     Float amount = Float.parseFloat(amountForTransfer);
     String sponsorName = properties.getProperty("HiveAccountName");
+    static boolean newWindow = true;
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
     }
 
     @Story("Open page")

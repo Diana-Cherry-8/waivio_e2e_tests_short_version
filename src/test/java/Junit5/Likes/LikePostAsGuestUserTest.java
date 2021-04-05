@@ -15,10 +15,11 @@ public class LikePostAsGuestUserTest extends TestBase {
   String facebookPassword = properties.getProperty("FacebookUserPass00");
   private final int postIndex = (int) (Math.random() * 9);
 
+  static boolean newWindow = true;
   @BeforeEach
   void login() {
     feedPage = FeedPage.openFeedPage();
-    header.logInWithFacebook(facebookEmail, facebookPassword);
+    header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
   }
 
   @Story("Likes")

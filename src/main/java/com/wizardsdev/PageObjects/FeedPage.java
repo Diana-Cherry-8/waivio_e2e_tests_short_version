@@ -264,10 +264,10 @@ public class FeedPage extends Page {
   }
 
   @Step
-  public FacebookSignPageInTheSameWindow clickOnFacebookInPostMenu(int index) {
+  public FacebookSignPage clickOnFacebookInPostMenu(int index, boolean newWindow) {
     clickOnTreeDotsButton(index);
     $$(SOCIAL_ITEMS_LOCATOR).get(0).shouldBe(Condition.visible).click();
-    return new FacebookSignPageInTheSameWindow();
+    return new FacebookSignPage(newWindow);
   }
 
   @Override

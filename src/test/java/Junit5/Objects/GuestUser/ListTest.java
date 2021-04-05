@@ -15,11 +15,12 @@ public class ListTest extends TestBase {
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     static String listObject = properties.getProperty("ListObject");
     String listName = properties.getProperty("ListObjectName");
+    static boolean newWindow = true;
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         listObjectPage = ListObjectPage.openListObjectPage(listObject);
     }
 

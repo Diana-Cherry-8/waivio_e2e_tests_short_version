@@ -69,9 +69,9 @@ public class Header extends Page {
   }
 
   @Step
-  public void logInWithFacebook(String email, String password) {
+  public void logInWithFacebook(String email, String password, boolean newWindow) {
     SignIn signIn = clickOnSingIn();
-    FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook();
+    FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook(newWindow);
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
@@ -80,9 +80,9 @@ public class Header extends Page {
   }
 
   @Step
-  public void logInWithFacebookNewSite(String email, String password) {
+  public void logInWithFacebookNewSite(String email, String password, boolean newWindow) {
     SignInPage signIn = clickOnSignInPage();
-    FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook();
+    FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook(newWindow);
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();

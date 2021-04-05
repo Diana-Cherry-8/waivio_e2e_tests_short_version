@@ -14,13 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class FollowersTest extends TestBase {
     String facebookEmail = properties.getProperty("FacebookUserEmail00");
     String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static boolean newWindow = true;
 
     @Story("Open page")
     @DisplayName("Check followers page is opened")
     @Test
     void openFollowers() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         postsPage = header.clickOnAccountIcon();
         followersPage = postsPage.clickOnFollowersProfileItem();
         refreshPage();

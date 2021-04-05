@@ -54,8 +54,8 @@ public class AuthorizationNewSiteTest extends TestBase {
   @Story("Log in new site")
   @DisplayName("Log in as guest-user, new site")
   @Test
-  void logInAsGuestUser() {
-    header.logInWithFacebookNewSite(facebookEmail, facebookPassword);
+  void logInAsGuestUser(boolean newWindow) {
+    header.logInWithFacebookNewSite(facebookEmail, facebookPassword, newWindow);
     profilePage = header.clickOnAccountIcon();
     refreshPage();
     boolean actualResult = profilePage.isButtonEditProfileExist();

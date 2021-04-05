@@ -16,11 +16,12 @@ public class PageTest extends TestBase {
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     static String pageObject = properties.getProperty("PageObject");
     String pageName = properties.getProperty("PageObjectName");
+    static boolean newWindow = true;
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         pageObjectPage = PageObjectPage.openPageObjectPage(pageObject);
     }
 

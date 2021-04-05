@@ -17,11 +17,12 @@ public class RestaurantTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String restaurantName = properties.getProperty("RestaurantName");
+    static boolean newWindow = true;
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         reviewsObjectPage = ReviewsObjectPage.openObjectPage(restaurantObject);
     }
 

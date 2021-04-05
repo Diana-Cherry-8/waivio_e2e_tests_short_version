@@ -10,11 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DiscoverTabsTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static boolean newWindow = true;
 
     @BeforeAll
     static void goToDiscoverRestaurantPage() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         discoverPage = topNavigation.clickOnDiscoverItem();
     }
 

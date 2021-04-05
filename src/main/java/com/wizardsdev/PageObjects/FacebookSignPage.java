@@ -12,9 +12,15 @@ public class FacebookSignPage extends Page {
   private static final By LOGIN_INPUT_LOCATOR = By.cssSelector("#email");
   private static final By PASSWORD_INPUT_LOCATOR = By.cssSelector("#pass");
   private static final By LOGIN_BUTTON_LOCATOR = By.cssSelector(".uiButton");
+  private static final By POST_IN_EDITOR_LOCATOR = By.cssSelector(".unclickable");
 
-  public FacebookSignPage() {
-    switchTo().window(1);
+  public FacebookSignPage(boolean newWindow) {
+    if(newWindow){
+      switchTo().window(1);
+    }
+    else {
+      switchTo().window(0);
+    }
   }
 
   @Step
@@ -31,6 +37,11 @@ public class FacebookSignPage extends Page {
   public void clickOnLogIn() {
     $(LOGIN_BUTTON_LOCATOR).click();
     switchTo().window(0);
+  }
+
+  @Step
+  public boolean isPostExistInFacebookEditor() {
+    return $(POST_IN_EDITOR_LOCATOR).shouldBe(Condition.visible).exists();
   }
 
   @Override

@@ -11,6 +11,7 @@ public class ShareToSocialMediaTest extends TestBase {
   int index = 0;
   String login = "jasecarmel@gmail.com";
   String password = "qweqwe123QWE";
+  boolean newWindow = false;
 
   @DisplayName("Check that twitter opens after clicking on share to twitter via the three dots button")
   @Test
@@ -24,10 +25,10 @@ public class ShareToSocialMediaTest extends TestBase {
   @Test
   void checkFaceebookOpen() {
     feedPage = FeedPage.openFeedPage();
-    facebookSignPageInTheSameWindow = feedPage.clickOnFacebookInPostMenu(index);
-    facebookSignPageInTheSameWindow.setLogin(login);
-    facebookSignPageInTheSameWindow.setPassword(password);
-    facebookSignPageInTheSameWindow.clickOnLogIn();
-    assert(facebookSignPageInTheSameWindow.isPostExistInFacebookEditor());
+    facebookSignPage = feedPage.clickOnFacebookInPostMenu(index, newWindow);
+    facebookSignPage.setLogin(login);
+    facebookSignPage.setPassword(password);
+    facebookSignPage.clickOnLogIn();
+    assert(facebookSignPage.isPostExistInFacebookEditor());
   }
 }

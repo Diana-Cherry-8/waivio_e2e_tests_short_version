@@ -9,7 +9,6 @@ import com.codeborne.selenide.Selectors;
 import com.wizardsdev.PageObjects.FacebookSignPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignIn extends Modal{
   //steemconnect page ellements
@@ -44,11 +43,11 @@ public class SignIn extends Modal{
 
 
   @Step
-  public FacebookSignPage clickOnSignInFacebook() {
+  public FacebookSignPage clickOnSignInFacebook(boolean newWindow) {
     $(FACEBOOK_SING_IN_ENABLED_LOCATOR).shouldBe(Condition.visible);
     sleep(1000);
     $(FACEBOOK_SING_IN_ENABLED_LOCATOR).click();
-    return new FacebookSignPage();
+    return new FacebookSignPage(newWindow);
   }
 
   @Override

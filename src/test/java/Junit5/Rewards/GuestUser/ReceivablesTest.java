@@ -14,11 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ReceivablesTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static boolean newWindow = true;
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
     }
 
     @Story("Open page")

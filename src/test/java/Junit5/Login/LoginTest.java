@@ -16,6 +16,7 @@ public class LoginTest extends TestBase {
   String facebookEmail = properties.getProperty("FacebookUserEmail00");
   String facebookPassword = properties.getProperty("FacebookUserPass00");
   String testFBGuestUserUsername = properties.getProperty("FacebookUserName00");
+  static boolean newWindow = true;
 
   @Feature("Login")
   @Story("Login")
@@ -34,7 +35,7 @@ public class LoginTest extends TestBase {
   @Test
   public void logInWithFacebook() {
     feedPage = FeedPage.openFeedPage();
-    header.logInWithFacebook(facebookEmail, facebookPassword);
+    header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
     profilePage = header.clickOnAccountIcon();
     assertEquals(testFBGuestUserUsername, profilePage.getUserNameValue());
   }

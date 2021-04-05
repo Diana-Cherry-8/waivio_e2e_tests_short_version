@@ -16,11 +16,12 @@ public class DishTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     String dishName = properties.getProperty("DishObjectName");
+    static boolean newWindow = true;
 
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         dishObjectPage = DishObjectPage.openObjectPage(dishObject);
     }
 

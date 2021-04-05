@@ -16,11 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GuestsSettingsTest extends TestBase {
     String facebookEmail = properties.getProperty("FacebookUserEmail00");
     String facebookPassword = properties.getProperty("FacebookUserPass00");
+    static boolean newWindow = true;
 
     @BeforeEach
     void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword);
+        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         topNavigation = TopNavigation.initTopNavigation();
     }
 

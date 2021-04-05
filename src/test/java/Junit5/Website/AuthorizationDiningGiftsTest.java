@@ -33,7 +33,7 @@ public class AuthorizationDiningGiftsTest extends TestBase {
   @Test
   void logInAsGuestUser() {
     newSitePage = NewSitePage.openDiningGifts(websiteNameForDiningGifts, templateNameForDiningGifts);
-    header.logInWithFacebook(facebookEmail, facebookPassword);
+   // header.logInWithFacebook(facebookEmail, facebookPassword);
     profilePage = header.clickOnAccountIcon();
     refreshPage();
     boolean actualResult = profilePage.isButtonEditProfileExist();
