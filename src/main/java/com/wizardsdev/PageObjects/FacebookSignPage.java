@@ -1,5 +1,6 @@
 package com.wizardsdev.PageObjects;
 
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.Selenide.switchTo;
@@ -20,6 +21,19 @@ public class FacebookSignPage extends Page {
     }
     else {
       switchTo().window(0);
+    }
+  }
+
+  @Step
+  public void loginWithFacebook(String login, String password) {
+    sleep(1000);
+    if($(LOGIN_INPUT_LOCATOR).exists()) {
+      setLogin(login);
+      setPassword(password);
+      clickOnLogIn();
+    }
+    else {
+      $(POST_IN_EDITOR_LOCATOR).shouldBe(Condition.visible);
     }
   }
 
