@@ -113,6 +113,12 @@ public class Post extends Modal {
   }
 
   @Step
+  public Post clickOnPostFullScreenReviewTab() {
+    $$(POST_FULL_SCREEN_ICON_LOCATOR).get(1).shouldBe(Condition.visible).click();
+    return new Post();
+  }
+
+  @Step
   public void clickOnThreeDots() {
     $(TREE_DOTS_LOCATOR).shouldBe(Condition.visible).click();
   }

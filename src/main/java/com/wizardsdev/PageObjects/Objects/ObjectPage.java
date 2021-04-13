@@ -2,7 +2,9 @@ package com.wizardsdev.PageObjects.Objects;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
+import com.wizardsdev.Modals.Post;
 import com.wizardsdev.PageObjects.Page;
+import com.wizardsdev.PageObjects.TwitterPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -19,6 +21,10 @@ public abstract class ObjectPage extends Page {
     private static final By BUTTON_FOLLOW_SECONDARY_LOCATOR = By.cssSelector(".Follow--secondary");
     private static final By OBJECT_TYPE_LOCATOR = By.cssSelector(".ObjectType");
     private static final String PAGE_URL = "/object/";
+    private static final By POST_TITLE_LOCATOR = By.cssSelector(".Story__content h2");
+    private static final By SOCIAL_ITEMS_LOCATOR = By.cssSelector(".Popover__shared-link");
+    private static final By TREE_DOTS_BUTTON_LOCATOR = By.cssSelector(".Buttons__post-menu");
+    private static final By POST_LOCATOR = By.className("Story");
 
     protected ObjectPage(String objectName) {
         super(Context.getSiteUrl()  + "/object/" + objectName);
@@ -111,6 +117,29 @@ public abstract class ObjectPage extends Page {
     @Step
     public String getObjectTypeName() {
         return $(OBJECT_TYPE_LOCATOR).shouldBe(Condition.visible).getText();
+    }
+
+    @Step
+    public String getPostTitle(int postIndex) {
+        return $$(POST_TITLE_LOCATOR).get(postIndex).getText();
+    }
+
+    @Step
+    public void clickOnTreeDotsButton(int index) {
+        $$(TREE_DOTS_BUTTON_LOCATOR).get(index).shouldBe(Condition.visible).click();
+    }
+
+    @Step
+    public TwitterPage clickOnTwitterInPostMenu(int index) {
+        clickOnTreeDotsButton(index);
+        $$(SOCIAL_ITEMS_LOCATOR).get(1).shouldBe(Condition.visible).click();
+        return new TwitterPage();
+    }
+
+    @Step
+    public Post openPost(int postIndex) {
+        $$(POST_LOCATOR).get(postIndex).$(POST_TITLE_LOCATOR).click();
+        return new Post();
     }
 
     public static String getCurrentPage() {

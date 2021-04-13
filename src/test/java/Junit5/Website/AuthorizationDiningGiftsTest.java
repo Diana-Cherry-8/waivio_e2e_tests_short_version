@@ -15,6 +15,7 @@ public class AuthorizationDiningGiftsTest extends TestBase {
   static String templateNameForDiningGifts = properties.getProperty("TemplateNameProd");
   String facebookEmail = properties.getProperty("FacebookUserEmail00");
   String facebookPassword = properties.getProperty("FacebookUserPass00");
+  boolean newWindow = true;
 
     @Story("Log in dining.gifts")
   @DisplayName("Log in as hive-user, in dining.gifts")
@@ -33,7 +34,7 @@ public class AuthorizationDiningGiftsTest extends TestBase {
   @Test
   void logInAsGuestUser() {
     newSitePage = NewSitePage.openDiningGifts(websiteNameForDiningGifts, templateNameForDiningGifts);
-   // header.logInWithFacebook(facebookEmail, facebookPassword);
+    header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
     profilePage = header.clickOnAccountIcon();
     refreshPage();
     boolean actualResult = profilePage.isButtonEditProfileExist();

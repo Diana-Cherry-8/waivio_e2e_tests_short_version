@@ -10,6 +10,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
+import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -115,6 +116,22 @@ public class NewSitePage extends Page{
   @Step
   public boolean areUsersListOpen() {
     return $(USERS_CARDS_LOCATOR).shouldBe(Condition.visible).exists();
+  }
+
+  @Step
+  public ObjectPage clickOnDesktopLogo() {
+    $(WEBSITE_DESKTOP_LOGO_LOCATOR).shouldBe(Condition.visible).click();
+    return new ObjectPage() {
+      @Override
+      protected void init() {
+
+      }
+
+      @Override
+      protected void parsePage() {
+
+      }
+    };
   }
 
   @Override
