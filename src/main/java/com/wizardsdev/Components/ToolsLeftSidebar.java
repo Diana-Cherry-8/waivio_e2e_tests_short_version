@@ -80,80 +80,92 @@ public class ToolsLeftSidebar extends Page {
     }
 
     @Step
-    public InvitePage clickOnInviteItemAsGuest() {
+    public NewAccountsPage clickOnNewAccountsAsGuest() {
         clickOnSideBarItemRewardsByIndex(6);
+        return new NewAccountsPage();
+    }
+
+    @Step
+    public InvitePage clickOnInviteItemAsGuest() {
+        clickOnSideBarItemRewardsByIndex(7);
         return new InvitePage();
     }
 
     @Step
-    public InvitePage clickOnInviteItemAsHiveUser() {
+    public NewAccountsPage clickOnNewAccountsAsHiveUser() {
         clickOnSideBarItemRewardsByIndex(5);
+        return new NewAccountsPage();
+    }
+
+    @Step
+    public InvitePage clickOnInviteItemAsHiveUser() {
+        clickOnSideBarItemRewardsByIndex(6);
         return new InvitePage();
     }
 
     @Step
     public CreateWebsitePage clickOnCreateWebsite() {
-        clickOnSideBarItemRewardsByIndex(6);
+        clickOnSideBarItemRewardsByIndex(7);
         return new CreateWebsitePage();
     }
 
     @Step
     public ManageWebsitePage clickOnManageWebsite() {
-        clickOnSideBarItemRewardsByIndex(7);
+        clickOnSideBarItemRewardsByIndex(8);
         return new ManageWebsitePage();
     }
 
     @Step
     public ReportsWebsitePage clickOnReportsWebsite() {
-        clickOnSideBarItemRewardsByIndex(8);
+        clickOnSideBarItemRewardsByIndex(9);
         return new ReportsWebsitePage();
     }
 
     @Step
     public ConfigurationWebsitePage clickOnConfigurationWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(9);
+        clickOnSideBarItemRewardsByIndex(10);
         return new ConfigurationWebsitePage(websiteName, template);
     }
 
     @Step
     public SettingsWebsitePage clickOnSettingsWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(10);
+        clickOnSideBarItemRewardsByIndex(11);
         return new SettingsWebsitePage(websiteName, template);
     }
 
     @Step
     public AdministratorsPage clickOnAdministratorsWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(11);
+        clickOnSideBarItemRewardsByIndex(12);
         return new AdministratorsPage(websiteName, template);
     }
 
     @Step
     public ModeratorsPage clickOnModeratorsWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(12);
+        clickOnSideBarItemRewardsByIndex(13);
         return new ModeratorsPage(websiteName, template);
     }
 
     @Step
     public AuthoritiesPage clickOnAuthoritiesWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(13);
+        clickOnSideBarItemRewardsByIndex(14);
         return new AuthoritiesPage(websiteName, template);
     }
 
     @Step
     public AreasPage clickOnAreasWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(14);
+        clickOnSideBarItemRewardsByIndex(15);
         return new AreasPage(websiteName, template);
     }
 
     @Step
     public ObjectsFiltersPage clickOnObjectsFiltersWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(15);
+        clickOnSideBarItemRewardsByIndex(16);
         return new ObjectsFiltersPage(websiteName, template);
     }
 
     @Step
     public MutedUsersPage clickOnMutedUsersWebsite(String websiteName, String template) {
-        clickOnSideBarItemRewardsByIndex(16);
+        clickOnSideBarItemRewardsByIndex(17);
         return new MutedUsersPage(websiteName, template);
     }
 

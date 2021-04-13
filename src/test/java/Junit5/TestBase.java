@@ -114,6 +114,7 @@ public abstract class TestBase {
   protected static SettingsPage settingsPage;
   protected static GuestsSettingsPage guestsSettingsPage;
   protected static ToolsNotificationsPage toolsNotificationsPage;
+  protected static NewAccountsPage newAccountsPage;
   protected static InvitePage invitePage;
   protected static AboutPage aboutPage;
   protected static CreateWebsitePage createWebsitePage;
