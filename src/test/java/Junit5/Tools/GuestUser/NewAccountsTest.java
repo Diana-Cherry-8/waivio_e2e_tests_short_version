@@ -2,7 +2,6 @@ package Junit5.Tools.GuestUser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
