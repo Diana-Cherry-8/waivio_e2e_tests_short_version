@@ -63,7 +63,7 @@ public class TwitterPage extends Page{
 
   @Step
   public void twitterLogin(String twitterUserName, String twitterPassword) {
-    sleep(2000);
+    sleep(4000);
     if($$(INPUTS_LOCATOR).get(1).exists()) {
       setTwitterUsername(twitterUserName);
       setTwitterPassword(twitterPassword);
