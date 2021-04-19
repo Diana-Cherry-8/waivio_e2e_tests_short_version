@@ -26,10 +26,50 @@ public class NewAccountsTest extends TestBase {
   @DisplayName("Check new accounts page is opened in Tools")
   @Test
   void openNewAccount() {
+    feedPage = FeedPage.openFeedPage();
     draftsPage = topNavigation.clickOnToolsItem();
     newAccountsPage = toolsLeftSidebar.clickOnNewAccountsAsGuest();
     String expectedResult = "Create new Hive accounts";
     String actualResult = newAccountsPage.getTitleTools();
+    assertEquals(expectedResult, actualResult);
+  }
+
+  @Story("Open page")
+  @DisplayName("Check hiveonboard/create-account is opened")
+  @Test
+  void openHiveOnBoardCreateAccount() {
+    feedPage = FeedPage.openFeedPage();
+    draftsPage = topNavigation.clickOnToolsItem();
+    newAccountsPage = toolsLeftSidebar.clickOnNewAccountsAsGuest();
+    hiveOnBoardPage = newAccountsPage.clickOnForFreeLink();
+    String expectedResult = "CONTINUE";
+    String actualResult = hiveOnBoardPage.getContinueButtonText();
+    assertEquals(expectedResult, actualResult);
+  }
+
+  @Story("Open page")
+  @DisplayName("Check hiveonboard.com, hiveonboard is opened")
+  @Test
+  void openHiveOnBoard() {
+    feedPage = FeedPage.openFeedPage();
+    draftsPage = topNavigation.clickOnToolsItem();
+    newAccountsPage = toolsLeftSidebar.clickOnNewAccountsAsGuest();
+    hiveOnBoardPage = newAccountsPage.clickOnHiveOnBoard();
+    String expectedResult = "LEARN";
+    String actualResult = hiveOnBoardPage.getLearnLabelText();
+    assertEquals(expectedResult, actualResult);
+  }
+
+  @Story("Open page")
+  @DisplayName("Check apply link, hiveonboard is opened")
+  @Test
+  void openHiveOnBoardThoughApplyLink() {
+    feedPage = FeedPage.openFeedPage();
+    draftsPage = topNavigation.clickOnToolsItem();
+    newAccountsPage = toolsLeftSidebar.clickOnNewAccountsAsGuest();
+    hiveOnBoardPage = newAccountsPage.clickOnApply();
+    String expectedResult = "LEARN";
+    String actualResult = hiveOnBoardPage.getLearnLabelText();
     assertEquals(expectedResult, actualResult);
   }
 }

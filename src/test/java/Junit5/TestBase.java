@@ -157,6 +157,7 @@ public abstract class TestBase {
 
   protected static TwitterPage twitterPage;
   protected static FacebookSignPage facebookSignPage;
+  protected static HiveOnBoardPage hiveOnBoardPage;
 
   protected static FullScreenOfTheReservationPost fullScreenOfTheReservationPost;
 
