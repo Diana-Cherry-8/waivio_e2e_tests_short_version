@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Feature("Restaurant Page, Object")
 public class RestaurantTest extends TestBase {
     String restaurantName = properties.getProperty("RestaurantName");
-    String restaurantNameToSearch = "Tasty Indian Bistro Delta";
+    String restaurantNameToSearch = "Tasty Indian Bistro (Delta)";
     static String restaurantObject = properties.getProperty("RestaurantObject");
 
 
