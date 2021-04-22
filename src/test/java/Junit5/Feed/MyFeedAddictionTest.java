@@ -1,11 +1,11 @@
 package Junit5.Feed;
 
 import Junit5.TestBase;
-import com.wizardsdev.PageObjects.Profile.FollowingPage;
 import io.qameta.allure.Feature;
 import java.util.List;
-
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @Feature("Main feed")
 public class MyFeedAddictionTest extends TestBase {
