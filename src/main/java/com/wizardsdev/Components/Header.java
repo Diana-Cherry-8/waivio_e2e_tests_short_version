@@ -9,6 +9,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Modals.SignIn;
+import com.wizardsdev.Modals.UseCookies;
 import com.wizardsdev.PageObjects.*;
 import com.wizardsdev.PageObjects.Objects.PageObjectPage;
 import com.wizardsdev.PageObjects.Profile.PostsPage;
@@ -58,6 +59,7 @@ public class Header extends Page {
   public void logInWithHiveSigner(String login, String password) {
     SignIn signIn = clickOnSingIn();
     signIn.signInWithHiveSigner(login, password);
+    UseCookies.closeModalWindowUseCookies();
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }
 
@@ -65,6 +67,7 @@ public class Header extends Page {
   public void logInWithHiveSignerForNewSite(String login, String password) {
     SignInPage signIn = clickOnSingInNewSite();
     signIn.signInWithHiveSignerForNewSite();
+    UseCookies.closeModalWindowUseCookies();
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }
 
@@ -76,6 +79,7 @@ public class Header extends Page {
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
     $(LOADER_SIGN_IN_MODAL_LOCATOR).shouldBe(Condition.visible).shouldBe(Condition.disappear);
+    UseCookies.closeModalWindowUseCookies();
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }
 
@@ -87,6 +91,7 @@ public class Header extends Page {
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
     $(LOADER_SIGN_IN_PAGE_MODAL_LOCATOR).shouldBe(Condition.visible).shouldBe(Condition.disappear);
+    UseCookies.closeModalWindowUseCookies();
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }
 

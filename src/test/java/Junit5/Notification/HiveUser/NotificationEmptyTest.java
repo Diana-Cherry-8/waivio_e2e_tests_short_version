@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 
 public class NotificationEmptyTest extends TestBase {
 
-  static String hiveUserEmail = properties.getProperty("UserLogin04");
-  static String hivePasswordPassword = properties.getProperty("LoginPassword04");
+  static String hiveUserEmail = properties.getProperty("UserLogin03");
+  static String hivePasswordPassword = properties.getProperty("LoginPassword03");
 
   @BeforeAll
   static void logInAsTestUser() {

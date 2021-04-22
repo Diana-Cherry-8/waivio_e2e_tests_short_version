@@ -20,6 +20,7 @@ import com.wizardsdev.Modals.Reservation;
 import com.wizardsdev.Modals.SignIn;
 
 
+import com.wizardsdev.Modals.UseCookies;
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.AreasPage;
 import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
@@ -69,6 +70,7 @@ public abstract class TestBase {
   protected static Reservation reservation;
   protected static ChooseLogo chooseLogo;
   protected static SignInPage signInPage;
+  protected static UseCookies useCookies;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();
