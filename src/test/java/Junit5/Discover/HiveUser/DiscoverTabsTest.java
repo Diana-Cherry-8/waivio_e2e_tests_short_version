@@ -366,5 +366,11 @@ public class DiscoverTabsTest extends TestBase {
         String actualResult = discoverPage.getTagName();
         assertTrue(actualResult.contains(expectedResult));
     }
+
+    @AfterEach
+    void changePage() {
+        eligiblePage = topNavigation.clickOnRewardsItem();
+        discoverPage = topNavigation.clickOnDiscoverItem();
+    }
 }
 

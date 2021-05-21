@@ -374,6 +374,6 @@ public class DiscoverTabsTest extends TestBase {
     void changePage() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         discoverPage = topNavigation.clickOnDiscoverItem();
-    } // the guest works correctly, when they fix it on the hive, you will need to add the same, or rewrite
+    }
 
 }
