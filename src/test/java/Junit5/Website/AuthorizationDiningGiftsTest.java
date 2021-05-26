@@ -7,6 +7,8 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.NewSitePage;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,11 +19,16 @@ public class AuthorizationDiningGiftsTest extends TestBase {
   String facebookPassword = properties.getProperty("FacebookUserPass00");
   boolean newWindow = true;
 
-    @Story("Log in dining.gifts")
+  @BeforeEach
+  void openDiningGifts() {
+    newSitePage = NewSitePage.openDiningGifts(websiteNameForDiningGifts, templateNameForDiningGifts);
+    newSitePage.closeCookiesWindow();
+  }
+
+  @Story("Log in dining.gifts")
   @DisplayName("Log in as hive-user, in dining.gifts")
   @Test
   void logInAsHiveUser() {
-    newSitePage = NewSitePage.openDiningGifts(websiteNameForDiningGifts, templateNameForDiningGifts);
     header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     profilePage = header.clickOnAccountIcon();
     refreshPage();
@@ -33,7 +40,6 @@ public class AuthorizationDiningGiftsTest extends TestBase {
   @DisplayName("Log in as guest-user, in dining.gifts")
   @Test
   void logInAsGuestUser() {
-    newSitePage = NewSitePage.openDiningGifts(websiteNameForDiningGifts, templateNameForDiningGifts);
     header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
     profilePage = header.clickOnAccountIcon();
     refreshPage();

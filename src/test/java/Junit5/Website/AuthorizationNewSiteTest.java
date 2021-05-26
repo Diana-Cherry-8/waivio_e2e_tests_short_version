@@ -41,6 +41,7 @@ public class AuthorizationNewSiteTest extends TestBase {
     manageWebsitePage = toolsLeftSidebar.clickOnManageWebsite();
     manageWebsitePage.clickCheckboxSiteActivation();
     newSitePage = NewSitePage.openNewSitePage(websiteName, templateName);
+    newSitePage.closeCookiesWindow();
   }
 
   @Story("Log in new site")

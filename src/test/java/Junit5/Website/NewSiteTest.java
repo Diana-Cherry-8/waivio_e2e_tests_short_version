@@ -17,11 +17,13 @@ public class NewSiteTest extends TestBase {
   static int templateIndex = 0;
   static String websiteName = "data20543656createnewsite";
   static String templateName = properties.getProperty("TemplateNameProd");
+  static String hiveUserEmail = properties.getProperty("UserLogin03");
+  static String hivePasswordPassword = properties.getProperty("LoginPassword03");
 
   @BeforeAll
   static void createAndOpenSite() {
     feedPage = FeedPage.openFeedPage();
-    header.logInWithHiveSigner(getUserLogin(), getUserPassword());
+    header.logInWithHiveSigner(hiveUserEmail, hivePasswordPassword);
     draftsPage = topNavigation.clickOnToolsItem();
     createWebsitePage = toolsLeftSidebar.clickOnCreateWebsite();
     createWebsitePage.clickOnSelectWebsiteInput();
@@ -35,6 +37,7 @@ public class NewSiteTest extends TestBase {
     areasPage = toolsLeftSidebar.clickOnAreasWebsite(templateName, websiteName);
     areasPage.clickClickChoseAreaButton();
     newSitePage = NewSitePage.openNewSitePage(websiteName, templateName);
+    newSitePage.closeCookiesWindow();
   }
 
   @Story("New website")

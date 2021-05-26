@@ -21,6 +21,7 @@ public class ShareToTwitterFromDiningGiftsTest extends TestBase {
   @BeforeEach
   void openSite() {
     newSitePage = NewSitePage.openDiningGifts(websiteName, templateName);
+    newSitePage.closeCookiesWindow();
   }
 
   @DisplayName("Check that twitter opens after clicking on share to twitter via the " +

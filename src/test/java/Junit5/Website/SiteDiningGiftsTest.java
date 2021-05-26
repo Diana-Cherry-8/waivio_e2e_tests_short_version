@@ -17,6 +17,7 @@ public class SiteDiningGiftsTest extends TestBase {
   @BeforeAll
   static void openSite() {
     newSitePage = NewSitePage.openDiningGifts(websiteName, templateName);
+    newSitePage.closeCookiesWindow();
   }
 
   @Story("Website dining.gifts")

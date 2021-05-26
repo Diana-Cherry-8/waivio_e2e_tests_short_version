@@ -25,6 +25,7 @@ public class NewSitePage extends Page{
   private static final By NAVIGATION_SEARCH_TABS_LOCATOR = By.cssSelector(".SearchAllResult__type");
   private static final By CARD_TAG_LOCATOR = By.cssSelector(".ObjectCardView__tag-text");
   private static final By USERS_CARDS_LOCATOR = By.cssSelector(".UserCard");
+  private static final By BUTTON_CLOSE_FOR_COOKIES_WINDOW = By.cssSelector(".ant-modal-close-x");
 
 
   public NewSitePage(String siteName, String template) {
@@ -132,6 +133,13 @@ public class NewSitePage extends Page{
 
       }
     };
+  }
+
+  @Step
+  public void closeCookiesWindow() {
+    if($(BUTTON_CLOSE_FOR_COOKIES_WINDOW).exists()) {
+      $(BUTTON_CLOSE_FOR_COOKIES_WINDOW).click();
+    }
   }
 
   @Override
