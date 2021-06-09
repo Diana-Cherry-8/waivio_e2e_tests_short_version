@@ -247,6 +247,6 @@ public abstract class TestBase {
   //Refresh method
   public static void refreshPage() {
     refresh();
-    sleep(4000);
+    sleep(5000);
   }
 }
