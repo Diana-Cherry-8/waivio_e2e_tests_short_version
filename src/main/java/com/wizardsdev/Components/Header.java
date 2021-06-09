@@ -148,7 +148,7 @@ public class Header extends Page {
 
   @Step
   public void clickOnRussianLanguage() {
-    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(26).click();
+    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(16).click();
   }
 
   @Step
