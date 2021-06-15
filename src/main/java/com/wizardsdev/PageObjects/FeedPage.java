@@ -223,7 +223,6 @@ public class FeedPage extends Page {
 
   @Step
   public int getPostLikeCount(int postIndex) {
-    scrollToElement($$(POST_LOCATOR).get(postIndex));
     return  parseInt($$(POST_LOCATOR)
         .get(postIndex)
         .$(POST_LIKES_COUNTER_LOCATOR)
