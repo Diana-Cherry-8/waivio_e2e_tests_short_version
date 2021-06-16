@@ -25,7 +25,7 @@ public class Header extends Page {
   private static final By ACCOUNT_ICON_LOCATOR =
       By.cssSelector(".Topnav__user");
   private static final By DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR =
-      By.cssSelector(".PopoverMenuItem");
+      By.cssSelector(".LanguageSettings__option");
   private static final By INPUT_SEARCH_LOCATOR =
       By.cssSelector(".ant-select-search__field");
   private static final By SEARCH_ITEMS_OBJECT_USER_LOCATOR =
@@ -147,23 +147,65 @@ public class Header extends Page {
   }
 
   @Step
-  public void clickOnRussianLanguage() {
-    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(16).click();
+  public void chooseLanguage(String language) {
+    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).findBy(Condition.text(language)).click();
   }
 
   @Step
-  public void clickOnGermanLanguage() {
-    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(6).click();
-  }
-
-  @Step
-  public void clickOnFrenchLanguage() {
-    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).get(10).click();
-  }
-
-  @Step
-  public void clickOnEnglishLanguage() {
-    $$(DROPDOWN_ITEM_CHANGE_LANGUAGE_LOCATOR).findBy(Condition.exactText("English")).click();
+  public String expectedLanguage(String language) {
+    String myFeedTabName;
+    switch (language) {
+      case "English": myFeedTabName = "MY FEED";
+      break;
+      case "Indonesian": myFeedTabName = "UMPAN SAYA";
+      break;
+      case "Malay": myFeedTabName = "MAKANAN SAYA";
+      break;
+      case "Catalan": myFeedTabName = "EL MEU FEED";
+        break;
+      case "Czech": myFeedTabName = "MŮJ PŘÍSPĚVEK";
+        break;
+      case "Danish": myFeedTabName = "MIT FEED";
+        break;
+      case "German": myFeedTabName = "NEUIGKEITEN";
+        break;
+      case "Estonian": myFeedTabName = "MINU VOOG";
+        break;
+      case "Spanish": myFeedTabName = "MI FEED";
+        break;
+      case "Filipino": myFeedTabName = "ANG AKING PAKAIN";
+        break;
+      case "French": myFeedTabName = "MON FLUX";
+        break;
+      case "Croatian": myFeedTabName = "MOJA FEED";
+        break;
+      case "Italian": myFeedTabName = "IL MIO FEDE";
+        break;
+      case "Hungarian": myFeedTabName = "SAJÁT HÍRCSATORNA";
+        break;
+      case "Polish": myFeedTabName = "MÓJ WKŁAD";
+        break;
+      case "Portuguese": myFeedTabName = "MEU FEED";
+        break;
+      case "Russian": myFeedTabName = "МОЯ ЛЕНТА";
+        break;
+      case "Ukrainian": myFeedTabName = "МОЇ НОВИНИ";
+        break;
+      case "Arabic": myFeedTabName = "موجز بلدي";
+        break;
+      case "Hindi": myFeedTabName = "एरा भोजन";
+        break;
+      case "Korean": myFeedTabName = "나의 먹이";
+        break;
+      case "Japanese": myFeedTabName = "マイフィード";
+        break;
+      case "Afrikaans": myFeedTabName = "MY VOER";
+        break;
+      case "Chinese": myFeedTabName = "我的饲料";
+        break;
+      default: myFeedTabName = "Something went wrong";
+    }
+    return myFeedTabName;
   }
 
   public void inputTextToSearch(String textToSearch) {
