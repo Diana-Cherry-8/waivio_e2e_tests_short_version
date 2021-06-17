@@ -96,11 +96,13 @@ public class NewSitePage extends Page{
   @Step
   public void clickDishTab() {
     $$(NAVIGATION_SEARCH_TABS_LOCATOR).get(1).shouldBe(Condition.visible).click();
+    $(OBJECT_CARD_NAME_LOCATOR).shouldBe(visible);
   }
 
   @Step
   public void clickDrinkTab() {
     $$(NAVIGATION_SEARCH_TABS_LOCATOR).get(2).shouldBe(Condition.visible).click();
+    $(OBJECT_CARD_NAME_LOCATOR).shouldBe(visible);
   }
 
   @Step
@@ -136,7 +138,7 @@ public class NewSitePage extends Page{
   }
 
   @Step
-  public void closeCookiesWindow() {
+  public static void closeCookiesWindow() {
     if($(BUTTON_CLOSE_FOR_COOKIES_WINDOW).exists()) {
       $(BUTTON_CLOSE_FOR_COOKIES_WINDOW).click();
     }

@@ -37,7 +37,7 @@ public class NewSiteTest extends TestBase {
     areasPage = toolsLeftSidebar.clickOnAreasWebsite(templateName, websiteName);
     areasPage.clickClickChoseAreaButton();
     newSitePage = NewSitePage.openNewSitePage(websiteName, templateName);
-    newSitePage.closeCookiesWindow();
+    NewSitePage.closeCookiesWindow();
   }
 
   @Story("New website")

@@ -22,7 +22,7 @@ public class AuthorizationDiningGiftsTest extends TestBase {
   @BeforeEach
   void openDiningGifts() {
     newSitePage = NewSitePage.openDiningGifts(websiteNameForDiningGifts, templateNameForDiningGifts);
-    newSitePage.closeCookiesWindow();
+    NewSitePage.closeCookiesWindow();
   }
 
   @Story("Log in dining.gifts")
