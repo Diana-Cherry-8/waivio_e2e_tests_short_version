@@ -54,6 +54,7 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public Float getHiveAmount() {
+        sleep(3000);
         String expectedString = $(HIVE_AMOUNT_LOCATOR).shouldBe(Condition.visible).getText();
         String deleteText = " HIVE";
         String replace = "";
@@ -63,8 +64,11 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public void setHiveUserName(String hiveUserName) {
-        $$(INPUT_FOR_SEARCH_LOCATOR).get(1).shouldBe(Condition.visible).setValue(hiveUserName).pressEnter();
+    public void setUserNameForWalletSearch(String userName) {
+        $$(INPUT_FOR_SEARCH_LOCATOR).get(1)
+            .shouldBe(Condition.visible)
+            .setValue(userName)
+            .pressEnter();
     }
 
     @Step

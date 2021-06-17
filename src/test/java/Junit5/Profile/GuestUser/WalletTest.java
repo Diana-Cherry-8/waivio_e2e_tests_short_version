@@ -49,6 +49,7 @@ public class WalletTest extends TestBase {
         walletPage.clickContinueAsGuest();
         sleep(4000);
         refreshPage();
+        sleep(2000);
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
     }
