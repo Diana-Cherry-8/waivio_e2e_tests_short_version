@@ -13,13 +13,15 @@ import org.junit.jupiter.api.*;
 public class LikePostAsGuestUserTest extends TestBase {
   String facebookEmail = properties.getProperty("FacebookUserEmail00");
   String facebookPassword = properties.getProperty("FacebookUserPass00");
-  private final int postIndex = (int) (Math.random() * 9);
+  //private final int postIndex = (int) (Math.random() * 9);
+  int postIndex = 0;
 
   static boolean newWindow = true;
   @BeforeEach
   void login() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
+    feedLeftBar.clickOnNewItem();
   }
 
   @Story("Likes")
@@ -28,7 +30,7 @@ public class LikePostAsGuestUserTest extends TestBase {
   void likePostAsFBGuestUserTest()  {
     int postLikeCountBeforeLike = feedPage.getPostLikeCount(postIndex);
     feedPage.clickOnPostLikeButton(postIndex);
-    refreshPage();// нужно так как подставляется фек-данные об количесвах лайков
+    //refreshPage();// нужно так как подставляется фек-данные об количесвах лайков
     int postLikeCountAfterLike = feedPage.getPostLikeCount(postIndex);
     assertTrue(postLikeCountBeforeLike < postLikeCountAfterLike);
   }
