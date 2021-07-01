@@ -14,15 +14,15 @@ public class LikePostAsHiveUserTest extends TestBase {
   void login() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithHiveSigner(getUserLogin(), getUserPassword());
+    feedLeftBar.clickOnNewItem();
   }
 
   @Story("Likes")
-  @DisplayName("Check is post like counter increment after user like")
+  @DisplayName("Check is post like counter increment after user like, on News feed")
   @Test
   void likePostAsGeneralUserTest()  {
     int postLikeCountBeforeLike = feedPage.getPostLikeCount(postIndex);
     feedPage.clickOnPostLikeButton(postIndex);
-    refreshPage();
     int postLikeCountAfterLike = feedPage.getPostLikeCount(postIndex);
     assert(postLikeCountBeforeLike < postLikeCountAfterLike);
   }
