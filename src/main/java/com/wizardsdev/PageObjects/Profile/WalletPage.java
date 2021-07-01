@@ -99,8 +99,8 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public void clickContinueAsHiveUser(){
-        final By BUTTONS_CONTINUE_TRANSFER_LOCATOR = By.cssSelector(".btn-blue");
-        final By BUTTONS_APPROVE_TRANSFER_LOCATOR = By.cssSelector(".btn-success");
+        final By BUTTONS_CONTINUE_TRANSFER_LOCATOR = By.cssSelector(".button-primary");
+        final By BUTTONS_APPROVE_TRANSFER_LOCATOR = By.cssSelector(".button-success");
 
         $(BUTTON_CONTINUE_LOCATOR).click();
         switchTo().window(1);
