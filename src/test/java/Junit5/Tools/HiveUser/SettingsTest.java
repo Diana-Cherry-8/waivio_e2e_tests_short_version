@@ -8,9 +8,7 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -49,7 +47,7 @@ public class SettingsTest extends TestBase {
         settingsPage.clickOnBaseCurrencyDropdown();
         settingsPage.selectCurrency(currency);
         profilePage = settingsPage.clickSave();
-        boolean actualResult = profilePage.isPostPayoutWithCanadianDollarDisplayed();
+        boolean actualResult = profilePage.isPostPayoutDisplayed(currency);
         assertTrue(actualResult);
     }
 
@@ -65,7 +63,7 @@ public class SettingsTest extends TestBase {
         settingsPage.clickOnBaseCurrencyDropdown();
         settingsPage.selectCurrency(currency);
         profilePage = settingsPage.clickSave();
-        boolean actualResult = profilePage.isPostPayoutWithDollarDisplayed();
+        boolean actualResult = profilePage.isPostPayoutDisplayed(currency);
         assertTrue(actualResult);
     }
 

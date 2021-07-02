@@ -90,13 +90,14 @@ public abstract class ProfilePage {
     }
 
     @Step
-    public boolean isPostPayoutWithCanadianDollarDisplayed() {
-        return $$(PAYOUT_POST_LOCATOR).get(0).shouldBe(Condition.matchText("CA")).exists();
-    }
-
-    @Step
-    public boolean isPostPayoutWithDollarDisplayed() {
-        return $$(PAYOUT_POST_LOCATOR).get(0).shouldBe(Condition.matchText("$")).exists();
+    public boolean isPostPayoutDisplayed(String currency) {
+        if (currency.equals("CAD")) {
+            return $$(PAYOUT_POST_LOCATOR).get(0).shouldBe(Condition.matchText("CA")).exists();
+        }
+        if (currency.equals("USD")) {
+            return $$(PAYOUT_POST_LOCATOR).get(0).shouldBe(Condition.matchText("$")).exists();
+        }
+        return true;
     }
 
 
