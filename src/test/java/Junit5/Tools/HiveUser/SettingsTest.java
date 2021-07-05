@@ -66,7 +66,6 @@ public class SettingsTest extends TestBase {
         boolean actualResult = profilePage.isPostPayoutDisplayed(currency);
         assertTrue(actualResult);
     }
-
 }
 
 
