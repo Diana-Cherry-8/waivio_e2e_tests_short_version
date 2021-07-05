@@ -54,7 +54,6 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public Float getHiveAmount() {
-        sleep(3000);
         String expectedString = $(HIVE_AMOUNT_LOCATOR).shouldBe(Condition.visible).getText();
         String deleteText = " HIVE";
         String replace = "";
@@ -104,10 +103,20 @@ public class WalletPage extends ProfilePage {
 
         $(BUTTON_CONTINUE_LOCATOR).click();
         switchTo().window(1);
-        $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-        $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-        $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-        switchTo().window(0);
+        if($(BUTTONS_CONTINUE_TRANSFER_LOCATOR).exists()) {
+            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+            $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+            switchTo().window(0);
+        }
+        else {
+            switchTo().window(2);
+            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+            $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+            switchTo().window(0);
+        }
+        sleep(3000);
     }
 
 
