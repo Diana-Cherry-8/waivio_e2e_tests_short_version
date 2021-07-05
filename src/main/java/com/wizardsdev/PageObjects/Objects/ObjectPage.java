@@ -89,7 +89,7 @@ public abstract class ObjectPage extends Page {
     @Step
     public boolean isButtonFollowSecondaryExist() {
         $$(TOP_NAVIGATION_OBJECT_PAGE_LOCATOR).get(5).shouldBe(Condition.visible);
-        return $(BUTTON_FOLLOW_SECONDARY_LOCATOR).shouldBe(Condition.visible).exists();
+        return $(BUTTON_FOLLOW_SECONDARY_LOCATOR).exists();
     }
 
     @Step
