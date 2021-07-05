@@ -24,7 +24,7 @@ public class SignIn extends Modal{
       = Selectors.byAttribute ("style", "transition: opacity 0.5s ease 0s;");
   private static final By HIVESIGNER_SING_IN_FOR_NEW_SITE_LOCATOR =
       By.cssSelector(".RedirectedSignIn__signin");
-
+  private static final By HIVESIGNER_DROPDOWN_USER_LOCATOR = By.cssSelector(".select");
 
   public SignIn() {
     $(MODAL_SING_IN_TITLE_LOCATOR).shouldBe(Condition.visible);
@@ -33,10 +33,15 @@ public class SignIn extends Modal{
   @Step
   public void signInWithHiveSigner(String login, String password) {
     $(HIVESIGNER_SING_IN_LOCATOR).click();
-    $(HIVESIGNER_USERNAME_LOCATOR).setValue(login);
-    $(HIVESIGNER_PASSWORD_LOCATOR).setValue(password);
-    $(HIVESIGNER_ENCRYPT_YOUR_KEYS).click();
-    $(HIVESIGNER_GET_STARTED_BUTTON_LOCATOR).click();
+    if($(HIVESIGNER_DROPDOWN_USER_LOCATOR).exists()) {
+      $(HIVESIGNER_GET_STARTED_BUTTON_LOCATOR).click();
+    }
+    else {
+      $(HIVESIGNER_USERNAME_LOCATOR).setValue(login);
+      $(HIVESIGNER_PASSWORD_LOCATOR).setValue(password);
+      $(HIVESIGNER_ENCRYPT_YOUR_KEYS).click();
+      $(HIVESIGNER_GET_STARTED_BUTTON_LOCATOR).click();
+    }
   }
 
 

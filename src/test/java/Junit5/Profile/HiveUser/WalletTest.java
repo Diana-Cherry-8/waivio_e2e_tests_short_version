@@ -6,7 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,8 +18,8 @@ public class WalletTest extends TestBase {
     String hiveUserName2 = "wiv01";
     String guestUserName = "waivio_dianach";
 
-    @BeforeAll
-    static void login() {
+    @BeforeEach
+    void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     }
@@ -69,5 +68,10 @@ public class WalletTest extends TestBase {
         refreshPage();
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
+    }
+
+    @AfterEach
+    void logOut() {
+        header.logOut();
     }
 }
