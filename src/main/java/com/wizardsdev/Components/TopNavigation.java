@@ -44,7 +44,7 @@ public class TopNavigation extends Page {
 
   @Step
   public DraftsPage clickOnToolsItem() {
-    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.appear);
+    $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.visible);
     getTopNavigationItemByIndex(3).click();
     return new DraftsPage();
   }
