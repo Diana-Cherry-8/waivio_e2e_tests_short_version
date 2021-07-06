@@ -14,7 +14,9 @@ public abstract class ProfilePage {
     private static final By BUTTON_EDIT_PROFILE_LOCATOR = By.cssSelector(".Action");
     private static final By TOP_NAVIGATION_PROFILE_PAGE = By.cssSelector(".UserMenu__item");
     private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__row.UserHeader__handle");
-    private static final By FOLLOW_UNFOLLOW_BUTTON_LOCATOR = By.cssSelector(".UserHeader__user__button button");
+    private static final By FOLLOW_UNFOLLOW_BUTTON_LOCATOR =
+        By.cssSelector(".UserHeader__user__button button");
+    private static final By PAYOUT_POST_LOCATOR = By.cssSelector(".Payout");
 
     @Step
     public String getUserNameValue() {
@@ -85,6 +87,17 @@ public abstract class ProfilePage {
     @Step
     public boolean isButtonEditProfileExist() {
         return $(BUTTON_EDIT_PROFILE_LOCATOR).shouldBe(Condition.visible).exists();
+    }
+
+    @Step
+    public boolean isPostPayoutDisplayed(String currency) {
+        if (currency.equals("CAD")) {
+            return $$(PAYOUT_POST_LOCATOR).get(0).shouldBe(Condition.matchText("CA")).exists();
+        }
+        if (currency.equals("USD")) {
+            return $$(PAYOUT_POST_LOCATOR).get(0).shouldBe(Condition.matchText("$")).exists();
+        }
+        return true;
     }
 
 
