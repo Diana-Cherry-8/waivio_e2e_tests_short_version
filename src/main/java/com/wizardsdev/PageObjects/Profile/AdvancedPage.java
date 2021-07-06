@@ -4,74 +4,75 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+
 public class AdvancedPage  extends ProfilePage {
-    public static final By FIELD_FROM_DATA  = By.cssSelector(".ant-calendar-picker-icon");
-    public static final By BUTTON_ACCOUNT_CREATION  = By.cssSelector(".WalletTable__datepickerFooter");
-    public static final By BUTTON_TODAY  = By.cssSelector(".ant-calendar-today-btn ");
-    public static final By INPUT_DATEPICKER  = By.cssSelector(".ant-calendar-picker-input");
-    public static final By DROPDOWN_CURRENCY  = By.cssSelector(".ant-select-selection-selected-value");
-    public static final By BUTTON_USD  = By.cssSelector(".ant-select-dropdown-menu-item-selected");
-    public static final By BUTTON_SUBMIT  = By.cssSelector(".ant-btn-primary");
-    public static final By STRING_TOTAL  = By.cssSelector(".WalletTable__total");
-    public static final By FIELD_FIND_USERS  = By.cssSelector(".ant-select-search__field");
-    public static final By DROPDOWN_USER  = By.cssSelector(".SearchUser");
-    public static final By TABLE  = By.cssSelector(".DynamicTable");
-    public static final By COLUMN_HIVE_USD_1_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(6)");
-    public static final By COLUMN_HIVE_USD_2_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(6)");
-    public static final By COLUMN_HIVE_USD_3_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(3) > td:nth-child(6)");
-    public static final By COLUMN_HIVE_USD_4_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(4) > td:nth-child(6)");
-    public static final By COLUMN_HIVE_1_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(6)");
-    public static final By COLUMN_HIVE_2_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(6)");
-    public static final By COLUMN_HIVE_3_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(3) > td:nth-child(3)");
-    public static final By COLUMN_HIVE_4_LINE = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(4) > td:nth-child(3)");
-    public static final By CLEAR_FILED_ICON = By.cssSelector(".icon-delete");
-    float sum = 0;
-    float expectedFloat = 0;
-    @Step
+    public static final By FIELD_FROM_DATA_LOCATOR  = By.cssSelector(".ant-calendar-picker-icon");
+    public static final By BUTTON_ACCOUNT_CREATION_LOCATOR = By.cssSelector(".WalletTable__datepickerFooter");
+    public static final By BUTTON_TODAY_LOCATOR = By.cssSelector(".ant-calendar-today-btn ");
+    public static final By INPUT_DATEPICKER_LOCATOR = By.cssSelector(".ant-calendar-picker-input");
+    public static final By DROPDOWN_CURRENCY_LOCATOR = By.cssSelector(".ant-select-selection-selected-value");
+    public static final By BUTTON_USD_LOCATOR = By.cssSelector(".ant-select-dropdown-menu-item-selected");
+    public static final By BUTTON_SUBMIT_LOCATOR = By.cssSelector(".ant-btn-primary");
+    public static final By STRING_TOTAL_LOCATOR = By.cssSelector(".WalletTable__total");
+    public static final By FIELD_FIND_USERS_LOCATOR = By.cssSelector(".ant-select-search__field");
+    public static final By DROPDOWN_USER_LOCATOR = By.cssSelector(".SearchUser");
+    public static final By TABLE_LOCATOR = By.cssSelector(".DynamicTable");
+    public static final By COLUMN_HIVE_USD_1_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(6)");
+    public static final By COLUMN_HIVE_USD_2_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(6)");
+    public static final By COLUMN_HIVE_USD_3_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(3) > td:nth-child(6)");
+    public static final By COLUMN_HIVE_USD_4_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(4) > td:nth-child(6)");
+    public static final By COLUMN_HIVE_1_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(1) > td:nth-child(6)");
+    public static final By COLUMN_HIVE_2_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(2) > td:nth-child(6)");
+    public static final By COLUMN_HIVE_3_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(3) > td:nth-child(3)");
+    public static final By COLUMN_HIVE_4_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(4) > td:nth-child(3)");
+    public static final By CLEAR_FILED_ICON_LOCATOR = By.cssSelector(".icon-delete");
+    float sum;
+    float expectedFloat;
+        @Step
     public void inputFromDate(int index){
-        $$(FIELD_FROM_DATA).get(index).click();
-        $(BUTTON_ACCOUNT_CREATION).click();
+        $$(FIELD_FROM_DATA_LOCATOR).get(index).shouldBe(Condition.visible).click();
+        $(BUTTON_ACCOUNT_CREATION_LOCATOR).shouldBe(Condition.visible).click();
     }
     @Step
     public void inputToDate(int index){
-       $$(INPUT_DATEPICKER).get(index).click();
-       $(BUTTON_TODAY).click();
+       $$(INPUT_DATEPICKER_LOCATOR).get(index).shouldBe(Condition.visible).click();
+       $(BUTTON_TODAY_LOCATOR).shouldBe(Condition.visible).click();
     }
     @Step
     public void dropdownCurrency(int index){
-        $(DROPDOWN_CURRENCY).click();
-        sleep(1000);
-        $$(BUTTON_USD).get(index).click();
+        $(DROPDOWN_CURRENCY_LOCATOR).click();
+//        sleep(1000);
+        $$(BUTTON_USD_LOCATOR).get(index).shouldBe(Condition.visible).click();
     }
  @Step
     public void clickButtonSubmit(){
-        $(BUTTON_SUBMIT).click();
+        $(BUTTON_SUBMIT_LOCATOR).shouldBe(Condition.visible).click();
     }
  @Step
     public boolean isCompleted() {
-        return $(STRING_TOTAL).shouldHave(text("Completed")).exists();
+        return $(STRING_TOTAL_LOCATOR).shouldHave(text("Completed")).exists();
     }
     @Step
     public boolean isButtonSubmitExist() {
-        return $(BUTTON_SUBMIT).shouldBe(Condition.visible).exists();
+        return $(BUTTON_SUBMIT_LOCATOR).shouldBe(Condition.visible).exists();
     }
     @Step
     public void addUsers(int index, int index2) {
-        $$(FIELD_FIND_USERS).get(index).click();
-        $$(FIELD_FIND_USERS).get(index).setValue("waiviotest2");
-        $$(DROPDOWN_USER).get(index2).click();
+        $$(FIELD_FIND_USERS_LOCATOR).get(index).shouldBe(Condition.visible).click();
+        $$(FIELD_FIND_USERS_LOCATOR).get(index).shouldBe(Condition.visible).setValue("waiviotest2");
+        $$(DROPDOWN_USER_LOCATOR).get(index2).shouldBe(Condition.visible).click();
     }
     @Step
     public boolean isCompletedForMultiply() {
-        return $(TABLE).shouldHave(text("waiviotest2")).exists();
+        return $(TABLE_LOCATOR).shouldHave(text("waiviotest2")).exists();
     }
     @Step
     public float isCountedCorrectDeposit() {
-        return newCount(COLUMN_HIVE_USD_3_LINE, COLUMN_HIVE_USD_4_LINE, COLUMN_HIVE_3_LINE, COLUMN_HIVE_4_LINE);
+        return newCount(COLUMN_HIVE_USD_3_LINE_LOCATOR, COLUMN_HIVE_USD_4_LINE_LOCATOR, COLUMN_HIVE_3_LINE_LOCATOR, COLUMN_HIVE_4_LINE_LOCATOR);
     }
     @Step
     public float isCountedCorrectWithdrawal() {
-        return newCount(COLUMN_HIVE_USD_1_LINE, COLUMN_HIVE_USD_2_LINE, COLUMN_HIVE_1_LINE, COLUMN_HIVE_2_LINE);
+        return newCount(COLUMN_HIVE_USD_1_LINE_LOCATOR, COLUMN_HIVE_USD_2_LINE_LOCATOR, COLUMN_HIVE_1_LINE_LOCATOR, COLUMN_HIVE_2_LINE_LOCATOR);
     }
 
     public float newCount(By columnHiveUsd1Line, By columnHiveUsd2Line, By columnHive1Line, By columnHive2Line) {
@@ -90,11 +91,12 @@ public class AdvancedPage  extends ProfilePage {
 
     @Step
     public void clickClearButton(){
-        $(CLEAR_FILED_ICON).click();
+        $(CLEAR_FILED_ICON_LOCATOR).shouldBe(Condition.visible).click();
     }
+
     @Step
     public String totalText() {
-        return $(STRING_TOTAL).shouldBe(Condition.visible).getText();
+        return $(STRING_TOTAL_LOCATOR).shouldBe(Condition.visible).getText();
     }
        @Override
     protected void init() {

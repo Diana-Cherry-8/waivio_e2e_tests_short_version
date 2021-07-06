@@ -76,7 +76,6 @@ public class WalletTest extends TestBase {
     @Test
     void openAdvancedPage() {
         openWallet();
-        sleep(100);
         advancedPage = walletPage.clickOnLinkAdvancedReport();
         boolean actualResult = advancedPage.isButtonSubmitExist();
         assertTrue(actualResult);
@@ -99,9 +98,8 @@ public class WalletTest extends TestBase {
         advancedPage.inputFromDate(0);
         advancedPage.inputToDate(1);
         advancedPage.dropdownCurrency(0);
-        sleep(1000);
-        advancedPage.clickButtonSubmit();
-        sleep(90000);
+       advancedPage.clickButtonSubmit();
+       sleep(80000);
         boolean actualResult = advancedPage.isCompleted();
         assertTrue(actualResult);
     }
@@ -124,7 +122,7 @@ public class WalletTest extends TestBase {
         fillFields();
         advancedPage.clickClearButton();
         advancedPage.clickButtonSubmit();
-        sleep(1000);
+        //sleep(1000);
         advancedPage.isCountedCorrectDeposit();
         float floatActual = advancedPage.isCountedCorrectDeposit();
         String actualResult = Float.toString(floatActual);
