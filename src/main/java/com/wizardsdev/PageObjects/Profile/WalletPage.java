@@ -15,11 +15,10 @@ public class WalletPage extends ProfilePage {
     public static final By INPUT_FOR_SEARCH_LOCATOR = By.cssSelector(".ant-select-search__field");
     public static final By INPUT_FOR_AMOUNT_LOCATOR = By.cssSelector(".Transfer__amount__input");
     public static final By BUTTON_CONTINUE_LOCATOR = By.cssSelector(".ant-btn-primary");
-    public static final By CHECKBOX_IN_MODAL_LINK_HIVE_ACCOUNT =
-        By.cssSelector(".ant-checkbox-input");
+    public static final By CHECKBOX_IN_MODAL_LINK_HIVE_ACCOUNT = By.cssSelector(".ant-checkbox-input");
     public static final By BUTTON_OK_IN_MODAL_LINK_HIVE_ACCOUNT = By.cssSelector(".ant-btn-primary");
-
-    public WalletPage(String userName) {
+    public static final By LINK_ADVANCED_REPORT = By.cssSelector(".UserWallet__view-btn");
+     public WalletPage(String userName) {
         super(Context.getSiteUrl()  + "/@" + userName + "/transfers");
     }
 
@@ -109,11 +108,13 @@ public class WalletPage extends ProfilePage {
         $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
         switchTo().window(0);
     }
+    @Step
+    public AdvancedPage clickOnLinkAdvancedReport() {
+        $(LINK_ADVANCED_REPORT).click();
+        return new AdvancedPage();
+    }
 
-
-
-
-    @Override
+        @Override
     protected void init() {
         // Page initialization
         // Checking correctness of page loading
