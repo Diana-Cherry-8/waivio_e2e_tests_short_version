@@ -6,7 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -28,7 +27,7 @@ public class WalletTest extends TestBase {
     @Story("Open page")
     @DisplayName("Check wallet page is opened")
     @Test
-    void openWallet() {
+      void openWallet() {
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
         refreshPage();

@@ -5,6 +5,7 @@ import static com.wizardsdev.Context.THREADS_COUNT;
 
 import Extensions.MyAfterTestExecutionCallback;
 import Helpers.FileGenerator;
+import Junit5.Profile.HiveUser.WalletTest;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
