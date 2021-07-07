@@ -27,7 +27,7 @@ public class WalletTest extends TestBase {
     @Story("Open page")
     @DisplayName("Check wallet page is opened")
     @Test
-      void openWallet() {
+    void openWallet() {
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
         refreshPage();
