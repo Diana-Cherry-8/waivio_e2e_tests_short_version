@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Profile page")
 public class AdvancedReportTest extends TestBase {
-
+   String username = "waiviotest2";
     @BeforeEach
     void login() {
         feedPage = FeedPage.openFeedPage();
@@ -34,13 +34,14 @@ public class AdvancedReportTest extends TestBase {
     @Test
     void checkOwnAdvancedReport() {
         openAdvancedPage();
-        advancedPage.enterDateOfStart();
-        advancedPage.enterDateOfEnd();
-        advancedPage.choseCurrency();
-        advancedPage.clickButtonSubmit();
-        advancedPage.waitUntilReportToBeCounted();
-        boolean actualResult = advancedPage.waitUntilReportToBeCounted();
-        assertTrue(actualResult);
+        advancedPage
+                .addUsers(username)
+                .enterDateOfStart()
+                .enterDateOfEnd()
+                .choseCurrency()
+                .clickButtonSubmit()
+                .waitUntilReportToBeCounted();
+        assertTrue(advancedPage.waitUntilReportToBeCounted());
     }
 
     @Story("Check advanced report for multiple amount of users")
@@ -48,11 +49,11 @@ public class AdvancedReportTest extends TestBase {
     @Test
     void checkAdvancedReportForManyUsers() {
         openAdvancedPage();
+        advancedPage.addUsers(username);
         advancedPage.fillTheFields();
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
-        boolean actualResult = advancedPage.isReportCompletedForMultipleUsers();
-        assertTrue(actualResult);
+        assertTrue(advancedPage.isReportCompletedForMultipleUsers(username));
     }
 
     @Story("Check if TOTAL counts correct")
@@ -60,30 +61,29 @@ public class AdvancedReportTest extends TestBase {
     @Test
     void CheckTotalForDeposit() {
         openAdvancedPage();
+        advancedPage.addUsers(username);
         advancedPage.fillTheFields();
         advancedPage.clickClearButton();
         advancedPage.clickButtonSubmit();
-        advancedPage.countTotalDeposit();
-        float floatActual = advancedPage.countTotalDeposit();
+        advancedPage.CountTotalDeposit();
+        float floatActual = advancedPage.CountTotalDeposit();
         String actualResult = Float.toString(floatActual);
-        String expectedResult = advancedPage.totalText();
-        expectedResult.contentEquals(actualResult);
+        advancedPage.totalText().contentEquals(actualResult);
     }
 
     @Story("Check if TOTAL counts correct")
     @DisplayName("Check TOTAL of Withdrawal")
     @Test
-    void CheckTotalWithdrawal() {
+    void checkTotalWithdrawal() {
         openAdvancedPage();
-        advancedPage.fillTheFields();
+        advancedPage.addUsers(username)
+        .fillTheFields();
         advancedPage.clickClearButton();
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
         advancedPage.countTotalWithdrawal();
-        float floatActual = advancedPage.countTotalDeposit();
-        String actualResult = Float.toString(floatActual);
-        String expectedResult = advancedPage.totalText();
-        expectedResult.contentEquals(actualResult);
+        float floatActual = advancedPage.CountTotalDeposit();
+        advancedPage.totalText().contentEquals(Float.toString(floatActual));
     }
 
     @AfterEach

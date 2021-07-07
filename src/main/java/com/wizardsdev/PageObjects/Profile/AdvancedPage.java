@@ -30,36 +30,38 @@ public class AdvancedPage  extends ProfilePage {
     public static final By COLUMN_HIVE_3_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(3) > td:nth-child(3)");
     public static final By COLUMN_HIVE_4_LINE_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody > tr:nth-child(4) > td:nth-child(3)");
     public static final By CLEAR_FILED_ICON_LOCATOR = By.cssSelector(".icon-delete");
-    float sum;
-    float expectedFloat;
-    String username = "waiviotest2";
+
 
     @Step
-    public void enterDateOfStart(){
+    public AdvancedPage enterDateOfStart(){
         $$(FIELD_FROM_DATA_LOCATOR).get(0).shouldBe(Condition.visible).click();
         $(BUTTON_ACCOUNT_CREATION_LOCATOR).shouldBe(Condition.visible).click();
+        return this;
     }
 
     @Step
-    public void enterDateOfEnd(){
+    public AdvancedPage enterDateOfEnd(){
        $$(INPUT_DATEPICKER_LOCATOR).get(1).shouldBe(Condition.visible).click();
        $(BUTTON_TODAY_LOCATOR).shouldBe(Condition.visible).click();
+       return this;
     }
 
     @Step
-    public void choseCurrency(){
+    public AdvancedPage choseCurrency(){
         $(DROPDOWN_CURRENCY_LOCATOR).click();
         $$(BUTTON_USD_LOCATOR).get(0).shouldBe(Condition.visible).click();
+        return this;
     }
 
     @Step
-    public void clickButtonSubmit(){
+    public AdvancedPage clickButtonSubmit(){
         $(BUTTON_SUBMIT_LOCATOR).shouldBe(Condition.visible).click();
+        return this;
     }
 
     @Step
     public boolean waitUntilReportToBeCounted() {
-        WebDriverWait wait = new WebDriverWait(getWebDriver(), 100);
+        WebDriverWait wait = new WebDriverWait(getWebDriver(), 9000);
         return wait.until(ExpectedConditions.invisibilityOfElementWithText(BUTTON_SUBMIT_LOCATOR,"Loading"));
     }
 
@@ -69,19 +71,20 @@ public class AdvancedPage  extends ProfilePage {
     }
 
     @Step
-    public void addUsers() {
+    public AdvancedPage addUsers(String username) {
         $$(FIELD_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).click();
         $$(FIELD_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).setValue(username);
         $$(DROPDOWN_USER_LOCATOR).get(0).shouldBe(Condition.visible).click();
+        return this ;
     }
 
     @Step
-    public boolean isReportCompletedForMultipleUsers() {
+    public boolean isReportCompletedForMultipleUsers(String username) {
         return $(TABLE_LOCATOR).shouldHave(text(username)).exists();
     }
 
     @Step
-    public float countTotalDeposit() {
+    public float CountTotalDeposit() {
         return counter(COLUMN_HIVE_USD_3_LINE_LOCATOR, COLUMN_HIVE_USD_4_LINE_LOCATOR, COLUMN_HIVE_3_LINE_LOCATOR, COLUMN_HIVE_4_LINE_LOCATOR);
     }
 
@@ -91,6 +94,8 @@ public class AdvancedPage  extends ProfilePage {
 
     }
     public float counter(By columnHiveUsd1Line, By columnHiveUsd2Line, By columnHive1Line, By columnHive2Line) {
+        float sum;
+        float expectedFloat;
         String hiveCurrency1 = ($(columnHiveUsd1Line).shouldBe(Condition.visible).getText());
         String hiveCurrency2 = ($(columnHiveUsd2Line).shouldBe(Condition.visible).getText());
         String hiveAmount1 = ($(columnHive1Line).shouldBe(Condition.visible).getText());
@@ -105,8 +110,9 @@ public class AdvancedPage  extends ProfilePage {
     }
 
     @Step
-    public void clickClearButton(){
+    public AdvancedPage clickClearButton(){
         $(CLEAR_FILED_ICON_LOCATOR).shouldBe(Condition.visible).click();
+        return this;
     }
 
     @Step
@@ -115,11 +121,11 @@ public class AdvancedPage  extends ProfilePage {
     }
 
     @Step
-    public void fillTheFields(){
-        addUsers();
+    public AdvancedPage fillTheFields(){
         enterDateOfStart();
         enterDateOfEnd();
         choseCurrency();
+        return this;
     }
 
        @Override
