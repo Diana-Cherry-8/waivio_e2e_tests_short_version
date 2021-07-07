@@ -29,7 +29,7 @@ public class AdvancedReportTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @Story("Check hive user advanced report")
+    @Story(" Check advanced report")
     @DisplayName("Check own advanced report")
     @Test
     void checkOwnAdvancedReport() {
