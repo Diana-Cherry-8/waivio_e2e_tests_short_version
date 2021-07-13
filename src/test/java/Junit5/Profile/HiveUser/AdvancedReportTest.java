@@ -1,19 +1,20 @@
 package Junit5.Profile.HiveUser;
+
 import Junit5.TestBase;
+import com.codeborne.selenide.Selenide;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Profile page")
 public class AdvancedReportTest extends TestBase {
-   String username = "waiviotest2";
-    @BeforeEach
-    void login() {
+    String username = "waiviotest2";
+
+    @BeforeAll
+    static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     }
@@ -25,11 +26,10 @@ public class AdvancedReportTest extends TestBase {
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
         advancedPage = walletPage.clickOnLinkAdvancedReport();
-        boolean actualResult = advancedPage.isButtonSubmitExist();
-        assertTrue(actualResult);
+        Assertions.assertTrue(advancedPage.isButtonSubmitExist());
     }
 
-    @Story(" Check advanced report")
+    @Story("Check advanced report")
     @DisplayName("Check own advanced report")
     @Test
     void checkOwnAdvancedReport() {
@@ -39,9 +39,8 @@ public class AdvancedReportTest extends TestBase {
                 .enterDateOfStart()
                 .enterDateOfEnd()
                 .choseCurrency()
-                .clickButtonSubmit()
-                .waitUntilReportToBeCounted();
-        assertTrue(advancedPage.waitUntilReportToBeCounted());
+                .clickButtonSubmit();
+        Assertions.assertTrue(advancedPage.waitUntilReportToBeCounted());
     }
 
     @Story("Check advanced report for multiple amount of users")
@@ -49,8 +48,9 @@ public class AdvancedReportTest extends TestBase {
     @Test
     void checkAdvancedReportForManyUsers() {
         openAdvancedPage();
-        advancedPage.addUsers(username);
-        advancedPage.fillTheFields();
+        advancedPage
+                .addUsers(username)
+                .fillTheFields();
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
         assertTrue(advancedPage.isReportCompletedForMultipleUsers(username));
@@ -59,16 +59,18 @@ public class AdvancedReportTest extends TestBase {
     @Story("Check if TOTAL counts correct")
     @DisplayName("Check TOTAL of deposit")
     @Test
-    void CheckTotalForDeposit() {
+    void checkTotalForDeposit() {
         openAdvancedPage();
-        advancedPage.addUsers(username);
-        advancedPage.fillTheFields();
+        advancedPage
+                .addUsers(username)
+                .fillTheFields();
         advancedPage.clickClearButton();
         advancedPage.clickButtonSubmit();
-        advancedPage.CountTotalDeposit();
-        float floatActual = advancedPage.CountTotalDeposit();
-        String actualResult = Float.toString(floatActual);
-        advancedPage.totalText().contentEquals(actualResult);
+        advancedPage.waitUntilReportToBeCounted();
+        Assertions.assertTrue(
+                advancedPage.totalText()
+                        .contains(advancedPage.counterTotal("D"))
+        );
     }
 
     @Story("Check if TOTAL counts correct")
@@ -76,18 +78,20 @@ public class AdvancedReportTest extends TestBase {
     @Test
     void checkTotalWithdrawal() {
         openAdvancedPage();
-        advancedPage.addUsers(username)
-        .fillTheFields();
+        advancedPage
+                .addUsers(username)
+                .fillTheFields();
         advancedPage.clickClearButton();
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
-        advancedPage.countTotalWithdrawal();
-        float floatActual = advancedPage.CountTotalDeposit();
-        advancedPage.totalText().contentEquals(Float.toString(floatActual));
+        Assertions.assertTrue(
+                advancedPage.totalText()
+                        .contains(advancedPage.counterTotal("W"))
+        );
     }
 
     @AfterEach
-    void logOut() {
-        header.logOut();
+    void returnBack() {
+        Selenide.back();
     }
 }
