@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -23,12 +22,22 @@ public class AdvancedPage extends ProfilePage {
     public static final By STRING_TOTAL_LOCATOR = By.cssSelector(".WalletTable__total");
     public static final By FIELD_FIND_USERS_LOCATOR = By.cssSelector(".ant-select-search__field");
     public static final By DROPDOWN_USER_LOCATOR = By.cssSelector(".SearchUser");
-    public static final By TABLE_LOCATOR = By.cssSelector(".DynamicTable");
     public static final By TABLE_BODY_LOCATOR = By.cssSelector("#app > section > div > div.main-panel > div.shifted > div > div > div > table > tbody");
-    public static final By CLEAR_FILED_ICON_LOCATOR = By.cssSelector(".icon-delete");
+    public static final By BUTTON_CLEAR_USER_LOCATOR = By.cssSelector(".icon-delete");
 
     public static final String TOTAL_INFO_LOADING = "TOTAL: Deposits: $0.00. Withdrawals: $0.00. (Loading...)";
+    public final String TOTAL_INFO_DEFAULT = "TOTAL: Deposits: -. Withdrawals: -. (Totals can be calculated only for a defined from-till period.)";
 
+    @Step
+    public String getStringTotal () {
+        return $(STRING_TOTAL_LOCATOR).getText();
+    }
+
+    @Step
+    public AdvancedPage clearFirstUser () {
+        $$(BUTTON_CLEAR_USER_LOCATOR).get(0).shouldBe(Condition.visible).click();
+        return this;
+    }
 
     @Step
     public AdvancedPage enterDateOfStart() {
@@ -77,11 +86,6 @@ public class AdvancedPage extends ProfilePage {
     }
 
     @Step
-    public boolean isReportCompletedForMultipleUsers(String username) {
-        return $(TABLE_LOCATOR).shouldHave(text(username)).exists();
-    }
-
-    @Step
     public String counterTotal(String totalType) {
         float typeValue = 0;
         WebElement tableBody = $(TABLE_BODY_LOCATOR);
@@ -101,12 +105,6 @@ public class AdvancedPage extends ProfilePage {
             return "Deposits: $" + formattedTypeValue;
         }
         return "Incorrect type value";
-    }
-
-    @Step
-    public AdvancedPage clickClearButton() {
-        $(CLEAR_FILED_ICON_LOCATOR).shouldBe(Condition.visible).click();
-        return this;
     }
 
     @Step
