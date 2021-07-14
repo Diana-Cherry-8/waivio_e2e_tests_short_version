@@ -1,6 +1,7 @@
 package Junit5.Profile.HiveUser;
 
 import Junit5.TestBase;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
@@ -17,6 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AdvancedReportTest extends TestBase {
 
     String username = "waiviotest2";
+    String startDate = "06/01/2021";
+    // you can enter date or "Account Creation"
+    String endDate = "Today";
+    // you can enter date or "Today"
+    String currency = "USD";
 
     @BeforeAll
     static void login() {
@@ -40,10 +46,20 @@ public class AdvancedReportTest extends TestBase {
     void checkReportCantBeGeneratedWithNoUser() {
         openAdvancedPage();
         advancedPage
-                .fillTheFields()
+                .fillTheFields(startDate, endDate, currency)
                 .clearFirstUser()
                 .clickButtonSubmit();
         assertEquals(advancedPage.TOTAL_INFO_DEFAULT, advancedPage.getStringTotal());
+    }
+
+    @Story("Show more option")
+    @DisplayName("Check the appearing of Show more button")
+    @Test
+    void checkAppearingShowMoreButton() {
+        openAdvancedPage();
+        advancedPage
+                .getShowMoreButton()
+                .shouldBe(Condition.visible);
     }
 
     @Story("Total values counting")
@@ -52,9 +68,10 @@ public class AdvancedReportTest extends TestBase {
     void checkTotalDepositsDefaultUser() {
         openAdvancedPage();
         advancedPage
-                .fillTheFields();
+                .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
+        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("D"))
@@ -64,12 +81,13 @@ public class AdvancedReportTest extends TestBase {
     @Story("Total values counting")
     @DisplayName("Check total value of Withdrawals for default user")
     @Test
-    void checkTotalWithdrawalsDegaultUser() {
+    void checkTotalWithdrawalsDefaultUser() {
         openAdvancedPage();
         advancedPage
-                .fillTheFields();
+                .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
+        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("W"))
@@ -77,15 +95,16 @@ public class AdvancedReportTest extends TestBase {
     }
 
     @Story("Total values counting")
-    @DisplayName("Check total value of Withdrawals for two users")
+    @DisplayName("Check total value of Deposits for two users")
     @Test
     void checkTotalDepositsTwoUsers() {
         openAdvancedPage();
         advancedPage
                 .addUsers(username)
-                .fillTheFields();
+                .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
+        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("D"))
@@ -99,9 +118,10 @@ public class AdvancedReportTest extends TestBase {
         openAdvancedPage();
         advancedPage
                 .addUsers(username)
-                .fillTheFields();
+                .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
+        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("W"))

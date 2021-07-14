@@ -15,17 +15,18 @@ public class WalletPage extends ProfilePage {
     public static final By INPUT_FOR_SEARCH_LOCATOR = By.cssSelector(".ant-select-search__field");
     public static final By INPUT_FOR_AMOUNT_LOCATOR = By.cssSelector(".Transfer__amount__input");
     public static final By BUTTON_CONTINUE_LOCATOR = By.cssSelector(".ant-btn-primary");
-    public static final By CHECKBOX_IN_MODAL_LINK_HIVE_ACCOUNT = By.cssSelector(".ant-checkbox-input");
-    public static final By BUTTON_OK_IN_MODAL_LINK_HIVE_ACCOUNT = By.cssSelector(".ant-btn-primary");
-    public static final By LINK_ADVANCED_REPORT = By.cssSelector(".UserWallet__view-btn");
-     public WalletPage(String userName) {
-        super(Context.getSiteUrl()  + "/@" + userName + "/transfers");
+    public static final By CHECKBOX_IN_MODAL_LINK_LOCATOR = By.cssSelector(".ant-checkbox-input");
+    public static final By BUTTON_OK_IN_MODAL_LINK_LOCATOR = By.cssSelector(".ant-btn-primary");
+    public static final By LINK_ADVANCED_REPORT_LOCATOR = By.cssSelector(".UserWallet__view-btn");
+
+    public WalletPage(String userName) {
+        super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
 
     @Step
     public static WalletPage openWalletPage(String userName) {
-        if (!url().contains(Context.getSiteUrl()  + "/@" + userName + "/transfers")) {
-            open(Context.getSiteUrl()  + "/@" + userName + "/transfers");
+        if (!url().contains(Context.getSiteUrl() + "/@" + userName + "/transfers")) {
+            open(Context.getSiteUrl() + "/@" + userName + "/transfers");
         }
         return new WalletPage(userName);
     }
@@ -35,7 +36,7 @@ public class WalletPage extends ProfilePage {
         return $(BUTTONS_TRANSFER_LOCATOR).shouldBe(Condition.visible).exists();
     }
 
-    public static void clickOnTransferOrWithdrawButtonsByIndex(int index){
+    public static void clickOnTransferOrWithdrawButtonsByIndex(int index) {
         $$(BUTTONS_TRANSFER_LOCATOR).get(index).click();
     }
 
@@ -58,15 +59,15 @@ public class WalletPage extends ProfilePage {
         String replace = "";
         String deleteHive = expectedString.replaceAll(deleteText, replace);
         float expectedFloat = Float.parseFloat(deleteHive);
-         return expectedFloat;
+        return expectedFloat;
     }
 
     @Step
     public void setUserNameForWalletSearch(String userName) {
         $$(INPUT_FOR_SEARCH_LOCATOR).get(1)
-            .shouldBe(Condition.visible)
-            .setValue(userName)
-            .pressEnter();
+                .shouldBe(Condition.visible)
+                .setValue(userName)
+                .pressEnter();
     }
 
     @Step
@@ -76,39 +77,37 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public void setAmountAsGuest(String amountFotTransfer, String hiveName) {
-        if($(INPUT_FOR_AMOUNT_LOCATOR).exists()) {
+        if ($(INPUT_FOR_AMOUNT_LOCATOR).exists()) {
             $(INPUT_FOR_AMOUNT_LOCATOR).shouldBe(Condition.visible).setValue(amountFotTransfer);
-        }
-        else {
+        } else {
             $$(INPUT_FOR_SEARCH_LOCATOR).get(1).shouldBe(Condition.visible).setValue(hiveName);
             $(".SearchUser").shouldBe(Condition.visible);
             $$(INPUT_FOR_SEARCH_LOCATOR).get(1).pressEnter();
 
-            $(CHECKBOX_IN_MODAL_LINK_HIVE_ACCOUNT).click();
-            $(BUTTON_OK_IN_MODAL_LINK_HIVE_ACCOUNT).click();
+            $(CHECKBOX_IN_MODAL_LINK_LOCATOR).click();
+            $(BUTTON_OK_IN_MODAL_LINK_LOCATOR).click();
             $(INPUT_FOR_AMOUNT_LOCATOR).shouldBe(Condition.visible).setValue(amountFotTransfer);
         }
     }
 
     @Step
-    public void clickContinueAsGuest(){
+    public void clickContinueAsGuest() {
         $(BUTTON_CONTINUE_LOCATOR).click();
     }
 
     @Step
-    public void clickContinueAsHiveUser(){
+    public void clickContinueAsHiveUser() {
         final By BUTTONS_CONTINUE_TRANSFER_LOCATOR = By.cssSelector(".button-primary");
         final By BUTTONS_APPROVE_TRANSFER_LOCATOR = By.cssSelector(".button-success");
 
         $(BUTTON_CONTINUE_LOCATOR).click();
         switchTo().window(1);
-        if($(BUTTONS_CONTINUE_TRANSFER_LOCATOR).exists()) {
+        if ($(BUTTONS_CONTINUE_TRANSFER_LOCATOR).exists()) {
             $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
             $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
             $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
             switchTo().window(0);
-        }
-        else {
+        } else {
             switchTo().window(2);
             $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
             $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
@@ -117,13 +116,14 @@ public class WalletPage extends ProfilePage {
         }
         sleep(3000);
     }
+
     @Step
     public AdvancedPage clickOnLinkAdvancedReport() {
-        $(LINK_ADVANCED_REPORT).click();
+        $(LINK_ADVANCED_REPORT_LOCATOR).click();
         return new AdvancedPage();
     }
 
-        @Override
+    @Override
     protected void init() {
         // Page initialization
         // Checking correctness of page loading
