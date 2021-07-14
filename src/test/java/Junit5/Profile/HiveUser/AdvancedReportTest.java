@@ -71,7 +71,6 @@ public class AdvancedReportTest extends TestBase {
                 .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
-        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("D"))
@@ -87,7 +86,6 @@ public class AdvancedReportTest extends TestBase {
                 .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
-        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("W"))
@@ -104,7 +102,6 @@ public class AdvancedReportTest extends TestBase {
                 .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
-        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("D"))
@@ -121,7 +118,6 @@ public class AdvancedReportTest extends TestBase {
                 .fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
-        System.out.println(advancedPage.totalText());
         assertTrue(
                 advancedPage.totalText()
                         .contains(advancedPage.counterTotal("W"))

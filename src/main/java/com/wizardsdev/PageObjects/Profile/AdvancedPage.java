@@ -126,10 +126,8 @@ public class AdvancedPage extends ProfilePage {
         }
         float formattedTypeValue = (float) (Math.round(Math.abs(typeValue) * 100.0) / 100.0);
         if (totalType.equals("W")) {
-            System.out.println(formattedTypeValue);
             return "Withdrawals: $" + formattedTypeValue;
         } else if (totalType.equals("D")) {
-            System.out.println(formattedTypeValue);
             return "Deposits: $" + formattedTypeValue;
         }
         return "Incorrect type value";
