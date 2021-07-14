@@ -1,7 +1,6 @@
 package Junit5.Profile.HiveUser;
 
 import Junit5.TestBase;
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
@@ -28,14 +27,14 @@ public class AdvancedReportTest extends TestBase {
     static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
+        postsPage = header.clickOnAccountIcon();
+        walletPage = postsPage.clickOnWalletProfileItem();
     }
 
     @Story("Open advanced page")
     @DisplayName("Check that advanced page is opening")
     @Test
     void openAdvancedPage() {
-        postsPage = header.clickOnAccountIcon();
-        walletPage = postsPage.clickOnWalletProfileItem();
         advancedPage = walletPage.clickOnLinkAdvancedReport();
         assertTrue(advancedPage.isButtonSubmitExist());
     }
@@ -44,36 +43,33 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check impossibility of generating report with no user")
     @Test
     void checkReportCantBeGeneratedWithNoUser() {
-        openAdvancedPage();
-        advancedPage
-                .fillTheFields(startDate, endDate, currency)
-                .clearFirstUser()
-                .clickButtonSubmit();
-        assertEquals(advancedPage.TOTAL_INFO_DEFAULT, advancedPage.getStringTotal());
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
+        advancedPage.fillTheFields(startDate, endDate, currency);
+        advancedPage.clearFirstUser();
+        advancedPage.clickButtonSubmit();
+        assertEquals("TOTAL: Deposits: -. Withdrawals: -. (Totals can be calculated only for a defined from-till period.)",
+                advancedPage.getStringTotal());
     }
 
     @Story("Show more option")
     @DisplayName("Check the appearing of Show more button")
     @Test
     void checkAppearingShowMoreButton() {
-        openAdvancedPage();
-        advancedPage
-                .getShowMoreButton()
-                .shouldBe(Condition.visible);
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
+        assertTrue(advancedPage.isShowMoreButtonExists());
     }
 
     @Story("Total values counting")
     @DisplayName("Check total value of Deposits for default user")
     @Test
     void checkTotalDepositsDefaultUser() {
-        openAdvancedPage();
-        advancedPage
-                .fillTheFields(startDate, endDate, currency);
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
+        advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
         assertTrue(
-                advancedPage.totalText()
-                        .contains(advancedPage.counterTotal("D"))
+                advancedPage.getCountedTotal()
+                        .contains(advancedPage.getCounterTotal("D"))
         );
     }
 
@@ -81,14 +77,13 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check total value of Withdrawals for default user")
     @Test
     void checkTotalWithdrawalsDefaultUser() {
-        openAdvancedPage();
-        advancedPage
-                .fillTheFields(startDate, endDate, currency);
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
+        advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
         assertTrue(
-                advancedPage.totalText()
-                        .contains(advancedPage.counterTotal("W"))
+                advancedPage.getCountedTotal()
+                        .contains(advancedPage.getCounterTotal("W"))
         );
     }
 
@@ -96,15 +91,14 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check total value of Deposits for two users")
     @Test
     void checkTotalDepositsTwoUsers() {
-        openAdvancedPage();
-        advancedPage
-                .addUsers(username)
-                .fillTheFields(startDate, endDate, currency);
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
+        advancedPage.addUsers(username);
+        advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
         assertTrue(
-                advancedPage.totalText()
-                        .contains(advancedPage.counterTotal("D"))
+                advancedPage.getCountedTotal()
+                        .contains(advancedPage.getCounterTotal("D"))
         );
     }
 
@@ -112,15 +106,14 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check total value of Withdrawals for two users")
     @Test
     void checkTotalWithdrawalsTwoUsers() {
-        openAdvancedPage();
-        advancedPage
-                .addUsers(username)
-                .fillTheFields(startDate, endDate, currency);
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
+        advancedPage.addUsers(username);
+        advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
         assertTrue(
-                advancedPage.totalText()
-                        .contains(advancedPage.counterTotal("W"))
+                advancedPage.getCountedTotal()
+                        .contains(advancedPage.getCounterTotal("W"))
         );
     }
 
