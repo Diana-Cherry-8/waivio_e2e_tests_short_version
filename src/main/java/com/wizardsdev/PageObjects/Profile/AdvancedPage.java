@@ -16,10 +16,10 @@ public class AdvancedPage extends ProfilePage {
     public static final By DROPDOWN_CURRENCY_LOCATOR = By.cssSelector(".ant-select-selection-selected-value");
     public static final By BUTTON_CURRENCY_LOCATOR = By.cssSelector(".ant-select-dropdown-menu-item");
     public static final By BUTTON_SUBMIT_LOCATOR = By.cssSelector(".ant-btn-primary");
-    public static final By STRING_TOTAL_LOCATOR = By.cssSelector(".WalletTable__total");
-    public static final By FIELDS_FIND_USERS_LOCATOR = By.cssSelector(".ant-select-search__field");
+    public static final By STRING_TOTAL_DATA_LOCATOR = By.cssSelector(".WalletTable__total");
+    public static final By FIELDS_SEARCH_USERS_LOCATOR = By.cssSelector(".ant-select-search__field");
     public static final By DROPDOWN_USER_LOCATOR = By.cssSelector(".SearchUser");
-    public static final By TABLE_ROWS_LOCATOR = By.cssSelector("tbody > tr");
+    public static final By TABLE_ROWS_LOCATOR = By.cssSelector("tbody tr");
     public static final By BUTTON_CLEAR_USER_LOCATOR = By.cssSelector(".icon-delete");
     public static final By BUTTON_SHOW_MORE_LOCATOR = By.cssSelector(".DynamicTable__showMore");
 
@@ -33,8 +33,8 @@ public class AdvancedPage extends ProfilePage {
     }
 
     @Step
-    public String getStringTotal() {
-        return $(STRING_TOTAL_LOCATOR).getText();
+    public String getStringTotalData() {
+        return $(STRING_TOTAL_DATA_LOCATOR).getText();
     }
 
     @Step
@@ -75,7 +75,7 @@ public class AdvancedPage extends ProfilePage {
 
     @Step
     public void waitUntilReportToBeCounted() {
-        $(STRING_TOTAL_LOCATOR).waitUntil(Condition.matchText(".*\\(Completed\\)"), 200000);
+        $(STRING_TOTAL_DATA_LOCATOR).waitUntil(Condition.matchText(".*\\(Completed\\)"), 200000);
     }
 
     @Step
@@ -85,39 +85,23 @@ public class AdvancedPage extends ProfilePage {
 
     @Step
     public void addUsers(String username) {
-        $$(FIELDS_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).click();
-        $$(FIELDS_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).setValue(username);
+        $$(FIELDS_SEARCH_USERS_LOCATOR).get(1).shouldBe(Condition.visible).click();
+        $$(FIELDS_SEARCH_USERS_LOCATOR).get(1).shouldBe(Condition.visible).setValue(username);
         $$(DROPDOWN_USER_LOCATOR).get(0).shouldBe(Condition.visible).click();
     }
 
     @Step
-    public String getHiveValue(int rowIndex) {
-        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(2).getText().replaceAll("\\s+", "");
-    }
-
-    @Step
-    public String getHiveCurrencyValue(int rowIndex) {
-        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(5).getText().replaceAll("\\s+", "");
-    }
-
-    @Step
-    public String getHpValue(int rowIndex) {
-        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(3).getText().replaceAll("\\s+", "");
-    }
-
-    @Step
-    public String getHbdValue(int rowIndex) {
-        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(4).getText().replaceAll("\\s+", "");
-    }
-
-    @Step
-    public String getHbdCurrencyValue(int rowIndex) {
-        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(6).getText().replaceAll("\\s+", "");
-    }
-
-    @Step
-    public String getRowType(int rowIndex) {
-        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(7).getText().replaceAll("\\s+", "");
+    public String getCellValue(int rowIndex, String columnName) {
+        String result = "";
+        switch (columnName) {
+            case "HIVE" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(2).getText().replaceAll("\\s+", "");
+            case "HIVE/USD" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(5).getText().replaceAll("\\s+", "");
+            case "HP" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(3).getText().replaceAll("\\s+", "");
+            case "HBD" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(4).getText().replaceAll("\\s+", "");
+            case "HBD/USD" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(6).getText().replaceAll("\\s+", "");
+            case "±" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(7).getText().replaceAll("\\s+", "");
+        }
+        return result;
     }
 
     @Step
@@ -125,12 +109,12 @@ public class AdvancedPage extends ProfilePage {
         float typeValue = 0;
         String result = "";
         for (int i = 0; i < $$(TABLE_ROWS_LOCATOR).size(); i++) {
-            String hive = getHiveValue(i);
-            String hiveCurrency = getHiveCurrencyValue(i);
-            String hp = getHpValue(i);
-            String hbd = getHbdValue(i);
-            String hbdCurrency = getHbdCurrencyValue(i);
-            String type = getRowType(i);
+            String hive = getCellValue(i, "HIVE");
+            String hiveCurrency = getCellValue(i, "HIVE/USD");
+            String hp = getCellValue(i, "HP");
+            String hbd = getCellValue(i, "HBD");
+            String hbdCurrency = getCellValue(i, "HBD/USD");
+            String type = getCellValue(i, "±");
             if (!hive.equals("") && type.equals(totalType)) {
                 typeValue = typeValue + (Float.parseFloat(hive) * Float.parseFloat(hiveCurrency));
             }
@@ -146,12 +130,13 @@ public class AdvancedPage extends ProfilePage {
             case "W" -> result = "Withdrawals: $" + formattedTypeValue;
             case "D" -> result = "Deposits: $" + formattedTypeValue;
         }
+        System.out.println(result);
         return result;
     }
 
     @Step
     public String getCountedTotal() {
-        return $(STRING_TOTAL_LOCATOR).shouldBe(Condition.visible).getText();
+        return $(STRING_TOTAL_DATA_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
     @Step
