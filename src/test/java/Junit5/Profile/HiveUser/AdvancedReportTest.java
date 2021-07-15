@@ -22,7 +22,7 @@ public class AdvancedReportTest extends TestBase {
     String endDate = "Today";
     // you can enter date or "Today"
     String currency = "USD";
-    String totalDataDefaultState = "\"TOTAL: Deposits: -. Withdrawals: -. (Totals can be calculated only for a defined from-till period.)\"";
+    String totalDataDefaultState = "TOTAL: Deposits: -. Withdrawals: -. (Totals can be calculated only for a defined from-till period.)";
 
     @BeforeAll
     static void login() {
