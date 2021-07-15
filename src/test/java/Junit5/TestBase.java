@@ -143,6 +143,7 @@ public abstract class TestBase {
   protected static PostsPage postsPage;
   protected static WalletPage walletPage;
   protected static ProfilePage profilePage;
+  protected static AdvancedPage advancedPage;
 
   protected static RestaurantObjectPage restaurantObjectPage;
   protected static ObjectPage objectPage;
