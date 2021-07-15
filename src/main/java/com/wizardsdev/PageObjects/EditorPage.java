@@ -6,7 +6,8 @@ import com.wizardsdev.PageObjects.Profile.PostsPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class EditorPage extends Page {
@@ -59,11 +60,6 @@ public class EditorPage extends Page {
     public PostsPage clickButtonPublish(String userName) {
         $(BUTTON_PUBLISH_IN_PREVIEW_LOCATOR).shouldBe(Condition.visible).click();
         return new PostsPage(userName);
-    }
-
-    @Step
-    public void postAppearWaiter() {
-        sleep(10000);
     }
 
     @Override

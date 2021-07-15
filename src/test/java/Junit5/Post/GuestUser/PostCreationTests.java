@@ -44,7 +44,7 @@ public class PostCreationTests extends TestBase {
         editorPage.clickButtonReadyToPublish();
         editorPage.clickCheckboxLegalNotice();
         postsPage = editorPage.clickButtonPublish(facebookName);
-        editorPage.postAppearWaiter();
+        postsPage.postAppearWaiter();
         refreshPage();
         assertEquals(title, postsPage.getPostTitle(0));
     }
