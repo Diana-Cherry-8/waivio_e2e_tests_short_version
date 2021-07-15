@@ -19,8 +19,7 @@ public class WalletPage extends ProfilePage {
     public static final By BUTTON_OK_IN_MODAL_LINK_LOCATOR = By.cssSelector(".ant-btn-primary");
     public static final By LINK_ADVANCED_REPORT_LOCATOR = By.cssSelector(".UserWallet__view-btn");
 
-    public WalletPage(String userName) {
-        super(Context.getSiteUrl() + "/@" + userName + "/transfers");
+    public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
 
     @Step
@@ -120,7 +119,7 @@ public class WalletPage extends ProfilePage {
     @Step
     public AdvancedPage clickOnLinkAdvancedReport() {
         $(LINK_ADVANCED_REPORT_LOCATOR).click();
-        return new AdvancedPage();
+        return new AdvancedPage(getUserNameValue());
     }
 
     @Override

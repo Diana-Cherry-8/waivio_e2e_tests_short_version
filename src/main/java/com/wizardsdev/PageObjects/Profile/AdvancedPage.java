@@ -1,6 +1,7 @@
 package com.wizardsdev.PageObjects.Profile;
 
 import com.codeborne.selenide.Condition;
+import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -16,12 +17,15 @@ public class AdvancedPage extends ProfilePage {
     public static final By BUTTON_CURRENCY_LOCATOR = By.cssSelector(".ant-select-dropdown-menu-item");
     public static final By BUTTON_SUBMIT_LOCATOR = By.cssSelector(".ant-btn-primary");
     public static final By STRING_TOTAL_LOCATOR = By.cssSelector(".WalletTable__total");
-    public static final By FIELD_FIND_USERS_LOCATOR = By.cssSelector(".ant-select-search__field");
+    public static final By FIELDS_FIND_USERS_LOCATOR = By.cssSelector(".ant-select-search__field");
     public static final By DROPDOWN_USER_LOCATOR = By.cssSelector(".SearchUser");
-    public static final By TABLE_ROW_LOCATOR = By.cssSelector("tbody > tr");
+    public static final By TABLE_ROWS_LOCATOR = By.cssSelector("tbody > tr");
     public static final By BUTTON_CLEAR_USER_LOCATOR = By.cssSelector(".icon-delete");
     public static final By BUTTON_SHOW_MORE_LOCATOR = By.cssSelector(".DynamicTable__showMore");
 
+    public AdvancedPage(String userName) {
+        super(Context.getSiteUrl() + "/@" + userName + "/transfers/table");
+    }
 
     @Step
     public boolean isShowMoreButtonExists() {
@@ -81,46 +85,46 @@ public class AdvancedPage extends ProfilePage {
 
     @Step
     public void addUsers(String username) {
-        $$(FIELD_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).click();
-        $$(FIELD_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).setValue(username);
+        $$(FIELDS_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).click();
+        $$(FIELDS_FIND_USERS_LOCATOR).get(1).shouldBe(Condition.visible).setValue(username);
         $$(DROPDOWN_USER_LOCATOR).get(0).shouldBe(Condition.visible).click();
     }
 
     @Step
-    public String getHiveValue(int rowNumber) {
-        return $(By.cssSelector("tbody > tr:nth-child(" + rowNumber + ") > td:nth-child(3)")).getText().replaceAll("\\s+", "");
+    public String getHiveValue(int rowIndex) {
+        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(2).getText().replaceAll("\\s+", "");
     }
 
     @Step
-    public String getHiveCurrencyValue(int rowNumber) {
-        return $(By.cssSelector("tbody > tr:nth-child(" + rowNumber + ") > td:nth-child(6)")).getText().replaceAll("\\s+", "");
+    public String getHiveCurrencyValue(int rowIndex) {
+        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(5).getText().replaceAll("\\s+", "");
     }
 
     @Step
-    public String getHpValue(int rowNumber) {
-        return $(By.cssSelector("tbody > tr:nth-child(" + rowNumber + ") > td:nth-child(4)")).getText().replaceAll("\\s+", "");
+    public String getHpValue(int rowIndex) {
+        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(3).getText().replaceAll("\\s+", "");
     }
 
     @Step
-    public String getHbdValue(int rowNumber) {
-        return $(By.cssSelector("tbody > tr:nth-child(" + rowNumber + ") > td:nth-child(5)")).getText().replaceAll("\\s+", "");
+    public String getHbdValue(int rowIndex) {
+        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(4).getText().replaceAll("\\s+", "");
     }
 
     @Step
-    public String getHbdCurrencyValue(int rowNumber) {
-        return $(By.cssSelector("tbody > tr:nth-child(" + rowNumber + ") > td:nth-child(7)")).getText().replaceAll("\\s+", "");
+    public String getHbdCurrencyValue(int rowIndex) {
+        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(6).getText().replaceAll("\\s+", "");
     }
 
     @Step
-    public String getRowType(int rowNumber) {
-        return $(By.cssSelector("tbody > tr:nth-child(" + rowNumber + ") > td:nth-child(8)")).getText().replaceAll("\\s+", "");
+    public String getRowType(int rowIndex) {
+        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(7).getText().replaceAll("\\s+", "");
     }
 
     @Step
     public String getCounterTotal(String totalType) {
         float typeValue = 0;
         String result = "";
-        for (int i = 1; i <= $$(TABLE_ROW_LOCATOR).size(); i++) {
+        for (int i = 0; i < $$(TABLE_ROWS_LOCATOR).size(); i++) {
             String hive = getHiveValue(i);
             String hiveCurrency = getHiveCurrencyValue(i);
             String hp = getHpValue(i);
