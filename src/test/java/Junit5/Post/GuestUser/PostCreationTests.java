@@ -26,7 +26,7 @@ public class PostCreationTests extends TestBase {
     }
 
     @Story("Editor")
-    @DisplayName("Open editor")
+    @DisplayName("Editor opening")
     @Test
     void openEditor() {
         editorPage = header.clickOnWritePostIcon();
