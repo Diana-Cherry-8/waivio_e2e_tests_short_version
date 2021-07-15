@@ -2,6 +2,7 @@ package com.wizardsdev.PageObjects;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
+import com.wizardsdev.PageObjects.Profile.PostsPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -55,8 +56,9 @@ public class EditorPage extends Page {
     }
 
     @Step
-    public void clickButtonPublish() {
+    public PostsPage clickButtonPublish(String userName) {
         $(BUTTON_PUBLISH_IN_PREVIEW_LOCATOR).shouldBe(Condition.visible).click();
+        return new PostsPage(userName);
     }
 
     @Step
