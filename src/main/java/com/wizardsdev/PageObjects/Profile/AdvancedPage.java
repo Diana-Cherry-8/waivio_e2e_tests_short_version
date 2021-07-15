@@ -92,16 +92,16 @@ public class AdvancedPage extends ProfilePage {
 
     @Step
     public String getCellValue(int rowIndex, String columnName) {
-        String result = "";
+        int id = 0;
         switch (columnName) {
-            case "HIVE" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(2).getText().replaceAll("\\s+", "");
-            case "HIVE/USD" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(5).getText().replaceAll("\\s+", "");
-            case "HP" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(3).getText().replaceAll("\\s+", "");
-            case "HBD" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(4).getText().replaceAll("\\s+", "");
-            case "HBD/USD" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(6).getText().replaceAll("\\s+", "");
-            case "±" -> result = $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(7).getText().replaceAll("\\s+", "");
+            case "HIVE" -> id = 2;
+            case "HP" -> id = 3;
+            case "HBD" -> id = 4;
+            case "HIVE/USD" -> id = 5;
+            case "HBD/USD" -> id = 6;
+            case "±" -> id = 7;
         }
-        return result;
+        return $$(TABLE_ROWS_LOCATOR).get(rowIndex).$$("td").get(id).getText().replaceAll("\\s+", "");
     }
 
     @Step
