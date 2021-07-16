@@ -244,6 +244,10 @@ public class Header extends Page {
     $$(ANT_MENU_ITEMS_LOCATOR).get(1).shouldBe(Condition.visible).click();
   }
 
+  public boolean isNotificationPopUpOpened() {
+    return $(SEE_ALL_NOTIFICATIONS_LOCATOR).shouldBe(Condition.visible).exists();
+  }
+
   public boolean isNotificationEmpty() {
     sleep(1000);
     $(INPUT_SEARCH_LOCATOR).shouldBe(Condition.visible);
