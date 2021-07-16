@@ -20,6 +20,11 @@ public class NotificationsPage extends Page{
         .getText().contains("You currently have no notifications.");
   }
 
+  @Step
+  public boolean isNotificationPageOpened() {
+    return $(NOTIFICATIONS_PAGE_CONTENT_LOCATOR).shouldBe(Condition.visible).exists();
+  }
+
   @Override
   protected void init() {
     $(NOTIFICATIONS_PAGE_CONTENT_LOCATOR).shouldBe(Condition.visible);

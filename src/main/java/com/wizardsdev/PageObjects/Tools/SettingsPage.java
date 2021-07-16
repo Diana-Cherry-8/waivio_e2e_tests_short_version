@@ -6,9 +6,7 @@ import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class SettingsPage extends Page {
@@ -37,12 +35,7 @@ public class SettingsPage extends Page {
 
     @Step
     public void selectCurrency(String currency) {
-       if (currency.equals("USD")) {
-           $$(MENU_ITEMS_LOCATOR).get(0).shouldBe(Condition.visible).click();
-       }
-       if (currency.equals("CAD")) {
-           $$(MENU_ITEMS_LOCATOR).get(1).shouldBe(Condition.visible).click();
-       }
+        $$(MENU_ITEMS_LOCATOR).find(Condition.matchesText(currency)).shouldBe(Condition.visible).click();
     }
 
     @Step
