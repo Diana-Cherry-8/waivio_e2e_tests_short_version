@@ -29,7 +29,7 @@ public class EligiblePage extends Page {
 
     @Step
     public void clickEarnButton() {
-        $(BUTTON_CAMPAIGN_EARN_REFACTOR_LOCATOR).click();
+        $$(BUTTON_CAMPAIGN_EARN_REFACTOR_LOCATOR).get(0).shouldBe(Condition.visible).click();
     }
 
     @Step
