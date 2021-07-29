@@ -7,6 +7,7 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.NewSitePage;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +15,14 @@ public class SiteDiningGiftsTest extends TestBase {
   static String websiteName = "";
   static String templateName = properties.getProperty("TemplateNameProd");
 
+  @Disabled
   @BeforeAll
   static void openSite() {
     newSitePage = NewSitePage.openDiningGifts(websiteName, templateName);
     NewSitePage.closeCookiesWindow();
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check objects mark are exist on the map")
   @Test
@@ -27,6 +30,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assert(newSitePage.areObjectsMarksExist());
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check website logo is exist on the map")
   @Test
@@ -34,6 +38,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assert(newSitePage.isWebsiteDesktopLogoExist());
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check button my location is exist on the map")
   @Test
@@ -41,6 +46,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assert(newSitePage.isButtonMyLocationExist());
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check buttons for zoom are exist on the map")
   @Test
@@ -48,6 +54,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assert(newSitePage.areButtonsForZoomExist());
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check search panel is opened")
   @Test
@@ -56,6 +63,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assert(newSitePage.isSearchPanelOpen());
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check dish tab is opened")
   @Test
@@ -67,6 +75,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check restaurant tab is opened")
   @Test
@@ -78,6 +87,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check drink tab is opened")
   @Test
@@ -89,6 +99,7 @@ public class SiteDiningGiftsTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check users tab is opened")
   @Test

@@ -8,6 +8,7 @@ import com.wizardsdev.PageObjects.NewSitePage;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,12 +19,14 @@ public class ShareToTwitterFromDiningGiftsTest extends TestBase {
   String twitterUsername = properties.getProperty("TwitterUsername00");
   String twitterPassword = properties.getProperty("TwitterPass00");
 
+  @Disabled
   @BeforeEach
   void openSite() {
     newSitePage = NewSitePage.openDiningGifts(websiteName, templateName);
     newSitePage.closeCookiesWindow();
   }
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via the " +
       "three dots button in feed")
   @Test
@@ -38,6 +41,7 @@ public class ShareToTwitterFromDiningGiftsTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
+  @Disabled
   @Story("Website dining.gifts")
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post modal window, through object page")
@@ -54,6 +58,7 @@ public class ShareToTwitterFromDiningGiftsTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post full screen")
   @Test

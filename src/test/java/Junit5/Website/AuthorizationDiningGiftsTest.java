@@ -9,6 +9,7 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,12 +20,14 @@ public class AuthorizationDiningGiftsTest extends TestBase {
   String facebookPassword = properties.getProperty("FacebookUserPass00");
   boolean newWindow = true;
 
+  @Disabled
   @BeforeEach
   void openDiningGifts() {
     newSitePage = NewSitePage.openDiningGifts(websiteNameForDiningGifts, templateNameForDiningGifts);
     NewSitePage.closeCookiesWindow();
   }
 
+  @Disabled
   @Story("Log in dining.gifts")
   @DisplayName("Log in as hive-user, in dining.gifts")
   @Test
@@ -36,6 +39,7 @@ public class AuthorizationDiningGiftsTest extends TestBase {
     assertTrue(actualResult);
   }
 
+  @Disabled
   @Story("Log in dining.gifts")
   @DisplayName("Log in as guest-user, in dining.gifts")
   @Test

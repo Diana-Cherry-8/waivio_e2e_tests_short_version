@@ -9,6 +9,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +21,7 @@ public class NewSiteTest extends TestBase {
   static String hiveUserEmail = properties.getProperty("UserLogin03");
   static String hivePasswordPassword = properties.getProperty("LoginPassword03");
 
+  @Disabled
   @BeforeAll
   static void createAndOpenSite() {
     feedPage = FeedPage.openFeedPage();
@@ -40,6 +42,7 @@ public class NewSiteTest extends TestBase {
     NewSitePage.closeCookiesWindow();
   }
 
+  @Disabled
   @Story("New website")
   @DisplayName("Check button my location is exist on the map")
   @Test
@@ -47,6 +50,7 @@ public class NewSiteTest extends TestBase {
     assert(newSitePage.isButtonMyLocationExist());
   }
 
+  @Disabled
   @Story("New website")
   @DisplayName("Check buttons for zoom are exist on the map")
   @Test
@@ -54,6 +58,7 @@ public class NewSiteTest extends TestBase {
     assert(newSitePage.areButtonsForZoomExist());
   }
 
+  @Disabled
   @Story("New website")
   @DisplayName("Check search panel is opened")
   @Test
@@ -73,6 +78,7 @@ public class NewSiteTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
+  @Disabled
   @Story("New website")
   @DisplayName("Check restaurant tab is opened")
   @Test
@@ -84,6 +90,7 @@ public class NewSiteTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
+  @Disabled
   @Story("New website")
   @DisplayName("Check drink tab is opened")
   @Test
@@ -95,6 +102,7 @@ public class NewSiteTest extends TestBase {
     assertTrue(actualResult.contains(expectedResult));
   }
 
+  @Disabled
   @Story("New website")
   @DisplayName("Check users tab is opened")
   @Test

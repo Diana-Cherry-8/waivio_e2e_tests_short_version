@@ -12,6 +12,7 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +27,7 @@ public class AuthorizationNewSiteTest extends TestBase {
   static String hivePasswordPassword = properties.getProperty("LoginPassword04");
   boolean newWindow = true;
 
+  @Disabled
   @BeforeAll
   static void createAndOpenSite() {
     feedPage = FeedPage.openFeedPage();
@@ -44,6 +46,7 @@ public class AuthorizationNewSiteTest extends TestBase {
     NewSitePage.closeCookiesWindow();
   }
 
+  @Disabled
   @Story("Log in new site")
   @DisplayName("Log in as hive-user, in new site")
   @Test
@@ -55,6 +58,7 @@ public class AuthorizationNewSiteTest extends TestBase {
     assertTrue(actualResult);
   }
 
+  @Disabled
   @Story("Log in new site")
   @DisplayName("Log in as guest-user, new site")
   @Test
