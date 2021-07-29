@@ -21,6 +21,7 @@ import com.wizardsdev.Modals.SignIn;
 
 
 import com.wizardsdev.Modals.UseCookies;
+import com.wizardsdev.Modals.WriteReview;
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.AreasPage;
 import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
@@ -71,6 +72,7 @@ public abstract class TestBase {
   protected static ChooseLogo chooseLogo;
   protected static SignInPage signInPage;
   protected static UseCookies useCookies;
+  protected static WriteReview writeReview;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();

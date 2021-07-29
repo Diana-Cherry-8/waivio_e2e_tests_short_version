@@ -1,6 +1,8 @@
 package com.wizardsdev.PageObjects.Rewards;
 
 import com.codeborne.selenide.Condition;
+import com.wizardsdev.Modals.WriteReview;
+import com.wizardsdev.PageObjects.EditorPage;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -17,6 +19,7 @@ public class ReservedPage extends Page {
     private static final By BUTTON_OK_WITH_LOADING_LOCATOR =
         By.cssSelector(".ant-modal-footer .ant-btn-loading");
     private static final By TEXT_NO_REWARD_LOCATOR = By.cssSelector(".FilteredRewardsList");
+    private static final By BUTTON_WRITE_REVIEW_LOCATOR = By.cssSelector(".ant-btn");
 
     public ReservedPage() {
         super(PAGE_URL);
@@ -55,6 +58,12 @@ public class ReservedPage extends Page {
     @Step
     public String getTextNoReward() {
         return $(TEXT_NO_REWARD_LOCATOR).shouldBe(Condition.visible).getText();
+    }
+
+    @Step
+    public WriteReview clickWriteReview() {
+        $(BUTTON_WRITE_REVIEW_LOCATOR).shouldBe(Condition.visible).click();
+        return new WriteReview();
     }
 
     @Override
