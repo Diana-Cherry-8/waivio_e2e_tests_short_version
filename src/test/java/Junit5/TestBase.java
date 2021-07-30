@@ -12,6 +12,7 @@ import com.wizardsdev.ApiRequests.ApiRequest;
 import com.wizardsdev.Components.*;
 import com.wizardsdev.Context;
 import com.wizardsdev.Keywords;
+import com.wizardsdev.Modals.AddImages;
 import com.wizardsdev.Modals.ChooseLogo;
 import com.wizardsdev.Modals.DeleteWebsite;
 import com.wizardsdev.Modals.Post;
@@ -73,6 +74,7 @@ public abstract class TestBase {
   protected static SignInPage signInPage;
   protected static UseCookies useCookies;
   protected static WriteReview writeReview;
+  protected static AddImages addImages;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();

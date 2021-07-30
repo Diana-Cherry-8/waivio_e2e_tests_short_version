@@ -11,13 +11,16 @@ import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Feature("Post creation, Rewards")
-public class ReviewCreationTests extends TestBase {
-  static String facebookEmail = properties.getProperty("FacebookUserEmail00");
-  static String facebookPassword = properties.getProperty("FacebookUserPass00");
-  static String facebookName = properties.getProperty("FacebookUserName00");
+public class ReviewCreationTest extends TestBase {
+
+  static String facebookEmail = "diana8899877@gmail.com";
+  static String facebookPassword = "zxcdba9898";
+  static String facebookName = "waivio_diana-ch";
+
   static boolean newWindow = true;
-  String title = "Test " + String.valueOf((int) (Math.random() * 20));
+  String title = "Test " + (int) (Math.random() * 20);
   String contentPost = "Test body";
+  String sponsorName = "wiv01";
 
   @BeforeAll
   static void login() {
@@ -31,15 +34,14 @@ public class ReviewCreationTests extends TestBase {
   void createReview() {
     eligiblePage = topNavigation.clickOnRewardsItem();
     rewardsLeftSidebar.clickOnEligibleItem();
+    sleep(3000);
+    eligiblePage.clickOnSpecificSponsorInFilter(sponsorName);
     eligiblePage.clickEarnButton();
     reservation = eligiblePage.clickReserveButtonInCard();
     reservedPage = reservation.clickReserveButtonInModalWindow();
     writeReview = reservedPage.clickWriteReview();
     editorPage = writeReview.clickWriteReviewInModalWindow();
-
-
     editorPage.setPostTitle(title);
-    editorPage.setContentPost(contentPost);
     editorPage.clickButtonReadyToPublish();
     editorPage.clickCheckboxLegalNotice();
     postsPage = editorPage.clickButtonPublish(facebookName);
@@ -48,32 +50,16 @@ public class ReviewCreationTests extends TestBase {
     assertEquals(title, postsPage.getPostTitle(0));
   }
 
-  @Test
-  void ddd(){
+  @AfterEach
+  void editPost() {
     postsPage = header.clickOnAccountIcon();
     editorPage = postsPage.clickOnEditPostInPostMenu();
     editorPage.clickOnObjectSwitch();
     editorPage.clickOnObjectSwitch();
     editorPage.clearContentPost();
-    editorPage.setPostTitle("test123");
-    editorPage.clickButtonReadyToPublish();
-    editorPage.clickClosePreviewModalWindow();
-    editorPage.setContentPost(contentPost);
+    editorPage.setContentPostForEdit(contentPost);
     editorPage.clickButtonReadyToPublish();
     editorPage.clickCheckboxLegalNotice();
     editorPage.clickButtonPublish(facebookName);
-  }
-
-  @AfterEach
-  void editPost() {
-//    editorPage = postsPage.clickOnEditPostInPostMenu();
-//    editorPage.clickOnObjectSwitch();
-//    editorPage.clickOnObjectSwitch();
-//    editorPage.clearContentPost();
-//    editorPage.setContentPost(contentPost);
-//    editorPage.clickButtonReadyToPublish();
-//    editorPage.clickCheckboxLegalNotice();
-//    editorPage.clickButtonPublish(facebookName);
-
   }
 }

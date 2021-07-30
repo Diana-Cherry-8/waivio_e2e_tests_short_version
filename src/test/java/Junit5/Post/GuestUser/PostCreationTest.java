@@ -4,20 +4,23 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
 import org.junit.jupiter.api.*;
 
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Post creation, Rewards")
-public class PostCreationTests extends TestBase {
+public class PostCreationTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     static String facebookName = properties.getProperty("FacebookUserName00");
     static boolean newWindow = true;
-    String title = "Test " + String.valueOf((int) (Math.random() * 20));
+    String title = "Test " + (int) (Math.random() * 50);
     String contentPost = "Test body";
+    String image = "https://cdn.discordapp.com/attachments/740485430943809546/822392335345647616/Test.png";
 
     @BeforeAll
     static void login() {
@@ -49,6 +52,28 @@ public class PostCreationTests extends TestBase {
         postsPage.postAppearWaiter();
         refreshPage();
         assertEquals(title, postsPage.getPostTitle(0));
+        String contentBody = postsPage.getContentBody();
+        assertTrue(contentBody.contains(contentPost));
+    }
+
+    @Story("Post creation")
+    @DisplayName("Post creation only with image")
+    @Test
+    void createPostWithImage() throws IOException, UnsupportedFlavorException {
+        editorPage.setPostTitle(title);
+        editorPage.setContentPost(image);
+        editorPage.savePictureLinkToClipboard();
+        editorPage.clickPlusButton();
+        addImages = editorPage.clickPhotoButtonInPlusLocator();
+        addImages.pasteImageLink();
+        editorPage = addImages.clickOk();
+        editorPage.clickButtonReadyToPublish();
+        editorPage.clickCheckboxLegalNotice();
+        postsPage = editorPage.clickButtonPublish(facebookName);
+        postsPage.postAppearWaiter();
+        refreshPage();
+        assertEquals(title, postsPage.getPostTitle(0));
+        assertTrue(postsPage.isImageContainerExist());
     }
 
     @AfterEach

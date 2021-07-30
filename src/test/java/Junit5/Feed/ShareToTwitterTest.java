@@ -8,6 +8,7 @@ import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +19,7 @@ public class ShareToTwitterTest extends TestBase {
   String twitterPassword = properties.getProperty("TwitterPass00");
   static String restaurantObject = properties.getProperty("RestaurantObject");
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via the " +
       "three dots button in feed")
   @Test
@@ -32,6 +34,7 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post modal window ")
   @Test
@@ -47,6 +50,7 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post full screen")
   @Test
@@ -63,6 +67,7 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via the " +
       "three dots button in object restaurant feed")
   @Test
@@ -76,6 +81,7 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post modal window, through object restaurant page")
   @Test
@@ -90,6 +96,7 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
+  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post full screen")
   @Test

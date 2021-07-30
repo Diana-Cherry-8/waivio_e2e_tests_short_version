@@ -14,6 +14,7 @@ public class EligiblePage extends Page {
     private static final By BUTTON_CAMPAIGN_EARN_REFACTOR_LOCATOR = By.cssSelector(".Campaign__button");
     private static final By BUTTONS_RESERVE_LOCATOR = By.cssSelector(".ant-btn-primary");
     private static final By TITLE_SECONDARY_OBJECT_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
+    private static final By FILTER_LOCATOR = By.cssSelector(".RewardsFiltersPanel__item-wrap");
 
     public EligiblePage() {
         super(PAGE_URL);
@@ -41,6 +42,14 @@ public class EligiblePage extends Page {
     @Step
     public String getTitleSecondaryObject() {
         return $(TITLE_SECONDARY_OBJECT_NAME_LOCATOR).shouldBe(Condition.visible).getText();
+    }
+
+    @Step
+    public void clickOnSpecificSponsorInFilter(String sponsorName) {
+        $$(FILTER_LOCATOR).findBy(Condition.text(sponsorName)).shouldBe(Condition.visible)
+            .findElement(By.cssSelector(".ant-checkbox")).click();
+        $(By.cssSelector(".ant-checkbox-checked")).shouldBe(Condition.visible);
+        sleep(3000);
     }
 
     @Override
