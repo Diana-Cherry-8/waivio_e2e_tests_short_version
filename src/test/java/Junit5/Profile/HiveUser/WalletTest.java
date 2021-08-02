@@ -18,18 +18,18 @@ public class WalletTest extends TestBase {
     String hiveUserName2 = "wiv01";
     String guestUserName = "waivio_dianach";
 
-    @BeforeEach
-    void login() {
+    @BeforeAll
+    static void login() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
+        postsPage = header.clickOnAccountIcon();
+        walletPage = postsPage.clickOnWalletProfileItem();
     }
 
     @Story("Open page")
     @DisplayName("Check wallet page is opened")
     @Test
     void openWallet() {
-        postsPage = header.clickOnAccountIcon();
-        walletPage = postsPage.clickOnWalletProfileItem();
         refreshPage();
         boolean actualResult = walletPage.isButtonsForTransferExist();
         assertTrue(actualResult);
@@ -39,8 +39,6 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer from hive-user to hive-user")
     @Test
     void checkTransfer() {
-        postsPage = header.clickOnAccountIcon();
-        walletPage = postsPage.clickOnWalletProfileItem();
         Float expectedFloat = walletPage.getHiveAmount() - amount;
         expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
@@ -57,8 +55,6 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer from hive-user to guest-user")
     @Test
     void checkTransferFromHiveUserToGuest() {
-        postsPage = header.clickOnAccountIcon();
-        walletPage = postsPage.clickOnWalletProfileItem();
         Float expectedFloat = walletPage.getHiveAmount() - amount;
         expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
@@ -68,10 +64,5 @@ public class WalletTest extends TestBase {
         refreshPage();
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
-    }
-
-    @AfterEach
-    void logOut() {
-        header.logOut();
     }
 }
