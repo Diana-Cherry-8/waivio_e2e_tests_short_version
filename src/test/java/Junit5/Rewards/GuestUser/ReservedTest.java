@@ -42,7 +42,7 @@ public class ReservedTest extends TestBase {
         String expectedResult = eligiblePage.getTitleSecondaryObject();
         reservation = eligiblePage.clickReserveButtonInCard();
         reservedPage = reservation.clickReserveButtonInModalWindow();
-        sleep(10000);
+        sleep(15000);
         refreshPage();
         String actualResult = reservedPage.getTitleObjectCardName();
         assertEquals(expectedResult, actualResult);
@@ -57,7 +57,7 @@ public class ReservedTest extends TestBase {
         reservedPage.clickOnTheFirstButtonMore();
         reservedPage.clickOnItemRelease();
         reservedPage.clickOnOkButton();
-        sleep(10000);
+        sleep(15000);
         rewardsLeftSidebar.clickOnReservedItems();
         String expectedResult = "No reward matches the criteria";
         String actualResult = reservedPage.getTextNoReward();
