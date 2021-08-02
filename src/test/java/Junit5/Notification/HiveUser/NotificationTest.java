@@ -13,7 +13,7 @@ public class NotificationTest extends TestBase {
     static String hivePasswordPassword = properties.getProperty("LoginPassword03");
 
     @BeforeAll
-    static void logInAsTestUser() {
+    static void logInAsHiveUser() {
         feedPage = FeedPage.openFeedPage();
         header.logInWithHiveSigner(hiveUserEmail, hivePasswordPassword);
     }
@@ -23,7 +23,7 @@ public class NotificationTest extends TestBase {
     @Test
     void checkThatNotificationPopUpOpens() {
         header.clickOnNotificationIcon();
-        assert (header.isNotificationPopUpOpened());
+        assert(header.isNotificationPopUpOpened());
     }
 
     @Story("Notification page")
@@ -32,7 +32,7 @@ public class NotificationTest extends TestBase {
     void checkNotificationPageOpensFromPopUp() {
         header.clickOnNotificationIcon();
         notificationsPage = header.clickSeeAllNotifications();
-        assert (notificationsPage.isNotificationPageOpened());
+        assert(notificationsPage.isNotificationPageOpened());
     }
 
     @Story("Notification page")
@@ -40,6 +40,6 @@ public class NotificationTest extends TestBase {
     @Test
     void checkNotificationPageOpensFromFeedLeftBar() {
         notificationsPage = feedLeftBar.clickOnNotificationItem();
-        assert (notificationsPage.isNotificationPageOpened());
+        assert(notificationsPage.isNotificationPageOpened());
     }
 }
