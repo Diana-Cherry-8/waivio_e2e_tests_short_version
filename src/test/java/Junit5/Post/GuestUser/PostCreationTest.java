@@ -19,7 +19,7 @@ public class PostCreationTest extends TestBase {
     static String facebookName = properties.getProperty("FacebookUserName00");
     static boolean newWindow = true;
     String title = "Test " + (int) (Math.random() * 50);
-    String contentPost = "Test body";
+    String contentPost = "Test body " + (int) (Math.random() * 100);
     String image = "https://cdn.discordapp.com/attachments/740485430943809546/822392335345647616/Test.png";
 
     @BeforeAll
@@ -53,6 +53,8 @@ public class PostCreationTest extends TestBase {
         refreshPage();
         assertEquals(title, postsPage.getPostTitle(0));
         String contentBody = postsPage.getContentBody();
+        // здесь нужны две проверки, что title соответствует, и что текст есть, чтобы убедиться что это действительно нужный пост
+        assertEquals(title, postsPage.getPostTitle(0));
         assertTrue(contentBody.contains(contentPost));
     }
 
@@ -72,6 +74,7 @@ public class PostCreationTest extends TestBase {
         postsPage = editorPage.clickButtonPublish(facebookName);
         postsPage.postAppearWaiter();
         refreshPage();
+        // здесь нужны две проверки, что title соответствует, и что контейнер картинки есть, чтобы убедиться что это действительно нужный пост
         assertEquals(title, postsPage.getPostTitle(0));
         assertTrue(postsPage.isImageContainerExist());
     }

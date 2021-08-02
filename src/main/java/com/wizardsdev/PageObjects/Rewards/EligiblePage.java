@@ -46,6 +46,7 @@ public class EligiblePage extends Page {
 
     @Step
     public void clickOnSpecificSponsorInFilter(String sponsorName) {
+        sleep(3000);
         $$(FILTER_LOCATOR).findBy(Condition.text(sponsorName)).shouldBe(Condition.visible)
             .findElement(By.cssSelector(".ant-checkbox")).click();
         $(By.cssSelector(".ant-checkbox-checked")).shouldBe(Condition.visible);

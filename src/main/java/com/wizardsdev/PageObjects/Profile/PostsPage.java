@@ -45,7 +45,7 @@ public class PostsPage extends ProfilePage {
 
     @Step
     public void postAppearWaiter() {
-        sleep(10000);
+        sleep(15000);
     }
 
     @Step

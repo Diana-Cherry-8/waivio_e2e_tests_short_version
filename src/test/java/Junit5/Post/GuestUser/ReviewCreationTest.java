@@ -6,8 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-
-import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Feature("Post creation, Rewards")
@@ -20,7 +18,7 @@ public class ReviewCreationTest extends TestBase {
   static boolean newWindow = true;
   String title = "Test " + (int) (Math.random() * 20);
   String contentPost = "Test body";
-  String sponsorName = "wiv01";
+  String sponsorName = "daine-cherry2";
 
   @BeforeAll
   static void login() {
@@ -34,7 +32,6 @@ public class ReviewCreationTest extends TestBase {
   void createReview() {
     eligiblePage = topNavigation.clickOnRewardsItem();
     rewardsLeftSidebar.clickOnEligibleItem();
-    sleep(3000);
     eligiblePage.clickOnSpecificSponsorInFilter(sponsorName);
     eligiblePage.clickEarnButton();
     reservation = eligiblePage.clickReserveButtonInCard();
