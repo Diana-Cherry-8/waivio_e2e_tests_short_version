@@ -27,7 +27,7 @@ public class ReviewCreationTest extends TestBase {
   }
 
   @Story("Review creation")
-  @DisplayName("Review creation only with text")
+  @DisplayName("Create a review with 0 requirement foto")
   @Test
   void createReview() {
     eligiblePage = topNavigation.clickOnRewardsItem();
