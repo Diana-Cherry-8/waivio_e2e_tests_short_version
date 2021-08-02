@@ -28,7 +28,8 @@ public class EligibleTest extends TestBase {
     @Test
     void openEligiblePageTest() {
         feedPage = header.clickOnLogo();
-        eligiblePage = topNavigation.clickOnRewardsItem();
+        topNavigation.clickOnRewardsItem();
+        eligiblePage = rewardsLeftSidebar.clickOnEligibleItem();
         String expectedResult = "Eligible rewards";
         String actualResult = eligiblePage.getTitleRewards();
         assertEquals(expectedResult, actualResult);
