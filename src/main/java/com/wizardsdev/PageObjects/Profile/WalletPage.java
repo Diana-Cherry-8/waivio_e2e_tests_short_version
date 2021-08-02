@@ -96,24 +96,17 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public void clickContinueAsHiveUser() {
-        final By BUTTONS_CONTINUE_TRANSFER_LOCATOR = By.cssSelector(".button-primary");
-        final By BUTTONS_APPROVE_TRANSFER_LOCATOR = By.cssSelector(".button-success");
+        final By BUTTON_APPROVE_TRANSFER_LOCATOR = By.cssSelector(".button-success");
+        final By TEXT_SUCCESS_LOCATOR = By.cssSelector(".text-2xl");
 
         $(BUTTON_CONTINUE_LOCATOR).click();
         switchTo().window(1);
-        if ($(BUTTONS_CONTINUE_TRANSFER_LOCATOR).exists()) {
-            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-            $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-            switchTo().window(0);
-        } else {
-            switchTo().window(2);
-            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-            $(BUTTONS_CONTINUE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-            $(BUTTONS_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-            switchTo().window(0);
-        }
-        sleep(3000);
+        $(BUTTON_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+        $(TEXT_SUCCESS_LOCATOR).shouldBe(Condition.exactText("\n" +
+            "    Transaction has been successfully broadcasted\n" +
+            "  "));
+        closeWindow();
+        switchTo().window(0);
     }
 
     @Step
