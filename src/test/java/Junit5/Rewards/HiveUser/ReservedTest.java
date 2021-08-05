@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Reserved Page, Rewards")
 public class ReservedTest extends TestBase {
@@ -42,10 +43,10 @@ public class ReservedTest extends TestBase {
         String expectedResult = eligiblePage.getTitleSecondaryObject();
         reservation = eligiblePage.clickReserveButtonInCard();
         reservedPage = reservation.clickReserveButtonInModalWindow();
-        sleep(10000);
+        sleep(15000);
         refreshPage();
         String actualResult = reservedPage.getTitleObjectCardName();
-        assertEquals(expectedResult, actualResult);
+        assertTrue(actualResult.contains(expectedResult));
     }
 
     @Story("Released a reservation")
