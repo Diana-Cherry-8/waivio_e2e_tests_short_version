@@ -57,7 +57,7 @@ public class ReservedTest extends TestBase {
         reservedPage.clickOnTheFirstButtonMore();
         reservedPage.clickOnItemRelease();
         reservedPage.clickOnOkButton();
-        sleep(10000);
+        sleep(15000);
         rewardsLeftSidebar.clickOnReservedItems();
         String expectedResult = "No reward matches the criteria";
         String actualResult = reservedPage.getTextNoReward();
