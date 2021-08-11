@@ -15,15 +15,10 @@ public class UpdateObject extends Modal{
   private static final By TEXTAREA_PRICE_LOCATOR = By.cssSelector("#price");
   private static final By TEXTAREA_HOURS_LOCATOR = By.cssSelector("#workTime");
   private static final By INPUTS_LOCATOR = By.cssSelector(".AppendForm__input");
-  /*Add address */
-  private static final By INPUT_ADDRESS_LOCATOR = By.cssSelector("#adderess");
   private static final By INPUT_STREET_LOCATOR = By.cssSelector("#street");
   private static final By INPUT_CITY_LOCATOR = By.cssSelector("#city");
   private static final By INPUT_STATE_LOCATOR = By.cssSelector("#state");
   private static final By INPUT_POSTAL_CODE_LOCATOR = By.cssSelector("#postalCode");
-  private static final By INPUT_COUNTRY_LOCATOR = By.cssSelector("#counrty");
-  /*End Add address */
-
   private static final By INPUT_TITLE_LOCATOR = By.cssSelector("#title");
   private static final By INPUT_WEBSITE_LINK_LOCATOR = By.cssSelector("#link");
   private static final By INPUT_PHONE_NAME_LOCATOR = By.cssSelector("#name");
@@ -71,6 +66,7 @@ public class UpdateObject extends Modal{
     setPostalCode(postalCode);
     setCountry(country);
   }
+
   @Step
   public void setAddress(String address) {
     $$(INPUTS_LOCATOR).get(0).shouldBe(Condition.visible).setValue(address);
@@ -100,7 +96,6 @@ public class UpdateObject extends Modal{
   public void setCountry(String country) {
     $$(INPUTS_LOCATOR).get(5).shouldBe(Condition.visible).setValue(country);
   }
-
   /*End Add address */
 
   @Step
@@ -127,8 +122,6 @@ public class UpdateObject extends Modal{
   public void setEmail(String email) {
     $(INPUT_EMAIL_LOCATOR).shouldBe(Condition.visible).setValue(email);
   }
-
-
 
   @Override
   protected void init() {
