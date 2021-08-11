@@ -5,17 +5,27 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.wizardsdev.Context.properties;
+import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.sleep;
+
 
 public class UpdatesObjectPage extends ObjectPage{
     private static final By BUTTON_WRITE_A_NEW_REVIEW = By.cssSelector(".icon-button");
+    private static final By BODY_CONTENT_LOCATOR = By.cssSelector(".Story__content__body");
 
     @Step
     public String getButtonText() {
         return $(BUTTON_WRITE_A_NEW_REVIEW).shouldBe(Condition.visible).getText();
     }
+
+    @Step
+    public String getContentBodyFromPostUpdate() {
+        scrollToTopPage();
+        sleep(15000);
+        return $$(BODY_CONTENT_LOCATOR).get(0).shouldBe(Condition.visible).getText();
+    }
+
+
 
     @Override
     protected void init() {
