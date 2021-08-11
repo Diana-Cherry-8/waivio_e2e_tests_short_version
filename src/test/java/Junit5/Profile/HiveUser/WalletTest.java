@@ -45,7 +45,7 @@ public class WalletTest extends TestBase {
         walletPage.setUserNameForWalletSearch(hiveUserName2);
         walletPage.setAmountAsHive(amountForTransfer);
         walletPage.clickContinueAsHiveUser();
-        sleep(4000);
+        sleep(10000);
         refreshPage();
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
@@ -61,6 +61,7 @@ public class WalletTest extends TestBase {
         walletPage.setUserNameForWalletSearch(guestUserName);
         walletPage.setAmountAsHive(amountForTransfer);
         walletPage.clickContinueAsHiveUser();
+        sleep(10000);
         refreshPage();
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
