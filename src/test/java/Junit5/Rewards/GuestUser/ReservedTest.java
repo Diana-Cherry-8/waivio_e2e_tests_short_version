@@ -14,6 +14,7 @@ public class ReservedTest extends TestBase {
     static String facebookEmail = properties.getProperty("FacebookUserEmail00");
     static String facebookPassword = properties.getProperty("FacebookUserPass00");
     static boolean newWindow = true;
+    String sponsorName = "daine-cherry2";
 
     @BeforeAll
     static void login() {
@@ -38,6 +39,7 @@ public class ReservedTest extends TestBase {
     void makeAReservation() {
         eligiblePage = topNavigation.clickOnRewardsItem();
         rewardsLeftSidebar.clickOnEligibleItem();
+        eligiblePage.clickOnSpecificSponsorInFilter(sponsorName);
         eligiblePage.clickEarnButton();
         String expectedResult = eligiblePage.getTitleSecondaryObject();
         reservation = eligiblePage.clickReserveButtonInCard();

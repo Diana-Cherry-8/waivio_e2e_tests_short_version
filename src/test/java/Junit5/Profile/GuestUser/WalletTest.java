@@ -47,9 +47,8 @@ public class WalletTest extends TestBase {
         walletPage.clickOnTransferButton();
         walletPage.setAmountAsGuest(amountForTransfer, sponsorName);
         walletPage.clickContinueAsGuest();
-        sleep(4000);
+        sleep(10000);
         refreshPage();
-        sleep(2000);
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
     }
