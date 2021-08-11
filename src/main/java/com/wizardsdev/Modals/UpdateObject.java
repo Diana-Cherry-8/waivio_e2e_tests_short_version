@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 
 public class UpdateObject extends Modal{
   private static final By BUTTON_SUBMIT_LOCATOR = By.cssSelector(".ant-btn-primary");
+  private static final By BUTTON_CLOSE_MODAL_WINDOW = By.cssSelector(".ant-modal-close-x");
   private static final By TEXTAREA_DESCRIPTION_LOCATOR = By.cssSelector("#description");
   private static final By TEXTAREA_PRICE_LOCATOR = By.cssSelector("#price");
   private static final By TEXTAREA_HOURS_LOCATOR = By.cssSelector("#workTime");
@@ -24,7 +25,6 @@ public class UpdateObject extends Modal{
   private static final By INPUT_PHONE_NAME_LOCATOR = By.cssSelector("#name");
   private static final By INPUT_PHONE_NUMBER_LOCATOR = By.cssSelector("#number");
   private static final By INPUT_EMAIL_LOCATOR = By.cssSelector("#email");
-  private static final By BUTTON_CLOSE_MODAL_WINDOW = By.cssSelector(".ant-modal-close-x");
 
   @Step
   public UpdatesObjectPage clickSubmit() {
