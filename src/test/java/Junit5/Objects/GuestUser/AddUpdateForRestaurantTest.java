@@ -16,10 +16,11 @@ public class AddUpdateForRestaurantTest extends TestBase {
   static String facebookEmail = properties.getProperty("FacebookUserEmail00");
   static String facebookPassword = properties.getProperty("FacebookUserPass00");
 
+  public static final int INT = 100000;
   static boolean newWindow = true;
-  static String description = "Test body " + (int) (Math.random() * 100000);
-  static String price = "Price " + (int) (Math.random() * 1000000);
-  static String hours = "Hours " + (int) (Math.random() * 1000000);
+  static String description = "Test body " + (int) (Math.random() * INT);
+  static String price = "Price " + (int) (Math.random() * INT);
+  static String hours = "Hours " + (int) (Math.random() * INT);
   static String address = "Ad " + (int) (Math.random() * 100);
   static String street = "Str " + (int) (Math.random() * 100);
   static String city = "C " + (int) (Math.random() * 100);
@@ -29,9 +30,9 @@ public class AddUpdateForRestaurantTest extends TestBase {
   static String titleForWebsite = "Website " + (int) (Math.random() * 1000);
   static String linkForWebsite = "linkforWebsite" + (int) (Math.random() * 1000);
   static String phoneName = "Test Name" + (int) (Math.random() * 1000);
-  static String phoneNumber = "Number" + (int) (Math.random() * 1000000);
-  static String email = "testemail@" + "test" + (int) (Math.random() * 100000) + ".test";
-  static String title = "Title" + (int) (Math.random() * 100000);
+  static String phoneNumber = "Number" + (int) (Math.random() * INT);
+  static String email = "testemail@" + "test" + (int) (Math.random() * INT) + ".test";
+  static String title = "Title" + (int) (Math.random() * INT);
   static String latitude = "-81." + (int) (Math.random() * 1000);
   static String longitude = "32." + (int) (Math.random() * 1000);
 
