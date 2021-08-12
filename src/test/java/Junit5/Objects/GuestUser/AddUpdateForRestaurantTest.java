@@ -12,7 +12,7 @@ import org.junit.jupiter.api.*;
 
 @Feature("Restaurant Page, Object")
 public class AddUpdateForRestaurantTest extends TestBase {
-  static String restaurantObject = properties.getProperty("RestaurantObjectForAddUpdate");
+  static String restaurantObject = "kpr-test-auto-1";
   static String facebookEmail = properties.getProperty("FacebookUserEmail00");
   static String facebookPassword = properties.getProperty("FacebookUserPass00");
 
