@@ -123,7 +123,6 @@ public class UpdateObject extends Modal{
 
   @Step
   public void setLatitude(String latitude) {
-    sleep(1000); //чтобы метка на карте успевала центроваться
     $(INPUT_LATITUDE_LOCATOR).shouldBe(Condition.visible).setValue(latitude);
     sleep(1000);//чтобы метка на карте успевала центроваться
   }
