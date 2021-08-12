@@ -21,6 +21,7 @@ import com.wizardsdev.Modals.Reservation;
 import com.wizardsdev.Modals.SignIn;
 
 
+import com.wizardsdev.Modals.UpdateObject;
 import com.wizardsdev.Modals.UseCookies;
 import com.wizardsdev.Modals.WriteReview;
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
@@ -75,6 +76,7 @@ public abstract class TestBase {
   protected static UseCookies useCookies;
   protected static WriteReview writeReview;
   protected static AddImages addImages;
+  protected static UpdateObject updateObject;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();

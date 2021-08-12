@@ -3,6 +3,7 @@ package com.wizardsdev.PageObjects.Objects;
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
+import com.wizardsdev.Modals.UpdateObject;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.TwitterPage;
 import io.qameta.allure.Step;
@@ -11,7 +12,6 @@ import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.wizardsdev.Context.properties;
 
 public abstract class ObjectPage extends Page {
     private static final ThreadLocal<String> currentPage = new ThreadLocal<>();
@@ -25,6 +25,9 @@ public abstract class ObjectPage extends Page {
     private static final By SOCIAL_ITEMS_LOCATOR = By.cssSelector(".Popover__shared-link");
     private static final By TREE_DOTS_BUTTON_LOCATOR = By.cssSelector(".Buttons__post-menu");
     private static final By POST_LOCATOR = By.className("Story");
+    private static final By BUTTON_EDIT_LOCATOR = By.cssSelector(".ObjectHeader__controls .ant-btn");
+    private static final By LEFT_SIDEBAR_LINKS_LOCATOR =
+        By.cssSelector(".object-sidebar .icon-button__icon");
 
     protected ObjectPage(String objectName) {
         super(Context.getSiteUrl()  + "/object/" + objectName);
@@ -140,6 +143,63 @@ public abstract class ObjectPage extends Page {
     public Post openPost(int postIndex) {
         $$(POST_LOCATOR).get(postIndex).$(POST_TITLE_LOCATOR).click();
         return new Post();
+    }
+
+    @Step
+    public void clickEditButton() {
+        if($(LEFT_SIDEBAR_LINKS_LOCATOR).exists()) {
+            $(LEFT_SIDEBAR_LINKS_LOCATOR).shouldBe(Condition.visible);
+        }
+        else {
+            $(BUTTON_EDIT_LOCATOR).shouldBe(Condition.visible).click();
+        }
+    }
+
+    @Step
+    public UpdateObject clickAddDescriptionViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(9).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public UpdateObject clickAddPriceViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(14).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public UpdateObject clickAddHoursViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(15).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public UpdateObject clickAddAddressViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(16).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public UpdateObject clickAddWebsiteViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(18).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public UpdateObject clickAddPhoneViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(19).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public UpdateObject clickAddEmailViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(20).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public void scrollToTopPage() {
+        scrollToElement($(BUTTON_EDIT_LOCATOR));
     }
 
     public static String getCurrentPage() {
