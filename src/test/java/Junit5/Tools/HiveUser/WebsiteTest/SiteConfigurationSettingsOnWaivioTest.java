@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 public class SiteConfigurationSettingsOnWaivioTest extends TestBase {
   static int templateIndex = 0;
   static String websiteName = "testing1234560000";
-  static String templateName = properties.getProperty("TemplateNameProd");
+  static String templateName = "dining.gifts";
   String userName = "daine-cherry2";
   String  userNameForMute = "daine-cherry";
 
