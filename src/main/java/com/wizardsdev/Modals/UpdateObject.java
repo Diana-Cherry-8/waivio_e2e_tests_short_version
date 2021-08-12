@@ -10,8 +10,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class UpdateObject extends Modal{
-  private static final By BUTTON_SUBMIT_LOCATOR = By.cssSelector(".ant-btn-primary");
-  private static final By BUTTON_CLOSE_MODAL_WINDOW = By.cssSelector(".ant-modal-close-x");
   private static final By TEXTAREA_DESCRIPTION_LOCATOR = By.cssSelector("#description");
   private static final By TEXTAREA_PRICE_LOCATOR = By.cssSelector("#price");
   private static final By TEXTAREA_HOURS_LOCATOR = By.cssSelector("#workTime");
@@ -33,25 +31,17 @@ public class UpdateObject extends Modal{
   }
 
   @Step
-  public UpdatesObjectPage closeModalWindow() {
-    if($(BUTTON_CLOSE_MODAL_WINDOW).exists()){
-      $(BUTTON_CLOSE_MODAL_WINDOW).click();
-    }
-    return new UpdatesObjectPage();
-  }
-
-  @Step
-  public void setDescriptionTextarea(String description) {
+  public void setDescription(String description) {
     $(TEXTAREA_DESCRIPTION_LOCATOR).shouldBe(Condition.visible).setValue(description);
   }
 
   @Step
-  public void setPriceTextarea(String price) {
+  public void setPrice(String price) {
     $(TEXTAREA_PRICE_LOCATOR).shouldBe(Condition.visible).setValue(price);
   }
 
   @Step
-  public void setHoursTextarea(String hours) {
+  public void setHours(String hours) {
     $(TEXTAREA_HOURS_LOCATOR).shouldBe(Condition.visible).setValue(hours);
   }
 
@@ -99,7 +89,7 @@ public class UpdateObject extends Modal{
   /*End Add address */
 
   @Step
-  public void setTitle(String title) {
+  public void setWebsiteTitle(String title) {
     $(INPUT_TITLE_LOCATOR).shouldBe(Condition.visible).setValue(title);
   }
 

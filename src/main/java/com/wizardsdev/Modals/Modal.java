@@ -6,6 +6,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 
 import com.codeborne.selenide.Condition;
+import com.wizardsdev.PageObjects.Objects.UpdatesObjectPage;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -20,6 +21,7 @@ public abstract class Modal extends Page {
   public static final By HEADER_LOCATOR = By.className("is-custom-modal-header__body-text");
   public static final By BUTTON_SUBMIT_LOCATOR = By.cssSelector(".ant-btn-primary");
   public static final By BUTTON_CANCEL_LOCATOR = By.cssSelector("button[data-button = 'cancel']");
+  private static final By BUTTON_CLOSE_MODAL_WINDOW = By.cssSelector(".ant-modal-close-x");
 
   @Step
   public void submitAction() {
@@ -35,6 +37,14 @@ public abstract class Modal extends Page {
   public void closeModal() {
     $(IMG_EXIT_LOCATOR).click();
     waitForDisappearModalDimmer();
+  }
+
+  @Step
+  public UpdatesObjectPage closeModalWindow() {
+    if($(BUTTON_CLOSE_MODAL_WINDOW).exists()){
+      $(BUTTON_CLOSE_MODAL_WINDOW).click();
+    }
+    return new UpdatesObjectPage();
   }
   
   @Step

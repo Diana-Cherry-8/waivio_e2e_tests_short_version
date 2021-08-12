@@ -27,7 +27,7 @@ public class AddUpdateForRestaurantTest extends TestBase {
   static String postalCode = "C " + (int) (Math.random() * 100);
   static String country = "Cnt " + (int) (Math.random() * 100);
   static String titleForWebsite = "Website " + (int) (Math.random() * 1000);
-  static String linkForWebsite = "https://waiviodev.com/random" + (int) (Math.random() * 1000);
+  static String linkForWebsite = "linkforWebsite" + (int) (Math.random() * 1000);
   static String phoneName = "Test Name" + (int) (Math.random() * 1000);
   static String phoneNumber = "Number" + (int) (Math.random() * 1000000);
   static String email = "testemail@" + "test" + (int) (Math.random() * 100000) + ".test";
@@ -45,7 +45,7 @@ public class AddUpdateForRestaurantTest extends TestBase {
   void addDescription() {
     reviewsObjectPage.clickEditButton();
     updateObject = reviewsObjectPage.clickAddDescriptionViaLeftSidebar();
-    updateObject.setDescriptionTextarea(description);
+    updateObject.setDescription(description);
     updatesObjectPage = updateObject.clickSubmit();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(description));
@@ -57,7 +57,7 @@ public class AddUpdateForRestaurantTest extends TestBase {
   void addPrice() {
     reviewsObjectPage.clickEditButton();
     updateObject = reviewsObjectPage.clickAddPriceViaLeftSidebar();
-    updateObject.setPriceTextarea(price);
+    updateObject.setPrice(price);
     updatesObjectPage = updateObject.clickSubmit();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(price));
@@ -69,7 +69,7 @@ public class AddUpdateForRestaurantTest extends TestBase {
   void addHours() {
     reviewsObjectPage.clickEditButton();
     updateObject = reviewsObjectPage.clickAddHoursViaLeftSidebar();
-    updateObject.setHoursTextarea(hours);
+    updateObject.setHours(hours);
     updatesObjectPage = updateObject.clickSubmit();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(hours));
@@ -95,7 +95,7 @@ public class AddUpdateForRestaurantTest extends TestBase {
   void addWebsite() {
     reviewsObjectPage.clickEditButton();
     updateObject = reviewsObjectPage.clickAddWebsiteViaLeftSidebar();
-    updateObject.setTitle(titleForWebsite);
+    updateObject.setWebsiteTitle(titleForWebsite);
     updateObject.setWebsiteLink(linkForWebsite);
     updatesObjectPage = updateObject.clickSubmit();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
