@@ -2,6 +2,7 @@ package com.wizardsdev.Modals;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 
 import com.codeborne.selenide.Condition;
@@ -23,6 +24,8 @@ public class UpdateObject extends Modal{
   private static final By INPUT_PHONE_NAME_LOCATOR = By.cssSelector("#name");
   private static final By INPUT_PHONE_NUMBER_LOCATOR = By.cssSelector("#number");
   private static final By INPUT_EMAIL_LOCATOR = By.cssSelector("#email");
+  private static final By INPUT_LATITUDE_LOCATOR = By.cssSelector("#latitude");
+  private static final By INPUT_LONGITUDE_LOCATOR = By.cssSelector("#longitude");
 
   @Step
   public UpdatesObjectPage clickSubmit() {
@@ -111,6 +114,24 @@ public class UpdateObject extends Modal{
   @Step
   public void setEmail(String email) {
     $(INPUT_EMAIL_LOCATOR).shouldBe(Condition.visible).setValue(email);
+  }
+
+  @Step
+  public void setTitle(String title) {
+    $(INPUT_TITLE_LOCATOR).shouldBe(Condition.visible).setValue(title);
+  }
+
+  @Step
+  public void setLatitude(String latitude) {
+    sleep(1000); //чтобы метка на карте успевала центроваться
+    $(INPUT_LATITUDE_LOCATOR).shouldBe(Condition.visible).setValue(latitude);
+    sleep(1000);//чтобы метка на карте успевала центроваться
+  }
+
+  @Step
+  public void setLongitude(String longitude) {
+    $(INPUT_LONGITUDE_LOCATOR).shouldBe(Condition.visible).setValue(longitude);
+    sleep(1000);//чтобы метка на карте успевала центроваться
   }
 
   @Override

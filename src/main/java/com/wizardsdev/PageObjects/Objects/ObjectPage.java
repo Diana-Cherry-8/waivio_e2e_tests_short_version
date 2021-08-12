@@ -156,6 +156,12 @@ public abstract class ObjectPage extends Page {
     }
 
     @Step
+    public UpdateObject clickAddButtonViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(3).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
     public UpdateObject clickAddDescriptionViaLeftSidebar() {
         $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(9).shouldBe(Condition.visible).click();
         return new UpdateObject();
@@ -180,6 +186,12 @@ public abstract class ObjectPage extends Page {
     }
 
     @Step
+    public UpdateObject clickAddMapViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(17).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
     public UpdateObject clickAddWebsiteViaLeftSidebar() {
         $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(18).shouldBe(Condition.visible).click();
         return new UpdateObject();
@@ -194,6 +206,12 @@ public abstract class ObjectPage extends Page {
     @Step
     public UpdateObject clickAddEmailViaLeftSidebar() {
         $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(20).shouldBe(Condition.visible).click();
+        return new UpdateObject();
+    }
+
+    @Step
+    public UpdateObject clickAddTitleViaLeftSidebar() {
+        $$(LEFT_SIDEBAR_LINKS_LOCATOR).get(23).shouldBe(Condition.visible).click();
         return new UpdateObject();
     }
 

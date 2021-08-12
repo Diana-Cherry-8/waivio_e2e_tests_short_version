@@ -31,6 +31,9 @@ public class AddUpdateForRestaurantTest extends TestBase {
   static String phoneName = "Test Name" + (int) (Math.random() * 1000);
   static String phoneNumber = "Number" + (int) (Math.random() * 1000000);
   static String email = "testemail@" + "test" + (int) (Math.random() * 100000) + ".test";
+  static String title = "Title" + (int) (Math.random() * 100000);
+  static String latitude = "-81." + (int) (Math.random() * 1000);
+  static String longitude = "32." + (int) (Math.random() * 1000);
 
   @BeforeAll
   static void login() {
@@ -125,6 +128,44 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updatesObjectPage = updateObject.clickSubmit();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(email));
+  }
+
+  @Story("Add update")
+  @DisplayName("Add title via left sidebar")
+  @Test
+  void addTitle() {
+    reviewsObjectPage.clickEditButton();
+    updateObject = reviewsObjectPage.clickAddTitleViaLeftSidebar();
+    updateObject.setTitle(title);
+    updatesObjectPage = updateObject.clickSubmit();
+    String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
+    assertTrue(contentBody.contains(title));
+  }
+
+  @Story("Add update")
+  @DisplayName("Add button via left sidebar")
+  @Test
+  void addButton() {
+    reviewsObjectPage.clickEditButton();
+    updateObject = reviewsObjectPage.clickAddButtonViaLeftSidebar();
+    updateObject.setTitle(title);
+    updateObject.setWebsiteLink(linkForWebsite);
+    updatesObjectPage = updateObject.clickSubmit();
+    String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
+    assertTrue(contentBody.contains(title) && contentBody.contains(linkForWebsite));
+  }
+
+  @Story("Add update")
+  @DisplayName("Add map via left sidebar, via coordinates")
+  @Test
+  void addMap() {
+    reviewsObjectPage.clickEditButton();
+    updateObject = reviewsObjectPage.clickAddMapViaLeftSidebar();
+    updateObject.setLatitude(latitude);
+    updateObject.setLongitude(longitude);
+    updatesObjectPage = updateObject.clickSubmit();
+    String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
+    assertTrue(contentBody.contains(latitude) && contentBody.contains(longitude));
   }
 
   @AfterEach
