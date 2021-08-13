@@ -54,7 +54,7 @@ public class CreateWebsitePage extends Page {
   @Step
   public ConfigurationWebsitePage clickOnCreateNewWebsiteButton(String template, String websiteName) {
     $(BUTTON_CREATE_NEW_WEBSITE_LOCATOR).shouldBe(Condition.visible).click();
-    sleep(7000);
+    sleep(15000);
     return new ConfigurationWebsitePage(websiteName, template);
   }
 
