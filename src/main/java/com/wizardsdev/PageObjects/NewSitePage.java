@@ -42,9 +42,9 @@ public class NewSitePage extends Page{
   }
 
   @Step
-  public static NewSitePage openDiningGifts(String siteName, String template) {
-    if (!url().equals(Context.getSiteUrl() + siteName  + template)) {
-      open(PAGE_URL + siteName + template);
+  public static NewSitePage openDiningGiftsMap(String siteName, String template) {
+    if (!url().equals(Context.getSiteUrl() + siteName  + template + "/map")) {
+      open(PAGE_URL + siteName + template + "/map");
       sleep(2000);
     }
     return new NewSitePage(siteName, template);
