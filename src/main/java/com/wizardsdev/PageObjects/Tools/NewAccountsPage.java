@@ -2,6 +2,7 @@ package com.wizardsdev.PageObjects.Tools;
 
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.Selenide.switchTo;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -20,6 +21,7 @@ public class NewAccountsPage extends Page {
   public HiveOnBoardPage clickOnForFreeLink() {
     $$(LINKS_LOCATOR).get(0).shouldBe(Condition.visible).click();
     switchTabWindowToNext();
+    sleep(2000);
     return new HiveOnBoardPage();
   }
 
