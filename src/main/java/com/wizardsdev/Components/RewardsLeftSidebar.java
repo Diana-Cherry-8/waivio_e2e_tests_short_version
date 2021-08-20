@@ -100,40 +100,47 @@ public class RewardsLeftSidebar extends Page {
     }
 
     @Step
-    public MatchBotPage clickOnMatchBotItem() {
-        clickOnSideBarItemRewardsByIndex(11);
-        return new MatchBotPage();
-    }
-
-    @Step
     public FraudDetectionPage clickOnFraudDetectionItem() {
-        clickOnSideBarItemRewardsByIndex(12);
+        clickOnSideBarItemRewardsByIndex(11);
         return new FraudDetectionPage();
     }
 
     @Step
     public BlacklistPage clickBlacklistItem() {
-        clickOnSideBarItemRewardsByIndex(13);
+        clickOnSideBarItemRewardsByIndex(12);
         return new BlacklistPage();
     }
 
     @Step
     public DetailsPage clickOnDetailsItemAsHiveUser() {
-        clickOnSideBarItemRewardsByIndex(14);
+        clickOnSideBarItemRewardsByIndex(13);
         return new DetailsPage();
     }
 
     @Step
     public InstructionsPage clickOnInstructionsItemAsHiveUser() {
-        clickOnSideBarItemRewardsByIndex(15);
+        clickOnSideBarItemRewardsByIndex(14);
         return new InstructionsPage();
     }
 
     @Step
     public StatusPage clickOnStatusItemAsHiveUser() {
-        clickOnSideBarItemRewardsByIndex(16);
+        clickOnSideBarItemRewardsByIndex(15);
         return new StatusPage();
     }
+
+        @Step
+    public MatchBotPage clickOnSponsorMatchBotItem() {
+        clickOnSideBarItemRewardsByIndex(18);
+        return new MatchBotPage();
+    }
+
+//    @Step
+//    public clickTabs(String tab) {
+//        $$(LINK_SIDE_BAR_ITEMS_REWARDS_LOCATOR).findBy(Condition.text(tab)).click();
+//    }
+
+
 
     @Override
     protected void init() {

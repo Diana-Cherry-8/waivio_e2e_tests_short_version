@@ -4,7 +4,6 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Match Bot Page, Rewards")
-public class MatchBotTest extends TestBase {
+public class SponsorMatchBotTest extends TestBase {
 
     @BeforeEach
     void login() {
@@ -25,10 +24,10 @@ public class MatchBotTest extends TestBase {
     @Test
     void openMatchBot() {
         eligiblePage = topNavigation.clickOnRewardsItem();
-        matchBotPage = rewardsLeftSidebar.clickOnMatchBotItem();
+        matchBotPage = rewardsLeftSidebar.clickOnSponsorMatchBotItem();
         refreshPage();
-        String expectedResult = "Manage match bot";
-        String actualResult = matchBotPage.getTitleMatchBot();
+        String expectedResult = "Sponsors match bot";
+        String actualResult = matchBotPage.getTitleSponsorMatchBot();
         assertTrue(actualResult.contains(expectedResult));
     }
 }

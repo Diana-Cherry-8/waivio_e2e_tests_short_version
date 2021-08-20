@@ -11,7 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class MatchBotPage extends Page {
     private static final String PAGE_URL = "/rewards/receivables";
-    private static final By TITLE_TOTAL_LOCATOR = By.cssSelector(".MatchBot__title");
+    private static final By TITLE_TOTAL_LOCATOR = By.cssSelector(".MatchBotSponsors__title");
 
     public MatchBotPage() {
         super(PAGE_URL);
@@ -26,7 +26,7 @@ public class MatchBotPage extends Page {
     }
 
     @Step
-    public String getTitleMatchBot()
+    public String getTitleSponsorMatchBot()
     {
         return $(TITLE_TOTAL_LOCATOR).shouldBe(Condition.visible).getText();
     }

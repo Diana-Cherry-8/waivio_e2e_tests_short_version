@@ -21,7 +21,7 @@ public class NewAccountsPage extends Page {
   public HiveOnBoardPage clickOnForFreeLink() {
     $$(LINKS_LOCATOR).get(0).shouldBe(Condition.visible).click();
     switchTabWindowToNext();
-    sleep(2000);
+    sleep(5000);
     return new HiveOnBoardPage();
   }
 
