@@ -37,46 +37,39 @@ public class ToolsLeftSidebar extends Page {
     }
 
     @Step
-    public DraftsPage clickOnDraftsItem() {
+    public ToolsNotificationsPage clickOnNotificationsItem() {
         clickOnSideBarItemRewardsByIndex(0);
+        return new ToolsNotificationsPage();
+    }
+
+    @Step
+    public DraftsPage clickOnDraftsItem() {
+        clickOnSideBarItemRewardsByIndex(1);
         return new DraftsPage();
     }
 
     @Step
     public BookmarksPage clickOnBookmarksItem() {
-        clickOnSideBarItemRewardsByIndex(1);
+        clickOnSideBarItemRewardsByIndex(2);
         return new BookmarksPage();
     }
 
     @Step
     public EditProfilePage clickOnEditProfileItems() {
-        clickOnSideBarItemRewardsByIndex(2);
+        clickOnSideBarItemRewardsByIndex(3);
         return new EditProfilePage();
     }
 
     @Step
     public SettingsPage clickOnSettingsItem() {
-        clickOnSideBarItemRewardsByIndex(3);
+        clickOnSideBarItemRewardsByIndex(4);
         return new SettingsPage();
     }
 
     @Step
     public GuestsSettingsPage clickOnGuestsSettingsItem() {
-        clickOnSideBarItemRewardsByIndex(4);
-        return new GuestsSettingsPage();
-    }
-
-    @Step
-    public ToolsNotificationsPage clickOnNotificationsItemAsHiveUser() {
-        clickOnSideBarItemRewardsByIndex(4);
-        return new ToolsNotificationsPage();
-    }
-
-
-    @Step
-    public ToolsNotificationsPage clickOnNotificationsItemAsGuest() {
         clickOnSideBarItemRewardsByIndex(5);
-        return new ToolsNotificationsPage();
+        return new GuestsSettingsPage();
     }
 
     @Step

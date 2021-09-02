@@ -27,7 +27,7 @@ public class NotificationsTest extends TestBase {
     @Test
     void openNotificationsTools() {
         draftsPage = topNavigation.clickOnToolsItem();
-        toolsNotificationsPage = toolsLeftSidebar.clickOnNotificationsItemAsGuest();
+        toolsNotificationsPage = toolsLeftSidebar.clickOnNotificationsItem();
         refreshPage();
         String expectedResult = "Notification Settings";
         String actualResult = toolsNotificationsPage.getTitleTools();
