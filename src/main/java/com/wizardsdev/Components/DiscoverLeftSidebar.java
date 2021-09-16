@@ -27,164 +27,158 @@ public class DiscoverLeftSidebar extends Page {
     }
 
     @Step
-    public DiscoverPage clickOnAllObjectsItem() {
+    public DiscoverPage clickOnHashtagObjectItem() {
         clickOnSideBarItemDiscoverByIndex(0);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnHashtagObjectItem() {
+    public DiscoverPage clickOnRestaurantObjectItems() {
         clickOnSideBarItemDiscoverByIndex(1);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnRestaurantObjectItems() {
+    public DiscoverPage clickOnDishObjectItem() {
         clickOnSideBarItemDiscoverByIndex(2);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnDishObjectItem() {
+    public DiscoverPage clickOnBusinessObjectItem() {
         clickOnSideBarItemDiscoverByIndex(3);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnBusinessObjectItem() {
+    public DiscoverPage clickOnProductObjectItem() {
         clickOnSideBarItemDiscoverByIndex(4);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnProductObjectItem() {
+    public DiscoverPage clickOnDrinkObjectItem() {
         clickOnSideBarItemDiscoverByIndex(5);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnDrinkObjectItem() {
+    public DiscoverPage clickOnPlaceObjectItem() {
         clickOnSideBarItemDiscoverByIndex(6);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnPlaceObjectItem() {
+    public DiscoverPage clickOnListObjectItem() {
         clickOnSideBarItemDiscoverByIndex(7);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnListObjectItem() {
+    public DiscoverPage clickOnPageObjectItem() {
         clickOnSideBarItemDiscoverByIndex(8);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnPageObjectItem() {
+    public DiscoverPage clickOnCryptoObjectItem() {
         clickOnSideBarItemDiscoverByIndex(9);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnCryptoObjectItem() {
+    public DiscoverPage clickOnIndicesObjectItem() {
         clickOnSideBarItemDiscoverByIndex(10);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnIndicesObjectItem() {
+    public DiscoverPage clickOnCommodityObjectItem() {
         clickOnSideBarItemDiscoverByIndex(11);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnCommodityObjectItem() {
+    public DiscoverPage clickOnCurrencyObjectItem() {
         clickOnSideBarItemDiscoverByIndex(12);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnCurrencyObjectItem() {
+    public DiscoverPage clickOnStocksObjectItem() {
         clickOnSideBarItemDiscoverByIndex(13);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnStocksObjectItem() {
+    public DiscoverPage clickOnAppObjectItem() {
         clickOnSideBarItemDiscoverByIndex(14);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnAppObjectItem() {
+    public DiscoverPage clickOnCurrenciesObjectItem() {
         clickOnSideBarItemDiscoverByIndex(15);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnCurrenciesObjectItem() {
+    public DiscoverPage clickOnServiceObjectItem() {
         clickOnSideBarItemDiscoverByIndex(16);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnServiceObjectItem() {
+    public DiscoverPage clickOnCompanyObjectItem() {
         clickOnSideBarItemDiscoverByIndex(17);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnCompanyObjectItem() {
+    public DiscoverPage clickOnOrganizationObjectItem() {
         clickOnSideBarItemDiscoverByIndex(18);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnOrganizationObjectItem() {
+    public DiscoverPage clickOnHotelObjectItem() {
         clickOnSideBarItemDiscoverByIndex(19);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnHotelObjectItem() {
+    public DiscoverPage clickOnMotelObjectItem() {
         clickOnSideBarItemDiscoverByIndex(20);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnMotelObjectItem() {
+    public DiscoverPage clickOnResortObjectItem() {
         clickOnSideBarItemDiscoverByIndex(21);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnResortObjectItem() {
+    public DiscoverPage clickOnBAndBObjectItem() {
         clickOnSideBarItemDiscoverByIndex(22);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnBAndBObjectItem() {
+    public DiscoverPage clickOnPersonObjectItem() {
         clickOnSideBarItemDiscoverByIndex(23);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnPersonObjectItem() {
+    public DiscoverPage clickOnCarObjectItem() {
         clickOnSideBarItemDiscoverByIndex(24);
         return new DiscoverPage();
     }
 
     @Step
-    public DiscoverPage clickOnCarObjectItem() {
-        clickOnSideBarItemDiscoverByIndex(25);
-        return new DiscoverPage();
-    }
-
-    @Step
     public DiscoverPage clickOnTestObjectItem() {
-        clickOnSideBarItemDiscoverByIndex(26);
+        clickOnSideBarItemDiscoverByIndex(25);
         return new DiscoverPage();
     }
 

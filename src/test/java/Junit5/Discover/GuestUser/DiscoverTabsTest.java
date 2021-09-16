@@ -31,16 +31,6 @@ public class DiscoverTabsTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check All page is opened in Discover")
-    @Test
-    void openAllDiscover() {
-        discoverPage = discoverLeftSidebar.clickOnAllObjectsItem();
-        refreshPage();
-        boolean actualResult = discoverPage.isHashtagsTabExist();
-        assertTrue(actualResult);
-    }
-
-    @Story("Open page")
     @DisplayName("Check Restaurant page is opened in Discover")
     @Test
     void openRestaurantDiscover() {
