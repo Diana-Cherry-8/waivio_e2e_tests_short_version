@@ -27,6 +27,7 @@ public abstract class Modal extends Page {
   public void submitAction() {
     $(BUTTON_SUBMIT_LOCATOR).shouldBe(Condition.visible).click();
     $(MODAL_WINDOW_LOCATOR).shouldBe(Condition.disappear);
+    sleep(10000);
   }
 
   protected Modal() {

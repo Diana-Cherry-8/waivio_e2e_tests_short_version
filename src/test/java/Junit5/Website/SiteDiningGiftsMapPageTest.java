@@ -27,13 +27,6 @@ public class SiteDiningGiftsMapPageTest extends TestBase {
   }
 
   @Story("Website dining.gifts")
-  @DisplayName("Check website logo is exist on the map")
-  @Test
-  void checkDesktopLogoIsExist() {
-    assert(newSitePage.isWebsiteDesktopLogoExist());
-  }
-
-  @Story("Website dining.gifts")
   @DisplayName("Check button my location is exist on the map")
   @Test
   void checkButtonMyLocationIsExist(){

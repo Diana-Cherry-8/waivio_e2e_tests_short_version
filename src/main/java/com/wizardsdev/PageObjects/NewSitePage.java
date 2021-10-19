@@ -18,7 +18,7 @@ public class NewSitePage extends Page{
   private static final String PAGE_URL = "https://";
   private static final By OBJECTS_MARKS_ON_MAP_LOCATOR = By.cssSelector(".pigeon-click-block");
   private static final By WEBSITE_DESKTOP_LOGO_LOCATOR = By.cssSelector(".WebsiteBody__logo");
-  private static final By BUTTON_MY_LOCATION_LOCATOR = By.cssSelector(".MapOS__locateGPS-button");
+  private static final By BUTTON_MY_LOCATION_LOCATOR = By.cssSelector(".MapConfigurationControl__locateGPS");
   private static final By BUTTONS_FOR_ZOOM_LOCATOR = By.cssSelector(".WebsiteBodyControl__zoom");
   private static final By SEARCH_PANEL_LOCATOR = By.cssSelector(".SearchAllResult__toggle-button");
   private static final By OBJECT_CARD_NAME_LOCATOR = By.cssSelector(".ObjectCardView__name");
