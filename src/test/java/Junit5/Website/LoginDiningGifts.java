@@ -25,7 +25,7 @@ public class LoginDiningGifts extends TestBase {
     newSitePage = NewSitePage.openDiningGiftsHomePage(websiteName, templateName);
   }
 
-  @Feature("Login")
+  @Feature("Dining.gifts. Login")
   @Story("Login")
   @DisplayName("Check hive signer login")
   @Test
@@ -36,7 +36,7 @@ public class LoginDiningGifts extends TestBase {
     assertEquals(getUserLogin(), profilePage.getUserNameValue());
   }
 
-  @Feature("Login")
+  @Feature("Dining.gifts. Login")
   @Story("Login")
   @DisplayName("Check facebook login")
   @Test
