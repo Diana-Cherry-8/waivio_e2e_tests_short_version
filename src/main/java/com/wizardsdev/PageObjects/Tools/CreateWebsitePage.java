@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Tools.Website.ConfigurationWebsitePage;
 import io.qameta.allure.Step;
+import java.util.Objects;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -54,7 +55,13 @@ public class CreateWebsitePage extends Page {
   @Step
   public ConfigurationWebsitePage clickOnCreateNewWebsiteButton(String template, String websiteName) {
     $(BUTTON_CREATE_NEW_WEBSITE_LOCATOR).shouldBe(Condition.visible).click();
+    String actualTitle = getTitleTools();
+    String expectedTitle = "Website configuration";
     sleep(15000);
+    if(!Objects.equals(actualTitle, expectedTitle)){
+      sleep(15000);
+      refresh();
+    }
     return new ConfigurationWebsitePage(websiteName, template);
   }
 

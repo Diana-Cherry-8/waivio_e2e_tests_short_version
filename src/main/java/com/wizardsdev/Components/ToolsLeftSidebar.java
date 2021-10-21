@@ -16,10 +16,12 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.refresh;
 
 public class ToolsLeftSidebar extends Page {
     private static final By SIDE_BAR_ITEMS_LINK_TOOLS_LOCATOR =
         By.cssSelector(".sidenav-discover-objects__item");
+    private static final By BUTTON_DISPLAY_LOCATOR = By.cssSelector(".icon-addition");
 
     public ToolsLeftSidebar() {
         super();
@@ -119,6 +121,21 @@ public class ToolsLeftSidebar extends Page {
         clickOnSideBarItemRewardsByIndex(10);
         return new ConfigurationWebsitePage(websiteName, template);
     }
+
+    @Step
+    public void refreshIfPageWithoutLeftTabs() {
+        if(!$$(SIDE_BAR_ITEMS_LINK_TOOLS_LOCATOR).get(11).exists()) {
+            refresh();
+            }
+    }
+
+    @Step
+    public void openAdditionalTabs() {
+        if($(BUTTON_DISPLAY_LOCATOR).exists()) {
+            $(BUTTON_DISPLAY_LOCATOR).shouldBe(Condition.visible).click();
+        }
+    }
+
 
     @Step
     public SettingsWebsitePage clickOnSettingsWebsite(String websiteName, String template) {

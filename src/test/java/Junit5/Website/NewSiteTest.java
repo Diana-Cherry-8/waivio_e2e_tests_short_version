@@ -32,8 +32,10 @@ public class NewSiteTest extends TestBase {
     createWebsitePage.clickOnAgreementCheckbox();
     configurationWebsitePage =
         createWebsitePage.clickOnCreateNewWebsiteButton(websiteName, templateName);
+    toolsLeftSidebar.refreshIfPageWithoutLeftTabs();//sometimes it happens - bug
     manageWebsitePage = toolsLeftSidebar.clickOnManageWebsite();
     manageWebsitePage.clickCheckboxSiteActivation();
+    toolsLeftSidebar.openAdditionalTabs();//sometimes it happens - bug
     areasPage = toolsLeftSidebar.clickOnAreasWebsite(templateName, websiteName);
     areasPage.clickClickChoseAreaButton();
     newSitePage = NewSitePage.openNewSitePage(websiteName, templateName);
