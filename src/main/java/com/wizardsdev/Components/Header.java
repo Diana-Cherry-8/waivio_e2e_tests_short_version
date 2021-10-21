@@ -85,13 +85,11 @@ public class Header extends Page {
   @Step
   public void logInWithFacebookNewSite(String email, String password, boolean newWindow) {
     SignInPage signIn = clickOnSignInPage();
-    NewSitePage.closeCookiesWindow();
     FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook(newWindow);
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
     $(LOADER_SIGN_IN_PAGE_MODAL_LOCATOR).shouldBe(Condition.visible).shouldBe(Condition.disappear);
-    UseCookies.closeModalWindowUseCookies();
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }
 

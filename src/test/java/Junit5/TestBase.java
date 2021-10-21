@@ -21,6 +21,7 @@ import com.wizardsdev.Modals.Reservation;
 import com.wizardsdev.Modals.SignIn;
 
 
+import com.wizardsdev.Modals.SignInDiningGifts;
 import com.wizardsdev.Modals.UpdateObject;
 import com.wizardsdev.Modals.UseCookies;
 import com.wizardsdev.Modals.WriteReview;
@@ -77,6 +78,7 @@ public abstract class TestBase {
   protected static WriteReview writeReview;
   protected static AddImages addImages;
   protected static UpdateObject updateObject;
+  protected static SignInDiningGifts signInDiningGifts;
 
   //Tools
   protected static final ThreadLocal<ApiRequest> apiRequest = new ThreadLocal<>();

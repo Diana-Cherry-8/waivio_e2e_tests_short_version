@@ -50,11 +50,8 @@ public class SiteDiningGiftsMapPageTest extends TestBase {
   }
 
   @Story("Website dining.gifts")
-
   @DisplayName("Check dish tab is opened")
-
   @Test
-
   void checkDishTab() {
     newSitePage.clickSearchPanel();
     newSitePage.clickDishTab();

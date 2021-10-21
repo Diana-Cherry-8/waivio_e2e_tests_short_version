@@ -10,6 +10,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
+import com.wizardsdev.Modals.SignInDiningGifts;
 import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -26,6 +27,8 @@ public class NewSitePage extends Page{
   private static final By CARD_TAG_LOCATOR = By.cssSelector(".ObjectCardView__tag-text");
   private static final By USERS_CARDS_LOCATOR = By.cssSelector(".UserCard");
   private static final By BUTTON_CLOSE_FOR_COOKIES_WINDOW = By.cssSelector(".ant-modal-close-x");
+  private static final By BUTTON_SIGN_IN_DINING_GIFTS_LOCATOR =
+      By.cssSelector(".ModalSignIn__link-type");
 
 
   public NewSitePage(String siteName, String template) {
@@ -48,6 +51,21 @@ public class NewSitePage extends Page{
       sleep(2000);
     }
     return new NewSitePage(siteName, template);
+  }
+
+  @Step
+  public static NewSitePage openDiningGiftsHomePage(String siteName, String template) {
+    if (!url().equals(Context.getSiteUrl() + siteName  + template)) {
+      open(PAGE_URL + siteName + template);
+      sleep(2000);
+    }
+    return new NewSitePage(siteName, template);
+  }
+
+  @Step
+  public SignInDiningGifts openSignInModalWindowDiningGifts() {
+    $(BUTTON_SIGN_IN_DINING_GIFTS_LOCATOR).shouldBe(visible).click();
+    return new SignInDiningGifts();
   }
 
   @Step
