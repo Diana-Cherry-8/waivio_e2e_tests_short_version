@@ -9,12 +9,13 @@ import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
+import java.util.Objects;
 import org.openqa.selenium.By;
 
 public class HeaderDiningGifts extends Page {
   private static final By LINKS_HEADER_LOCATOR =
       By.cssSelector(".MainPageHeader__listLink a");
-  private static final String PAGE_URL = "/object/";
+  private static final String PAGE_URL = "https://";
   private static final By LINK_LOGO_LOCATOR = By.cssSelector(".MainPageHeader__logoLink");
 
 
@@ -74,12 +75,31 @@ public class HeaderDiningGifts extends Page {
     };
   }
 
+//  @Step
+//  public boolean isLink(String objectPermlink, String additionalPartUrl) {
+//    if (url().contains(PAGE_URL + objectPermlink + additionalPartUrl)) {
+//      System.out.println(PAGE_URL + objectPermlink + additionalPartUrl);
+//      return true;
+//    }
+//    System.out.println(PAGE_URL + objectPermlink + additionalPartUrl);
+//    System.out.println(url());
+//    return false;
+//  }
+
   @Step
-  public boolean isLinkCorrect(String objectPermlink, String additionalPartUrl) {
-    if (url().contains(PAGE_URL + objectPermlink + additionalPartUrl)) {
+  public boolean isLinkCorrect(String template, String objectPermlink, String additionalPartUrl) {
+    if(!(Objects.equals(objectPermlink, ""))) {
+      if (url().contains(PAGE_URL + template + "/object/"+ objectPermlink + additionalPartUrl)) {
+        return true;
+      }
+      System.out.println("Expected result: "+ PAGE_URL + template + "/object/" + objectPermlink + additionalPartUrl);
+      System.out.println("  Actual result: " + url());
+      return false;
+    } if (url().contains(PAGE_URL + template + objectPermlink + additionalPartUrl)) {
       return true;
     }
-    System.out.println(url());
+    System.out.println("Expected result: "+ PAGE_URL + template + objectPermlink + additionalPartUrl);
+    System.out.println("  Actual result: " + url());
     return false;
   }
 

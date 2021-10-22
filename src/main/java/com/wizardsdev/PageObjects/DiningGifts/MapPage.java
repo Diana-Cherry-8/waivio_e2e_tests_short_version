@@ -25,6 +25,8 @@ public class MapPage extends GeneralInfoPage {
   private static final By NAVIGATION_SEARCH_TABS_LOCATOR = By.cssSelector(".SearchAllResult__type");
   private static final By CARD_TAG_LOCATOR = By.cssSelector(".ObjectCardView__tag-text");
   private static final By USERS_CARDS_LOCATOR = By.cssSelector(".UserCard");
+  private static final By LOADER_LOCATOR = By.cssSelector(".Loading--center");
+  private static final By OBJECTS_REWARDS_MARKS_ON_MAP_LOCATOR = By.cssSelector(".MarkerWithReward");
 
   protected MapPage(String siteName, String template) {
     super(siteName, template);
@@ -47,6 +49,11 @@ public class MapPage extends GeneralInfoPage {
   @Step
   public boolean areObjectsMarksExist() {
     return $(OBJECTS_MARKS_ON_MAP_LOCATOR).shouldBe(Condition.visible).exists();
+  }
+
+  @Step
+  public boolean areObjectsRewardsMarksExist() {
+    return $(OBJECTS_REWARDS_MARKS_ON_MAP_LOCATOR).shouldBe(Condition.visible).exists();
   }
 
   @Step
