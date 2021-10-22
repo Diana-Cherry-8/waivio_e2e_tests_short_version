@@ -1,4 +1,4 @@
-package com.wizardsdev.PageObjects;
+package com.wizardsdev.PageObjects.DiningGifts;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -10,12 +10,11 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
-import com.wizardsdev.Modals.SignInDiningGifts;
 import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-public class NewSitePage extends Page{
+public class MapPage extends GeneralInfoPage {
   private static final String PAGE_URL = "https://";
   private static final By OBJECTS_MARKS_ON_MAP_LOCATOR = By.cssSelector(".pigeon-click-block");
   private static final By WEBSITE_DESKTOP_LOGO_LOCATOR = By.cssSelector(".WebsiteBody__logo");
@@ -26,46 +25,23 @@ public class NewSitePage extends Page{
   private static final By NAVIGATION_SEARCH_TABS_LOCATOR = By.cssSelector(".SearchAllResult__type");
   private static final By CARD_TAG_LOCATOR = By.cssSelector(".ObjectCardView__tag-text");
   private static final By USERS_CARDS_LOCATOR = By.cssSelector(".UserCard");
-  private static final By BUTTON_CLOSE_FOR_COOKIES_WINDOW = By.cssSelector(".ant-modal-close-x");
-  private static final By BUTTON_SIGN_IN_DINING_GIFTS_LOCATOR =
-      By.cssSelector(".ModalSignIn__link-type");
 
-
-  public NewSitePage(String siteName, String template) {
-    super(PAGE_URL + siteName + template);
+  protected MapPage(String siteName, String template) {
+    super(siteName, template);
   }
 
   @Step
-  public static NewSitePage openNewSitePage(String siteName, String template) {
-    if (!url().equals(Context.getSiteUrl() + siteName + '.' + template)) {
+  public static MapPage openDiningGiftsMap(String siteName, String template) {
+    if(siteName.isEmpty()) {
+      if (!url().equals(Context.getSiteUrl() + siteName + template + "/map")) {
+        open(PAGE_URL + siteName + template + "/map");
+      }
+    }
+    else {
       open(PAGE_URL + siteName + '.' + template);
-      sleep(2000);
     }
-    return new NewSitePage(siteName, template);
-  }
-
-  @Step
-  public static NewSitePage openDiningGiftsMap(String siteName, String template) {
-    if (!url().equals(Context.getSiteUrl() + siteName  + template + "/map")) {
-      open(PAGE_URL + siteName + template + "/map");
-      sleep(2000);
-    }
-    return new NewSitePage(siteName, template);
-  }
-
-  @Step
-  public static NewSitePage openDiningGiftsHomePage(String siteName, String template) {
-    if (!url().equals(Context.getSiteUrl() + siteName  + template)) {
-      open(PAGE_URL + siteName + template);
-      sleep(2000);
-    }
-    return new NewSitePage(siteName, template);
-  }
-
-  @Step
-  public SignInDiningGifts openSignInModalWindowDiningGifts() {
-    $(BUTTON_SIGN_IN_DINING_GIFTS_LOCATOR).shouldBe(visible).click();
-    return new SignInDiningGifts();
+    sleep(2000);
+    return new MapPage(siteName, template);
   }
 
   @Step
@@ -153,22 +129,5 @@ public class NewSitePage extends Page{
 
       }
     };
-  }
-
-  @Step
-  public static void closeCookiesWindow() {
-    if($(BUTTON_CLOSE_FOR_COOKIES_WINDOW).exists()) {
-      $(BUTTON_CLOSE_FOR_COOKIES_WINDOW).click();
-    }
-  }
-
-  @Override
-  protected void init() {
-
-  }
-
-  @Override
-  protected void parsePage() {
-
   }
 }

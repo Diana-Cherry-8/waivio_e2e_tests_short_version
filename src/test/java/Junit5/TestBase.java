@@ -25,6 +25,10 @@ import com.wizardsdev.Modals.SignInDiningGifts;
 import com.wizardsdev.Modals.UpdateObject;
 import com.wizardsdev.Modals.UseCookies;
 import com.wizardsdev.Modals.WriteReview;
+import com.wizardsdev.PageObjects.DiningGifts.HomePage;
+import com.wizardsdev.PageObjects.DiningGifts.MapPage;
+import com.wizardsdev.PageObjects.DiningGifts.GeneralInfoPage;
+import com.wizardsdev.PageObjects.DiningGifts.NewSitePage;
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.AreasPage;
 import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
@@ -94,6 +98,7 @@ public abstract class TestBase {
   protected static RewardsLeftSidebar rewardsLeftSidebar;
   protected static ToolsLeftSidebar toolsLeftSidebar;
   protected static DiscoverLeftSidebar discoverLeftSidebar;
+  protected static HeaderDiningGifts headerDiningGifts;
 
   //Page Objects
   protected static FeedPage feedPage;
@@ -141,7 +146,7 @@ public abstract class TestBase {
   protected static ObjectsFiltersPage objectsFiltersPage;
   protected static MutedUsersPage mutedUsersPage;
 
-  protected static NewSitePage newSitePage;
+  protected static GeneralInfoPage generalInfoPage;
 
 
   protected static CommentsPage commentsPage;
@@ -173,6 +178,11 @@ public abstract class TestBase {
   protected static FullScreenOfTheReservationPost fullScreenOfTheReservationPost;
 
   protected static WebDriverWait waiter;
+
+  //dining.gifts
+  protected  static HomePage homePage;
+  protected static MapPage mapPage;
+  protected static NewSitePage newSitePage;
 
 
 
@@ -206,6 +216,7 @@ public abstract class TestBase {
     keywords = Context.getInstance().getKeywords();
     faker = Context.getInstance().getFaker();
     header = Header.initHeader();
+    headerDiningGifts = HeaderDiningGifts.initHeaderDiningGifts();
     feedLeftBar = FeedLeftBar.initFeedLeftBar();
     topNavigation = TopNavigation.initTopNavigation();
     rewardsLeftSidebar = RewardsLeftSidebar.initRewardsLeftSidebar();

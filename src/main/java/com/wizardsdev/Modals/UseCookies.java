@@ -5,7 +5,6 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 
 import com.codeborne.selenide.Condition;
-import com.wizardsdev.PageObjects.NewSitePage;
 import org.openqa.selenium.By;
 
 public class UseCookies extends Modal{

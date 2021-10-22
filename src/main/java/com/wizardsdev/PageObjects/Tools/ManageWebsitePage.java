@@ -30,6 +30,9 @@ public class ManageWebsitePage extends Page {
 
   @Step
   public DeleteWebsite clickDelete() {
+    if(!$(BUTTON_DELETE_LOCATOR).exists()){
+      refresh();
+    }
     $(BUTTON_DELETE_LOCATOR).shouldBe(Condition.visible).click();
     return new DeleteWebsite();
   }

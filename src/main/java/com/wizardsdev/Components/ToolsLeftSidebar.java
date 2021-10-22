@@ -17,6 +17,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ToolsLeftSidebar extends Page {
     private static final By SIDE_BAR_ITEMS_LINK_TOOLS_LOCATOR =
@@ -131,6 +132,7 @@ public class ToolsLeftSidebar extends Page {
 
     @Step
     public void openAdditionalTabs() {
+        sleep(3000);
         if($(BUTTON_DISPLAY_LOCATOR).exists()) {
             $(BUTTON_DISPLAY_LOCATOR).shouldBe(Condition.visible).click();
         }

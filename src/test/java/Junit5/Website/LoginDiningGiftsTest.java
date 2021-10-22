@@ -3,7 +3,7 @@ package Junit5.Website;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import Junit5.TestBase;
-import com.wizardsdev.PageObjects.NewSitePage;
+import com.wizardsdev.PageObjects.DiningGifts.HomePage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterEach;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class LoginDiningGifts extends TestBase {
+public class LoginDiningGiftsTest extends TestBase {
   String facebookEmail = properties.getProperty("FacebookUserEmail00");
   String facebookPassword = properties.getProperty("FacebookUserPass00");
   String testFBGuestUserUsername = properties.getProperty("FacebookUserName00");
@@ -22,7 +22,7 @@ public class LoginDiningGifts extends TestBase {
 
   @BeforeAll
   static void openSite() {
-    newSitePage = NewSitePage.openDiningGiftsHomePage(websiteName, templateName);
+    homePage = HomePage.openDiningGiftsHomePage(websiteName, templateName);
   }
 
   @Feature("Dining.gifts. Login")
@@ -30,7 +30,7 @@ public class LoginDiningGifts extends TestBase {
   @DisplayName("Check hive signer login")
   @Test
   public void loginWithHiveSigner() {
-    signInDiningGifts = newSitePage.openSignInModalWindowDiningGifts();
+    signInDiningGifts = homePage.openSignInModalWindowDiningGifts();
     signInDiningGifts.signInWithHiveSigner(getUserLogin(), getUserPassword());
     profilePage = header.clickOnAccountIcon();
     assertEquals(getUserLogin(), profilePage.getUserNameValue());
@@ -41,7 +41,7 @@ public class LoginDiningGifts extends TestBase {
   @DisplayName("Check facebook login")
   @Test
   public void logInWithFacebook() {
-    signInDiningGifts = newSitePage.openSignInModalWindowDiningGifts();
+    signInDiningGifts = homePage.openSignInModalWindowDiningGifts();
     facebookSignPage = signInDiningGifts.clickOnSignInFacebook(newWindow);
     facebookSignPage.loginWithFacebook(facebookEmail, facebookPassword);
     profilePage = header.clickOnAccountIcon();

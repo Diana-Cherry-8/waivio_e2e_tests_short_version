@@ -11,6 +11,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Modals.SignIn;
 import com.wizardsdev.Modals.UseCookies;
 import com.wizardsdev.PageObjects.*;
+import com.wizardsdev.PageObjects.DiningGifts.GeneralInfoPage;
 import com.wizardsdev.PageObjects.Objects.PageObjectPage;
 import com.wizardsdev.PageObjects.Profile.PostsPage;
 import com.wizardsdev.PageObjects.Tools.SettingsPage;
@@ -66,7 +67,7 @@ public class Header extends Page {
   @Step
   public void logInWithHiveSignerForNewSite(String login, String password) {
     SignInPage signIn = clickOnSingInNewSite();
-    NewSitePage.closeCookiesWindow();
+    GeneralInfoPage.closeCookiesWindow();
     signIn.signInWithHiveSignerForNewSite(login, password);
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
   }

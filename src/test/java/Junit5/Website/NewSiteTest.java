@@ -3,8 +3,8 @@ package Junit5.Website;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import Junit5.TestBase;
+import com.wizardsdev.PageObjects.DiningGifts.MapPage;
 import com.wizardsdev.PageObjects.FeedPage;
-import com.wizardsdev.PageObjects.NewSitePage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterAll;
@@ -38,39 +38,39 @@ public class NewSiteTest extends TestBase {
     toolsLeftSidebar.openAdditionalTabs();//sometimes it happens - bug
     areasPage = toolsLeftSidebar.clickOnAreasWebsite(templateName, websiteName);
     areasPage.clickClickChoseAreaButton();
-    newSitePage = NewSitePage.openNewSitePage(websiteName, templateName);
+    mapPage = MapPage.openDiningGiftsMap(websiteName, templateName);
   }
 
   @Story("New website")
   @DisplayName("Check button my location is exist on the map")
   @Test
   void checkButtonMyLocationIsExist() {
-    assert(newSitePage.isButtonMyLocationExist());
+    assert(mapPage.isButtonMyLocationExist());
   }
 
   @Story("New website")
   @DisplayName("Check buttons for zoom are exist on the map")
   @Test
   void checkButtonsForZoomAreExist() {
-    assert(newSitePage.areButtonsForZoomExist());
+    assert(mapPage.areButtonsForZoomExist());
   }
 
   @Story("New website")
   @DisplayName("Check search panel is opened")
   @Test
   void checkSearchPanelIsOpened() {
-    newSitePage.clickSearchPanel();
-    assert(newSitePage.isSearchPanelOpen());
+    mapPage.clickSearchPanel();
+    assert(mapPage.isSearchPanelOpen());
   }
 
   @Story("New website")
   @DisplayName("Check dish tab is opened")
   @Test
   void checkDishTab() {
-    newSitePage.clickSearchPanel();
-    newSitePage.clickDishTab();
+    mapPage.clickSearchPanel();
+    mapPage.clickDishTab();
     String expectedResult = "Dish";
-    String actualResult = newSitePage.getTagName();
+    String actualResult = mapPage.getTagName();
     assertTrue(actualResult.contains(expectedResult));
   }
 
@@ -78,10 +78,10 @@ public class NewSiteTest extends TestBase {
   @DisplayName("Check restaurant tab is opened")
   @Test
   void checkRestaurantTab() {
-    newSitePage.clickSearchPanel();
-    newSitePage.clickRestaurantTab();
+    mapPage.clickSearchPanel();
+    mapPage.clickRestaurantTab();
     String expectedResult = "Restaurant";
-    String actualResult = newSitePage.getTagName();
+    String actualResult = mapPage.getTagName();
     assertTrue(actualResult.contains(expectedResult));
   }
 
@@ -89,10 +89,10 @@ public class NewSiteTest extends TestBase {
   @DisplayName("Check drink tab is opened")
   @Test
   void checkDrinkTab() {
-    newSitePage.clickSearchPanel();
-    newSitePage.clickDrinkTab();
+    mapPage.clickSearchPanel();
+    mapPage.clickDrinkTab();
     String expectedResult = "Drink";
-    String actualResult = newSitePage.getTagName();
+    String actualResult = mapPage.getTagName();
     assertTrue(actualResult.contains(expectedResult));
   }
 
@@ -100,9 +100,9 @@ public class NewSiteTest extends TestBase {
   @DisplayName("Check users tab is opened")
   @Test
   void checkUsersTab() {
-    newSitePage.clickSearchPanel();
-    newSitePage.clickUsersTab();
-    assert(newSitePage.areUsersListOpen());
+    mapPage.clickSearchPanel();
+    mapPage.clickUsersTab();
+    assert(mapPage.areUsersListOpen());
   }
 
   @AfterAll
