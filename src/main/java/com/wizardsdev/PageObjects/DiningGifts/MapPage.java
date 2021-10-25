@@ -4,6 +4,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.refresh;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -48,6 +49,13 @@ public class MapPage extends GeneralInfoPage {
 
   @Step
   public boolean areObjectsMarksExist() {
+    return $(OBJECTS_MARKS_ON_MAP_LOCATOR).shouldBe(Condition.visible).exists();
+  }
+
+  @Step
+  public boolean areObjectsMarksExistWithRefresh() {
+    sleep(2000);
+    refresh();
     return $(OBJECTS_MARKS_ON_MAP_LOCATOR).shouldBe(Condition.visible).exists();
   }
 

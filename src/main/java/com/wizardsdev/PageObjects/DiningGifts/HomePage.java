@@ -1,6 +1,5 @@
 package com.wizardsdev.PageObjects.DiningGifts;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
@@ -16,6 +15,8 @@ import org.openqa.selenium.By;
 public class HomePage extends GeneralInfoPage {
   private static final String PAGE_URL = "https://";
   private static final By BUTTONS_LOCATOR = By.cssSelector(".WebsiteMainPage__button");
+  private static final By LINKS_CITY_LOCATOR = By.cssSelector(".DistrictsCard__city");
+  private static final By TITLES_NEARBY_LOCATOR = By.cssSelector(".NearByCard__title");
 
   protected HomePage(String siteName, String template) {
     super(siteName, template);
@@ -34,6 +35,20 @@ public class HomePage extends GeneralInfoPage {
   public MapPage clickOnHomePageToOpenMap(String siteName, String template, int index) {
     scrollToElement($$(BUTTONS_LOCATOR).get(index));
     $$(BUTTONS_LOCATOR).get(index).shouldBe(Condition.visible).click();
+    return new MapPage(siteName, template);
+  }
+
+  @Step
+  public MapPage clickOnCityLinkOnGeographicBlock(String siteName, String template, int index) {
+    scrollToElement($$(LINKS_CITY_LOCATOR).get(index));
+    $$(LINKS_CITY_LOCATOR).get(index).shouldBe(Condition.visible).click();
+    return new MapPage(siteName, template);
+  }
+
+  @Step
+  public MapPage clickOnNearbyTitleLinkOnDishBlock(String siteName, String template, int index) {
+    scrollToElement($$(TITLES_NEARBY_LOCATOR).get(index));
+    $$(TITLES_NEARBY_LOCATOR).get(index).shouldBe(Condition.visible).click();
     return new MapPage(siteName, template);
   }
 

@@ -37,7 +37,8 @@ public class HomePageDiningGiftsTest extends TestBase {
   void checkReviewsTab() {
     objectPage = headerDiningGifts.clickReviewsTab();
     String actualObjectName = objectPage.getObjectName();
-    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink, additionalPartUrlReviewsTab)
+    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink,
+        additionalPartUrlReviewsTab)
         && headerDiningGifts.isObjectNameCorrect(actualObjectName, expectedObjectNameDiningGifts));
   }
 
@@ -47,7 +48,8 @@ public class HomePageDiningGiftsTest extends TestBase {
   void checkPartnersTab() {
     objectPage = headerDiningGifts.clickPartnersLink();
     String actualObjectName = objectPage.getObjectName();
-    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink, additionalPartUrlPartnersTab)
+    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink,
+        additionalPartUrlPartnersTab)
         && headerDiningGifts.isObjectNameCorrect(actualObjectName, expectedObjectNameDiningGifts));
   }
 
@@ -65,7 +67,8 @@ public class HomePageDiningGiftsTest extends TestBase {
   void checkAboutPageViaLearnMoreInStepsBlock() {
     objectPage = homePage.clickOnLearnMoreInStepsBlock(2);
     String actualObjectName = objectPage.getObjectName();
-    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink, additionalPartUrlAboutTab)
+    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink,
+        additionalPartUrlAboutTab)
         && headerDiningGifts.isObjectNameCorrect(actualObjectName, expectedObjectNameDiningGifts));
   }
 
@@ -75,7 +78,8 @@ public class HomePageDiningGiftsTest extends TestBase {
   void checkAboutPageViaLearnMoreInWithdrawBlock() {
     objectPage = homePage.clickOnLearnMoreInStepsBlock(3);
     String actualObjectName = objectPage.getObjectName();
-    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink, additionalPartUrlFAQTab)
+    assertTrue(headerDiningGifts.isLinkCorrect(templateName, objectPermlink,
+        additionalPartUrlFAQTab)
         && headerDiningGifts.isObjectNameCorrect(actualObjectName, expectedObjectNameDiningGifts));
   }
 

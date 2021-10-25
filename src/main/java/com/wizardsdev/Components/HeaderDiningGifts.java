@@ -75,17 +75,6 @@ public class HeaderDiningGifts extends Page {
     };
   }
 
-//  @Step
-//  public boolean isLink(String objectPermlink, String additionalPartUrl) {
-//    if (url().contains(PAGE_URL + objectPermlink + additionalPartUrl)) {
-//      System.out.println(PAGE_URL + objectPermlink + additionalPartUrl);
-//      return true;
-//    }
-//    System.out.println(PAGE_URL + objectPermlink + additionalPartUrl);
-//    System.out.println(url());
-//    return false;
-//  }
-
   @Step
   public boolean isLinkCorrect(String template, String objectPermlink, String additionalPartUrl) {
     if(!(Objects.equals(objectPermlink, ""))) {
