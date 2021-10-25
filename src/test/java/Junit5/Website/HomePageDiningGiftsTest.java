@@ -115,7 +115,7 @@ public class HomePageDiningGiftsTest extends TestBase {
 
   @AfterEach
   void openHomePage() {
-    headerDiningGifts.clickOnLogo();
+    headerDiningGifts.clickOnLogo(websiteName, templateName);
   }
 
 }

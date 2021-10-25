@@ -1,8 +1,5 @@
 package Junit5.Website;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.DiningGifts.HomePage;
 import io.qameta.allure.Story;
@@ -97,7 +94,7 @@ public class GeographicBlockHomePageDGTest extends TestBase {
 
   @AfterEach
   void openHomePage() {
-    headerDiningGifts.clickOnLogo();
+    headerDiningGifts.clickOnLogo(websiteName, templateName);
   }
 
 }

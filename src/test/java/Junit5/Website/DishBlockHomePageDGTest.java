@@ -261,7 +261,7 @@ public class DishBlockHomePageDGTest extends TestBase {
 
   @AfterEach
   void openHomePage() {
-    headerDiningGifts.clickOnLogo();
+    headerDiningGifts.clickOnLogo(websiteName, templateName);
   }
 
 }

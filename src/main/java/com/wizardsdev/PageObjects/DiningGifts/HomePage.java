@@ -17,8 +17,9 @@ public class HomePage extends GeneralInfoPage {
   private static final By BUTTONS_LOCATOR = By.cssSelector(".WebsiteMainPage__button");
   private static final By LINKS_CITY_LOCATOR = By.cssSelector(".DistrictsCard__city");
   private static final By TITLES_NEARBY_LOCATOR = By.cssSelector(".NearByCard__title");
+  private static final By LINKS_FOOTER_LOCATOR = By.cssSelector(".Footer a");
 
-  protected HomePage(String siteName, String template) {
+  public HomePage(String siteName, String template) {
     super(siteName, template);
   }
 
@@ -56,6 +57,23 @@ public class HomePage extends GeneralInfoPage {
   public ObjectPage clickOnLearnMoreInStepsBlock(int index) {
     scrollToElement($$(BUTTONS_LOCATOR).get(index));
     $$(BUTTONS_LOCATOR).get(index).shouldBe(Condition.visible).click();
+    return new ObjectPage() {
+      @Override
+      protected void init() {
+
+      }
+
+      @Override
+      protected void parsePage() {
+
+      }
+    };
+  }
+
+  @Step
+  public ObjectPage clickOnLinkInFooter(int index) {
+    scrollToElement($$(LINKS_FOOTER_LOCATOR).get(index));
+    $$(LINKS_FOOTER_LOCATOR).get(index).shouldBe(Condition.visible).click();
     return new ObjectPage() {
       @Override
       protected void init() {
