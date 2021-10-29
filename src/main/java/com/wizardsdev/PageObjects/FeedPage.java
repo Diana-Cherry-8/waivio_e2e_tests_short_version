@@ -136,6 +136,7 @@ public class FeedPage extends Page {
     Post postModal;
     boolean result = false;
     for (WebElement postTitle: postsTitleList) {
+      scrollToElement($(POST_AUTHOR_LOCATOR)); //Title иногда скролится за хедер, если скролить автора то как раз отображается тайтл
       postTitle.click();
       postModal = new Post();
       List<String> authorNameAsList =

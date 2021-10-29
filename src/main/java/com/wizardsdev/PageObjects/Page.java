@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
@@ -88,7 +89,7 @@ public abstract class Page {
   }
 
   @Step
-  public SelenideElement scrollToElement(By locator) {
+  public SelenideElement scrollToElement(WebElement locator) {
     SelenideElement element = $(locator);
     return scrollToElement(element);
   }
