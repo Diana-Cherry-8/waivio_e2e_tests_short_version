@@ -89,7 +89,7 @@ public abstract class Page {
   }
 
   @Step
-  public SelenideElement scrollToElement(WebElement locator) {
+  public SelenideElement scrollToElement(By locator) {
     SelenideElement element = $(locator);
     return scrollToElement(element);
   }
