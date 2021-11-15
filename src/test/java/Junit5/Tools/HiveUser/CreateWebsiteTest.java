@@ -1,7 +1,6 @@
 package Junit5.Tools.HiveUser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 import Junit5.TestBase;

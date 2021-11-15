@@ -24,6 +24,7 @@ public class WalletTest extends TestBase {
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
+        walletPage.openHiveWalletTab();
     }
 
     @Story("Open page")
@@ -31,6 +32,7 @@ public class WalletTest extends TestBase {
     @Test
     void openWallet() {
         refreshPage();
+        walletPage.openHiveWalletTab();
         boolean actualResult = walletPage.isButtonsForTransferExist();
         assertTrue(actualResult);
     }
@@ -39,6 +41,7 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer from hive-user to hive-user")
     @Test
     void checkTransfer() {
+        walletPage.openHiveWalletTab();
         Float expectedFloat = walletPage.getHiveAmount() - amount;
         expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
@@ -47,6 +50,7 @@ public class WalletTest extends TestBase {
         walletPage.clickContinueAsHiveUser();
         sleep(10000);
         refreshPage();
+        walletPage.openHiveWalletTab();
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
     }
@@ -55,6 +59,7 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer from hive-user to guest-user")
     @Test
     void checkTransferFromHiveUserToGuest() {
+        walletPage.openHiveWalletTab();
         Float expectedFloat = walletPage.getHiveAmount() - amount;
         expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
@@ -63,7 +68,15 @@ public class WalletTest extends TestBase {
         walletPage.clickContinueAsHiveUser();
         sleep(10000);
         refreshPage();
+        walletPage.openHiveWalletTab();
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
+    }
+
+    @AfterEach
+    void returnBack() {
+        postsPage = header.clickOnAccountIcon();
+        walletPage = postsPage.clickOnWalletProfileItem();
+        walletPage.openHiveWalletTab();
     }
 }

@@ -18,6 +18,7 @@ public class WalletPage extends ProfilePage {
     public static final By CHECKBOX_IN_MODAL_LINK_LOCATOR = By.cssSelector(".ant-checkbox-input");
     public static final By BUTTON_OK_IN_MODAL_LINK_LOCATOR = By.cssSelector(".ant-btn-primary");
     public static final By LINK_ADVANCED_REPORT_LOCATOR = By.cssSelector(".UserWallet__view-btn");
+    public static final By TABS_WALLET_LOCATOR = By.cssSelector(".ant-tabs-tab");
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
@@ -111,8 +112,16 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public AdvancedPage clickOnLinkAdvancedReport() {
-        $(LINK_ADVANCED_REPORT_LOCATOR).click();
+        sleep(1000);
+        $(LINK_ADVANCED_REPORT_LOCATOR).shouldBe(Condition.visible).click();
         return new AdvancedPage(getUserNameValue());
+    }
+
+    @Step
+    public void openHiveWalletTab() {
+        if($(TABS_WALLET_LOCATOR).shouldBe(Condition.visible).exists()) {
+            $$(TABS_WALLET_LOCATOR).get(1).shouldBe(Condition.visible).click();
+        }
     }
 
     @Override

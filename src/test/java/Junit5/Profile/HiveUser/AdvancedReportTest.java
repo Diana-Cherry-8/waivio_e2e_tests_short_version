@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AdvancedReportTest extends TestBase {
 
     String username = "sor31";
-    String startDate = "10/10/2021";
+    String startDate = "11/10/2021";
     // you can enter date or "Account Creation"
     String endDate = "Today";
     // you can enter date or "Today"
@@ -30,13 +30,14 @@ public class AdvancedReportTest extends TestBase {
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
+        walletPage.openHiveWalletTab();
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
     }
 
     @Story("Open advanced page")
     @DisplayName("Check that advanced page is opening")
     @Test
     void openAdvancedPage() {
-        advancedPage = walletPage.clickOnLinkAdvancedReport();
         assertTrue(advancedPage.isButtonSubmitExist());
     }
 
@@ -44,7 +45,6 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check impossibility of generating report with no user")
     @Test
     void checkReportCantBeGeneratedWithNoUser() {
-        advancedPage = walletPage.clickOnLinkAdvancedReport();
         advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clearFirstUser();
         advancedPage.clickButtonSubmit();
@@ -56,7 +56,6 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check the appearing of Show more button")
     @Test
     void checkAppearingShowMoreButton() {
-        advancedPage = walletPage.clickOnLinkAdvancedReport();
         assertTrue(advancedPage.isShowMoreButtonExists());
     }
 
@@ -64,7 +63,6 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check total value of Deposits for default user")
     @Test
     void checkTotalDepositsDefaultUser() {
-        advancedPage = walletPage.clickOnLinkAdvancedReport();
         advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
@@ -78,7 +76,6 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check total value of Withdrawals for default user")
     @Test
     void checkTotalWithdrawalsDefaultUser() {
-        advancedPage = walletPage.clickOnLinkAdvancedReport();
         advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
         advancedPage.waitUntilReportToBeCounted();
@@ -92,7 +89,6 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check total value of Deposits for two users")
     @Test
     void checkTotalDepositsTwoUsers() {
-        advancedPage = walletPage.clickOnLinkAdvancedReport();
         advancedPage.addUsers(username);
         advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
@@ -107,7 +103,6 @@ public class AdvancedReportTest extends TestBase {
     @DisplayName("Check total value of Withdrawals for two users")
     @Test
     void checkTotalWithdrawalsTwoUsers() {
-        advancedPage = walletPage.clickOnLinkAdvancedReport();
         advancedPage.addUsers(username);
         advancedPage.fillTheFields(startDate, endDate, currency);
         advancedPage.clickButtonSubmit();
@@ -120,6 +115,9 @@ public class AdvancedReportTest extends TestBase {
 
     @AfterEach
     void returnBack() {
-        Selenide.back();
+        postsPage = header.clickOnAccountIcon();
+        walletPage = postsPage.clickOnWalletProfileItem();
+        walletPage.openHiveWalletTab();
+        advancedPage = walletPage.clickOnLinkAdvancedReport();
     }
 }
