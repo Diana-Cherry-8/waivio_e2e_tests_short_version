@@ -103,7 +103,7 @@ public class WalletPage extends ProfilePage {
         $(BUTTON_CONTINUE_LOCATOR).click();
         switchTo().window(1);
         $(BUTTON_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
-        $(TEXT_SUCCESS_LOCATOR).shouldBe(Condition.exactText("\n" +
+        $(TEXT_SUCCESS_LOCATOR).shouldBe(Condition.exactText('\n' +
             "    Transaction has been successfully broadcasted\n" +
             "  "));
         closeWindow();

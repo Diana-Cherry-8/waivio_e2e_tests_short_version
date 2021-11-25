@@ -28,7 +28,7 @@ public abstract class Page {
 
   public static final By MODAL_DIMMER_LOCATOR = By.cssSelector(".modals.dimmer");
   private static final By LOADER_DIMMER_LOCATOR = By.cssSelector(".anticon-loading");
-  private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__row.UserHeader__handle");
+  private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__nick");
 
   protected static final By INPUT_VALIDATION_MESSAGE_LOCATOR = By.className("is-field__validation");
   protected static final By TOP_NAVIGATION_OBJECT_PAGE_LOCATOR = By.cssSelector(".ObjectMenu__item");

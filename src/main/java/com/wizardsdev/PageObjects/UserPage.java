@@ -17,7 +17,7 @@ import org.openqa.selenium.WebElement;
 public class UserPage extends Page {
   private static final String DATA_KEY_ATTRIBUTE_NAME = "data-key";
 
-  private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__row.UserHeader__handle");
+  private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__nick");
   private static final By FOLLOWING_SUB_TAB_LOCATOR = By.className("UserFollowing__item");
   private static final By FOLLOWING_OBJECTS_NAMES_LOCATOR = By.cssSelector(".ObjectDynamicList .ObjectCard__name-short");
   private static final By FOLLOWING_FOLLOWERS_USERS_NAMES_LOCATOR = By.cssSelector(".UserDynamicList .username");
