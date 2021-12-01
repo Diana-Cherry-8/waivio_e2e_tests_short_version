@@ -15,6 +15,7 @@ public class WalletChartTest extends TestBase {
   static String facebookPassword = properties.getProperty("FacebookUserPass00");
   static boolean newWindow = true;
   String currency;
+  int index;
 
   @BeforeAll
   static void login() {
@@ -207,7 +208,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Check that Waiv chart is opened")
   @Test
   void checkWaivChartIsOpened() {
-    int index = 0; // index for Waiv block
+    index = 0; // index for Waiv block
     feedPage = FeedPage.openFeedPage();
     profilePage = header.clickOnAccountIcon();
     walletPage = profilePage.clickOnWalletProfileItem();
@@ -220,7 +221,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Check that Hive chart is opened")
   @Test
   void checkHiveChartIsOpened() {
-    int index = 1; // index for Hive block
+    index = 1; // index for Hive block
     feedPage = FeedPage.openFeedPage();
     profilePage = header.clickOnAccountIcon();
     walletPage = profilePage.clickOnWalletProfileItem();
@@ -233,7 +234,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Check that HBD chart is opened")
   @Test
   void checkHBDChartIsOpened() {
-    int index = 2; // index for HBD block
+    index = 2; // index for HBD block
     feedPage = FeedPage.openFeedPage();
     profilePage = header.clickOnAccountIcon();
     walletPage = profilePage.clickOnWalletProfileItem();
