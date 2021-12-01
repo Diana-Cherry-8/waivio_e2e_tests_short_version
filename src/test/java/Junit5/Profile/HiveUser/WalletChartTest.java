@@ -200,5 +200,44 @@ public class WalletChartTest extends TestBase {
     boolean actualResult = walletPage.isCurrencyInPriceInChartDisplayed(currency);
     assertTrue(actualResult);
   }
+
+  @Story("Check chart")
+  @DisplayName("Check that Waiv chart is opened")
+  @Test
+  void checkWaivChartIsOpened() {
+    int index = 0; // index for Waiv block
+    feedPage = FeedPage.openFeedPage();
+    profilePage = header.clickOnAccountIcon();
+    walletPage = profilePage.clickOnWalletProfileItem();
+    walletPage.clickDisplayChart(index);
+    boolean actualResult = walletPage.isChartDataPointPresent();
+    assertTrue(actualResult);
+  }
+
+  @Story("Check chart")
+  @DisplayName("Check that Hive chart is opened")
+  @Test
+  void checkHiveChartIsOpened() {
+    int index = 1; // index for Hive block
+    feedPage = FeedPage.openFeedPage();
+    profilePage = header.clickOnAccountIcon();
+    walletPage = profilePage.clickOnWalletProfileItem();
+    walletPage.clickDisplayChart(index);
+    boolean actualResult = walletPage.isChartDataPointPresent();
+    assertTrue(actualResult);
+  }
+
+  @Story("Check chart")
+  @DisplayName("Check that HBD chart is opened")
+  @Test
+  void checkHBDChartIsOpened() {
+    int index = 2; // index for HBD block
+    feedPage = FeedPage.openFeedPage();
+    profilePage = header.clickOnAccountIcon();
+    walletPage = profilePage.clickOnWalletProfileItem();
+    walletPage.clickDisplayChart(index);
+    boolean actualResult = walletPage.isChartDataPointPresent();
+    assertTrue(actualResult);
+  }
 }
 

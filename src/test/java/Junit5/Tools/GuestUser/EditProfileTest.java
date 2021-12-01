@@ -35,5 +35,3 @@ public class EditProfileTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 }
-
-

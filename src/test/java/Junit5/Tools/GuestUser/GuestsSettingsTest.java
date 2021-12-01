@@ -36,7 +36,6 @@ public class GuestsSettingsTest extends TestBase {
         String actualResult = guestsSettingsPage.getTitleTools();
         assertEquals(expectedResult, actualResult);
     }
-
 }
 
 

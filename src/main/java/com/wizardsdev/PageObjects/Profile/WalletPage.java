@@ -20,6 +20,8 @@ public class WalletPage extends ProfilePage {
     public static final By LINK_ADVANCED_REPORT_LOCATOR = By.cssSelector(".UserWallet__view-btn");
     public static final By TABS_WALLET_LOCATOR = By.cssSelector(".ant-tabs-tab");
     public static final By PRICE_IN_CHART_LOCATOR = By.cssSelector(".CryptoTrendingCharts__usd-price");
+    public static final By CHART_DATA_POINT_LOCATOR = By.cssSelector(".data-point");
+    public static final By BUTTON_CHART_OPEN_LOCATOR = By.cssSelector(".icon-unfold");
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
@@ -135,6 +137,16 @@ public class WalletPage extends ProfilePage {
             }
         }
         return true;
+    }
+
+    @Step
+    public void clickDisplayChart(int index) {
+        $$(BUTTON_CHART_OPEN_LOCATOR).get(index).shouldBe(Condition.visible).click();
+    }
+
+    @Step
+    public boolean isChartDataPointPresent() {
+        return $$(CHART_DATA_POINT_LOCATOR).get(0).exists();
     }
 
     @Override
