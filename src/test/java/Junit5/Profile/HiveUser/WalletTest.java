@@ -24,7 +24,6 @@ public class WalletTest extends TestBase {
         header.logInWithHiveSigner(getUserLogin(), getUserPassword());
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
-        walletPage.openHiveWalletTab();
     }
 
     @Story("Open page")
@@ -37,8 +36,8 @@ public class WalletTest extends TestBase {
         assertTrue(actualResult);
     }
 
-    @Story("Check transfer")
-    @DisplayName("Check transfer from hive-user to hive-user")
+    @Story("Check transfer. HIVE")
+    @DisplayName("Check transfer from hive-user to hive-user. HIVE")
     @Test
     void checkTransfer() {
         walletPage.openHiveWalletTab();
@@ -55,8 +54,8 @@ public class WalletTest extends TestBase {
         assertEquals(expectedFloat, actualFloat);
     }
 
-    @Story("Check transfer")
-    @DisplayName("Check transfer from hive-user to guest-user")
+    @Story("Check transfer. HIVE")
+    @DisplayName("Check transfer from hive-user to guest-user. HIVE")
     @Test
     void checkTransferFromHiveUserToGuest() {
         walletPage.openHiveWalletTab();
@@ -70,6 +69,26 @@ public class WalletTest extends TestBase {
         refreshPage();
         walletPage.openHiveWalletTab();
         Float actualFloat = walletPage.getHiveAmount();
+        assertEquals(expectedFloat, actualFloat);
+    }
+
+    @Story("Check transfer. WAIV")
+    @DisplayName("Check transfer from hive-user to hive-user. WAIV")
+    @Test
+    void checkTransferWaivFromHiveUserToHiveUser() {
+        String currency = "WAIV";
+        walletPage.openWaivWalletTab();
+        Float expectedFloat = walletPage.getWaivAmount() - amount;
+        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        walletPage.clickOnTransferButton();
+        walletPage.setUserNameForWalletSearch(hiveUserName2);
+        walletPage.setAmountAsHive(amountForTransfer);
+        walletPage.choseCurrency(currency);
+        walletPage.clickContinueAsHiveUser();
+        sleep(10000);
+        refreshPage();
+        walletPage.openWaivWalletTab();
+        Float actualFloat = walletPage.getWaivAmount();
         assertEquals(expectedFloat, actualFloat);
     }
 

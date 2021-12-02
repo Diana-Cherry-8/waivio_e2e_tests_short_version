@@ -25,7 +25,6 @@ public class WalletTest extends TestBase {
         header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
-        walletPage.openHiveWalletTab();
     }
 
     @Story("Open page")
@@ -33,7 +32,6 @@ public class WalletTest extends TestBase {
     @Test
     void openWallet() {
         refreshPage();
-        walletPage.openHiveWalletTab();
         boolean actualResult = walletPage.isButtonsForTransferExist();
         assertTrue(actualResult);
     }
@@ -42,6 +40,7 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer from guest to hive-user")
     @Test
     void checkTransfer() {
+        walletPage.openHiveWalletTab();
         Float expectedFloat = walletPage.getHiveAmount() - amount;
         expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
         walletPage.clickOnTransferButton();
@@ -49,14 +48,14 @@ public class WalletTest extends TestBase {
         walletPage.clickContinueAsGuest();
         sleep(10000);
         refreshPage();
-        walletPage.openHiveWalletTab();
         Float actualFloat = walletPage.getHiveAmount();
         assertEquals(expectedFloat, actualFloat);
     }
 
     @AfterEach
     void returnBack() {
-        walletPage.openHiveWalletTab();
+        postsPage = header.clickOnAccountIcon();
+        walletPage = postsPage.clickOnWalletProfileItem();
     }
 }
 

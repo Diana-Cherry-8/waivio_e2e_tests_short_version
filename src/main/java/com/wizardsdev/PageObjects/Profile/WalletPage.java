@@ -22,6 +22,11 @@ public class WalletPage extends ProfilePage {
     public static final By PRICE_IN_CHART_LOCATOR = By.cssSelector(".CryptoTrendingCharts__usd-price");
     public static final By CHART_DATA_POINT_LOCATOR = By.cssSelector(".data-point");
     public static final By BUTTON_CHART_OPEN_LOCATOR = By.cssSelector(".icon-unfold");
+    private static final By WAIV_AMOUNT_LOCATOR = By.cssSelector(".WalletSummaryInfo__value");
+    private static final By CURRENCIES_DROP_DOWN_LOCATOR =
+        By.cssSelector(".ant-select-selection-selected-value");
+    private static final By ITEM_IN_CURRENCIES_DROP_DOWN_LOCATOR =
+        By.cssSelector(".ant-select-dropdown-menu-item");
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
@@ -66,6 +71,16 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
+    public Float getWaivAmount() {
+        String expectedString = $$(WAIV_AMOUNT_LOCATOR).get(0).shouldBe(Condition.visible).getText();
+        String deleteText = " WAIV";
+        String replace = "";
+        String deleteWaiv = expectedString.replaceAll(deleteText, replace);
+        float expectedFloat = Float.parseFloat(deleteWaiv);
+        return expectedFloat;
+    }
+
+    @Step
     public void setUserNameForWalletSearch(String userName) {
         $$(INPUT_FOR_SEARCH_LOCATOR).get(1)
                 .shouldBe(Condition.visible)
@@ -91,6 +106,12 @@ public class WalletPage extends ProfilePage {
             $(BUTTON_OK_IN_MODAL_LINK_LOCATOR).click();
             $(INPUT_FOR_AMOUNT_LOCATOR).shouldBe(Condition.visible).setValue(amountFotTransfer);
         }
+    }
+
+    @Step
+    public void choseCurrency(String currency) {
+        $(CURRENCIES_DROP_DOWN_LOCATOR).shouldBe(Condition.visible).click();
+        $$(ITEM_IN_CURRENCIES_DROP_DOWN_LOCATOR).findBy(Condition.text(currency)).click();
     }
 
     @Step
@@ -124,6 +145,13 @@ public class WalletPage extends ProfilePage {
     public void openHiveWalletTab() {
         if($(TABS_WALLET_LOCATOR).shouldBe(Condition.visible).exists()) {
             $$(TABS_WALLET_LOCATOR).get(1).shouldBe(Condition.visible).click();
+        }
+    }
+
+    @Step
+    public void openWaivWalletTab() {
+        if($(TABS_WALLET_LOCATOR).shouldBe(Condition.visible).exists()) {
+            $$(TABS_WALLET_LOCATOR).get(0).shouldBe(Condition.visible).click();
         }
     }
 
