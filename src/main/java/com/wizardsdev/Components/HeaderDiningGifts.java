@@ -58,7 +58,7 @@ public class HeaderDiningGifts extends Page {
 
   @Step
   public ObjectPage clickPartnersLink() {
-    $$(LINKS_HEADER_LOCATOR).get(2).shouldBe(Condition.visible).click();
+    $$(LINKS_HEADER_LOCATOR).get(1).shouldBe(Condition.visible).click();
     return new ObjectPage() {
       @Override
       protected void init() {
