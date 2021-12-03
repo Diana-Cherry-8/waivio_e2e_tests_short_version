@@ -27,6 +27,8 @@ public class WalletPage extends ProfilePage {
         By.cssSelector(".ant-select-selection-selected-value");
     private static final By ITEM_IN_CURRENCIES_DROP_DOWN_LOCATOR =
         By.cssSelector(".ant-select-dropdown-menu-item");
+    private static final By USER_WALLET_TRANSACTION_CONTENT =
+        By.cssSelector(".UserWalletTransactions__content");
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
@@ -175,6 +177,19 @@ public class WalletPage extends ProfilePage {
     @Step
     public boolean isChartDataPointPresent() {
         return $$(CHART_DATA_POINT_LOCATOR).get(0).exists();
+    }
+
+    @Step
+    public boolean isCurrencyInHistoryWaivDisplayed(String mainCurrency, String currencyPower, String additionalCurrency) {
+        for (int i = 0; i < 10; i++) {
+            String temp = $$(USER_WALLET_TRANSACTION_CONTENT).get(i).getText();
+            if(!temp.contains(mainCurrency) & !temp.contains(currencyPower)
+                & !temp.contains("Limit order to")  & !temp.contains(additionalCurrency)) {
+                System.out.println("Result with index "+ i + " has failure: " + temp);
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
