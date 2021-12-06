@@ -1,4 +1,8 @@
-package Junit5.Post.GuestUser;
+package Junit5.Post.HiveUser;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
@@ -6,18 +10,16 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import org.junit.jupiter.api.*;
-
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @Feature("Post creation, Rewards")
 public class PostCreationTest extends TestBase {
-    static String facebookEmail = properties.getProperty("FacebookUserEmail00");
-    static String facebookPassword = properties.getProperty("FacebookUserPass00");
-    static String facebookName = properties.getProperty("FacebookUserName00");
-    static boolean newWindow = true;
+    static String username = "dv56d";
     String title = "Test " + (int) (Math.random() * 50);
     String contentPost = "Test body " + (int) (Math.random() * 100);
     String image = "https://cdn.discordapp.com/attachments/740485430943809546/822392335345647616/Test.png";
@@ -26,7 +28,7 @@ public class PostCreationTest extends TestBase {
     @BeforeAll
     static void login() {
         feedPage = FeedPage.openFeedPage();
-        header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
+        header.logInWithHiveSigner(getUserLogin(), getUserPassword());
     }
 
     @Disabled
@@ -52,7 +54,7 @@ public class PostCreationTest extends TestBase {
         editorPage.setContentPost(contentPost);
         editorPage.clickButtonReadyToPublish();
         editorPage.clickCheckboxLegalNotice();
-        postsPage = editorPage.clickButtonPublish(facebookName);
+        postsPage = editorPage.clickButtonPublish(username);
         postsPage.postAppearWaiter();
         refreshPage();
         assertEquals(title, postsPage.getPostTitle(0));
@@ -62,30 +64,27 @@ public class PostCreationTest extends TestBase {
         assertTrue(contentBody.contains(contentPost));
     }
 
-    @Disabled
-    @Story("Post creation")
-    @DisplayName("Post creation only with image")
-    @Test
-    void createPostWithImage() throws IOException, UnsupportedFlavorException {
-        editorPage.setPostTitle(title);
-        //editorPage.setContentPost(image);
-        //editorPage.savePictureLinkToClipboard();
-        editorPage.clickPlusButton();
-        addImages = editorPage.clickPhotoButtonInPlusLocator();
-        //addImages.pasteImageLink();
-        addImages.addImageViaSend(image);
-        editorPage = addImages.clickOk();
-        editorPage.clickButtonReadyToPublish();
-        editorPage.clickCheckboxLegalNotice();
-        postsPage = editorPage.clickButtonPublish(facebookName);
-        postsPage.postAppearWaiter();
-        refreshPage();
-        // здесь нужны две проверки, что title соответствует, и что контейнер картинки есть, чтобы убедиться что это действительно нужный пост
-        assertEquals(title, postsPage.getPostTitle(0));
-        assertTrue(postsPage.isImageContainerExist());
-    }
+//    @Story("Post creation")
+//    @DisplayName("Post creation only with image")
+//    @Test
+//    void createPostWithImage() throws IOException, UnsupportedFlavorException {
+//        editorPage.setPostTitle(title);
+//        editorPage.setContentPost(image);
+//        editorPage.savePictureLinkToClipboard();
+//        editorPage.clickPlusButton();
+//        addImages = editorPage.clickPhotoButtonInPlusLocator();
+//        addImages.pasteImageLink();
+//        editorPage = addImages.clickOk();
+//        editorPage.clickButtonReadyToPublish();
+//        editorPage.clickCheckboxLegalNotice();
+//        postsPage = editorPage.clickButtonPublish(facebookName);
+//        postsPage.postAppearWaiter();
+//        refreshPage();
+//        // здесь нужны две проверки, что title соответствует, и что контейнер картинки есть, чтобы убедиться что это действительно нужный пост
+//        assertEquals(title, postsPage.getPostTitle(0));
+//        assertTrue(postsPage.isImageContainerExist());
+//    }
 
-    @Disabled
     @AfterEach
     void clickAccountIcon() {
         profilePage = header.clickOnAccountIcon();

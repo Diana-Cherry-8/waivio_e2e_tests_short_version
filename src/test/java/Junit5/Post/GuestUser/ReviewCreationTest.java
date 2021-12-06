@@ -20,12 +20,14 @@ public class ReviewCreationTest extends TestBase {
   String contentPost = "Test body";
   String sponsorName = "daine-cherry2";
 
+  @Disabled
   @BeforeAll
   static void login() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
   }
 
+  @Disabled
   @Story("Review creation")
   @DisplayName("Create a review with 0 requirement foto")
   @Test
@@ -47,6 +49,7 @@ public class ReviewCreationTest extends TestBase {
     assertEquals(title, postsPage.getPostTitle(0));
   }
 
+  @Disabled
   @AfterEach
   void editPost() {
     postsPage = header.clickOnAccountIcon();

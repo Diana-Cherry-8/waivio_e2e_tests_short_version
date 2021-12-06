@@ -1,6 +1,7 @@
 package com.wizardsdev.Modals;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 
@@ -17,6 +18,11 @@ public class AddImages extends Modal {
   public void pasteImageLink() {
     $(INPUT_FOR_LINK_LOCATOR).shouldBe(Condition.visible).sendKeys(Keys.CONTROL + "v");
     sleep(3000);
+  }
+
+  @Step
+  public void addImageViaSend(String image) {
+    $(INPUT_FOR_LINK_LOCATOR).shouldBe(Condition.visible).setValue(image);
   }
 
   @Step

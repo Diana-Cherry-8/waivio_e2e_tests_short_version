@@ -104,7 +104,6 @@ public class WalletTest extends TestBase {
     void checkTransferHistoryForWaivHiveUser() {
         String link = "https://www.waivio.com/@dia-monds/transfers?type=WAIV";
         open(link);
-        walletPage.openWaivWalletTab();
         boolean actualResult = walletPage.isCurrencyInHistoryWaivDisplayed(currencyWaiv, currencyWaivPower, "");
         assertTrue(actualResult);
     }
