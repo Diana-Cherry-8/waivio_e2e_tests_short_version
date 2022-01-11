@@ -21,7 +21,7 @@ public class AdvancedReportTest extends TestBase {
   static boolean newWindow = true;
 
   String username = "sor31";
-  String startDate = "11/10/2021";
+  String startDate = "01/01/2022";
   // you can enter date or "Account Creation"
   String endDate = "Today";
   // you can enter date or "Today"
