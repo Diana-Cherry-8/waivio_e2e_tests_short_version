@@ -6,8 +6,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
-
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -126,7 +124,7 @@ public class WalletTest extends TestBase {
     @Test
     void checkDefaultCurrenciesHiveEngine() {
         walletPage.openHiveEngineWalletTab();
-        boolean actualResult = walletPage.isCurrencyInHiveEngineWalletDisplayed(swapHive, swapLtc, swapBtc, swapEth); // it is our default currencies
+        boolean actualResult = walletPage.isCurrencyInHiveEngineWalletDisplayed(swapHive, swapLtc, swapBtc, swapEth); // these are our default currencies
         assertTrue(actualResult);
     }
 

@@ -35,6 +35,8 @@ public abstract class Page {
 
   public static final long ONE_DAY_IN_MILLISECONDS = 86400000;
 
+  private static final By CAMPAIGN_CARD_LOCATOR = By.cssSelector(".Campaign");
+
   private static final ThreadLocal<String> currentPage = new ThreadLocal<>();
 
   protected Page(String pageUrl) {
@@ -214,5 +216,14 @@ public abstract class Page {
   @Step
   public void waiter() {
     waiter = new WebDriverWait(WebDriverRunner.getWebDriver(), 20);
+  }
+
+  @Step
+  public boolean isCampaignCardPresent() {
+    if($$(CAMPAIGN_CARD_LOCATOR).get(0).exists()){
+      $$(CAMPAIGN_CARD_LOCATOR).get(0).shouldBe(Condition.visible);
+      return true;
+    }
+    return false;
   }
 }
