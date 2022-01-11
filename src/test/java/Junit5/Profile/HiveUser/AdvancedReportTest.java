@@ -1,7 +1,6 @@
 package Junit5.Profile.HiveUser;
 
 import Junit5.TestBase;
-import com.codeborne.selenide.Selenide;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AdvancedReportTest extends TestBase {
 
     String username = "sor31";
-    String startDate = "11/10/2021";
+    String startDate = "01/01/2022";
     // you can enter date or "Account Creation"
     String endDate = "Today";
     // you can enter date or "Today"
