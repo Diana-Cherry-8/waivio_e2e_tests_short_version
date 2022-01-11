@@ -29,6 +29,8 @@ public class WalletPage extends ProfilePage {
         By.cssSelector(".ant-select-dropdown-menu-item");
     private static final By USER_WALLET_TRANSACTION_CONTENT_LOCATOR =
         By.cssSelector(".UserWalletTransactions__content");
+    private static final By CURRENCY_TITLE_HIVE_ENGINE_LOCATOR = By.cssSelector(".HiveEngineCurrencyItem__info");
+
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
@@ -53,6 +55,7 @@ public class WalletPage extends ProfilePage {
     @Step
     public WalletPage clickOnTransferButton() {
         clickOnTransferOrWithdrawButtonsByIndex(0);
+        $(CURRENCIES_DROP_DOWN_LOCATOR).shouldNotBe(Condition.disabled);
         return new WalletPage(getUserNameValue());
     }
 
@@ -111,7 +114,7 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public void choseCurrency(String currency) {
+    public void chooseCurrency(String currency) {
         $(CURRENCIES_DROP_DOWN_LOCATOR).shouldBe(Condition.visible).click();
         $$(ITEM_IN_CURRENCIES_DROP_DOWN_LOCATOR).findBy(Condition.text(currency)).click();
     }
@@ -144,6 +147,13 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
+    public void openWaivWalletTab() {
+        if($(TABS_WALLET_LOCATOR).shouldBe(Condition.visible).exists()) {
+            $$(TABS_WALLET_LOCATOR).get(0).shouldBe(Condition.visible).click();
+        }
+    }
+
+    @Step
     public void openHiveWalletTab() {
         if($(TABS_WALLET_LOCATOR).shouldBe(Condition.visible).exists()) {
             $$(TABS_WALLET_LOCATOR).get(1).shouldBe(Condition.visible).click();
@@ -151,9 +161,9 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public void openWaivWalletTab() {
+    public void openHiveEngineWalletTab() {
         if($(TABS_WALLET_LOCATOR).shouldBe(Condition.visible).exists()) {
-            $$(TABS_WALLET_LOCATOR).get(0).shouldBe(Condition.visible).click();
+            $$(TABS_WALLET_LOCATOR).get(2).shouldBe(Condition.visible).click();
         }
     }
 
@@ -180,11 +190,24 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public boolean isCurrencyInHistoryWaivDisplayed(String mainCurrency, String currencyPower, String additionalCurrency) {
+    public boolean isCurrencyInHistoryDisplayed(String mainCurrency, String currencyPower, String additionalCurrency) {
         for (int i = 0; i < 10; i++) {
             String temp = $$(USER_WALLET_TRANSACTION_CONTENT_LOCATOR).get(i).getText();
             if(!temp.contains(mainCurrency) & !temp.contains(currencyPower)
                 & !temp.contains("Limit order to")  & !temp.contains(additionalCurrency)) {
+                System.out.println("Result with index "+ i + " has failure: " + temp);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Step
+    public boolean isCurrencyInHiveEngineWalletDisplayed(String currency1, String currency2, String currency3, String currency4) {
+        for (int i = 0; i < 4; i++) {
+            String temp = $$(CURRENCY_TITLE_HIVE_ENGINE_LOCATOR).get(i).getText();
+            if(!temp.contains(currency1) & !temp.contains(currency2)
+                & !temp.contains(currency3)  & !temp.contains(currency4)) {
                 System.out.println("Result with index "+ i + " has failure: " + temp);
                 return false;
             }

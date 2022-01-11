@@ -24,6 +24,10 @@ public class WalletTest extends TestBase {
     String currencyHive = "HIVE";
     String currencyHivePower = "HP";
     String currencyHBD = "HBD";
+    String swapHive = "SWAP.HIVE";
+    String swapLtc = "SWAP.LTC";
+    String swapBtc = "SWAP.BTC";
+    String swapEth = "SWAP.ETH";
 
     @BeforeAll
     static void login() {
@@ -34,7 +38,7 @@ public class WalletTest extends TestBase {
     }
 
     @Story("Open page")
-    @DisplayName("Check wallet page is opened")
+    @DisplayName("Check wallet page is opened. Hive tab")
     @Test
     void openWallet() {
         refreshPage();
@@ -89,7 +93,7 @@ public class WalletTest extends TestBase {
         walletPage.clickOnTransferButton();
         walletPage.setUserNameForWalletSearch(hiveUserName2);
         walletPage.setAmountAsHive(amountForTransfer);
-        walletPage.choseCurrency(currencyWaiv);
+        walletPage.chooseCurrency(currencyWaiv);
         walletPage.clickContinueAsHiveUser();
         sleep(10000);
         refreshPage();
@@ -102,9 +106,8 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer history. WAIV")
     @Test
     void checkTransferHistoryForWaivHiveUser() {
-        String link = "https://www.waivio.com/@dia-monds/transfers?type=WAIV";
-        open(link);
-        boolean actualResult = walletPage.isCurrencyInHistoryWaivDisplayed(currencyWaiv, currencyWaivPower, "");
+        walletPage.openWaivWalletTab();
+        boolean actualResult = walletPage.isCurrencyInHistoryDisplayed(currencyWaiv, currencyWaivPower, "");
         assertTrue(actualResult);
     }
 
@@ -112,9 +115,18 @@ public class WalletTest extends TestBase {
     @DisplayName("Check transfer history. HIVE")
     @Test
     void checkTransferHistoryForHiveHiveUser() {
-        String link = "https://www.waivio.com/@dia-monds/transfers?type=HIVE";
-        open(link);
-        boolean actualResult = walletPage.isCurrencyInHistoryWaivDisplayed(currencyHive, currencyHivePower, currencyHBD);
+        walletPage.openHiveWalletTab();
+        refreshPage(); //refresh page - because without it, locators began not from 0 index, but continuing waiv tab
+        boolean actualResult = walletPage.isCurrencyInHistoryDisplayed(currencyHive, currencyHivePower, currencyHBD);
+        assertTrue(actualResult);
+    }
+
+    @Story("Check currency in Hive Engine wallet (Swap.hive, swap.ltc, swap.btc, swap.eth")
+    @DisplayName("Check currency in Hive Engine")
+    @Test
+    void checkDefaultCurrenciesHiveEngine() {
+        walletPage.openHiveEngineWalletTab();
+        boolean actualResult = walletPage.isCurrencyInHiveEngineWalletDisplayed(swapHive, swapLtc, swapBtc, swapEth); // it is our default currencies
         assertTrue(actualResult);
     }
 
@@ -122,6 +134,5 @@ public class WalletTest extends TestBase {
     void returnBack() {
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
-        walletPage.openHiveWalletTab();
     }
 }
