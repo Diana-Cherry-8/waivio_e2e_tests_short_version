@@ -1,6 +1,7 @@
 package com.wizardsdev.PageObjects.Objects;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.UpdateObject;
@@ -8,7 +9,10 @@ import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.TwitterPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+
 import org.openqa.selenium.WebElement;
+
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -147,12 +151,8 @@ public abstract class ObjectPage extends Page {
 
     @Step
     public void clickEditButton() {
-        if($(LEFT_SIDEBAR_LINKS_LOCATOR).exists()) {
-            $(LEFT_SIDEBAR_LINKS_LOCATOR).shouldBe(Condition.visible);
-        }
-        else {
-            $(BUTTON_EDIT_LOCATOR).shouldBe(Condition.visible).click();
-        }
+        scrollToTopPage();
+        $(BUTTON_EDIT_LOCATOR).shouldBe(Condition.visible).click();
     }
 
     @Step
@@ -217,7 +217,7 @@ public abstract class ObjectPage extends Page {
 
     @Step
     public void scrollToTopPage() {
-        scrollToElement($(BUTTON_EDIT_LOCATOR));
+        ((JavascriptExecutor) WebDriverRunner.getWebDriver()).executeScript("window.scrollTo(0, 0);");
     }
 
     public static String getCurrentPage() {

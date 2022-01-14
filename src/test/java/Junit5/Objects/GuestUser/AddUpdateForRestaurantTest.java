@@ -1,5 +1,6 @@
 package Junit5.Objects.GuestUser;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -51,6 +52,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject = reviewsObjectPage.clickAddDescriptionViaLeftSidebar();
     updateObject.setDescription(description);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(10000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(description));
   }
@@ -63,6 +66,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject = reviewsObjectPage.clickAddPriceViaLeftSidebar();
     updateObject.setPrice(price);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(price));
   }
@@ -75,6 +80,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject = reviewsObjectPage.clickAddHoursViaLeftSidebar();
     updateObject.setHours(hours);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(hours));
   }
@@ -87,6 +94,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject = reviewsObjectPage.clickAddAddressViaLeftSidebar();
     updateObject.setAllAddressInfo(address, street, city, state, postalCode, country);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(address) && contentBody.contains(street)
         && contentBody.contains(city) && contentBody.contains(state)
@@ -102,6 +111,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject.setWebsiteTitle(titleForWebsite);
     updateObject.setWebsiteLink(linkForWebsite);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(titleForWebsite) && contentBody.contains(linkForWebsite));
   }
@@ -115,6 +126,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject.setPhoneName(phoneName);
     updateObject.setPhoneNumber(phoneNumber);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(phoneName) && contentBody.contains(phoneNumber));
   }
@@ -127,6 +140,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject = reviewsObjectPage.clickAddEmailViaLeftSidebar();
     updateObject.setEmail(email);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(email));
   }
@@ -139,6 +154,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject = reviewsObjectPage.clickAddTitleViaLeftSidebar();
     updateObject.setTitle(title);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(title));
   }
@@ -152,6 +169,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject.setTitle(title);
     updateObject.setWebsiteLink(linkForWebsite);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(title) && contentBody.contains(linkForWebsite));
   }
@@ -165,6 +184,8 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject.setLatitude(latitude);
     updateObject.setLongitude(longitude);
     updatesObjectPage = updateObject.clickSubmit();
+    sleep(5000);
+    refreshPage();
     String contentBody = updatesObjectPage.getContentBodyFromPostUpdate();
     assertTrue(contentBody.contains(latitude) && contentBody.contains(longitude));
   }
@@ -174,5 +195,3 @@ public class AddUpdateForRestaurantTest extends TestBase {
     updateObject.closeModalWindow();
   }
 }
-
-

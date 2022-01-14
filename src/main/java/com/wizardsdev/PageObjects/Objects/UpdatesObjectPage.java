@@ -21,7 +21,6 @@ public class UpdatesObjectPage extends ObjectPage{
     @Step
     public String getContentBodyFromPostUpdate() {
         scrollToTopPage();
-        sleep(15000);
         return $$(BODY_CONTENT_LOCATOR).get(0).shouldBe(Condition.visible).getText();
     }
 
