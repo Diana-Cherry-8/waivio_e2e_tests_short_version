@@ -3,7 +3,6 @@ package com.wizardsdev.PageObjects.Profile;
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
 import io.qameta.allure.Step;
-import java.util.Objects;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -39,6 +38,7 @@ public class WalletPage extends ProfilePage {
     private static final By BUTTON_ARROW_LOCATOR = By.cssSelector(".SwapTokens__arrow");
     private static final By BUTTONS_SLIDER_LOCATOR = By.cssSelector(".ant-radio-button-wrapper");
     private static final By ESTIMATED_PRICE_IMPACT_LOCATOR = By.cssSelector(".SwapTokens__estimatedWrap p");
+    private static final By INVALID_MESSAGE_LOCATOR = By.cssSelector(".invalid");
 
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
@@ -236,8 +236,13 @@ public class WalletPage extends ProfilePage {
     }
 
     @Step
-    public String getInputValueFromSwap (int index) {
+    public String getInputValueSwap(int index) {
         return $$(INPUTS_SWAP_TOKENS_LOCATOR).get(index).shouldBe(Condition.visible).getValue();
+    }
+
+    @Step
+    public void setInputValueSwap(int index, String text) {
+        $$(INPUTS_SWAP_TOKENS_LOCATOR).get(index).shouldBe(Condition.visible).setValue(text);
     }
 
     @Step
@@ -292,6 +297,11 @@ public class WalletPage extends ProfilePage {
     @Step
     public void clickPercentSlider(int index) {
         $$(BUTTONS_SLIDER_LOCATOR).get(index).click();
+    }
+
+    @Step
+    public boolean isInvalidMessageVisible () {
+        return $(INVALID_MESSAGE_LOCATOR).shouldBe(Condition.visible).exists();
     }
 
     @Override

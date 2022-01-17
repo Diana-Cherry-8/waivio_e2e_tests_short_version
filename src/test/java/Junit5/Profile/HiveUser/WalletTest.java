@@ -149,7 +149,7 @@ public class WalletTest extends TestBase {
         walletPage.clickSwapTokens();
         walletPage.clickMaxButtonSwap(indexFromSwap);
         String expectedResult = walletPage.getYourBalanceWithoutCurrencySwap(indexFromSwap, ' ' + currencyWaiv);
-        String actualResult = walletPage.getInputValueFromSwap(indexFromSwap);
+        String actualResult = walletPage.getInputValueSwap(indexFromSwap);
         System.out.println("Expected result: " + expectedResult + ' ' + "Actual result: " + actualResult);
         assertEquals(expectedResult, actualResult);
     }
@@ -162,7 +162,7 @@ public class WalletTest extends TestBase {
         walletPage.clickSwapTokens();
         walletPage.clickMaxButtonSwap(indexToSwap);
         String expectedResult = walletPage.getYourBalanceWithoutCurrencySwap(indexToSwap, ' ' + swapHive);
-        String actualResult = walletPage.getInputValueFromSwap(indexToSwap);
+        String actualResult = walletPage.getInputValueSwap(indexToSwap);
         System.out.println("Expected result: " + expectedResult + ' ' + "Actual result: " + actualResult);
         assertEquals(expectedResult, actualResult);
     }
@@ -186,6 +186,19 @@ public class WalletTest extends TestBase {
         walletPage.openHiveWalletTab();
         walletPage.clickSwapTokens();
         assertTrue(walletPage.isExpectedPercentInSlider());
+    }
+
+    @Story("Check swap")
+    @DisplayName("Check invalid message in swap modal window")
+    @Test
+    void checkInvalidMessage() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickSwapTokens();
+        walletPage.setInputValueSwap(indexFromSwap, "100000000");
+        assertTrue(walletPage.isInvalidMessageVisible());
+
+
+
     }
 
     @AfterEach
