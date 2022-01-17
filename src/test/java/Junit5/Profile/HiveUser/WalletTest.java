@@ -196,9 +196,6 @@ public class WalletTest extends TestBase {
         walletPage.clickSwapTokens();
         walletPage.setInputValueSwap(indexFromSwap, "100000000");
         assertTrue(walletPage.isInvalidMessageVisible());
-
-
-
     }
 
     @AfterEach
