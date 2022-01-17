@@ -3,6 +3,7 @@ package com.wizardsdev.PageObjects.Profile;
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
 import io.qameta.allure.Step;
+import java.util.Objects;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -30,6 +31,14 @@ public class WalletPage extends ProfilePage {
     private static final By USER_WALLET_TRANSACTION_CONTENT_LOCATOR =
         By.cssSelector(".UserWalletTransactions__content");
     private static final By CURRENCY_TITLE_HIVE_ENGINE_LOCATOR = By.cssSelector(".HiveEngineCurrencyItem__info");
+    private static final By DROP_DOWNS_SWAP_TOKENS_LOCATOR = By.cssSelector(".SwapTokens__selector");
+    private static final By DROP_DOWN_DISABLED_LOCATOR = By.className(".ant-select-disabled");
+    private static final By INPUTS_SWAP_TOKENS_LOCATOR = By.cssSelector(".SwapTokens__input .ant-input");
+    private static final By BUTTONS_MAX_SWAP_LOCATOR = By.cssSelector(".SwapTokens__max-button");
+    private static final By YOUR_BALANCES_LOCATOR = By.cssSelector(".SwapTokens__balance");
+    private static final By BUTTON_ARROW_LOCATOR = By.cssSelector(".SwapTokens__arrow");
+    private static final By BUTTONS_SLIDER_LOCATOR = By.cssSelector(".ant-radio-button-wrapper");
+    private static final By ESTIMATED_PRICE_IMPACT_LOCATOR = By.cssSelector(".SwapTokens__estimatedWrap p");
 
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
@@ -48,20 +57,20 @@ public class WalletPage extends ProfilePage {
         return $(BUTTONS_TRANSFER_LOCATOR).shouldBe(Condition.visible).exists();
     }
 
-    public static void clickOnTransferOrWithdrawButtonsByIndex(int index) {
+    public static void clickOnTransferButtonByIndex(int index) {
         $$(BUTTONS_TRANSFER_LOCATOR).get(index).click();
     }
 
     @Step
     public WalletPage clickOnTransferButton() {
-        clickOnTransferOrWithdrawButtonsByIndex(0);
+        clickOnTransferButtonByIndex(0);
         $(CURRENCIES_DROP_DOWN_LOCATOR).shouldNotBe(Condition.disabled);
         return new WalletPage(getUserNameValue());
     }
 
     @Step
     public WalletPage clickOnWithdrawButton() {
-        clickOnTransferOrWithdrawButtonsByIndex(1);
+        clickOnTransferButtonByIndex(1);
         return new WalletPage(getUserNameValue());
     }
 
@@ -213,6 +222,76 @@ public class WalletPage extends ProfilePage {
             }
         }
         return true;
+    }
+
+    @Step
+    public void clickSwapTokens () {
+        clickOnTransferButtonByIndex(1);
+        sleep(5000);
+    }
+
+    @Step
+    public void clickMaxButtonSwap (int index) {
+        $$(BUTTONS_MAX_SWAP_LOCATOR).get(index).shouldBe(Condition.visible).click();
+    }
+
+    @Step
+    public String getInputValueFromSwap (int index) {
+        return $$(INPUTS_SWAP_TOKENS_LOCATOR).get(index).shouldBe(Condition.visible).getValue();
+    }
+
+    @Step
+    public String getYourBalanceWithoutCurrencySwap(int index, String textDelete) {
+        return $$(YOUR_BALANCES_LOCATOR).get(index)
+            .shouldBe(Condition.visible).getText()
+            .replace(textDelete, "");
+    }
+
+    @Step
+    public String getYourBalanceWithCurrencySwap(int index) {
+        return $$(YOUR_BALANCES_LOCATOR).get(index).shouldBe(Condition.visible).getText();
+    }
+
+    @Step
+    public void clickArrowButton () {
+        $(BUTTON_ARROW_LOCATOR).shouldBe(Condition.visible).click();
+        sleep(3000);
+    }
+
+    @Step
+    public boolean isExpectedPercentInSlider() {
+        for (int i = 0; i < 6; i++) {
+            clickPercentSlider(i);
+            String temp = $$(ESTIMATED_PRICE_IMPACT_LOCATOR).get(1).getText();
+            String temp2 = temp.replace("Estimated price impact: ", "");
+            String estPrice = temp2.replace("%", "");
+            if (i == 0 & estPrice.equals("0.5")) {
+                continue;
+            }
+            if (i == 1 & estPrice.equals("1")) {
+                continue;
+            }
+            if (i == 2 & estPrice.equals("5")) {
+                continue;
+            }
+            if (i == 3 & estPrice.equals("10")) {
+                continue;
+            }
+            if (i == 4 & estPrice.equals("25")) {
+                continue;
+            }
+            if (i == 5 & estPrice.equals("49")) {
+                continue;
+            }
+            System.out.println("Index: " + i + ' ' + "Estimated price impact: " + estPrice + '%');
+            return false;
+        }
+        return true;
+    }
+
+    @Step
+    public void clickPercentSlider(int index) {
+        $$(BUTTONS_SLIDER_LOCATOR).get(index).click();
     }
 
     @Override

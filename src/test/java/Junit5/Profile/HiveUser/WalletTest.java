@@ -26,6 +26,8 @@ public class WalletTest extends TestBase {
     String swapLtc = "SWAP.LTC";
     String swapBtc = "SWAP.BTC";
     String swapEth = "SWAP.ETH";
+    int indexFromSwap = 0;
+    int indexToSwap = 1;
 
     @BeforeAll
     static void login() {
@@ -128,8 +130,67 @@ public class WalletTest extends TestBase {
         assertTrue(actualResult);
     }
 
+    @Story("Check swap")
+    @DisplayName("Check open swap modal window")
+    @Test
+    void checkOpenSwapModalWindow() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickSwapTokens();
+        String expectedResult = "Swap tokens";
+        String actualResult = getTitleModalWindow();
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Story("Check swap")
+    @DisplayName("Check From max button in swap modal window")
+    @Test
+    void checkFromMaxButton() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickSwapTokens();
+        walletPage.clickMaxButtonSwap(indexFromSwap);
+        String expectedResult = walletPage.getYourBalanceWithoutCurrencySwap(indexFromSwap, ' ' + currencyWaiv);
+        String actualResult = walletPage.getInputValueFromSwap(indexFromSwap);
+        System.out.println("Expected result: " + expectedResult + ' ' + "Actual result: " + actualResult);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Story("Check swap")
+    @DisplayName("Check To max button in swap modal window")
+    @Test
+    void checkToMaxButton() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickSwapTokens();
+        walletPage.clickMaxButtonSwap(indexToSwap);
+        String expectedResult = walletPage.getYourBalanceWithoutCurrencySwap(indexToSwap, ' ' + swapHive);
+        String actualResult = walletPage.getInputValueFromSwap(indexToSwap);
+        System.out.println("Expected result: " + expectedResult + ' ' + "Actual result: " + actualResult);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Story("Check swap")
+    @DisplayName("Check arrow button swap the currencies in swap modal window")
+    @Test
+    void checkArrowButton() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickSwapTokens();
+        walletPage.clickArrowButton();
+        String actualResult = walletPage.getYourBalanceWithCurrencySwap(indexFromSwap);
+        System.out.println("Actual result: " + actualResult);
+        assert(actualResult.contains(swapHive));
+    }
+
+    @Story("Check swap")
+    @DisplayName("Check slider with Estimated price impact in swap modal window")
+    @Test
+    void checkSlider() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickSwapTokens();
+        assertTrue(walletPage.isExpectedPercentInSlider());
+    }
+
     @AfterEach
     void returnBack() {
+        clickCloseButtonModalWindow();
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
     }

@@ -5,6 +5,7 @@ import static com.wizardsdev.Context.THREADS_COUNT;
 
 import Extensions.MyAfterTestExecutionCallback;
 import Helpers.FileGenerator;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
@@ -37,6 +38,7 @@ import com.wizardsdev.PageObjects.Tools.Website.ModeratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.MutedUsersPage;
 import com.wizardsdev.PageObjects.Tools.Website.ObjectsFiltersPage;
 import com.wizardsdev.PageObjects.Tools.Website.SettingsWebsitePage;
+import io.qameta.allure.Step;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -50,6 +52,7 @@ import com.wizardsdev.PageObjects.Tools.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 @ExtendWith(MyAfterTestExecutionCallback.class)
@@ -268,5 +271,21 @@ public abstract class TestBase {
   public static void refreshPage() {
     refresh();
     sleep(5000);
+  }
+
+  private static final By TITLE_MODAL_WINDOW_LOCATOR = By.cssSelector(".ant-modal-title");
+  private static final By BUTTON_CLOSE_MODAL_WINDOW_LOCATOR = By.cssSelector(".ant-modal-close-x");
+
+  @Step
+  public String getTitleModalWindow () {
+    $(TITLE_MODAL_WINDOW_LOCATOR).shouldBe(Condition.visible);
+    return $(TITLE_MODAL_WINDOW_LOCATOR).getText();
+  }
+
+  @Step
+  public void clickCloseButtonModalWindow () {
+    if($(BUTTON_CLOSE_MODAL_WINDOW_LOCATOR).exists()) {
+      $(BUTTON_CLOSE_MODAL_WINDOW_LOCATOR).shouldBe(Condition.visible).click();
+    }
   }
 }
