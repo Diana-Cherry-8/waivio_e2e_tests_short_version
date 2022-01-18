@@ -26,7 +26,7 @@ public class WalletTest extends TestBase {
     String swapLtc = "SWAP.LTC";
     String swapBtc = "SWAP.BTC";
     String swapEth = "SWAP.ETH";
-    int indexFromSwap = 0;
+    int indexFromSwap;
     int indexToSwap = 1;
 
     @BeforeAll
@@ -196,6 +196,41 @@ public class WalletTest extends TestBase {
         walletPage.clickSwapTokens();
         walletPage.setInputValueSwap(indexFromSwap, "100000000");
         assertTrue(walletPage.isInvalidMessageVisible());
+    }
+
+    @Story("Check swap")
+    @DisplayName("Check swap Waiv -> Swap.Hive in swap modal window")
+    @Test
+    void checkSwapWaivToSwapHive() {
+        walletPage.openWaivWalletTab();
+        Float expectedFloat = walletPage.getWaivAmount() - amount;
+        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        walletPage.clickSwapTokens();
+        walletPage.setInputValueSwap(indexFromSwap, "0.001");
+        walletPage.clickContinueAsHiveUser();
+        sleep(10000);
+        refreshPage();
+        walletPage.openWaivWalletTab();
+        Float actualFloat = walletPage.getWaivAmount();
+        assertEquals(expectedFloat, actualFloat);
+    }
+
+    @Story("Check swap")
+    @DisplayName("Check swap Swap.Hive -> Waiv in swap modal window")
+    @Test
+    void checkSwapSwapHiveToWaiv() {
+        walletPage.openWaivWalletTab();
+        Float expectedFloat = walletPage.getWaivAmount() + amount;
+        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        walletPage.clickSwapTokens();
+        walletPage.clickArrowButton();
+        walletPage.setInputValueSwap(indexToSwap, "0.001");
+        walletPage.clickContinueAsHiveUser();
+        sleep(10000);
+        refreshPage();
+        walletPage.openWaivWalletTab();
+        Float actualFloat = walletPage.getWaivAmount();
+        assertEquals(expectedFloat, actualFloat);
     }
 
     @AfterEach
