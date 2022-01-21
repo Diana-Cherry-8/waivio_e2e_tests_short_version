@@ -74,7 +74,7 @@ public class ObjectPreviewTest extends TestBase {
     assertTrue(actualDescription.contains(objectDescription), "Object description is not correct");
   }
 
-  @Story("Preview. Profile")
+  @Story("Preview. Object restaurant")
   @DisplayName("Check link is correct")
   @Test
   public void checkLink() {
