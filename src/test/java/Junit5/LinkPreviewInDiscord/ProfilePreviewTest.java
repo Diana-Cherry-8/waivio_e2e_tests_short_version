@@ -14,24 +14,23 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ObjectLinksTest extends TestBase {
-  static String discordChannelLink = "https://discord.com/channels/933278946710134884/933278946710134887";
+public class ProfilePreviewTest extends TestBase {
   static String email = "jasecarmel@gmail.com";
   static String password = "qweqwe123QWE";
-  static String objectName = "Bottoms Bar & Grill at Sun Peaks Resort";
+  static String name = "grampo";
   String app = "Waivio";
-  static String objectDescription;
-  static String objectAddress;
+  static String description;
+  static String username;
+  static String discordChannelLink = "https://discord.com/channels/933278946710134884/933278946710134887";
 
   @BeforeAll
   static void actions() {
     //take url from waivio
     feedPage = FeedPage.openFeedPage();
-    pageObjectPage = header.generalMethodForSearch(objectName);
+    pageObjectPage = header.generalMethodForSearch(name);
     String link = header.getSiteUrlString();
-    objectDescription = pageObjectPage.getObjectDescription();
-    objectName = pageObjectPage.getObjectName();
-    objectAddress = pageObjectPage.getObjectAddress();
+    description = pageObjectPage.getUserDescription();
+    username = pageObjectPage.getUserName();
 
     //discord login
     loginPageDiscord = LoginPageDiscord.openDiscordPage();
@@ -42,43 +41,35 @@ public class ObjectLinksTest extends TestBase {
     mainPageDiscord.setLink(link);
   }
 
-  @Story("Preview. Object restaurant")
+  @Story("Preview. Profile")
   @DisplayName("Check preview is loaded")
   @Test
   public void checkPreviewLoaded() {
     assertTrue (mainPageDiscord.isPreviewLoaded(), "Preview didn't load");
   }
 
-  @Story("Preview. Object restaurant")
+  @Story("Preview. Profile")
   @DisplayName("Check app name is waivio")
   @Test
   public void checkAppName() {
     String actualAppName = mainPageDiscord.getAppName();
-    assertEquals(app, actualAppName, "App name is not correct");
+    assertEquals(app, actualAppName, "App name not found");
   }
 
-  @Story("Preview. Object restaurant")
-  @DisplayName("Check object name is correct")
+  @Story("Preview. Profile")
+  @DisplayName("Check username is correct")
   @Test
-  public void checkObjectName() {
+  public void checkUsername() {
     String actualUserName = mainPageDiscord.getUserNameFromPreview();
-    assertTrue(actualUserName.contains(objectName), "Object name is not correct");
+    assertEquals(username, actualUserName, "Username not found");
   }
 
-  @Story("Preview. Object restaurant")
+  @Story("Preview. Profile")
   @DisplayName("Check description is correct")
   @Test
-  public void checkObjectDescription() {
+  public void checkDescription() {
     String actualDescription = mainPageDiscord.getDescriptionFromPreview();
-    assertTrue(actualDescription.contains(objectDescription), "Object description is not correct");
-  }
-
-  @Story("Preview. Object restaurant")
-  @DisplayName("Check address is correct")
-  @Test
-  public void checkObjectAddress() {
-    String actualDescription = mainPageDiscord.getDescriptionFromPreview();
-    assertTrue(actualDescription.contains(objectAddress), "Object address is not correct");
+    assertEquals(description, actualDescription, "Description not found");
   }
 
   @AfterAll

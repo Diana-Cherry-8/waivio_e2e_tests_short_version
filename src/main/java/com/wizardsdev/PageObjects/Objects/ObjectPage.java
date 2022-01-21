@@ -34,6 +34,8 @@ public abstract class ObjectPage extends Page {
         By.cssSelector(".object-sidebar .icon-button__icon");
     private static final By USER_DESCRIPTION_LOCATOR = By.cssSelector("div[style='font-size: 18px;']");
     private static final By OBJECT_DESCRIPTION_LOCATOR = By.cssSelector(".description-field-view");
+    private static final By OBJECT_ADDRESS_LOCATOR = By.cssSelector(".address-field-view");
+
 
     protected ObjectPage(String objectName) {
         super(Context.getSiteUrl()  + "/object/" + objectName);
@@ -230,6 +232,11 @@ public abstract class ObjectPage extends Page {
     @Step
     public String getObjectDescription() {
         return $(OBJECT_DESCRIPTION_LOCATOR).shouldBe(Condition.visible).getText();
+    }
+
+    @Step
+    public String getObjectAddress() {
+        return $(OBJECT_ADDRESS_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
     public static String getCurrentPage() {
