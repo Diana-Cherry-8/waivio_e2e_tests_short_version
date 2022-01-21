@@ -24,6 +24,7 @@ public abstract class Page {
   public static final By TITLE_REWARDS_LOCATOR = By.cssSelector(".ant-breadcrumb-link");
   private static final By TITLE_TOOLS_LOCATOR = By.cssSelector(".center h1");
   protected static final By NAME_OBJECT_LOCATOR = By.cssSelector(".ObjectHeader__text");
+  protected static final By ADDRESS_OBJECT_LOCATOR = By.cssSelector(".address-field-view");
 
   public static final By MODAL_DIMMER_LOCATOR = By.cssSelector(".modals.dimmer");
   private static final By LOADER_DIMMER_LOCATOR = By.cssSelector(".anticon-loading");
@@ -206,6 +207,11 @@ public abstract class Page {
   @Step
   public String getObjectName() {
     return $(NAME_OBJECT_LOCATOR).shouldBe(Condition.visible).getText();
+  }
+
+  @Step
+  public String getObjectAddress() {
+    return $(ADDRESS_OBJECT_LOCATOR).shouldBe(Condition.visible).getText();
   }
 
   @Step
