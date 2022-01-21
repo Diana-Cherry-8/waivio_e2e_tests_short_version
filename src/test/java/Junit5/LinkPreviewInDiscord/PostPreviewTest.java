@@ -44,14 +44,14 @@ public class PostPreviewTest extends TestBase {
     mainPageDiscord.setLink(link);
   }
 
-  @Story("Preview. Object restaurant")
+  @Story("Preview. Post")
   @DisplayName("Check preview is loaded")
   @Test
   public void checkPreviewLoaded() {
     assertTrue (mainPageDiscord.isPreviewLoaded(), "Preview didn't load");
   }
 
-  @Story("Preview. Object restaurant")
+  @Story("Preview. Post")
   @DisplayName("Check app name is waivio")
   @Test
   public void checkAppName() {
@@ -59,23 +59,23 @@ public class PostPreviewTest extends TestBase {
     assertEquals(app, actualAppName, "App name is not correct");
   }
 
-  @Story("Preview. Object restaurant")
-  @DisplayName("Check object name is correct")
+  @Story("Preview. Post")
+  @DisplayName("Check post title is correct")
   @Test
   public void checkPostTitle() {
     String actualPostTitle = mainPageDiscord.getUserNameFromPreview();
-    assertTrue(actualPostTitle.contains(postTitle), "Object name is not correct");
+    assertTrue(actualPostTitle.contains(postTitle), "Post title is not correct");
   }
 
-  @Story("Preview. Object restaurant")
-  @DisplayName("Check description is correct")
+  @Story("Preview. Post")
+  @DisplayName("Check post body is correct")
   @Test
-  public void checkObjectDescription() {
+  public void checkPostBody() {
     String actualPreviewPostBody = mainPageDiscord.getShortDescriptionFromPreview();
-    assertEquals(postBody, actualPreviewPostBody, "Object description is not correct");
+    assertEquals(postBody, actualPreviewPostBody, "Post body is not correct");
   }
 
-  @Story("Preview. Object restaurant")
+  @Story("Preview. Post")
   @DisplayName("Check link is correct")
   @Test
   public void checkLink() {
