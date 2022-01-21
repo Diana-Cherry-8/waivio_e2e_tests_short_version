@@ -32,6 +32,7 @@ public abstract class ObjectPage extends Page {
     private static final By BUTTON_EDIT_LOCATOR = By.cssSelector(".ObjectHeader__controls .ant-btn");
     private static final By LEFT_SIDEBAR_LINKS_LOCATOR =
         By.cssSelector(".object-sidebar .icon-button__icon");
+    private static final By USER_DESCRIPTION_LOCATOR = By.cssSelector("div[style='font-size: 18px;']");
 
     protected ObjectPage(String objectName) {
         super(Context.getSiteUrl()  + "/object/" + objectName);
@@ -218,6 +219,11 @@ public abstract class ObjectPage extends Page {
     @Step
     public void scrollToTopPage() {
         ((JavascriptExecutor) WebDriverRunner.getWebDriver()).executeScript("window.scrollTo(0, 0);");
+    }
+
+    @Step
+    public String getUserDescription() {
+        return $(USER_DESCRIPTION_LOCATOR).shouldBe(Condition.visible).getText();
     }
 
     public static String getCurrentPage() {

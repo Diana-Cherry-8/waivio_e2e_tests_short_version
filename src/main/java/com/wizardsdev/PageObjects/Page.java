@@ -18,7 +18,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
@@ -28,7 +27,8 @@ public abstract class Page {
 
   public static final By MODAL_DIMMER_LOCATOR = By.cssSelector(".modals.dimmer");
   private static final By LOADER_DIMMER_LOCATOR = By.cssSelector(".anticon-loading");
-  private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__nick");
+  private static final By USERNAME_NICK_LOCATOR = By.cssSelector(".UserHeader__nick");
+  private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__name");
 
   protected static final By INPUT_VALIDATION_MESSAGE_LOCATOR = By.className("is-field__validation");
   protected static final By TOP_NAVIGATION_OBJECT_PAGE_LOCATOR = By.cssSelector(".ObjectMenu__item");
@@ -55,6 +55,10 @@ public abstract class Page {
 
   public static String getCurrentPage() {
     return Context.getSiteUrl() + currentPage.get();
+  }
+
+  public static String getFullUrl() {
+    return getWebDriver().getCurrentUrl();
   }
 
   protected static WebDriverWait waiter;
@@ -206,11 +210,16 @@ public abstract class Page {
 
   @Step
   public String getUserNameValue() {
-    return $(USERNAME_LOCATOR)
+    return $(USERNAME_NICK_LOCATOR)
             .shouldBe(Condition.visible)
             .getText()
             .replace("@","")
             .replace(" (guest)", "");
+  }
+
+  @Step
+  public String getUserName() {
+    return $(USERNAME_LOCATOR).shouldBe(Condition.visible).getText();
   }
 
   @Step

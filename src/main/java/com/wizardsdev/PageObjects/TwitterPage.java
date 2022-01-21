@@ -16,9 +16,7 @@ import org.openqa.selenium.By;
 public class TwitterPage extends Page{
   private static final String PAGE_URL = "/";
   private static final By INPUTS_LOCATOR = By.cssSelector(".r-30o5oe.r-1niwhzg.r-17gur6a.r-1yadl64");
-  private static final By BUTTONS_LOG_IN_LOCATOR = By.cssSelector(".css-901oao.r-1awozwy." +
-      "r-jwli3a.r-6koalj.r-18u37iz.r-16y2uox.r-1qd0xha.r-a023e6.r-b88u0q.r-1777fci.r-rjixqe." +
-      "r-dnmrzs.r-bcqeeo.r-q4m81j.r-qvutc0");
+  private static final By BUTTONS_LOG_IN_LOCATOR = By.cssSelector(".css-18t94o4.css-1dbjc4n.r-l5o3uw.r-sdzlij.r-1phboty.r-rs99b7.r-2yi16.r-1qi8awa.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr");
   private static final By BUTTON_TWITTER_PUBLISH_LOCATOR = By.cssSelector(".css-901oao.r-1awozwy." +
       "r-jwli3a.r-6koalj.r-18u37iz.r-16y2uox.r-1qd0xha.r-a023e6.r-b88u0q.r-1777fci.r-rjixqe." +
       "r-dnmrzs.r-bcqeeo.r-q4m81j.r-qvutc0");

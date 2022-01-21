@@ -30,6 +30,8 @@ import com.wizardsdev.PageObjects.DiningGifts.HomePage;
 import com.wizardsdev.PageObjects.DiningGifts.MapPage;
 import com.wizardsdev.PageObjects.DiningGifts.GeneralInfoPage;
 import com.wizardsdev.PageObjects.DiningGifts.NewSitePage;
+import com.wizardsdev.PageObjects.Discord.LoginPageDiscord;
+import com.wizardsdev.PageObjects.Discord.MainPageDiscord;
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.AreasPage;
 import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
@@ -183,9 +185,13 @@ public abstract class TestBase {
   protected static WebDriverWait waiter;
 
   //dining.gifts
-  protected  static HomePage homePage;
+  protected static HomePage homePage;
   protected static MapPage mapPage;
   protected static NewSitePage newSitePage;
+
+  //other
+  protected static LoginPageDiscord loginPageDiscord;
+  protected static MainPageDiscord mainPageDiscord;
 
 
 

@@ -30,7 +30,7 @@ public class Header extends Page {
   private static final By INPUT_SEARCH_LOCATOR =
       By.cssSelector(".ant-select-search__field");
   private static final By SEARCH_ITEMS_OBJECT_USER_LOCATOR =
-      By.cssSelector(".Topnav__search-autocomplete");
+      By.cssSelector(".Topnav__search-content");
   private static final By SEARCH_RESULT_OBJECT_TYPE_LOCATOR =
       By.className("Topnav__search-content-small");
   private static final By TILES_LOCATOR =
@@ -275,6 +275,25 @@ public class Header extends Page {
   public PageObjectPage clickOnTheSecondItemFromSearch () {
     $$(SEARCH_ITEMS_OBJECT_USER_LOCATOR).get(1).shouldBe(Condition.visible).click();
     return new PageObjectPage();
+  }
+
+  public void clickOnTheItemFromSearch(String text) {
+    $$(SEARCH_ITEMS_OBJECT_USER_LOCATOR).findBy(Condition.exactText(text))
+        .shouldBe(Condition.visible)
+        .click();
+  }
+
+  public PageObjectPage generalMethodForSearch(String searchWord) {
+    inputTextToSearch(searchWord);
+    sleep(5000);
+    clickOnTheItemFromSearch(searchWord);
+    sleep(3000);
+    return new PageObjectPage();
+  }
+
+  public String getSiteUrlString () {
+    String link = getFullUrl();
+    return link;
   }
 
   @Override

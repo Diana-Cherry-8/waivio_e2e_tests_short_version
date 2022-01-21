@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Feature("Profile page")
 public class WalletTest extends TestBase {
     String amountForTransfer = "0.001";
+    double doubleNumberForFloat = 1000.0;
+    int sleepTenSeconds = 10000;
     Float amount = Float.parseFloat(amountForTransfer);
     String hiveUserName1 = "dv56d";
     String hiveUserName2 = "wiv01";
@@ -53,12 +55,13 @@ public class WalletTest extends TestBase {
     void checkTransfer() {
         walletPage.openHiveWalletTab();
         Float expectedFloat = walletPage.getHiveAmount() - amount;
-        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        expectedFloat = (float) (Math.round(expectedFloat * doubleNumberForFloat) /
+            doubleNumberForFloat);
         walletPage.clickOnTransferButton();
         walletPage.setUserNameForWalletSearch(hiveUserName2);
         walletPage.setAmountAsHive(amountForTransfer);
         walletPage.clickContinueAsHiveUser();
-        sleep(10000);
+        sleep(sleepTenSeconds);
         refreshPage();
         walletPage.openHiveWalletTab();
         Float actualFloat = walletPage.getHiveAmount();
@@ -71,12 +74,12 @@ public class WalletTest extends TestBase {
     void checkTransferFromHiveUserToGuest() {
         walletPage.openHiveWalletTab();
         Float expectedFloat = walletPage.getHiveAmount() - amount;
-        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        expectedFloat = (float) (Math.round(expectedFloat * doubleNumberForFloat) / doubleNumberForFloat);
         walletPage.clickOnTransferButton();
         walletPage.setUserNameForWalletSearch(guestUserName);
         walletPage.setAmountAsHive(amountForTransfer);
         walletPage.clickContinueAsHiveUser();
-        sleep(10000);
+        sleep(sleepTenSeconds);
         refreshPage();
         walletPage.openHiveWalletTab();
         Float actualFloat = walletPage.getHiveAmount();
@@ -89,13 +92,13 @@ public class WalletTest extends TestBase {
     void checkTransferWaivFromHiveUserToHiveUser() {
         walletPage.openWaivWalletTab();
         Float expectedFloat = walletPage.getWaivAmount() - amount;
-        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        expectedFloat = (float) (Math.round(expectedFloat * doubleNumberForFloat) / doubleNumberForFloat);
         walletPage.clickOnTransferButton();
         walletPage.setUserNameForWalletSearch(hiveUserName2);
         walletPage.setAmountAsHive(amountForTransfer);
         walletPage.chooseCurrency(currencyWaiv);
         walletPage.clickContinueAsHiveUser();
-        sleep(10000);
+        sleep(sleepTenSeconds);
         refreshPage();
         walletPage.openWaivWalletTab();
         Float actualFloat = walletPage.getWaivAmount();
@@ -204,11 +207,11 @@ public class WalletTest extends TestBase {
     void checkSwapWaivToSwapHive() {
         walletPage.openWaivWalletTab();
         Float expectedFloat = walletPage.getWaivAmount() - amount;
-        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        expectedFloat = (float) (Math.round(expectedFloat * doubleNumberForFloat) / doubleNumberForFloat);
         walletPage.clickSwapTokens();
         walletPage.setInputValueSwap(indexFromSwap, "0.001");
         walletPage.clickContinueAsHiveUser();
-        sleep(10000);
+        sleep(sleepTenSeconds);
         refreshPage();
         walletPage.openWaivWalletTab();
         Float actualFloat = walletPage.getWaivAmount();
@@ -221,12 +224,12 @@ public class WalletTest extends TestBase {
     void checkSwapSwapHiveToWaiv() {
         walletPage.openWaivWalletTab();
         Float expectedFloat = walletPage.getWaivAmount() + amount;
-        expectedFloat = (float) (Math.round(expectedFloat * 1000.0) / 1000.0);
+        expectedFloat = (float) (Math.round(expectedFloat * doubleNumberForFloat) / doubleNumberForFloat);
         walletPage.clickSwapTokens();
         walletPage.clickArrowButton();
         walletPage.setInputValueSwap(indexToSwap, "0.001");
         walletPage.clickContinueAsHiveUser();
-        sleep(10000);
+        sleep(sleepTenSeconds);
         refreshPage();
         walletPage.openWaivWalletTab();
         Float actualFloat = walletPage.getWaivAmount();
