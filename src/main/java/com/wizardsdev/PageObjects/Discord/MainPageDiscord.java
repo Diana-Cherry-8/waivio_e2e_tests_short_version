@@ -91,6 +91,11 @@ public class MainPageDiscord extends Page {
   }
 
   @Step
+  public String getShortDescriptionFromPreview() {
+    return $(DESCRIPTION_LOCATOR).shouldBe(Condition.visible).getText().substring(0, 120);
+  }
+
+  @Step
   public String getLinkFromPreview() {
     return $$(LINK_LOCATOR_IN_MESSAGE_LOCATOR).get(2).shouldBe(Condition.visible).getText();
   }

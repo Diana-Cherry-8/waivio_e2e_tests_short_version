@@ -30,6 +30,9 @@ public abstract class Page {
   private static final By USERNAME_NICK_LOCATOR = By.cssSelector(".UserHeader__nick");
   private static final By USERNAME_LOCATOR = By.cssSelector(".UserHeader__name");
 
+  private static final By POST_TITLE_LOCATOR = By.cssSelector(".Story__content h2");
+  private static final By POST_BODY_PREVIEW_LOCATOR = By.cssSelector(".Story__content__body");
+
   protected static final By INPUT_VALIDATION_MESSAGE_LOCATOR = By.className("is-field__validation");
   protected static final By TOP_NAVIGATION_OBJECT_PAGE_LOCATOR = By.cssSelector(".ObjectMenu__item");
 
@@ -234,5 +237,22 @@ public abstract class Page {
       return true;
     }
     return false;
+  }
+
+  @Step
+  public void clickOnTitleInFeed(int index) {
+    $$(POST_TITLE_LOCATOR).get(index).shouldBe(Condition.visible).click();
+  }
+
+  @Step
+  public String getTitleInFeed(int index) {
+     return $$(POST_TITLE_LOCATOR).get(index).shouldBe(Condition.visible).getText();
+  }
+
+  @Step
+  public String getPostBodyInFeed(int index) {
+    return $$(POST_BODY_PREVIEW_LOCATOR).get(index)
+        .shouldBe(Condition.visible).getText()
+        .substring(0, 120);
   }
 }
