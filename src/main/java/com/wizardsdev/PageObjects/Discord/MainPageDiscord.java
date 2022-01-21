@@ -22,6 +22,7 @@ public class MainPageDiscord extends Page {
   private static final By ITEMS_IN_DROP_DOWN_LOCATOR = By.cssSelector(".item-1OdjEX");
   private static final By BUTTON_SUBMIT_IN_DELETE_MODAL_WINDOW_LOCATOR =
       By.cssSelector(".button-f2h6uQ.lookFilled-yCfaCM.colorRed-rQXKgM");
+  private static final By LINK_LOCATOR_IN_MESSAGE_LOCATOR = By.cssSelector(".anchor-1MIwyf");
 
   public static MainPageDiscord openMainPage(String discordLink) {
     open(discordLink);
@@ -87,6 +88,11 @@ public class MainPageDiscord extends Page {
   @Step
   public String getDescriptionFromPreview() {
     return $(DESCRIPTION_LOCATOR).shouldBe(Condition.visible).getText();
+  }
+
+  @Step
+  public String getLinkFromPreview() {
+    return $$(LINK_LOCATOR_IN_MESSAGE_LOCATOR).get(2).shouldBe(Condition.visible).getText();
   }
 
   @Override

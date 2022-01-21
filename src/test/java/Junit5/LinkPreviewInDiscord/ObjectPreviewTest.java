@@ -22,13 +22,14 @@ public class ObjectPreviewTest extends TestBase {
   String app = "Waivio";
   static String objectDescription;
   static String objectAddress;
+  static String link;
 
   @BeforeAll
   static void actions() {
     //take url from waivio
     feedPage = FeedPage.openFeedPage();
     pageObjectPage = header.generalMethodForSearch(objectName);
-    String link = header.getSiteUrlString();
+    link = header.getSiteUrlString();
     objectDescription = pageObjectPage.getObjectDescription();
     objectName = pageObjectPage.getObjectName();
     objectAddress = pageObjectPage.getObjectAddress();
@@ -71,6 +72,14 @@ public class ObjectPreviewTest extends TestBase {
   public void checkObjectDescription() {
     String actualDescription = mainPageDiscord.getDescriptionFromPreview();
     assertTrue(actualDescription.contains(objectDescription), "Object description is not correct");
+  }
+
+  @Story("Preview. Profile")
+  @DisplayName("Check link is correct")
+  @Test
+  public void checkLink() {
+    String actualLink = mainPageDiscord.getLinkFromPreview();
+    assertEquals(link, actualLink, "Link not found");
   }
 
   @Story("Preview. Object restaurant")

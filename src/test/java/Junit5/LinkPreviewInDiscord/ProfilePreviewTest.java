@@ -21,6 +21,7 @@ public class ProfilePreviewTest extends TestBase {
   String app = "Waivio";
   static String description;
   static String username;
+  static String link;
   static String discordChannelLink = "https://discord.com/channels/933278946710134884/933278946710134887";
 
   @BeforeAll
@@ -28,7 +29,7 @@ public class ProfilePreviewTest extends TestBase {
     //take url from waivio
     feedPage = FeedPage.openFeedPage();
     pageObjectPage = header.generalMethodForSearch(name);
-    String link = header.getSiteUrlString();
+    link = header.getSiteUrlString();
     description = pageObjectPage.getUserDescription();
     username = pageObjectPage.getUserName();
 
@@ -70,6 +71,14 @@ public class ProfilePreviewTest extends TestBase {
   public void checkDescription() {
     String actualDescription = mainPageDiscord.getDescriptionFromPreview();
     assertEquals(description, actualDescription, "Description not found");
+  }
+
+  @Story("Preview. Profile")
+  @DisplayName("Check link is correct")
+  @Test
+  public void checkLink() {
+    String actualLink = mainPageDiscord.getLinkFromPreview();
+    assertEquals(link, actualLink, "Link not found");
   }
 
   @AfterAll
