@@ -3,6 +3,7 @@ package com.wizardsdev.PageObjects.Discord;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
 
 
 import com.codeborne.selenide.Condition;
@@ -30,7 +31,7 @@ public class LoginPageDiscord extends Page {
     $(INPUT_EMAIL_LOCATOR).shouldBe(Condition.visible).setValue(email);
     $(INPUT_PASSWORD_LOCATOR).shouldBe(Condition.visible).setValue(password);
     $$(BUTTONS_LOCATOR).get(1).click();
-    $(TITLE_CHANNEL_LOCATOR).shouldBe(Condition.visible);
+    sleep(5000);
   }
 
   @Override
