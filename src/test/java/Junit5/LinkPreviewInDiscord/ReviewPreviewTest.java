@@ -45,14 +45,14 @@ public class ReviewPreviewTest extends TestBase {
     mainPageDiscord.setLink(link);
   }
 
-  @Story("Preview. Post")
+  @Story("Preview. Review")
   @DisplayName("Check preview is loaded")
   @Test
   public void checkPreviewLoaded() {
     assertTrue (mainPageDiscord.isPreviewLoaded(), "Preview didn't load");
   }
 
-  @Story("Preview. Post")
+  @Story("Preview. Review")
   @DisplayName("Check app name is waivio")
   @Test
   public void checkAppName() {
@@ -60,7 +60,7 @@ public class ReviewPreviewTest extends TestBase {
     assertEquals(app, actualAppName, "App name is not correct");
   }
 
-  @Story("Preview. Post")
+  @Story("Preview. Review")
   @DisplayName("Check post title is correct")
   @Test
   public void checkPostTitle() {
@@ -68,7 +68,7 @@ public class ReviewPreviewTest extends TestBase {
     assertTrue(actualPostTitle.contains(postTitle), "Post title is not correct");
   }
 
-  @Story("Preview. Post")
+  @Story("Preview. Review")
   @DisplayName("Check post body is correct")
   @Test
   public void checkPostBody() {
@@ -76,7 +76,7 @@ public class ReviewPreviewTest extends TestBase {
     assertEquals(postBody, actualPreviewPostBody, "Post body is not correct");
   }
 
-  @Story("Preview. Post")
+  @Story("Preview. Review")
   @DisplayName("Check link is correct")
   @Test
   public void checkLink() {
