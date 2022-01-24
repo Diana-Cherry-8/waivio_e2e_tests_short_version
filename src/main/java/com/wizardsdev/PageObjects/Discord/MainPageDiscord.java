@@ -93,8 +93,8 @@ public class MainPageDiscord extends Page {
   @Step
   public String getShortDescriptionFromPreview() {
     String cutDescription = $(DESCRIPTION_LOCATOR).shouldBe(Condition.visible).getText().substring(0, 120);
-    String withoutNewLineDescription = cutDescription.replace(System.getProperty("line.separator"), " ");
-    return withoutNewLineDescription;
+    String descriptionWithoutNewLine = cutDescription.replace(System.getProperty("line.separator"), " ");
+    return descriptionWithoutNewLine;
   }
 
   @Step
