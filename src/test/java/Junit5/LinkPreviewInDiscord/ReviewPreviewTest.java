@@ -61,17 +61,17 @@ public class ReviewPreviewTest extends TestBase {
   }
 
   @Story("Preview. Review")
-  @DisplayName("Check post title is correct")
+  @DisplayName("Check review title is correct")
   @Test
-  public void checkPostTitle() {
+  public void checkReviewTitle() {
     String actualPostTitle = mainPageDiscord.getUserNameFromPreview();
     assertTrue(actualPostTitle.contains(postTitle), "Post title is not correct");
   }
 
   @Story("Preview. Review")
-  @DisplayName("Check post body is correct")
+  @DisplayName("Check review body is correct")
   @Test
-  public void checkPostBody() {
+  public void checkReviewBody() {
     String actualPreviewPostBody = mainPageDiscord.getShortDescriptionFromPreview();
     assertEquals(postBody, actualPreviewPostBody, "Post body is not correct");
   }
