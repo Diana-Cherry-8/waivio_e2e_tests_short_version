@@ -47,15 +47,15 @@ public class ShareToFacebookTest extends TestBase {
     assert(facebookSignPage.isPostExistInFacebookEditor());
   }
 
-  @DisplayName("Check that facebook opens in editor with post")
-  @Test
-  void checkPostPreviewFacebook() {
-    feedPage = FeedPage.openFeedPage();
-    feedLeftBar.clickOnNewItem();
-    facebookSignPage = feedPage.clickOnFacebookInPostMenu(index, newWindow);
-    facebookSignPage.loginWithFacebook(login, password);
-    facebookSignPage.clickPublishFacebook();
-    facebookSignPage.clickUSerTabInHeader();
-    assert(facebookSignPage.isPostExistInFacebookEditor());
-  }
+//  @DisplayName("Check that facebook opens in editor with post")
+//  @Test
+//  void checkPostPreviewFacebook() {
+//    feedPage = FeedPage.openFeedPage();
+//    feedLeftBar.clickOnNewItem();
+//    facebookSignPage = feedPage.clickOnFacebookInPostMenu(index, newWindow);
+//    facebookSignPage.loginWithFacebook(login, password);
+//    facebookSignPage.clickPublishFacebook();
+//    facebookSignPage.clickUSerTabInHeader();
+//    assert(facebookSignPage.isPostExistInFacebookEditor());
+//  }
 }
