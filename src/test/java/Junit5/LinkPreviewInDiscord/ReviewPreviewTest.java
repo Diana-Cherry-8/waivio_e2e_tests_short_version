@@ -11,6 +11,7 @@ import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +26,7 @@ public class ReviewPreviewTest extends TestBase {
   static String postBody;
   static String link;
 
+  @Disabled
   @BeforeAll
   static void actions() {
     //take url from waivio
@@ -45,6 +47,7 @@ public class ReviewPreviewTest extends TestBase {
     mainPageDiscord.setLink(link);
   }
 
+  @Disabled
   @Story("Preview. Review")
   @DisplayName("Check preview is loaded")
   @Test
@@ -52,6 +55,7 @@ public class ReviewPreviewTest extends TestBase {
     assertTrue (mainPageDiscord.isPreviewLoaded(), "Preview didn't load");
   }
 
+  @Disabled
   @Story("Preview. Review")
   @DisplayName("Check app name is waivio")
   @Test
@@ -60,14 +64,16 @@ public class ReviewPreviewTest extends TestBase {
     assertEquals(app, actualAppName, "App name is not correct");
   }
 
+  @Disabled
   @Story("Preview. Review")
   @DisplayName("Check review title is correct")
   @Test
   public void checkReviewTitle() {
-    String actualPostTitle = mainPageDiscord.getUserNameFromPreview();
+    String actualPostTitle = mainPageDiscord.getUserNameOrTitleFromPreview();
     assertTrue(actualPostTitle.contains(postTitle), "Post title is not correct");
   }
 
+  @Disabled
   @Story("Preview. Review")
   @DisplayName("Check review body is correct")
   @Test
@@ -76,6 +82,7 @@ public class ReviewPreviewTest extends TestBase {
     assertEquals(postBody, actualPreviewPostBody, "Post body is not correct");
   }
 
+  @Disabled
   @Story("Preview. Review")
   @DisplayName("Check link is correct")
   @Test
@@ -84,6 +91,7 @@ public class ReviewPreviewTest extends TestBase {
     assertEquals(link, actualLink, "Link not found");
   }
 
+  @Disabled
   @AfterAll
   static void deleteLink() {
     mainPageDiscord.deleteLinkInDiscord();

@@ -11,6 +11,7 @@ import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,11 +21,12 @@ public class PostPreviewTest extends TestBase {
   static String password = "qweqwe123QWE";
   String app = "Waivio";
   static String objectName = "waivio";
-  static int postIndex = 1;
+  static int postIndex = 0;
   static String postTitle;
   static String postBody;
   static String link;
 
+  @Disabled
   @BeforeAll
   static void actions() {
     //take url from waivio
@@ -44,6 +46,7 @@ public class PostPreviewTest extends TestBase {
     mainPageDiscord.setLink(link);
   }
 
+  @Disabled
   @Story("Preview. Post")
   @DisplayName("Check preview is loaded")
   @Test
@@ -51,6 +54,7 @@ public class PostPreviewTest extends TestBase {
     assertTrue (mainPageDiscord.isPreviewLoaded(), "Preview didn't load");
   }
 
+  @Disabled
   @Story("Preview. Post")
   @DisplayName("Check app name is waivio")
   @Test
@@ -59,14 +63,16 @@ public class PostPreviewTest extends TestBase {
     assertEquals(app, actualAppName, "App name is not correct");
   }
 
+  @Disabled
   @Story("Preview. Post")
   @DisplayName("Check post title is correct")
   @Test
   public void checkPostTitle() {
-    String actualPostTitle = mainPageDiscord.getUserNameFromPreview();
+    String actualPostTitle = mainPageDiscord.getUserNameOrTitleFromPreview();
     assertTrue(actualPostTitle.contains(postTitle), "Post title is not correct");
   }
 
+  @Disabled
   @Story("Preview. Post")
   @DisplayName("Check post body is correct")
   @Test
@@ -75,6 +81,7 @@ public class PostPreviewTest extends TestBase {
     assertEquals(postBody, actualPreviewPostBody, "Post body is not correct");
   }
 
+  @Disabled
   @Story("Preview. Post")
   @DisplayName("Check link is correct")
   @Test
@@ -83,6 +90,7 @@ public class PostPreviewTest extends TestBase {
     assertEquals(link, actualLink, "Link not found");
   }
 
+  @Disabled
   @AfterAll
   static void deleteLink() {
     mainPageDiscord.deleteLinkInDiscord();

@@ -81,8 +81,12 @@ public class MainPageDiscord extends Page {
   }
 
   @Step
-  public String getUserNameFromPreview() {
-    return $(USER_NAME_LOCATOR).shouldBe(Condition.visible).getText();
+  public String getUserNameOrTitleFromPreview() {
+    String temp = $(USER_NAME_LOCATOR).shouldBe(Condition.visible).getText();
+    if(temp.length() > 60) {
+      return temp.substring(0, 60);
+    }
+    return temp;
   }
 
   @Step
@@ -92,9 +96,12 @@ public class MainPageDiscord extends Page {
 
   @Step
   public String getShortDescriptionFromPreview() {
-    String cutDescription = $(DESCRIPTION_LOCATOR).shouldBe(Condition.visible).getText().substring(0, 120);
-    String descriptionWithoutNewLine = cutDescription.replace(System.getProperty("line.separator"), " ");
-    return descriptionWithoutNewLine;
+    String temp = $(DESCRIPTION_LOCATOR).shouldBe(Condition.visible).getText();
+    String temp2 = temp.replace(System.getProperty("line.separator"), " ");
+    if(temp2.length() > 119) {
+      return temp2.substring(0, 120);
+    }
+    return temp;
   }
 
   @Step

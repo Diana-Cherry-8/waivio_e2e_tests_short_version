@@ -251,8 +251,11 @@ public abstract class Page {
 
   @Step
   public String getPostBodyInFeed(int index) {
-    return $$(POST_BODY_PREVIEW_LOCATOR).get(index)
-        .shouldBe(Condition.visible).getText()
-        .substring(0, 120);
+    String temp = $$(POST_BODY_PREVIEW_LOCATOR).get(index).shouldBe(Condition.visible).getText();
+    if(temp.length() > 119) {
+      return temp.substring(0, 120);
+    }
+    return temp;
+
   }
 }

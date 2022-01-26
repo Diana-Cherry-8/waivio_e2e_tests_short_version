@@ -62,7 +62,7 @@ public class ObjectPreviewTest extends TestBase {
   @DisplayName("Check object name is correct")
   @Test
   public void checkObjectName() {
-    String actualUserName = mainPageDiscord.getUserNameFromPreview();
+    String actualUserName = mainPageDiscord.getUserNameOrTitleFromPreview();
     assertTrue(actualUserName.contains(objectName), "Object name is not correct");
   }
 

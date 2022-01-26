@@ -11,6 +11,7 @@ import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,7 @@ public class ProfilePreviewTest extends TestBase {
   static String link;
   static String discordChannelLink = "https://discord.com/channels/933278946710134884/933278946710134887";
 
+  @Disabled
   @BeforeAll
   static void actions() {
     //take url from waivio
@@ -42,6 +44,7 @@ public class ProfilePreviewTest extends TestBase {
     mainPageDiscord.setLink(link);
   }
 
+  @Disabled
   @Story("Preview. Profile")
   @DisplayName("Check preview is loaded")
   @Test
@@ -49,6 +52,7 @@ public class ProfilePreviewTest extends TestBase {
     assertTrue (mainPageDiscord.isPreviewLoaded(), "Preview didn't load");
   }
 
+  @Disabled
   @Story("Preview. Profile")
   @DisplayName("Check app name is waivio")
   @Test
@@ -57,14 +61,16 @@ public class ProfilePreviewTest extends TestBase {
     assertEquals(app, actualAppName, "App name not found");
   }
 
+  @Disabled
   @Story("Preview. Profile")
   @DisplayName("Check username is correct")
   @Test
   public void checkUsername() {
-    String actualUserName = mainPageDiscord.getUserNameFromPreview();
+    String actualUserName = mainPageDiscord.getUserNameOrTitleFromPreview();
     assertEquals(username, actualUserName, "Username not found");
   }
 
+  @Disabled
   @Story("Preview. Profile")
   @DisplayName("Check description is correct")
   @Test
@@ -73,6 +79,7 @@ public class ProfilePreviewTest extends TestBase {
     assertEquals(description, actualDescription, "Description not found");
   }
 
+  @Disabled
   @Story("Preview. Profile")
   @DisplayName("Check link is correct")
   @Test
@@ -81,6 +88,7 @@ public class ProfilePreviewTest extends TestBase {
     assertEquals(link, actualLink, "Link not found");
   }
 
+  @Disabled
   @AfterAll
   static void deleteLink() {
     mainPageDiscord.deleteLinkInDiscord();
