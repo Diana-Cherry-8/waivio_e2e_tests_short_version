@@ -101,7 +101,7 @@ public class MainPageDiscord extends Page {
     if(temp2.length() > 119) {
       return temp2.substring(0, 120);
     }
-    return temp;
+    return temp2;
   }
 
   @Step
