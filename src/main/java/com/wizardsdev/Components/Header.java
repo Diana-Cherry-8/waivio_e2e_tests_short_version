@@ -12,6 +12,7 @@ import com.wizardsdev.Modals.SignIn;
 import com.wizardsdev.Modals.UseCookies;
 import com.wizardsdev.PageObjects.*;
 import com.wizardsdev.PageObjects.DiningGifts.GeneralInfoPage;
+import com.wizardsdev.PageObjects.Facebook.FacebookSignPage;
 import com.wizardsdev.PageObjects.Objects.PageObjectPage;
 import com.wizardsdev.PageObjects.Profile.PostsPage;
 import com.wizardsdev.PageObjects.Tools.SettingsPage;

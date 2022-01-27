@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
-import com.wizardsdev.Modals.SignIn;
+import com.wizardsdev.PageObjects.Facebook.FacebookSignPage;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 

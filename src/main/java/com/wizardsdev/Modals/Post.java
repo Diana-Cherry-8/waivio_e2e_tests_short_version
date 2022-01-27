@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.wizardsdev.PageObjects.FacebookSignPage;
+import com.wizardsdev.PageObjects.Facebook.FacebookSignPage;
 import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import com.wizardsdev.PageObjects.TwitterPage;

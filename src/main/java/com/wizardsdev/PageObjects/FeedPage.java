@@ -13,6 +13,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.Post;
 import com.wizardsdev.Modals.ReBlog;
+import com.wizardsdev.PageObjects.Facebook.FacebookSignPage;
 import com.wizardsdev.PageObjects.Objects.ObjectPage;
 import com.wizardsdev.PageObjects.Profile.ProfilePage;
 import io.qameta.allure.Step;

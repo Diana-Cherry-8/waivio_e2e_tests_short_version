@@ -32,6 +32,9 @@ import com.wizardsdev.PageObjects.DiningGifts.GeneralInfoPage;
 import com.wizardsdev.PageObjects.DiningGifts.NewSitePage;
 import com.wizardsdev.PageObjects.Discord.LoginPageDiscord;
 import com.wizardsdev.PageObjects.Discord.MainPageDiscord;
+import com.wizardsdev.PageObjects.Facebook.FacebookEditorPage;
+import com.wizardsdev.PageObjects.Facebook.FacebookProfilePage;
+import com.wizardsdev.PageObjects.Facebook.FacebookSignPage;
 import com.wizardsdev.PageObjects.Tools.Website.AdministratorsPage;
 import com.wizardsdev.PageObjects.Tools.Website.AreasPage;
 import com.wizardsdev.PageObjects.Tools.Website.AuthoritiesPage;
@@ -178,6 +181,8 @@ public abstract class TestBase {
 
   protected static TwitterPage twitterPage;
   protected static FacebookSignPage facebookSignPage;
+  protected static FacebookEditorPage facebookEditorPage;
+  protected static FacebookProfilePage facebookProfilePage;
   protected static HiveOnBoardPage hiveOnBoardPage;
 
   protected static FullScreenOfTheReservationPost fullScreenOfTheReservationPost;

@@ -1,11 +1,13 @@
-package com.wizardsdev.PageObjects;
+package com.wizardsdev.PageObjects.Facebook;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.Selenide.switchTo;
 
 import com.codeborne.selenide.Condition;
+import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -51,11 +53,6 @@ public class FacebookSignPage extends Page {
   public void clickOnLogIn() {
     $(LOGIN_BUTTON_LOCATOR).click();
     switchTo().window(0);
-  }
-
-  @Step
-  public boolean isPostExistInFacebookEditor() {
-    return $(POST_IN_EDITOR_LOCATOR).shouldBe(Condition.visible).exists();
   }
 
   @Override
