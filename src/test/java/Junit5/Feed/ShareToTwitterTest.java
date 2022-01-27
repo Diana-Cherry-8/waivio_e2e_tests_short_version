@@ -19,7 +19,6 @@ public class ShareToTwitterTest extends TestBase {
   String twitterPassword = properties.getProperty("TwitterPass00");
   static String restaurantObject = properties.getProperty("RestaurantObject");
 
-  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via the " +
       "three dots button in feed")
   @Test
@@ -34,7 +33,6 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
-  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post modal window ")
   @Test
@@ -50,13 +48,12 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
-  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post full screen")
   @Test
   void checkTwitterShareThroughFullScreen() {
     feedPage = FeedPage.openFeedPage();
-    feedLeftBar.clickOnHotItem();
+    feedLeftBar.clickOnNewItem();
     String expectedResult = feedPage.getPostTitle(index);
     post = feedPage.openPost(index);
     post.clickOnPostFullScreen();
@@ -67,7 +64,6 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
-  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via the " +
       "three dots button in object restaurant feed")
   @Test
@@ -81,7 +77,6 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
-  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post modal window, through object restaurant page")
   @Test
@@ -96,7 +91,6 @@ public class ShareToTwitterTest extends TestBase {
     assertTrue((actualResult).contains(expectedResult));
   }
 
-  @Disabled
   @DisplayName("Check that twitter opens after clicking on share to twitter via twitter icon, " +
       "in post full screen")
   @Test
