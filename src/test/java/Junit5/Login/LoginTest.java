@@ -6,7 +6,6 @@ import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

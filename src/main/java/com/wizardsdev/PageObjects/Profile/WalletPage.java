@@ -25,7 +25,7 @@ public class WalletPage extends ProfilePage {
     private static final By WAIV_AMOUNT_LOCATOR = By.cssSelector(".WalletSummaryInfo__value");
     private static final By CURRENCIES_DROP_DOWN_LOCATOR =
         By.cssSelector(".ant-select-selection-selected-value");
-    private static final By ITEM_IN_CURRENCIES_DROP_DOWN_LOCATOR =
+    private static final By ITEM_IN_DROP_DOWN_LOCATOR =
         By.cssSelector(".ant-select-dropdown-menu-item");
     private static final By USER_WALLET_TRANSACTION_CONTENT_LOCATOR =
         By.cssSelector(".UserWalletTransactions__content");
@@ -39,6 +39,10 @@ public class WalletPage extends ProfilePage {
     private static final By BUTTONS_SLIDER_LOCATOR = By.cssSelector(".ant-radio-button-wrapper");
     private static final By ESTIMATED_PRICE_IMPACT_LOCATOR = By.cssSelector(".SwapTokens__estimatedWrap p");
     private static final By INVALID_MESSAGE_LOCATOR = By.cssSelector(".invalid");
+
+    private static final By DROPDOWN_DEPOSIT_LOCATOR = By.cssSelector(".Deposit__step .ant-select");
+    private static final By INPUTS_DEPOSIT_LOCATOR = By.cssSelector(".Deposit__input");
+    private static final By QR_CODE_LOCATOR = By.cssSelector(".Deposit__qr-code");
 
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
@@ -125,7 +129,7 @@ public class WalletPage extends ProfilePage {
     @Step
     public void chooseCurrency(String currency) {
         $(CURRENCIES_DROP_DOWN_LOCATOR).shouldBe(Condition.visible).click();
-        $$(ITEM_IN_CURRENCIES_DROP_DOWN_LOCATOR).findBy(Condition.text(currency)).click();
+        $$(ITEM_IN_DROP_DOWN_LOCATOR).findBy(Condition.text(currency)).click();
     }
 
     @Step
@@ -302,6 +306,38 @@ public class WalletPage extends ProfilePage {
     @Step
     public boolean isInvalidMessageVisible () {
         return $(INVALID_MESSAGE_LOCATOR).shouldBe(Condition.visible).exists();
+    }
+
+    @Step
+    public void clickDeposit() {
+        clickOnTransferButtonByIndex(2);
+        sleep(5000);
+    }
+
+    @Step
+    public void clickDepositDropdown(String currency) {
+        $(DROPDOWN_DEPOSIT_LOCATOR).shouldBe(Condition.visible).click();
+        $$(ITEM_IN_DROP_DOWN_LOCATOR).findBy(Condition.text(currency)).click();
+    }
+
+    @Step
+    public String getContentFirstInputInDeposit() {
+        return $$(INPUTS_DEPOSIT_LOCATOR).get(0).getText();
+    }
+
+    @Step
+    public String getMemoInDeposit() {
+        return $$(INPUTS_DEPOSIT_LOCATOR).get(1).getText();
+    }
+
+    @Step
+    public boolean isAddressPresent() {
+        return !getContentFirstInputInDeposit().isEmpty() && getContentFirstInputInDeposit().length() > 20;
+    }
+
+    @Step
+    public boolean isQRCodePresent() {
+        return $(QR_CODE_LOCATOR).exists();
     }
 
     @Override
