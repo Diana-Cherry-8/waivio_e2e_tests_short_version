@@ -63,7 +63,7 @@ public class DepositWalletTest extends TestBase {
   }
 
   @Story("Check deposit")
-  @DisplayName("Check open swap modal window")
+  @DisplayName("Check open deposit modal window")
   @Test
   void checkOpenSwapModalWindow() {
     String expectedResult = "Deposit";
@@ -78,7 +78,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(blurtCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(blurtAccount, actualAccount, "BLURT account  is wrong");
+    assertEquals(blurtAccount, actualAccount, "BLURT account is wrong");
     assertEquals(blurtMemo, actualMemo, "BLURT memo is wrong");
   }
 
@@ -89,7 +89,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(btsCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(steemEngineAccount, actualAccount, "BTS account  is wrong");
+    assertEquals(steemEngineAccount, actualAccount, "BTS account is wrong");
     assertEquals(btsMemo, actualMemo, "BTS memo is wrong");
   }
 
@@ -100,7 +100,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(eosCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(steemEngAccount, actualAccount, "EOS account  is wrong");
+    assertEquals(steemEngAccount, actualAccount, "EOS account is wrong");
     assertEquals(eosMemo, actualMemo, "EOS memo is wrong");
   }
 
@@ -111,7 +111,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(golosCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(steemEngineAccount, actualAccount, "GOLOS account  is wrong");
+    assertEquals(steemEngineAccount, actualAccount, "GOLOS account is wrong");
     assertEquals(golosMemo, actualMemo, "GOLOS memo is wrong");
   }
 
@@ -122,7 +122,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(hbdCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(grapheneAccount, actualAccount, "HBD account  is wrong");
+    assertEquals(grapheneAccount, actualAccount, "HBD account is wrong");
     assertEquals(hbdMemo, actualMemo, "HBD memo is wrong");
   }
 
@@ -133,7 +133,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(hiveCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(hiveAccount, actualAccount, "HIVE account  is wrong");
+    assertEquals(hiveAccount, actualAccount, "HIVE account is wrong");
     assertEquals(hiveMemo, actualMemo, "HIVE memo is wrong");
   }
 
@@ -144,7 +144,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(sbdCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(grapheneAccount, actualAccount, "SBD account  is wrong");
+    assertEquals(grapheneAccount, actualAccount, "SBD account is wrong");
     assertEquals(sbdMemo, actualMemo, "SBD memo is wrong");
   }
 
@@ -155,7 +155,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(steemCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(grapheneAccount, actualAccount, "STEEM account  is wrong");
+    assertEquals(grapheneAccount, actualAccount, "STEEM account is wrong");
     assertEquals(steemMemo, actualMemo, "STEEM memo is wrong");
   }
 
@@ -166,7 +166,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(engCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(engTokensAccount, actualAccount, "ENG account  is wrong");
+    assertEquals(engTokensAccount, actualAccount, "ENG account is wrong");
     assertEquals(engMemo, actualMemo, "ENG memo is wrong");
   }
 
@@ -177,7 +177,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(tlosCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(steemEngAccount, actualAccount, "TLOS account  is wrong");
+    assertEquals(steemEngAccount, actualAccount, "TLOS account is wrong");
     assertEquals(tlosMemo, actualMemo, "TLOS memo is wrong");
   }
 
@@ -188,7 +188,7 @@ public class DepositWalletTest extends TestBase {
     walletPage.clickDepositDropdown(waxCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
     String actualMemo = walletPage.getMemoInDeposit();
-    assertEquals(waxAccount, actualAccount, "WAX account  is wrong");
+    assertEquals(waxAccount, actualAccount, "WAX account is wrong");
     assertEquals(waxMemo, actualMemo, "WAX memo is wrong");
   }
 
