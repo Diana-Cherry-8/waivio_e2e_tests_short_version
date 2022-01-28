@@ -14,7 +14,7 @@ public class LikePostAsHiveUserTest extends TestBase {
   void login() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithHiveSigner(getUserLogin(), getUserPassword());
-    feedLeftBar.clickOnNewItem();
+    feedLeftBar.clickOnHotItem();
   }
 
   @Story("Likes")

@@ -21,6 +21,7 @@ public class LikePostAsGuestUserTest extends TestBase {
   void login() {
     feedPage = FeedPage.openFeedPage();
     header.logInWithFacebook(facebookEmail, facebookPassword, newWindow);
+    feedLeftBar.clickOnHotItem();
   }
 
   @Story("Likes")
