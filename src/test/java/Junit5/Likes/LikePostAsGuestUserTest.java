@@ -30,7 +30,6 @@ public class LikePostAsGuestUserTest extends TestBase {
   void likePostAsFBGuestUserTest()  {
     int postLikeCountBeforeLike = feedPage.getPostLikeCount(postIndex);
     feedPage.clickOnPostLikeButton(postIndex);
-    //refreshPage();// нужно так как подставляется фек-данные об количесвах лайков
     int postLikeCountAfterLike = feedPage.getPostLikeCount(postIndex);
     assertTrue(postLikeCountBeforeLike < postLikeCountAfterLike);
   }

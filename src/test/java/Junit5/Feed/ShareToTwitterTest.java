@@ -8,13 +8,12 @@ import com.wizardsdev.PageObjects.FeedPage;
 import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Feature("Main feed")
 public class ShareToTwitterTest extends TestBase {
-  int index = 0;
+  int index;
   String twitterUsername = properties.getProperty("TwitterUsername00");
   String twitterPassword = properties.getProperty("TwitterPass00");
   static String restaurantObject = properties.getProperty("RestaurantObject");
