@@ -322,21 +322,23 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public String getContentFirstInputInDeposit() {
-        return $$(INPUTS_DEPOSIT_LOCATOR).get(0).getText();
+        return $$(INPUTS_DEPOSIT_LOCATOR).get(0).shouldBe(Condition.visible).getText();
     }
 
     @Step
     public String getMemoInDeposit() {
-        return $$(INPUTS_DEPOSIT_LOCATOR).get(1).getText();
+        return $$(INPUTS_DEPOSIT_LOCATOR).get(1).shouldBe(Condition.visible).getText();
     }
 
     @Step
     public boolean isAddressPresent() {
+        $$(INPUTS_DEPOSIT_LOCATOR).get(0).shouldBe(Condition.visible);
         return !getContentFirstInputInDeposit().isEmpty() && getContentFirstInputInDeposit().length() > 20;
     }
 
     @Step
     public boolean isQRCodePresent() {
+        $$(INPUTS_DEPOSIT_LOCATOR).get(0).shouldBe(Condition.visible);
         return $(QR_CODE_LOCATOR).exists();
     }
 

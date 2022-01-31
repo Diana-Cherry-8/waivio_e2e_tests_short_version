@@ -72,169 +72,280 @@ public class DepositWalletTest extends TestBase {
   }
 
   @Story("Deposit")
-  @DisplayName("Check BLURT instructions")
+  @DisplayName("Check account name BLURT instructions")
   @Test
-  void checkBLURT() {
+  void checkAccountBlurt() {
     walletPage.clickDepositDropdown(blurtCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(blurtAccount, actualAccount, "BLURT account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo BLURT instructions")
+  @Test
+  void checkMemoBlurt() {
+    walletPage.clickDepositDropdown(blurtCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(blurtMemo, actualMemo, "BLURT memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check BTS instructions")
+  @DisplayName("Check account name BTS instructions")
   @Test
-  void checkBTS() {
+  void checkAccountBts() {
     walletPage.clickDepositDropdown(btsCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(steemEngineAccount, actualAccount, "BTS account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo BTS instructions")
+  @Test
+  void checkMemoBts() {
+    walletPage.clickDepositDropdown(btsCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(btsMemo, actualMemo, "BTS memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check EOS instructions")
+  @DisplayName("Check account name EOS instructions")
   @Test
-  void checkEOS() {
+  void checkAccountEos() {
     walletPage.clickDepositDropdown(eosCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(steemEngAccount, actualAccount, "EOS account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo EOS instructions")
+  @Test
+  void checkMemoEos() {
+    walletPage.clickDepositDropdown(eosCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(eosMemo, actualMemo, "EOS memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check GOLOS CLASSIC instructions")
+  @DisplayName("Check account name GOLOS CLASSIC instructions")
   @Test
-  void checkGOLOS() {
+  void checkAccountGolos() {
     walletPage.clickDepositDropdown(golosCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(steemEngineAccount, actualAccount, "GOLOS account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo GOLOS CLASSIC instructions")
+  @Test
+  void checkMemoGolos() {
+    walletPage.clickDepositDropdown(golosCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(golosMemo, actualMemo, "GOLOS memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check HBD instructions")
+  @DisplayName("Check account name HBD instructions")
   @Test
-  void checkHBD() {
+  void checkAccountHbd() {
     walletPage.clickDepositDropdown(hbdCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(grapheneAccount, actualAccount, "HBD account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo HBD instructions")
+  @Test
+  void checkMemoHbd() {
+    walletPage.clickDepositDropdown(hbdCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(hbdMemo, actualMemo, "HBD memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check HIVE instructions")
+  @DisplayName("Check account name HIVE instructions")
   @Test
-  void checkHIVE() {
+  void checkAccountHive() {
     walletPage.clickDepositDropdown(hiveCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(hiveAccount, actualAccount, "HIVE account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo HIVE instructions")
+  @Test
+  void checkMemoHive() {
+    walletPage.clickDepositDropdown(hiveCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(hiveMemo, actualMemo, "HIVE memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check SBD instructions")
+  @DisplayName("Check account name SBD instructions")
   @Test
-  void checkSBD() {
+  void checkAccountSbd() {
     walletPage.clickDepositDropdown(sbdCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(grapheneAccount, actualAccount, "SBD account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo SBD instructions")
+  @Test
+  void checkMemoSbd() {
+    walletPage.clickDepositDropdown(sbdCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(sbdMemo, actualMemo, "SBD memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check STEEM instructions")
+  @DisplayName("Check account name STEEM instructions")
   @Test
-  void checkSTEEM() {
+  void checkAccountSteem() {
     walletPage.clickDepositDropdown(steemCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(grapheneAccount, actualAccount, "STEEM account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo STEEM instructions")
+  @Test
+  void checkMemoSteem() {
+    walletPage.clickDepositDropdown(steemCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(steemMemo, actualMemo, "STEEM memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check ENG instructions")
+  @DisplayName("Check account name ENG instructions")
   @Test
-  void checkENG() {
+  void checkAccountEng() {
     walletPage.clickDepositDropdown(engCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(engTokensAccount, actualAccount, "ENG account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo ENG instructions")
+  @Test
+  void checkMemoEng() {
+    walletPage.clickDepositDropdown(engCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(engMemo, actualMemo, "ENG memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check TLOS instructions")
+  @DisplayName("Check account name TLOS instructions")
   @Test
-  void checkTLOS() {
+  void checkAccountTlos() {
     walletPage.clickDepositDropdown(tlosCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(steemEngAccount, actualAccount, "TLOS account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo TLOS instructions")
+  @Test
+  void checkMemoTlos() {
+    walletPage.clickDepositDropdown(tlosCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(tlosMemo, actualMemo, "TLOS memo is wrong");
   }
 
   @Story("Deposit")
-  @DisplayName("Check WAX instructions")
+  @DisplayName("Check account name WAX instructions")
   @Test
-  void checkWAX() {
+  void checkAccountWax() {
     walletPage.clickDepositDropdown(waxCurrency);
     String actualAccount = walletPage.getContentFirstInputInDeposit();
-    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(waxAccount, actualAccount, "WAX account is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check memo WAX instructions")
+  @Test
+  void checkMemoWax() {
+    walletPage.clickDepositDropdown(waxCurrency);
+    String actualMemo = walletPage.getMemoInDeposit();
     assertEquals(waxMemo, actualMemo, "WAX memo is wrong");
   }
 
   //Currencies with addresses
   @Story("Deposit")
-  @DisplayName("Check BTC instructions")
+  @DisplayName("Check address BTC instructions")
   @Test
-  void checkBTC() {
+  void checkAddressBtc() {
     walletPage.clickDepositDropdown(btcCurrency);
     assertTrue(walletPage.isAddressPresent(), "BTC address is wrong");
+  }
+  @Story("Deposit")
+  @DisplayName("Check qr code BTC instructions")
+  @Test
+  void checkQrCodeBtc() {
+    walletPage.clickDepositDropdown(btcCurrency);
     assertTrue(walletPage.isQRCodePresent(), "QR code not found");
   }
 
   @Story("Deposit")
-  @DisplayName("Check BCH instructions")
+  @DisplayName("Check address BCH instructions")
   @Test
-  void checkBCH() {
+  void checkAddressBch() {
     walletPage.clickDepositDropdown(bchCurrency);
     assertTrue(walletPage.isAddressPresent(), "BCH address is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check qr code BCH instructions")
+  @Test
+  void checkQrCodeBch() {
+    walletPage.clickDepositDropdown(bchCurrency);
     assertTrue(walletPage.isQRCodePresent(), "QR code not found");
   }
 
   @Story("Deposit")
-  @DisplayName("Check DOGE instructions")
+  @DisplayName("Check address DOGE instructions")
   @Test
-  void checkDOGE() {
+  void checkAddressDoge() {
     walletPage.clickDepositDropdown(dogeCurrency);
     assertTrue(walletPage.isAddressPresent(), "DOGE address is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check qr code DOGE instructions")
+  @Test
+  void checkQrCodeDoge() {
+    walletPage.clickDepositDropdown(dogeCurrency);
     assertTrue(walletPage.isQRCodePresent(), "QR code not found");
   }
 
   @Story("Deposit")
-  @DisplayName("Check LTC instructions")
+  @DisplayName("Check address LTC instructions")
   @Test
-  void checkLTC() {
+  void checkAddressLtc() {
     walletPage.clickDepositDropdown(ltcCurrency);
     assertTrue(walletPage.isAddressPresent(), "LTC address is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check qr code LTC instructions")
+  @Test
+  void checkQrCodeLtc() {
+    walletPage.clickDepositDropdown(ltcCurrency);
     assertTrue(walletPage.isQRCodePresent(), "QR code not found");
   }
 
   @Story("Deposit")
-  @DisplayName("Check SWIFT instructions")
+  @DisplayName("Check address SWIFT instructions")
   @Test
-  void checkSWIFT() {
+  void checkAddressSwift() {
     walletPage.clickDepositDropdown(swiftCurrency);
     assertTrue(walletPage.isAddressPresent(), "SWIFT address is wrong");
+  }
+
+  @Story("Deposit")
+  @DisplayName("Check qr code SWIFT instructions")
+  @Test
+  void checkQrCodeSwift() {
+    walletPage.clickDepositDropdown(swiftCurrency);
     assertTrue(walletPage.isQRCodePresent(), "QR code not found");
   }
 }
