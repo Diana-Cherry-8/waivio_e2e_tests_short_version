@@ -26,7 +26,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to CAD for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToCAD() {
+  void changeCurrencyToCad() {
     currency = "CAD";
 
     feedPage = FeedPage.openFeedPage();
@@ -44,7 +44,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to USD for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToUSD() {
+  void changeCurrencyToUsd() {
     currency = "USD";
 
     feedPage = FeedPage.openFeedPage();
@@ -62,7 +62,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to UAN for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToUAH() {
+  void changeCurrencyToUah() {
     currency = "UAH";
 
     feedPage = FeedPage.openFeedPage();
@@ -80,7 +80,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to RUB for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToRUB() {
+  void changeCurrencyToRub() {
     currency = "RUB";
 
     feedPage = FeedPage.openFeedPage();
@@ -98,7 +98,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to CNY for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToCNY() {
+  void changeCurrencyToCny() {
     currency = "CNY";
 
     feedPage = FeedPage.openFeedPage();
@@ -116,7 +116,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to JPY for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToJPY() {
+  void changeCurrencyToJpy() {
     currency = "JPY";
 
     feedPage = FeedPage.openFeedPage();
@@ -134,7 +134,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to GBP for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToGBP() {
+  void changeCurrencyToGbp() {
     currency = "GBP";
 
     feedPage = FeedPage.openFeedPage();
@@ -152,7 +152,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to MXN for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToMXN() {
+  void changeCurrencyToMxn() {
     currency = "MXN";
 
     feedPage = FeedPage.openFeedPage();
@@ -170,7 +170,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to AUD for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToAUD() {
+  void changeCurrencyToAud() {
     currency = "AUD";
 
     feedPage = FeedPage.openFeedPage();
@@ -188,7 +188,7 @@ public class WalletChartTest extends TestBase {
   @DisplayName("Change currency to EUR for waivio via personal settings, and check " +
       "the result on wallet tab in chart")
   @Test
-  void changeCurrencyToEUR() {
+  void changeCurrencyToEur() {
     currency = "EUR";
 
     feedPage = FeedPage.openFeedPage();
@@ -231,7 +231,7 @@ public class WalletChartTest extends TestBase {
   @Story("Check chart")
   @DisplayName("Check that HBD chart is opened")
   @Test
-  void checkHBDChartIsOpened() {
+  void checkHbdChartIsOpened() {
     index = 2; // index for HBD block
     feedPage = FeedPage.openFeedPage();
     profilePage = header.clickOnAccountIcon();
@@ -241,4 +241,3 @@ public class WalletChartTest extends TestBase {
     assertTrue(actualResult);
   }
 }
-
