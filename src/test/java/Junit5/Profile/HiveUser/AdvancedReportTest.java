@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AdvancedReportTest extends TestBase {
 
     String username = "sor31";
-    String startDate = "01/01/2022";
+    String startDate = "01/20/2022";
     // you can enter date or "Account Creation"
     String endDate = "Today";
     // you can enter date or "Today"

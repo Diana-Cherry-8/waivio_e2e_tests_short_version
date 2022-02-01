@@ -26,7 +26,7 @@ public class WalletTest extends TestBase {
     String currencyWaivPower = "WP";
     String currencyHive = "HIVE";
     String currencyHivePower = "HP";
-    String currencyHBD = "HBD";
+    String currencyHbd = "HBD";
     String swapHive = "SWAP.HIVE";
     String swapLtc = "SWAP.LTC";
     String swapBtc = "SWAP.BTC";
@@ -123,7 +123,8 @@ public class WalletTest extends TestBase {
     void checkTransferHistoryForHiveHiveUser() {
         walletPage.openHiveWalletTab();
         refreshPage(); //refresh page - because without it, locators began not from 0 index, but continuing waiv tab
-        boolean actualResult = walletPage.isCurrencyInHistoryDisplayed(currencyHive, currencyHivePower, currencyHBD);
+        boolean actualResult = walletPage.isCurrencyInHistoryDisplayed(currencyHive, currencyHivePower,
+            currencyHbd);
         assertTrue(actualResult);
     }
 
