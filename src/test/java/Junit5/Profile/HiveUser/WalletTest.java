@@ -2,6 +2,7 @@ package Junit5.Profile.HiveUser;
 
 import Junit5.TestBase;
 import com.wizardsdev.PageObjects.FeedPage;
+import com.wizardsdev.PageObjects.Profile.WalletPage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
@@ -12,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Feature("Profile page")
 public class WalletTest extends TestBase {
+    String username = getUserLogin();
+
     String amountForTransfer = "0.001";
     double doubleNumberForFloat = 1000.0;
     int sleepTenSeconds = 10000;
@@ -239,6 +242,7 @@ public class WalletTest extends TestBase {
     @AfterEach
     void returnBack() {
         clickCloseButtonModalWindow();
+        WalletPage.openWalletPage(username);
         postsPage = header.clickOnAccountIcon();
         walletPage = postsPage.clickOnWalletProfileItem();
     }
