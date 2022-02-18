@@ -26,6 +26,10 @@ public class TwitterPage extends Page{
   private static final By DELETE_ITEM_LOCATOR = By.cssSelector("div[role='menuitem']");
   private static final By CONFIRM_DELETE_LOCATOR = By.cssSelector("div[data-testid='confirmationSheetConfirm']");
 
+  //other modal window for twitter
+  private static final By INPUT_LOCATOR = By.cssSelector(".r-30o5oe");
+  private static final By BUTTON_NEXT_LOCATOR = By.cssSelector(".css-901oao.css-16my406.css-bfa6kz.r-poiln3.r-a023e6.r-rjixqe.r-bcqeeo.r-qvutc0");
+
 
   public TwitterPage() {
     super(PAGE_URL);
@@ -62,8 +66,11 @@ public class TwitterPage extends Page{
       setTwitterPassword(twitterPassword);
       clickLogIn();
     }
-    else {
-      $(BUTTON_TWITTER_PUBLISH_LOCATOR).shouldBe(Condition.visible);
+    else if($$(BUTTON_NEXT_LOCATOR).get(2).exists()){
+      //$(BUTTON_TWITTER_PUBLISH_LOCATOR).shouldBe(Condition.visible);
+      //other modal window
+      $(INPUT_LOCATOR).shouldBe(Condition.visible).setValue(twitterUserName).pressEnter();
+      $(INPUT_LOCATOR).shouldBe(Condition.visible).setValue(twitterPassword).pressEnter();
     }
 
   }
