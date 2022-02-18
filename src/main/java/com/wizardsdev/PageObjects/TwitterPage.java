@@ -67,12 +67,11 @@ public class TwitterPage extends Page{
       clickLogIn();
     }
     else if($$(BUTTON_NEXT_LOCATOR).get(2).exists()){
-      //$(BUTTON_TWITTER_PUBLISH_LOCATOR).shouldBe(Condition.visible);
       //other modal window
       $(INPUT_LOCATOR).shouldBe(Condition.visible).setValue(twitterUserName).pressEnter();
-      $(INPUT_LOCATOR).shouldBe(Condition.visible).setValue(twitterPassword).pressEnter();
+      $$(INPUT_LOCATOR).get(1).shouldBe(Condition.visible).setValue(twitterPassword).pressEnter();
     }
-
+    $(BUTTON_TWITTER_PUBLISH_LOCATOR).shouldBe(Condition.visible);
   }
 
   @Step
