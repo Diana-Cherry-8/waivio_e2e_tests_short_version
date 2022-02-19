@@ -32,13 +32,13 @@ public class WalletPage extends ProfilePage {
     private static final By CURRENCY_TITLE_HIVE_ENGINE_LOCATOR = By.cssSelector(".HiveEngineCurrencyItem__info");
     private static final By DROP_DOWNS_SWAP_TOKENS_LOCATOR = By.cssSelector(".SwapTokens__selector");
     private static final By DROP_DOWN_DISABLED_LOCATOR = By.className(".ant-select-disabled");
-    private static final By INPUTS_SWAP_TOKENS_LOCATOR = By.cssSelector(".SwapTokens__input .ant-input");
-    private static final By BUTTONS_MAX_SWAP_LOCATOR = By.cssSelector(".SwapTokens__max-button");
-    private static final By YOUR_BALANCES_LOCATOR = By.cssSelector(".SwapTokens__balance");
+    private static final By INPUTS_SWAP_TOKENS_LOCATOR = By.cssSelector(".TokenSelect__input .ant-input");
+    private static final By BUTTONS_MAX_SWAP_LOCATOR = By.cssSelector(".TokenSelect__max-button");
+    private static final By YOUR_BALANCES_LOCATOR = By.cssSelector(".TokenSelect__balance");
     private static final By BUTTON_ARROW_LOCATOR = By.cssSelector(".SwapTokens__arrow");
     private static final By BUTTONS_SLIDER_LOCATOR = By.cssSelector(".ant-radio-button-wrapper");
     private static final By ESTIMATED_PRICE_IMPACT_LOCATOR = By.cssSelector(".SwapTokens__estimatedWrap p");
-    private static final By INVALID_MESSAGE_LOCATOR = By.cssSelector(".invalid");
+    private static final By INVALID_MESSAGE_LOCATOR = By.cssSelector(".TokenSelect__invalid");
 
     private static final By DROPDOWN_DEPOSIT_LOCATOR = By.cssSelector(".Deposit__step .ant-select");
     private static final By INPUTS_DEPOSIT_LOCATOR = By.cssSelector(".Deposit__input");
