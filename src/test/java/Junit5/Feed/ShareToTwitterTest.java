@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 @Feature("Main feed")
 public class ShareToTwitterTest extends TestBase {
   int index;
-  String twitterUsername = properties.getProperty("TwitterUsername00");
-  String twitterPassword = properties.getProperty("TwitterPass00");
+  String twitterUsername = "daine_cherry";
+  String twitterPassword = "123456diana";
   static String restaurantObject = properties.getProperty("RestaurantObject");
 
   @DisplayName("Check that twitter opens after clicking on share to twitter via the " +
