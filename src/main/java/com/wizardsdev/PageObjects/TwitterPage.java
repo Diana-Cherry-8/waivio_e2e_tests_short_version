@@ -25,7 +25,8 @@ public class TwitterPage extends Page{
   private static final By TREE_DOTS_BUTTON_LOCATORS = By.cssSelector("div[data-testid='caret']");
   private static final By DELETE_ITEM_LOCATOR = By.cssSelector("div[role='menuitem']");
   private static final By CONFIRM_DELETE_LOCATOR = By.cssSelector("div[data-testid='confirmationSheetConfirm']");
-
+  private static final By IMG_LOGO_IN_TWO_FIELDS_LOCATOR = By.cssSelector(".r-1cvl2hr.r-4qtqp9.r-yyyyoo.r-adyw6z.r-1xvli5t.r-dnmrzs.r-j2kj52.r-bnwqim.r-1plcrui.r-lrvibr");
+  private static final By IMG_LOGO_IN_ONE_FIELD_LOCATOR = By.cssSelector(".r-1cvl2hr.r-4qtqp9.r-yyyyoo.r-16y2uox.r-lwhw9o.r-dnmrzs.r-bnwqim.r-1plcrui.r-lrvibr");
   //other modal window for twitter
   private static final By INPUT_LOCATOR = By.cssSelector(".r-30o5oe");
   private static final By BUTTON_NEXT_LOCATOR = By.cssSelector(".css-901oao.css-16my406.css-bfa6kz.r-poiln3.r-a023e6.r-rjixqe.r-bcqeeo.r-qvutc0");
@@ -61,17 +62,19 @@ public class TwitterPage extends Page{
   @Step
   public void twitterLogin(String twitterUserName, String twitterPassword) {
     sleep(2000);
-    if($$(INPUTS_LOCATOR).get(1).exists()) {
+    if($(IMG_LOGO_IN_TWO_FIELDS_LOCATOR).exists()) {
       setTwitterUsername(twitterUserName);
       setTwitterPassword(twitterPassword);
       clickLogIn();
     }
-    else if($$(BUTTON_NEXT_LOCATOR).get(2).exists()){
+    else if($(IMG_LOGO_IN_ONE_FIELD_LOCATOR).exists()){
       //other modal window
       $(INPUT_LOCATOR).shouldBe(Condition.visible).setValue(twitterUserName).pressEnter();
       $$(INPUT_LOCATOR).get(1).shouldBe(Condition.visible).setValue(twitterPassword).pressEnter();
     }
-    $(BUTTON_TWITTER_PUBLISH_LOCATOR).shouldBe(Condition.visible);
+    else {
+      $(BUTTON_TWITTER_PUBLISH_LOCATOR).shouldBe(Condition.visible);
+    }
   }
 
   @Step
