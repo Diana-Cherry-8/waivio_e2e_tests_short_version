@@ -31,6 +31,7 @@ public class WalletTest extends TestBase {
     String swapLtc = "SWAP.LTC";
     String swapBtc = "SWAP.BTC";
     String swapEth = "SWAP.ETH";
+    String waiv = "WAIV";
     int indexFromSwap;
     int indexToSwap = 1;
 
@@ -167,6 +168,7 @@ public class WalletTest extends TestBase {
     void checkToMaxButton() {
         walletPage.openHiveWalletTab();
         walletPage.clickSwapTokens();
+        walletPage.choseCurrencyInFromToInput(2, swapHive);
         walletPage.clickMaxButtonSwap(indexToSwap);
         String expectedResult = walletPage.getYourBalanceWithoutCurrencySwap(indexToSwap, ' ' + swapHive);
         String actualResult = walletPage.getInputValueSwap(indexToSwap);
@@ -180,6 +182,7 @@ public class WalletTest extends TestBase {
     void checkArrowButton() {
         walletPage.openHiveWalletTab();
         walletPage.clickSwapTokens();
+        walletPage.choseCurrencyInFromToInput(2, swapHive);
         walletPage.clickArrowButton();
         String actualResult = walletPage.getYourBalanceWithCurrencySwap(indexFromSwap);
         System.out.println("Actual result: " + actualResult);
@@ -214,6 +217,7 @@ public class WalletTest extends TestBase {
         expectedFloat = (float) (Math.round(expectedFloat * doubleNumberForFloat) / doubleNumberForFloat);
         walletPage.clickSwapTokens();
         walletPage.setInputValueSwap(indexFromSwap, "0.001");
+        walletPage.choseCurrencyInFromToInput(2, swapHive);
         walletPage.clickContinueAsHiveUser();
         sleep(sleepTenSeconds);
         refreshPage();
@@ -226,18 +230,31 @@ public class WalletTest extends TestBase {
     @DisplayName("Check swap Swap.Hive -> Waiv in swap modal window")
     @Test
     void checkSwapSwapHiveToWaiv() {
-        walletPage.openWaivWalletTab();
-        Float expectedFloat = walletPage.getWaivAmount() + amount;
+        walletPage.openHiveEngineWalletTab();
+        Float expectedFloat = walletPage.getHiveEngineAmount() - amount;
         expectedFloat = (float) (Math.round(expectedFloat * doubleNumberForFloat) / doubleNumberForFloat);
         walletPage.clickSwapTokens();
-        walletPage.clickArrowButton();
-        walletPage.setInputValueSwap(indexToSwap, "0.001");
+        walletPage.choseCurrencyInFromToInput(1, swapHive);
+        sleep(3000);
+        walletPage.choseCurrencyInFromToInput(2, waiv);
+        walletPage.setInputValueSwap(indexFromSwap, "0.001");
         walletPage.clickContinueAsHiveUser();
         sleep(sleepTenSeconds);
         refreshPage();
-        walletPage.openWaivWalletTab();
-        Float actualFloat = walletPage.getWaivAmount();
+        walletPage.openHiveEngineWalletTab();
+        Float actualFloat = walletPage.getHiveEngineAmount();
         assertEquals(expectedFloat, actualFloat);
+    }
+
+    @Story("Check manage delegation")
+    @DisplayName("Check open manage delegation modal window")
+    @Test
+    void checkOpenManageDelegationModalWindow() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickManageDelegation();
+        String expectedResult = "Manage delegations";
+        String actualResult = getTitleModalWindow();
+        assertEquals(expectedResult, actualResult);
     }
 
     @AfterEach

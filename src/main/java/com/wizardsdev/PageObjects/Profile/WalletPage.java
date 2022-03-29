@@ -10,7 +10,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class WalletPage extends ProfilePage {
 
-    private static final By BUTTONS_TRANSFER_LOCATOR = By.cssSelector(".Action--primary");
+    private static final By BUTTONS_TRANSFER_LOCATOR = By.cssSelector(".Action");
     private static final By HIVE_AMOUNT_LOCATOR = By.cssSelector(".UserWalletSummary__value");
     public static final By INPUT_FOR_SEARCH_LOCATOR = By.cssSelector(".ant-select-search__field");
     public static final By INPUT_FOR_AMOUNT_LOCATOR = By.cssSelector(".Transfer__amount__input");
@@ -44,6 +44,10 @@ public class WalletPage extends ProfilePage {
     private static final By INPUTS_DEPOSIT_LOCATOR = By.cssSelector(".Deposit__input");
     private static final By QR_CODE_LOCATOR = By.cssSelector(".Deposit__qr-code");
 
+    private static final By DROPDOWN_SWAP_LOCATOR = By.cssSelector(".ant-select-selection");
+
+    private static final By HIVE_ENGINE_AMOUNT_LOCATOR = By.cssSelector(".HiveEngineCurrencyItem__bold");
+
 
     public WalletPage(String userName) { super(Context.getSiteUrl() + "/@" + userName + "/transfers");
     }
@@ -74,7 +78,7 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public WalletPage clickOnWithdrawButton() {
-        clickOnTransferButtonByIndex(1);
+        clickOnTransferButtonByIndex(6);
         return new WalletPage(getUserNameValue());
     }
 
@@ -82,6 +86,16 @@ public class WalletPage extends ProfilePage {
     public Float getHiveAmount() {
         String expectedString = $(HIVE_AMOUNT_LOCATOR).shouldBe(Condition.visible).getText();
         String deleteText = " HIVE";
+        String replace = "";
+        String deleteHive = expectedString.replaceAll(deleteText, replace);
+        float expectedFloat = Float.parseFloat(deleteHive);
+        return expectedFloat;
+    }
+
+    @Step
+    public Float getHiveEngineAmount() {
+        String expectedString = $$(HIVE_ENGINE_AMOUNT_LOCATOR).get(0).shouldBe(Condition.visible).getText();
+        String deleteText = " SWAP.HIVE";
         String replace = "";
         String deleteHive = expectedString.replaceAll(deleteText, replace);
         float expectedFloat = Float.parseFloat(deleteHive);
@@ -144,7 +158,7 @@ public class WalletPage extends ProfilePage {
 
         $(BUTTON_CONTINUE_LOCATOR).click();
         switchTo().window(1);
-        $(BUTTON_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).click();
+        $(BUTTON_APPROVE_TRANSFER_LOCATOR).shouldBe(Condition.visible).scrollTo().click();
         $(TEXT_SUCCESS_LOCATOR).shouldBe(Condition.exactText('\n' +
             "    Transaction has been successfully broadcasted\n" +
             "  "));
@@ -230,7 +244,13 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public void clickSwapTokens () {
-        clickOnTransferButtonByIndex(1);
+        clickOnTransferButtonByIndex(4);
+        sleep(5000);
+    }
+
+    @Step
+    public void clickManageDelegation () {
+        clickOnTransferButtonByIndex(3);
         sleep(5000);
     }
 
@@ -310,7 +330,7 @@ public class WalletPage extends ProfilePage {
 
     @Step
     public void clickDeposit() {
-        clickOnTransferButtonByIndex(2);
+        clickOnTransferButtonByIndex(5);
         sleep(5000);
     }
 
@@ -340,6 +360,12 @@ public class WalletPage extends ProfilePage {
     public boolean isQRCodePresent() {
         $$(INPUTS_DEPOSIT_LOCATOR).get(0).shouldBe(Condition.visible);
         return $(QR_CODE_LOCATOR).exists();
+    }
+
+    @Step
+    public void choseCurrencyInFromToInput(int index, String currency) {
+        $$(DROPDOWN_SWAP_LOCATOR).get(index).shouldBe(Condition.visible).click();
+        $$(ITEM_IN_DROP_DOWN_LOCATOR).findBy(Condition.text(currency)).click();
     }
 
     @Override
