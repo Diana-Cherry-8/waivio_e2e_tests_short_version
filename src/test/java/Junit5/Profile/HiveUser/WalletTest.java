@@ -257,6 +257,17 @@ public class WalletTest extends TestBase {
         assertEquals(expectedResult, actualResult);
     }
 
+    @Story("Check withdraw")
+    @DisplayName("Check open withdraw modal window")
+    @Test
+    void checkOpenWithdrawModalWindow() {
+        walletPage.openHiveWalletTab();
+        walletPage.clickOnWithdrawButton();
+        String expectedResult = "Withdraw";
+        String actualResult = getTitleModalWindow();
+        assertEquals(expectedResult, actualResult);
+    }
+
     @AfterEach
     void returnBack() {
         clickCloseButtonModalWindow();
