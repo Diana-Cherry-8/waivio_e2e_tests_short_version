@@ -5,8 +5,7 @@ import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AdvancedPage extends ProfilePage {
     public static final By FIELD_DATE_CALENDAR_LOCATOR = By.cssSelector(".ant-calendar-input");

@@ -19,7 +19,6 @@ public class WalletTest extends TestBase {
     double doubleNumberForFloat = 1000.0;
     int sleepTenSeconds = 10000;
     Float amount = Float.parseFloat(amountForTransfer);
-    String hiveUserName1 = "dv56d";
     String hiveUserName2 = "wiv01";
     String guestUserName = "waivio_dianach";
     String currencyWaiv = "WAIV";
