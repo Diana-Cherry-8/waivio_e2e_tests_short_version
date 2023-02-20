@@ -1,10 +1,7 @@
 package com.wizardsdev.PageObjects.Tools;
 
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.Selenide.switchTo;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 
 import com.codeborne.selenide.Condition;

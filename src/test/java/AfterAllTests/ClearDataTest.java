@@ -8,7 +8,7 @@ public class ClearDataTest {
   @Test
   @Tag("clear")
   void clear() {
-    //Code witch will runs after all test
+    //Code witch will run after all test
     //You can run it with command: "-Dgroups=clear clean test"
   }
 

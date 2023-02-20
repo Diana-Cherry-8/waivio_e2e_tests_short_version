@@ -48,6 +48,9 @@ public class Header extends Page {
       By.cssSelector(".PopoverMenuItem:not(.PopOverMenuItem__full-screen-hidden) a");
   private static final By LOADER_SIGN_IN_MODAL_LOCATOR = By.className("ModalSignIn__loading");
   private static final By LOADER_SIGN_IN_PAGE_MODAL_LOCATOR = By.className("RedirectedSignIn__loading");
+  private static final By TITLE_COOKIES_LOCATOR = By.id("consent_cookies_title");
+  private static final By BUTTON_ALLOW_COOKIES_LOCATOR =
+          By.cssSelector("button[data-testid='cookie-policy-manage-dialog-accept-button']");
 
   public Header() {
     super();
@@ -77,11 +80,20 @@ public class Header extends Page {
   public void logInWithFacebook(String email, String password, boolean newWindow) {
     SignIn signIn = clickOnSingIn();
     FacebookSignPage facebookSignPage = signIn.clickOnSignInFacebook(newWindow);
+    //closed cookies modal window
+    sleep(1000);
+    closeCookies();
     facebookSignPage.setLogin(email);
     facebookSignPage.setPassword(password);
     facebookSignPage.clickOnLogIn();
     $(LOADER_SIGN_IN_MODAL_LOCATOR).shouldBe(Condition.visible).shouldBe(Condition.disappear);
     $(USER_MENU_TRIANGLE_LOCATOR).shouldBe(Condition.visible);
+  }
+
+  public void closeCookies() {
+    if($(TITLE_COOKIES_LOCATOR).exists()){
+      $(BUTTON_ALLOW_COOKIES_LOCATOR).shouldBe(Condition.visible).click();
+    }
   }
 
   @Step
@@ -153,58 +165,33 @@ public class Header extends Page {
 
   @Step
   public String expectedLanguage(String language) {
-    String myFeedTabName;
-    switch (language) {
-      case "English": myFeedTabName = "MY FEED";
-      break;
-      case "Indonesian": myFeedTabName = "UMPAN SAYA";
-      break;
-      case "Malay": myFeedTabName = "MAKANAN SAYA";
-      break;
-      case "Catalan": myFeedTabName = "EL MEU FEED";
-        break;
-      case "Czech": myFeedTabName = "MŮJ PŘÍSPĚVEK";
-        break;
-      case "Danish": myFeedTabName = "MIT FEED";
-        break;
-      case "German": myFeedTabName = "NEUIGKEITEN";
-        break;
-      case "Estonian": myFeedTabName = "MINU VOOG";
-        break;
-      case "Spanish": myFeedTabName = "MI FEED";
-        break;
-      case "Filipino": myFeedTabName = "ANG AKING PAKAIN";
-        break;
-      case "French": myFeedTabName = "MON FLUX";
-        break;
-      case "Croatian": myFeedTabName = "MOJA FEED";
-        break;
-      case "Italian": myFeedTabName = "IL MIO FEDE";
-        break;
-      case "Hungarian": myFeedTabName = "SAJÁT HÍRCSATORNA";
-        break;
-      case "Polish": myFeedTabName = "MÓJ WKŁAD";
-        break;
-      case "Portuguese": myFeedTabName = "MEU FEED";
-        break;
-      case "Russian": myFeedTabName = "МОЯ ЛЕНТА";
-        break;
-      case "Ukrainian": myFeedTabName = "МОЇ НОВИНИ";
-        break;
-      case "Arabic": myFeedTabName = "موجز بلدي";
-        break;
-      case "Hindi": myFeedTabName = "एरा भोजन";
-        break;
-      case "Korean": myFeedTabName = "나의 먹이";
-        break;
-      case "Japanese": myFeedTabName = "マイフィード";
-        break;
-      case "Afrikaans": myFeedTabName = "MY VOER";
-        break;
-      case "Chinese": myFeedTabName = "我的饲料";
-        break;
-      default: myFeedTabName = "Something went wrong";
-    }
+    String myFeedTabName = switch (language) {
+      case "English" -> "MY FEED";
+      case "Indonesian" -> "UMPAN SAYA";
+      case "Malay" -> "MAKANAN SAYA";
+      case "Catalan" -> "EL MEU FEED";
+      case "Czech" -> "MŮJ PŘÍSPĚVEK";
+      case "Danish" -> "MIT FEED";
+      case "German" -> "NEUIGKEITEN";
+      case "Estonian" -> "MINU VOOG";
+      case "Spanish" -> "MI FEED";
+      case "Filipino" -> "ANG AKING PAKAIN";
+      case "French" -> "MON FLUX";
+      case "Croatian" -> "MOJA FEED";
+      case "Italian" -> "IL MIO FEDE";
+      case "Hungarian" -> "SAJÁT HÍRCSATORNA";
+      case "Polish" -> "MÓJ WKŁAD";
+      case "Portuguese" -> "MEU FEED";
+      case "Russian" -> "МОЯ ЛЕНТА";
+      case "Ukrainian" -> "МОЇ НОВИНИ";
+      case "Arabic" -> "موجز بلدي";
+      case "Hindi" -> "एरा भोजन";
+      case "Korean" -> "나의 먹이";
+      case "Japanese" -> "マイフィード";
+      case "Afrikaans" -> "MY VOER";
+      case "Chinese" -> "我的饲料";
+      default -> "Something went wrong";
+    };
     return myFeedTabName;
   }
 

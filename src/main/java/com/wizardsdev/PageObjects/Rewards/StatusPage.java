@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.wizardsdev.Context.properties;
 
 public class StatusPage extends Page {
     private static final String PAGE_URL = "/rewards/referral-status/";

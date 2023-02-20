@@ -1,7 +1,5 @@
 package com.wizardsdev.PageObjects.Objects;
 
-import org.openqa.selenium.By;
-
 public class AboutPage extends ObjectPage {
 
     @Override

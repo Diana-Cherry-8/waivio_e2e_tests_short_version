@@ -2,7 +2,6 @@ package com.wizardsdev.Modals;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.refresh;
 import static com.codeborne.selenide.Selenide.sleep;
 
 

@@ -1,6 +1,5 @@
 package com.wizardsdev.ApiRequests;
 
-import com.google.gson.Gson;
 //import com.wizardsdev.Models.Company.Company;
 
 class JsonToClassParser {

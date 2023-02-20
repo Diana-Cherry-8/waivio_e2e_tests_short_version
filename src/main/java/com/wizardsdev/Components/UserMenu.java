@@ -1,7 +1,5 @@
 package com.wizardsdev.Components;
 
-import static com.codeborne.selenide.Selenide.$$;
-
 import com.wizardsdev.PageObjects.Page;
 import org.openqa.selenium.By;
 

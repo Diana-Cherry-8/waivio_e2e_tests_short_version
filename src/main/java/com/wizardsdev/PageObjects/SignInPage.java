@@ -1,7 +1,6 @@
 package com.wizardsdev.PageObjects;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 import com.codeborne.selenide.Condition;

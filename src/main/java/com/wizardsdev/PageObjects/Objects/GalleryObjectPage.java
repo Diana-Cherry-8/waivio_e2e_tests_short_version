@@ -6,9 +6,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.wizardsdev.Context.properties;
 
 public class GalleryObjectPage extends ObjectPage{
     private static final By BUTTON_WRITE_A_NEW_REVIEW = By.cssSelector(".icon-button");

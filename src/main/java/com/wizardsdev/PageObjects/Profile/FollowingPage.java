@@ -13,7 +13,6 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static com.wizardsdev.Context.properties;
 
 public class FollowingPage extends ProfilePage {
     private static final By BUTTON_FOLLOW_FOLLOWERS_USER = By.cssSelector(".Follow--secondary");

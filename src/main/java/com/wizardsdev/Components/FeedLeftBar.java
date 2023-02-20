@@ -1,6 +1,5 @@
 package com.wizardsdev.Components;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 import com.codeborne.selenide.Condition;

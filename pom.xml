@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <includeTags></includeTags>
-        <excludeTags></excludeTags>
+        <includeTags/>
+        <excludeTags/>
 
         <jupiter.parallel>true</jupiter.parallel>
         <jupiter.parallel.threads>3</jupiter.parallel.threads>

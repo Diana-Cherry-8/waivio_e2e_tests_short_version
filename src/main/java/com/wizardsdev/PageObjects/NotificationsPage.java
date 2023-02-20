@@ -27,7 +27,8 @@ public class NotificationsPage extends Page{
 
   @Override
   protected void init() {
-    $(NOTIFICATIONS_PAGE_CONTENT_LOCATOR).shouldBe(Condition.visible);
+    //$(NOTIFICATIONS_PAGE_CONTENT_LOCATOR).shouldBe(Condition.visible);
+    $(By.className("center")).shouldBe(Condition.visible);
   }
 
   @Override

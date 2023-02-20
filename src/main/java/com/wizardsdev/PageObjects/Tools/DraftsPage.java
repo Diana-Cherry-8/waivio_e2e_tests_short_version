@@ -1,11 +1,9 @@
 package com.wizardsdev.PageObjects.Tools;
 
-import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 

@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selectors;
-import com.codeborne.selenide.SelenideElement;
 import com.wizardsdev.Context;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

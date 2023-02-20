@@ -3,7 +3,6 @@ package com.wizardsdev.PageObjects.Tools.Website;
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.Context;
 import com.wizardsdev.Modals.ChooseLogo;
-import com.wizardsdev.Modals.Modal;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

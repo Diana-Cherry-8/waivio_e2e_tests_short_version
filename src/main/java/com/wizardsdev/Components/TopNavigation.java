@@ -2,6 +2,7 @@ package com.wizardsdev.Components;
 
 import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.DiscoverPage;
+import com.wizardsdev.PageObjects.NotificationsPage;
 import com.wizardsdev.PageObjects.Objects.ReviewsObjectPage;
 import com.wizardsdev.PageObjects.Page;
 import com.wizardsdev.PageObjects.Rewards.EligiblePage;
@@ -43,10 +44,10 @@ public class TopNavigation extends Page {
   }
 
   @Step
-  public DraftsPage clickOnToolsItem() {
+  public NotificationsPage clickOnToolsItem() {
     $$(TOP_NAVIGATION_ITEMS_LOCATOR).get(4).shouldBe(Condition.visible);
     getTopNavigationItemByIndex(3).click();
-    return new DraftsPage();
+    return new NotificationsPage();
   }
 
   @Step

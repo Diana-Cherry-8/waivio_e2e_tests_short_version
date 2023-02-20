@@ -5,7 +5,6 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ListObjectPage extends ObjectPage{

@@ -1,6 +1,5 @@
 package com.wizardsdev.PageObjects.Tools;
 
-import com.codeborne.selenide.Condition;
 import com.wizardsdev.PageObjects.Page;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;

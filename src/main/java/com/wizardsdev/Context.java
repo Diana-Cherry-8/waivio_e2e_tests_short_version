@@ -163,7 +163,7 @@ public class Context {
         );
         properties.load(fis);
       } catch (IOException e) {
-        System.err.println(String.format("No such property file: %s", PROPERTIES_FILE_NAME));
+        System.err.printf("No such property file: %s%n", PROPERTIES_FILE_NAME);
       }
     } else {
       properties = System.getProperties();
