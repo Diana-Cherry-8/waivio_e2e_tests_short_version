@@ -151,7 +151,7 @@ public class Context {
   }
 
   private static void setMessages() {
-    Context.messages = ResourceBundle.getBundle("messages", Locale.US);
+    Context.messages = ResourceBundle.getBundle("messages", Locale.ENGLISH);
   }
 
   private static void setProperties() {
