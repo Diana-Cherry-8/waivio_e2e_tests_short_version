@@ -222,7 +222,7 @@ public abstract class TestBase {
         ? WebDriverRunner.CHROME
         : System.getProperty("Browser");
     setNumberOfUser();
-    Context.initInstance(browser, WAIT_TIME, getNumberOfUser());
+    Context.initInstance(browser, WAIT_TIME, 1);
     waiter = new WebDriverWait(WebDriverRunner.getWebDriver(), 20);//как вариант чтобы избавиться от sleep
     qaNumber = Context.getQaNumber();
     properties = Context.getInstance().getProperties();
