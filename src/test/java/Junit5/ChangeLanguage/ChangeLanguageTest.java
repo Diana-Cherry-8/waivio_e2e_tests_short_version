@@ -12,10 +12,10 @@ import org.junit.jupiter.api.Test;
 public class ChangeLanguageTest extends TestBase {
   String language;
 
-  @BeforeAll
-  static void openFeed() {
-    FeedPage.openFeedPage();
-  }
+//  @BeforeAll
+//  static void openFeed() {
+//    FeedPage.openFeedPage();
+//  }
 
 //  @Story("Change site language")
 //  @DisplayName("Check change site language to Chinese by not login user")
