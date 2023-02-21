@@ -218,7 +218,7 @@ public abstract class TestBase {
   }
 
   protected static void initContext() {
-    String browser = System.getProperty("Browser") == null
+    String browser = System.getProperty("browser") == null
         ? WebDriverRunner.CHROME
         : System.getProperty("Browser");
     setNumberOfUser();
